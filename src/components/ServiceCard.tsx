@@ -89,7 +89,7 @@ export default function ServiceCard({ service }: Props) {
             aria-label={`${service.name} 공식 사이트 (새 탭에서 열림)`}
             className="ml-auto text-sm font-medium text-blue-700 underline-offset-2 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-600"
           >
-            공식사이트 →
+            사이트 →
           </a>
         ) : null}
       </div>
