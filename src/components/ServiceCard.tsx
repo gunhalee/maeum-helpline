@@ -43,7 +43,7 @@ export default function ServiceCard({ service }: Props) {
     <article
       className={`rounded-xl border bg-white p-4 shadow-sm transition-all duration-150 hover:-translate-y-0.5 hover:shadow-md ${cardBorderClass}`}
     >
-      <div className="mb-2 flex items-start justify-between gap-3">
+      <div className="mb-2 flex items-center justify-between gap-3">
         <h3 className="text-lg font-semibold text-stone-900">{service.name}</h3>
         <p className="text-right text-sm font-bold text-stone-900">
           {isTel(service.phone) ? (
