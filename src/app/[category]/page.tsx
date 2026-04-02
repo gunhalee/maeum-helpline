@@ -24,14 +24,14 @@ export async function generateMetadata({ params }: Props) {
   if (!isCategory(category)) {
     return {
       title: SITE_NAME,
-      description: '한국 정신건강 헬프라인 정보 모음',
+      description: '한국 긴급상담 헬프라인 정보 모음',
     }
   }
 
   const meta = CATEGORY_META[category]
   return {
     title: `${meta.label} — ${SITE_NAME}`,
-    description: `${meta.label} 관련 한국 정신건강 헬프라인 정보 모음`,
+    description: `${meta.label} 관련 한국 긴급상담 헬프라인 정보 모음`,
   }
 }
 
