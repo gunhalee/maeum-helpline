@@ -41,7 +41,7 @@ export default function EmergencyBar({ services }: Props) {
       aria-label="긴급 연락처"
       className="sticky top-0 z-50 h-11 bg-green-700 text-white"
     >
-      <div className="mx-auto flex h-full max-w-5xl items-center gap-2 overflow-x-auto whitespace-nowrap px-4 text-sm [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+      <div className="mx-auto flex h-full max-w-5xl items-center justify-center gap-2 overflow-x-auto whitespace-nowrap px-4 text-sm [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
         {items.map((service) => {
           const compactPhone = service.phone.replace(/\s+/g, '')
           const content = `${service.name} | ${service.phone}`
