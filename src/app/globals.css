@@ -5,10 +5,16 @@
 html {
   scroll-behavior: smooth;
   overflow-y: scroll;
+  overflow-x: clip;
+  overscroll-behavior-x: none;
 }
 
 * {
   -webkit-font-smoothing: antialiased;
+}
+
+body {
+  overflow-x: hidden;
 }
 
 .scrollbar-hide {
