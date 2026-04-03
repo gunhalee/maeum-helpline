@@ -74,10 +74,7 @@ export default async function CategoryPage({ params }: Props) {
   const isCrisis = category === 'crisis'
   const headerTitle = isCrisis ? SITE_NAME : meta.label
   const headerDescription = isCrisis ? SITE_DESC : null
-  const headerClassName = isCrisis ? 'text-center' : ''
-  const descriptionClassName = isCrisis
-    ? 'mx-auto mt-2 max-w-lg text-base text-stone-500'
-    : 'mt-2 max-w-lg text-base text-stone-500'
+  const descriptionClassName = 'mx-auto mt-2 max-w-lg text-base text-stone-500'
   const breadcrumbJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
@@ -106,7 +103,7 @@ export default async function CategoryPage({ params }: Props) {
         }}
       />
       <section className="mx-auto max-w-5xl px-4 pb-12 pt-8">
-        <header className={headerClassName}>
+        <header className="text-center">
           <h1 className="text-3xl font-semibold md:text-4xl">{headerTitle}</h1>
           {headerDescription ? (
             <p className={descriptionClassName}>{headerDescription}</p>
