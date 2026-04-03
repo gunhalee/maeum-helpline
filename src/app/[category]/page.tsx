@@ -111,8 +111,7 @@ export default async function CategoryPage({ params }: Props) {
         <div className="mx-auto max-w-5xl px-4 text-sm text-stone-500">
           <p>이 페이지는 공개 정보를 바탕으로 한 비공식 안내 자료입니다.</p>
           <p className="mt-1">
-            긴급 위기 시 <span className="font-semibold text-red-600">109</span> 또는{' '}
-            <span className="font-semibold text-red-600">119</span>에 전화하세요.
+            긴급 시 <span className="font-semibold text-red-600">119</span>에 먼저 전화하세요.
           </p>
         </div>
       </footer>
