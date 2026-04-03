@@ -1,6 +1,5 @@
 export type Category =
   | 'crisis'
-  | 'public'
   | 'victim'
   | 'women'
   | 'depression'

@@ -7,12 +7,6 @@ export const CATEGORY_META: Record<Category, CategoryMeta> = {
     bgColor: 'bg-red-50',
     textColor: 'text-red-700',
   },
-  public: {
-    label: '공공 서비스',
-    icon: '',
-    bgColor: 'bg-blue-50',
-    textColor: 'text-blue-700',
-  },
   victim: {
     label: '피해자 보호',
     icon: '',
@@ -80,5 +74,4 @@ export const CATEGORY_ORDER: Category[] = [
   'addiction',
   'elder',
   'work',
-  'public',
 ]
