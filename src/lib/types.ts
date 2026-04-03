@@ -5,7 +5,6 @@ export type Category =
   | 'depression'
   | 'youth'
   | 'addiction'
-  | 'work'
   | 'queer'
   | 'elder'
   | 'migrant'

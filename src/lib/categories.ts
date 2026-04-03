@@ -37,12 +37,6 @@ export const CATEGORY_META: Record<Category, CategoryMeta> = {
     bgColor: 'bg-orange-50',
     textColor: 'text-orange-700',
   },
-  work: {
-    label: '직장인',
-    icon: '',
-    bgColor: 'bg-sky-50',
-    textColor: 'text-sky-700',
-  },
   queer: {
     label: '성소수자',
     icon: '',
@@ -73,5 +67,4 @@ export const CATEGORY_ORDER: Category[] = [
   'migrant',
   'addiction',
   'elder',
-  'work',
 ]
