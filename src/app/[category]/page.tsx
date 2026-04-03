@@ -33,7 +33,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   const meta = CATEGORY_META[category]
-  const title = `${meta.label} 서비스`
+  const title = `${SITE_NAME} | ${meta.label}`
   const description = `${meta.label} 관련 한국 정신건강 서비스 모음. 전화번호, 운영시간, 이용 방법을 확인하세요.`
   const url = `${siteUrl}/${category}`
 
