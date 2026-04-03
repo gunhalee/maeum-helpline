@@ -23,7 +23,7 @@ const siteUrl =
   'https://helpline.or.kr'
 const googleSiteVerification = process.env.GOOGLE_SITE_VERIFICATION
 const siteMetaDescription =
-  '자살, 자살예방, 우울, 우울증, 정신건강 위기상담, 피해자 보호 지원체계 등 한국 정신건강 서비스를 한곳에 모았습니다.'
+  '자살, 자살예방, 우울, 우울증, 정신건강 위기상담, 피해자 지원 체계 등 한국 정신건강 서비스를 한곳에 모았습니다.'
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),

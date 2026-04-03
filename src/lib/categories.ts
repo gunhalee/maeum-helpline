@@ -8,7 +8,7 @@ export const CATEGORY_META: Record<Category, CategoryMeta> = {
     textColor: 'text-red-700',
   },
   victim: {
-    label: '피해자 보호',
+    label: '피해자 지원',
     icon: '',
     bgColor: 'bg-rose-50',
     textColor: 'text-rose-700',
