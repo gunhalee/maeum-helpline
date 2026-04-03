@@ -22,8 +22,7 @@ const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, '') ??
   'https://helpline.or.kr'
 const googleSiteVerification = process.env.GOOGLE_SITE_VERIFICATION
-const siteMetaDescription =
-  '자살, 자살예방, 우울, 우울증, 정신건강 위기상담, 피해자 지원 체계 등 한국 정신건강 서비스를 한곳에 모았습니다.'
+const siteMetaDescription = '당신은 혼자가 아닙니다.'
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -55,7 +54,7 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'ko_KR',
     title: '긴급상담 헬프라인',
-    description: '한국 정신건강 지원단체 모음집',
+    description: '당신은 혼자가 아닙니다.',
     url: 'https://helpline.or.kr',
     siteName: '긴급상담 헬프라인',
   },
