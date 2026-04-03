@@ -99,7 +99,7 @@ export default async function RootLayout({
   return (
     <html lang="ko">
       <body
-        className={`${notoSans.variable} ${notoSerif.variable} min-h-screen bg-stone-50 font-sans`}
+        className={`${notoSans.variable} ${notoSerif.variable} flex min-h-screen flex-col bg-stone-50 font-sans`}
       >
         <script
           type="application/ld+json"
@@ -115,7 +115,15 @@ export default async function RootLayout({
         />
         <EmergencyBar services={emergencyServices} />
         <NavBar />
-        <main>{children}</main>
+        <main className="flex-1">{children}</main>
+        <footer className="border-t border-stone-200 bg-white/70 py-6">
+          <div className="mx-auto max-w-5xl px-4 text-sm text-stone-500">
+            <p>이 페이지는 공개 정보를 바탕으로 한 비공식 안내 자료입니다.</p>
+            <p className="mt-1">
+              긴급 시 <span className="font-semibold text-red-600">119</span>에 먼저 전화하세요.
+            </p>
+          </div>
+        </footer>
       </body>
     </html>
   )
