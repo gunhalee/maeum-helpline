@@ -8,6 +8,31 @@ interface Props {
 export default function ServiceCard({ service }: Props) {
   const normalizeText = (value: string) => value.replace(/\s+/g, '').toLowerCase()
   const isTel = (phone: string) => /^[0-9-]+$/.test(phone.replace(/\s+/g, ''))
+  const getTagPriority = (tag: string): number => {
+    const normalizedTag = normalizeText(tag)
+
+    if (
+      normalizedTag.includes('시간') ||
+      normalizedTag.includes('운영') ||
+      normalizedTag.includes('24h') ||
+      normalizedTag.includes('24시간') ||
+      normalizedTag.includes('상시운영') ||
+      normalizedTag.includes('평일') ||
+      normalizedTag.includes('주말')
+    ) {
+      return 0
+    }
+
+    if (normalizedTag === '무료') {
+      return 1
+    }
+
+    if (normalizedTag.includes('온라인') || normalizedTag.includes('비대면')) {
+      return 2
+    }
+
+    return 3
+  }
 
   const operatingHours = service.operatingHours?.trim() ?? ''
   const normalizedOperatingHours = normalizeText(operatingHours)
@@ -38,6 +63,20 @@ export default function ServiceCard({ service }: Props) {
   const cardBorderClass = shouldHighlightBorder
     ? 'border-2 border-yellow-300'
     : 'border-stone-200'
+  const badgeItems = service.tags
+    .map((tag, index) => ({ tag, index }))
+    .concat(
+      operatingHours && !hasOperatingHoursDuplicate
+        ? [{ tag: operatingHours, index: -1 }]
+        : []
+    )
+    .sort((a, b) => {
+      const priorityDiff = getTagPriority(a.tag) - getTagPriority(b.tag)
+      if (priorityDiff !== 0) {
+        return priorityDiff
+      }
+      return a.index - b.index
+    })
 
   return (
     <article
@@ -62,24 +101,14 @@ export default function ServiceCard({ service }: Props) {
       <p className="line-clamp-2 text-sm text-stone-600">{service.description}</p>
 
       <div className="mt-auto flex flex-wrap items-center gap-2 pt-3">
-        {service.tags.map((tag) => (
+        {badgeItems.map((item, index) => (
           <span
-            key={tag}
-            className={`rounded-full px-2.5 py-1 text-xs font-medium ${TAG_STYLES[tag] ?? DEFAULT_TAG_STYLE}`}
+            key={`${item.tag}-${index}`}
+            className={`rounded-full px-2.5 py-1 text-xs font-medium ${TAG_STYLES[item.tag] ?? DEFAULT_TAG_STYLE}`}
           >
-            {tag}
+            {item.tag}
           </span>
         ))}
-
-        {operatingHours && !hasOperatingHoursDuplicate ? (
-          <span
-            className={`rounded-full px-2.5 py-1 text-xs font-medium ${
-              TAG_STYLES[operatingHours] ?? DEFAULT_TAG_STYLE
-            }`}
-          >
-            {operatingHours}
-          </span>
-        ) : null}
 
         {service.url ? (
           <a
