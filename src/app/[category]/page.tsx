@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import ServiceGrid from '@/components/ServiceGrid'
 import { CATEGORY_META, CATEGORY_ORDER } from '@/lib/categories'
-import { SITE_DESC, SITE_NAME } from '@/lib/constants'
+import { SITE_NAME } from '@/lib/constants'
 import { getServices } from '@/lib/notion'
 import type { Category } from '@/lib/types'
 
@@ -71,10 +71,7 @@ export default async function CategoryPage({ params }: Props) {
   const services = await getServices()
   const filtered = services.filter((service) => service.category.includes(category))
   const meta = CATEGORY_META[category]
-  const isCrisis = category === 'crisis'
-  const headerTitle = isCrisis ? SITE_NAME : meta.label
-  const headerDescription = isCrisis ? SITE_DESC : null
-  const descriptionClassName = 'mx-auto mt-2 max-w-lg text-base text-stone-500'
+  const headerTitle = `${meta.label} 상담`
   const breadcrumbJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
@@ -105,9 +102,6 @@ export default async function CategoryPage({ params }: Props) {
       <section className="mx-auto max-w-5xl px-4 pb-12 pt-8">
         <header className="text-center">
           <h1 className="text-3xl font-semibold md:text-4xl">{headerTitle}</h1>
-          {headerDescription ? (
-            <p className={descriptionClassName}>{headerDescription}</p>
-          ) : null}
         </header>
 
         <ServiceGrid services={filtered} groupByCategory={false} />
