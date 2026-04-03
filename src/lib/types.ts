@@ -3,6 +3,7 @@ export type Category =
   | 'public'
   | 'victim'
   | 'women'
+  | 'depression'
   | 'youth'
   | 'addiction'
   | 'work'

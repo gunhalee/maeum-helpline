@@ -25,6 +25,12 @@ export const CATEGORY_META: Record<Category, CategoryMeta> = {
     bgColor: 'bg-pink-50',
     textColor: 'text-pink-700',
   },
+  depression: {
+    label: '우울',
+    icon: '',
+    bgColor: 'bg-indigo-50',
+    textColor: 'text-indigo-700',
+  },
   youth: {
     label: '청소년·아동',
     icon: '',
@@ -65,6 +71,7 @@ export const CATEGORY_META: Record<Category, CategoryMeta> = {
 
 export const CATEGORY_ORDER: Category[] = [
   'crisis',
+  'depression',
   'victim',
   'women',
   'youth',
