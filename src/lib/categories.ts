@@ -44,7 +44,7 @@ export const CATEGORY_META: Record<Category, CategoryMeta> = {
     textColor: 'text-violet-700',
   },
   elder: {
-    label: '치매·노인',
+    label: '노인',
     icon: '',
     bgColor: 'bg-yellow-50',
     textColor: 'text-yellow-700',
