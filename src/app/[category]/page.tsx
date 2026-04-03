@@ -60,6 +60,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function CategoryPage({ params }: Props) {
+  const siteUrl =
+    process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, '') ??
+    'https://helpline.or.kr'
   const { category } = await params
   if (!isCategory(category)) {
     notFound()
@@ -68,9 +71,33 @@ export default async function CategoryPage({ params }: Props) {
   const services = await getServices()
   const filtered = services.filter((service) => service.category.includes(category))
   const meta = CATEGORY_META[category]
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: SITE_NAME,
+        item: `${siteUrl}/`,
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: meta.label,
+        item: `${siteUrl}/${category}`,
+      },
+    ],
+  }
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbJsonLd),
+        }}
+      />
       <section className="mx-auto max-w-5xl px-4 pb-12 pt-8">
         <header>
           <h1 className="text-3xl font-semibold md:text-4xl">{meta.label}</h1>

@@ -21,6 +21,7 @@ const notoSerif = Noto_Serif_KR({
 const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, '') ??
   'https://helpline.or.kr'
+const googleSiteVerification = process.env.GOOGLE_SITE_VERIFICATION
 const siteMetaDescription =
   '자살, 자살예방, 우울, 우울증, 정신건강 위기상담, 피해자 보호 지원체계 등 한국 정신건강 서비스를 한곳에 모았습니다.'
 
@@ -67,6 +68,9 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+  verification: {
+    google: googleSiteVerification,
+  },
 }
 
 export default async function RootLayout({
@@ -75,12 +79,37 @@ export default async function RootLayout({
   children: React.ReactNode
 }>) {
   const emergencyServices = await getEmergencyServices()
+  const organizationJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: SITE_NAME,
+    url: siteUrl,
+  }
+  const websiteJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: SITE_NAME,
+    url: siteUrl,
+    inLanguage: 'ko-KR',
+  }
 
   return (
     <html lang="ko">
       <body
         className={`${notoSans.variable} ${notoSerif.variable} min-h-screen bg-stone-50 font-sans`}
       >
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationJsonLd),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(websiteJsonLd),
+          }}
+        />
         <EmergencyBar services={emergencyServices} />
         <NavBar />
         <main>{children}</main>
