@@ -7,12 +7,6 @@ export const CATEGORY_META: Record<Category, CategoryMeta> = {
     bgColor: 'bg-red-50',
     textColor: 'text-red-700',
   },
-  victim: {
-    label: '피해자 지원',
-    icon: '',
-    bgColor: 'bg-rose-50',
-    textColor: 'text-rose-700',
-  },
   women: {
     label: '여성',
     icon: '',
@@ -60,7 +54,6 @@ export const CATEGORY_META: Record<Category, CategoryMeta> = {
 export const CATEGORY_ORDER: Category[] = [
   'crisis',
   'depression',
-  'victim',
   'women',
   'youth',
   'queer',
