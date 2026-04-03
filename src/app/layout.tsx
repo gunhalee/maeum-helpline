@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { Noto_Sans_KR, Noto_Serif_KR } from 'next/font/google'
 import EmergencyBar from '@/components/EmergencyBar'
 import NavBar from '@/components/NavBar'
-import { SITE_DESC, SITE_NAME } from '@/lib/constants'
+import { SITE_NAME } from '@/lib/constants'
 import { getEmergencyServices } from '@/lib/notion'
 import './globals.css'
 
@@ -18,9 +18,55 @@ const notoSerif = Noto_Serif_KR({
   variable: '--font-serif',
 })
 
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, '') ??
+  'https://helpline.or.kr'
+const siteMetaDescription =
+  '자살, 자살예방, 우울, 우울증, 정신건강 위기상담, 피해자 보호 지원체계 등 한국 정신건강 서비스를 한곳에 모았습니다.'
+
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: SITE_NAME,
-  description: SITE_DESC,
+  description: siteMetaDescription,
+  keywords: [
+    '정신건강',
+    '자살예방',
+    '심리상담',
+    '위기상담',
+    '여성',
+    '청소년',
+    '아동',
+    '노인',
+    '치매',
+    '피해자',
+    '위기',
+    '긴급',
+    '상담',
+    '성소수자',
+    '이주민',
+    '외국인',
+    '치료',
+  ],
+  alternates: {
+    canonical: '/',
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'ko_KR',
+    title: '긴급상담 헬프라인',
+    description: '한국 정신건강 지원단체 모음집',
+    url: 'https://helpline.or.kr',
+    siteName: '긴급상담 헬프라인',
+  },
+  twitter: {
+    card: 'summary',
+    title: SITE_NAME,
+    description: siteMetaDescription,
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 }
 
 export default async function RootLayout({

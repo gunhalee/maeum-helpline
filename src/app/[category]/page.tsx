@@ -1,3 +1,4 @@
+import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import ServiceGrid from '@/components/ServiceGrid'
 import { CATEGORY_META, CATEGORY_ORDER } from '@/lib/categories'
@@ -19,7 +20,10 @@ export async function generateStaticParams() {
   return CATEGORY_ORDER.map((cat) => ({ category: cat }))
 }
 
-export async function generateMetadata({ params }: Props) {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const siteUrl =
+    process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, '') ??
+    'https://helpline.or.kr'
   const { category } = await params
   if (!isCategory(category)) {
     return {
@@ -29,9 +33,29 @@ export async function generateMetadata({ params }: Props) {
   }
 
   const meta = CATEGORY_META[category]
+  const title = `${meta.label} 서비스`
+  const description = `${meta.label} 관련 한국 정신건강 서비스 모음. 전화번호, 운영시간, 이용 방법을 확인하세요.`
+  const url = `${siteUrl}/${category}`
+
   return {
-    title: `${meta.label} — ${SITE_NAME}`,
-    description: `${meta.label} 관련 한국 긴급상담 헬프라인 정보 모음`,
+    title,
+    description,
+    alternates: {
+      canonical: `/${category}`,
+    },
+    openGraph: {
+      type: 'website',
+      locale: 'ko_KR',
+      url,
+      siteName: SITE_NAME,
+      title,
+      description,
+    },
+    twitter: {
+      card: 'summary',
+      title,
+      description,
+    },
   }
 }
 
