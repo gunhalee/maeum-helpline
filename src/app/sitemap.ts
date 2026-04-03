@@ -3,7 +3,8 @@ import { CATEGORY_ORDER } from '@/lib/categories'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl =
-    process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, '') ?? 'http://localhost:3000'
+    process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, '') ??
+    'https://helpline.or.kr'
   const now = new Date()
 
   return [
