@@ -41,7 +41,7 @@ export default function ServiceCard({ service }: Props) {
 
   return (
     <article
-      className={`rounded-xl border bg-white p-4 shadow-sm transition-all duration-150 hover:-translate-y-0.5 hover:shadow-md ${cardBorderClass}`}
+      className={`flex h-full min-h-[150px] flex-col rounded-xl border bg-white p-4 shadow-sm transition-all duration-150 hover:-translate-y-0.5 hover:shadow-md ${cardBorderClass}`}
     >
       <div className="mb-2 flex items-center justify-between gap-3">
         <h3 className="text-lg font-semibold text-stone-900">{service.name}</h3>
@@ -61,7 +61,7 @@ export default function ServiceCard({ service }: Props) {
 
       <p className="line-clamp-2 text-sm text-stone-600">{service.description}</p>
 
-      <div className="mt-3 flex flex-wrap items-center gap-2">
+      <div className="mt-auto flex flex-wrap items-center gap-2 pt-3">
         {service.tags.map((tag) => (
           <span
             key={tag}
