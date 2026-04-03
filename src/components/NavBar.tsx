@@ -15,7 +15,7 @@ export default function NavBar() {
       aria-label="카테고리 네비게이션"
     >
       <div className="scrollbar-hide overflow-x-auto">
-        <div className="mx-auto flex max-w-5xl gap-1 px-4 py-2">
+        <div className="mx-auto flex max-w-5xl justify-center gap-1 px-4 py-2">
           <Link
             href="/"
             className={`${tabBaseClass} ${
