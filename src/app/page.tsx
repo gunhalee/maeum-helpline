@@ -6,6 +6,9 @@ export const revalidate = 3600
 
 export default async function Home() {
   const services = await getServices()
+  const crisisServices = services.filter((service) =>
+    service.category.includes('crisis')
+  )
 
   return (
     <>
@@ -15,7 +18,7 @@ export default async function Home() {
           <p className="mx-auto mt-2 max-w-lg text-base text-stone-500">{SITE_DESC}</p>
         </header>
 
-        <ServiceGrid services={services} />
+        <ServiceGrid services={crisisServices} groupByCategory={false} />
       </section>
 
       <footer className="border-t border-stone-200 bg-white/70 py-6">

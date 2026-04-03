@@ -16,22 +16,11 @@ export default function NavBar() {
     >
       <div className="scrollbar-hide overflow-x-auto">
         <div className="mx-auto flex max-w-5xl justify-center gap-1 px-4 py-2">
-          <Link
-            href="/"
-            className={`${tabBaseClass} ${
-              pathname === '/'
-                ? 'bg-green-700 text-white'
-                : 'text-stone-500 hover:bg-stone-100 hover:text-stone-800'
-            }`}
-            aria-current={pathname === '/' ? 'page' : undefined}
-          >
-            전체
-          </Link>
-
           {CATEGORY_ORDER.map((category) => {
             const meta = CATEGORY_META[category]
             const href = `/${category}`
-            const isActive = pathname === href
+            const isActive =
+              pathname === href || (category === 'crisis' && pathname === '/')
             return (
               <Link
                 key={category}
