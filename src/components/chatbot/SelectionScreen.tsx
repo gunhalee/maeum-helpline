@@ -83,7 +83,7 @@ export default function SelectionScreen({ onSubmit }: Props) {
 
           <div className="rounded-2xl border border-stone-100 p-4">
             <p className="mb-3 text-sm font-medium text-stone-800">
-              현재 죽고 싶거나 자신을 해치고 싶은 상황인가요?
+              현재 죽고 싶거나 자신을 해치고 싶은 생각이 드나요?
             </p>
             <div className="flex flex-col gap-2">
               <button

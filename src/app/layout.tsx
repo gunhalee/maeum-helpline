@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Noto_Sans_KR, Noto_Serif_KR } from 'next/font/google'
 import EmergencyBar from '@/components/EmergencyBar'
 import NavBar from '@/components/NavBar'
+import LayoutShell from '@/components/LayoutShell'
 import { SITE_NAME } from '@/lib/constants'
 import { getEmergencyServices } from '@/lib/notion'
 import './globals.css'
@@ -112,9 +113,16 @@ export default async function RootLayout({
             __html: JSON.stringify(websiteJsonLd),
           }}
         />
-        <EmergencyBar services={emergencyServices} />
-        <NavBar />
-        <main className="flex-1">{children}</main>
+        <LayoutShell
+          nav={
+            <>
+              <EmergencyBar services={emergencyServices} />
+              <NavBar />
+            </>
+          }
+        >
+          {children}
+        </LayoutShell>
         <footer className="border-t border-stone-200 bg-white/70 py-6">
           <div className="mx-auto max-w-5xl px-4 text-sm text-stone-500">
             <p>

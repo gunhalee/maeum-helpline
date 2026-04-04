@@ -1,16 +1,11 @@
 import ChatbotBanner from '@/components/chatbot/ChatbotBanner'
 import ChatbotFlow from '@/components/chatbot/ChatbotFlow'
-import { getFixedBannerOrgs } from '@/lib/helpline-notion'
 
-export const revalidate = 3600
-
-export default async function Home() {
-  const fixedOrgs = await getFixedBannerOrgs()
-
+export default function Home() {
   return (
-    <div className="flex min-h-[calc(100vh-44px)] flex-col">
-      <div className="sticky top-[44px] z-30">
-        <ChatbotBanner orgs={fixedOrgs} />
+    <div className="flex min-h-screen flex-col bg-white">
+      <div className="sticky top-0 z-30">
+        <ChatbotBanner />
       </div>
       <div className="flex flex-1 justify-center">
         <ChatbotFlow />
