@@ -142,7 +142,7 @@ export default function SelectionScreen({ onSubmit }: Props) {
                 setStep('crisis')
                 setSelected(new Set())
               }}
-              className="min-h-[44px] self-start rounded-lg px-2 py-1 text-sm text-stone-500 hover:bg-stone-100"
+              className="min-h-[50px] self-start rounded-xl border-[1.5px] border-stone-200 bg-white px-4 py-3 text-base text-stone-700 transition-colors hover:border-green-300 hover:bg-green-50"
             >
               ‹ 이전 질문으로
             </button>
