@@ -101,15 +101,15 @@ function FreeCounselingSection({
   if (freeOrgs.length === 0) return null
 
   return (
-    <div className="overflow-hidden rounded-2xl border border-purple-100">
+    <div className="overflow-hidden rounded-2xl border border-stone-100">
       <button
         type="button"
         onClick={() => setExpanded((v) => !v)}
         className="flex min-h-[44px] w-full items-center justify-between px-4 py-3 text-left hover:bg-stone-50/50"
       >
         <div>
-          <p className="text-sm font-semibold text-purple-800">
-            💜 무료로 상담받는 방법
+          <p className="text-sm font-semibold text-stone-800">
+            정부 지원 심리상담 지원금
           </p>
           <p className="mt-0.5 text-xs text-stone-500">
             {freeOrgs.map((o) => o.name).join(', ')}
