@@ -1,10 +1,12 @@
 import { CATEGORY_META, CATEGORY_ORDER } from '@/lib/categories'
 import ResultCard from '@/components/ResultCard'
 import type { Service } from '@/lib/types'
+import { translateCategoryLabel, type Lang } from '@/lib/i18n'
 
 interface Props {
   services: Service[]
   groupByCategory?: boolean
+  lang?: Lang
 }
 
 function normalizeText(value: string): string {
@@ -46,7 +48,7 @@ function sortByPriority(services: Service[]): Service[] {
   })
 }
 
-function serviceToCardProps(service: Service) {
+function serviceToCardProps(service: Service, lang: Lang) {
   const is24h = isAlwaysOpen(service)
 
   return {
@@ -56,16 +58,23 @@ function serviceToCardProps(service: Service) {
     description: service.description,
     is24h,
     metaParts: [],
+    lang,
   }
 }
 
-export default function ServiceGrid({ services, groupByCategory = true }: Props) {
+export default function ServiceGrid({
+  services,
+  groupByCategory = true,
+  lang = 'ko',
+}: Props) {
   const orderedServices = sortByPriority(services)
 
   if (services.length === 0) {
     return (
       <p className="mt-8 rounded-xl border border-stone-200 bg-white p-6 text-center text-stone-500">
-        등록된 서비스가 아직 없습니다. Notion 데이터베이스에 항목을 추가해 주세요.
+        {lang === 'en'
+          ? 'No services have been added yet. Please add records to the Notion database.'
+          : '등록된 서비스가 아직 없습니다. Notion 데이터베이스에 항목을 추가해 주세요.'}
       </p>
     )
   }
@@ -74,7 +83,7 @@ export default function ServiceGrid({ services, groupByCategory = true }: Props)
     return (
       <section className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
         {orderedServices.map((service) => (
-          <ResultCard key={service.id} {...serviceToCardProps(service)} />
+          <ResultCard key={service.id} {...serviceToCardProps(service, lang)} />
         ))}
       </section>
     )
@@ -94,11 +103,11 @@ export default function ServiceGrid({ services, groupByCategory = true }: Props)
         return (
           <section key={category}>
             <h2 className="mb-3 text-xl font-semibold text-stone-800">
-              {meta.label}
+              {translateCategoryLabel(meta.label, lang)}
             </h2>
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               {items.map((service) => (
-                <ResultCard key={service.id} {...serviceToCardProps(service)} />
+                <ResultCard key={service.id} {...serviceToCardProps(service, lang)} />
               ))}
             </div>
           </section>

@@ -7,6 +7,13 @@ import type {
   MatchSerializedOrg,
   OrgRef,
 } from '@/lib/helpline-types'
+import {
+  normalizeLang,
+  translateGroupLabel,
+  translatePreview,
+  translateStatusNote,
+  type Lang,
+} from '@/lib/i18n'
 
 type SelectionRule = {
   categories?: Category[]
@@ -189,21 +196,27 @@ function parseTimeRange(detail: string): { start: number; end: number } | null {
   return { start, end }
 }
 
-function computeServiceStatus(service: Service, referenceTime: Date): ServiceStatus {
+function computeServiceStatus(
+  service: Service,
+  referenceTime: Date,
+  lang: Lang
+): ServiceStatus {
   const hoursType = service.hoursType?.toLowerCase() ?? ''
   const hoursDetail = service.hoursDetail ?? service.operatingHours ?? ''
 
   if (hoursType === '24h') {
-    return { note: '24시간', isOpen: true }
+    return { note: translateStatusNote('24시간', lang), isOpen: true }
   }
 
   if (!hoursDetail) {
-    if (hoursType === 'weekday') return { note: '평일 운영', isOpen: false }
+    if (hoursType === 'weekday') {
+      return { note: translateStatusNote('평일 운영', lang), isOpen: false }
+    }
     return { note: null, isOpen: null }
   }
 
   if (/상시|always/i.test(hoursDetail)) {
-    return { note: hoursDetail, isOpen: true }
+    return { note: translateStatusNote(hoursDetail, lang), isOpen: true }
   }
 
   const now = toKst(referenceTime)
@@ -217,22 +230,25 @@ function computeServiceStatus(service: Service, referenceTime: Date): ServiceSta
 
   const onWeekday = day >= 1 && day <= 5
   if (hoursType === 'weekday' && !onWeekday) {
-    return { note: hoursDetail || '평일 운영', isOpen: false }
+    return {
+      note: translateStatusNote(hoursDetail || '평일 운영', lang),
+      isOpen: false,
+    }
   }
 
   return {
-    note: hoursDetail,
+    note: translateStatusNote(hoursDetail, lang),
     isOpen: hhmm >= range.start && hhmm < range.end,
   }
 }
 
-function buildPreview(orgs: OrgRef[], serviceMap: Record<string, Service>): string {
+function buildPreview(orgs: OrgRef[], serviceMap: Record<string, Service>, lang: Lang): string {
   const names = orgs
     .map((org) => serviceMap[org.id]?.name)
     .filter((name): name is string => Boolean(name))
 
   if (names.length <= 2) return names.join(', ')
-  return `${names.slice(0, 2).join(', ')} 외 ${names.length - 2}곳`
+  return translatePreview(`${names.slice(0, 2).join(', ')} 외 ${names.length - 2}곳`, lang)
 }
 
 function serializeService(service: Service): MatchSerializedOrg {
@@ -261,8 +277,8 @@ function serializeService(service: Service): MatchSerializedOrg {
   }
 }
 
-function buildOrgRef(service: Service, referenceTime: Date): OrgRef {
-  const status = computeServiceStatus(service, referenceTime)
+function buildOrgRef(service: Service, referenceTime: Date, lang: Lang): OrgRef {
+  const status = computeServiceStatus(service, referenceTime, lang)
   return {
     id: service.id,
     note: status.note,
@@ -391,20 +407,21 @@ function buildFallbackGroups(
   services: Service[],
   selections: string[],
   crisis: boolean,
-  referenceTime: Date
+  referenceTime: Date,
+  lang: Lang
 ): MatchResult {
   if (crisis && selections.length === 0) {
     const emergencyOrgs = sortOrgRefs(
       services
         .filter((service) => service.isEmergency)
-        .map((service) => buildOrgRef(service, referenceTime))
+        .map((service) => buildOrgRef(service, referenceTime, lang))
     )
 
     return {
       groups: emergencyOrgs.length > 0
         ? [
             {
-              label: '위기·긴급',
+              label: translateGroupLabel('위기·긴급', lang),
               preview: '',
               orgs: emergencyOrgs,
             },
@@ -439,16 +456,19 @@ function buildFallbackGroups(
   const groups = [
     primary.length > 0
       ? {
-          label: crisis && selections.length === 0 ? '위기·긴급' : '우선 연결',
+          label: translateGroupLabel(
+            crisis && selections.length === 0 ? '위기·긴급' : '우선 연결',
+            lang
+          ),
           preview: '',
-          orgs: sortOrgRefs(primary.map((service) => buildOrgRef(service, referenceTime))),
+          orgs: sortOrgRefs(primary.map((service) => buildOrgRef(service, referenceTime, lang))),
         }
       : null,
     secondary.length > 0
       ? {
-          label: '함께 보기',
+          label: translateGroupLabel('함께 보기', lang),
           preview: '',
-          orgs: sortOrgRefs(secondary.map((service) => buildOrgRef(service, referenceTime))),
+          orgs: sortOrgRefs(secondary.map((service) => buildOrgRef(service, referenceTime, lang))),
         }
       : null,
   ].filter(Boolean) as MatchResult['groups']
@@ -481,7 +501,8 @@ async function llmMatch(
   services: Service[],
   selections: string[],
   crisis: boolean,
-  referenceTime: Date
+  referenceTime: Date,
+  lang: Lang
 ): Promise<MatchResult> {
   const serviceMap = Object.fromEntries(services.map((service) => [service.id, service]))
   const serviceSummaries = services.map(buildServiceSummary)
@@ -526,12 +547,12 @@ async function llmMatch(
         (group.org_ids ?? [])
           .map((id) => serviceMap[id])
           .filter((service): service is Service => Boolean(service))
-          .map((service) => buildOrgRef(service, referenceTime))
+          .map((service) => buildOrgRef(service, referenceTime, lang))
       )
 
       return {
-        label: group.label,
-        preview: buildPreview(refs, serviceMap),
+        label: translateGroupLabel(group.label, lang),
+        preview: buildPreview(refs, serviceMap, lang),
         orgs: refs,
       }
     })
@@ -540,7 +561,11 @@ async function llmMatch(
   return { groups }
 }
 
-function validateAndDedup(result: MatchResult, serviceMap: Record<string, Service>): MatchResult {
+function validateAndDedup(
+  result: MatchResult,
+  serviceMap: Record<string, Service>,
+  lang: Lang
+): MatchResult {
   if (!Array.isArray(result.groups)) return result
 
   const seen = new Set<string>()
@@ -552,7 +577,8 @@ function validateAndDedup(result: MatchResult, serviceMap: Record<string, Servic
       return true
     })
     group.orgs = sortOrgRefs(group.orgs)
-    group.preview = buildPreview(group.orgs, serviceMap)
+    group.label = translateGroupLabel(group.label, lang)
+    group.preview = buildPreview(group.orgs, serviceMap, lang)
   }
 
   result.groups = result.groups.filter((group) => group.orgs.length > 0)
@@ -570,6 +596,7 @@ export async function POST(request: Request) {
   let selections: string[]
   let crisis: boolean
   let currentTime: string | undefined
+  let lang: Lang
 
   try {
     const body = await request.json()
@@ -577,6 +604,7 @@ export async function POST(request: Request) {
     crisis = Boolean(body.crisis)
     currentTime =
       typeof body.current_time === 'string' ? body.current_time : undefined
+    lang = normalizeLang(typeof body.lang === 'string' ? body.lang : undefined)
   } catch {
     return errorResponse('bad_request', 400)
   }
@@ -599,7 +627,7 @@ export async function POST(request: Request) {
   let result: MatchResult
   const apiKey = process.env.ANTHROPIC_API_KEY
   if (!apiKey) {
-    result = buildFallbackGroups(candidateServices, selections, crisis, referenceTime)
+    result = buildFallbackGroups(candidateServices, selections, crisis, referenceTime, lang)
   } else {
     try {
       const client = new Anthropic({ apiKey })
@@ -608,15 +636,16 @@ export async function POST(request: Request) {
         candidateServices,
         selections,
         crisis,
-        referenceTime
+        referenceTime,
+        lang
       )
     } catch (error) {
       console.error('LLM match failed, using fallback groups:', error)
-      result = buildFallbackGroups(candidateServices, selections, crisis, referenceTime)
+      result = buildFallbackGroups(candidateServices, selections, crisis, referenceTime, lang)
     }
   }
 
-  const deduped = validateAndDedup(result, serviceMap)
+  const deduped = validateAndDedup(result, serviceMap, lang)
   const usedIds = new Set(deduped.groups.flatMap((group) => group.orgs.map((org) => org.id)))
   const orgData: Record<string, MatchSerializedOrg> = {}
   for (const id of usedIds) {

@@ -3,11 +3,13 @@ import { notFound } from 'next/navigation'
 import ServiceGrid from '@/components/ServiceGrid'
 import { CATEGORY_META, CATEGORY_ORDER } from '@/lib/categories'
 import { SITE_NAME } from '@/lib/constants'
+import { normalizeLang, translateCategoryLabel } from '@/lib/i18n'
 import { getServices } from '@/lib/notion'
 import type { Category } from '@/lib/types'
 
 interface Props {
   params: Promise<{ category: string }>
+  searchParams?: Promise<{ lang?: string }>
 }
 
 function isCategory(value: string): value is Category {
@@ -20,32 +22,40 @@ export async function generateStaticParams() {
   return CATEGORY_ORDER.map((cat) => ({ category: cat }))
 }
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export async function generateMetadata({ params, searchParams }: Props): Promise<Metadata> {
   const siteUrl =
     process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, '') ??
     'https://helpline.or.kr'
   const { category } = await params
+  const lang = normalizeLang((await searchParams)?.lang)
   if (!isCategory(category)) {
     return {
       title: SITE_NAME,
-      description: '한국 긴급상담 헬프라인 정보 모음',
+      description:
+        lang === 'en'
+          ? 'Directory of Korean crisis helplines'
+          : '한국 긴급상담 헬프라인 정보 모음',
     }
   }
 
   const meta = CATEGORY_META[category]
-  const title = `${SITE_NAME} | ${meta.label}`
-  const description = `${meta.label} 관련 한국 정신건강 서비스 모음. 전화번호, 운영시간, 이용 방법을 확인하세요.`
+  const categoryLabel = translateCategoryLabel(meta.label, lang)
+  const title = `${SITE_NAME} | ${categoryLabel}`
+  const description =
+    lang === 'en'
+      ? `Browse Korean helplines for ${categoryLabel.toLowerCase()}. Check contact details, hours, and how to get help.`
+      : `${meta.label} 관련 한국 정신건강 서비스 모음. 전화번호, 운영시간, 이용 방법을 확인하세요.`
   const url = `${siteUrl}/${category}`
 
   return {
     title,
     description,
     alternates: {
-      canonical: `/${category}`,
+      canonical: lang === 'en' ? `/${category}?lang=en` : `/${category}`,
     },
     openGraph: {
       type: 'website',
-      locale: 'ko_KR',
+      locale: lang === 'en' ? 'en_US' : 'ko_KR',
       url,
       siteName: SITE_NAME,
       title,
@@ -59,11 +69,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 }
 
-export default async function CategoryPage({ params }: Props) {
+export default async function CategoryPage({ params, searchParams }: Props) {
   const siteUrl =
     process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, '') ??
     'https://helpline.or.kr'
   const { category } = await params
+  const lang = normalizeLang((await searchParams)?.lang)
   if (!isCategory(category)) {
     notFound()
   }
@@ -84,7 +95,7 @@ export default async function CategoryPage({ params }: Props) {
       {
         '@type': 'ListItem',
         position: 2,
-        name: meta.label,
+        name: translateCategoryLabel(meta.label, lang),
         item: `${siteUrl}/${category}`,
       },
     ],
@@ -99,7 +110,7 @@ export default async function CategoryPage({ params }: Props) {
         }}
       />
       <section className="mx-auto w-[640px] max-w-full px-4 pb-12 pt-6">
-        <ServiceGrid services={filtered} groupByCategory={false} />
+        <ServiceGrid services={filtered} groupByCategory={false} lang={lang} />
       </section>
     </>
   )

@@ -7,13 +7,14 @@ import type {
   OrgRef,
 } from '@/lib/helpline-types'
 import ResultCard from '@/components/ResultCard'
+import { withLang, type Lang } from '@/lib/i18n'
 
-function orgToCardProps(org: MatchSerializedOrg) {
+function orgToCardProps(org: MatchSerializedOrg, lang: Lang) {
   const is24h = org.contacts.some((c) => c.is_24h)
 
   const languages = org.languages
   const hasNonKorean = languages.some((l) => l !== '한국어' && l !== 'ko')
-  const languageLabel = hasNonKorean ? '다국어' : null
+  const languageLabel = hasNonKorean ? (lang === 'en' ? 'Multilingual' : '다국어') : null
 
   const metaParts = [languageLabel].filter(Boolean) as string[]
 
@@ -32,14 +33,17 @@ interface Props {
   orgMap: Record<string, MatchSerializedOrg>
   screenType: '2A' | '2B' | '2C'
   onBack: () => void
+  lang: Lang
 }
 
 function GroupSection({
   group,
   orgMap,
+  lang,
 }: {
   group: MatchGroup
   orgMap: Record<string, MatchSerializedOrg>
+  lang: Lang
 }) {
   const resolvedOrgs: { org: MatchSerializedOrg; ref: OrgRef }[] = group.orgs
     .map((ref) => ({ org: orgMap[ref.id], ref }))
@@ -64,9 +68,10 @@ function GroupSection({
         {resolvedOrgs.map(({ org, ref }) => (
           <ResultCard
             key={org.id}
-            {...orgToCardProps(org)}
+            {...orgToCardProps(org, lang)}
             note={ref.note}
             isOpen={ref.is_open}
+            lang={lang}
           />
         ))}
       </div>
@@ -79,19 +84,32 @@ export default function ResultScreen({
   orgMap,
   screenType,
   onBack,
+  lang,
 }: Props) {
   const heading =
     screenType === '2B'
-      ? '지금 바로 연결하세요'
+      ? lang === 'en'
+        ? 'Reach out right now'
+        : '지금 바로 연결하세요'
       : screenType === '2C'
-        ? '힘드신 거 맞아요'
-        : '맞는 상담을 찾았어요'
+        ? lang === 'en'
+          ? 'What you are feeling matters'
+          : '힘드신 거 맞아요'
+        : lang === 'en'
+          ? 'Here are the best matches'
+          : '맞는 상담을 찾았어요'
 
-  const subheading = screenType === '2C' ? '일단 이쪽으로 연락해 보세요' : null
+  const subheading =
+    screenType === '2C'
+      ? lang === 'en'
+        ? 'Please start by contacting one of these services'
+        : '일단 이쪽으로 연락해 보세요'
+      : null
 
   const showCrisisExpanded = screenType === '2B' || screenType === '2C'
 
-  const isCrisisLabel = (label: string) => /위기/.test(label)
+  const isCrisisLabel = (label: string) =>
+    /위기/.test(label) || /crisis|emergency/i.test(label)
 
   let crisisGroups: MatchGroup[] = []
   let normalGroups: MatchGroup[] = []
@@ -112,7 +130,7 @@ export default function ResultScreen({
         onClick={onBack}
         className="flex min-h-[44px] items-center gap-1 self-start text-base text-stone-500 transition-colors hover:text-stone-700"
       >
-        ← 다시 선택
+        {lang === 'en' ? '← Start over' : '← 다시 선택'}
       </button>
 
       <div className="space-y-1">
@@ -131,6 +149,7 @@ export default function ResultScreen({
               key={`crisis-${i}`}
               group={group}
               orgMap={orgMap}
+              lang={lang}
             />
           ))}
         </div>
@@ -143,6 +162,7 @@ export default function ResultScreen({
               key={`normal-${i}`}
               group={group}
               orgMap={orgMap}
+              lang={lang}
             />
           ))}
         </div>
@@ -150,16 +170,18 @@ export default function ResultScreen({
 
       {groups.length === 0 && (
         <div className="rounded-xl border border-stone-200 bg-white p-6 text-center text-base leading-7 text-stone-500">
-          적합한 기관을 찾지 못했습니다. 109(자살 위기 헬프라인)으로 전화해 주세요.
+          {lang === 'en'
+            ? 'We could not find a good match. Please call 109, the Suicide Crisis Helpline.'
+            : '적합한 기관을 찾지 못했습니다. 109(자살 위기 헬프라인)으로 전화해 주세요.'}
         </div>
       )}
 
       <div className="mt-2 text-center">
         <Link
-          href="/crisis"
+          href={withLang('/crisis', lang)}
           className="inline-block text-sm text-stone-900 underline-offset-2 hover:text-stone-600 hover:underline"
         >
-          상담 기관 목록 전체 →
+          {lang === 'en' ? 'View all helplines →' : '상담 기관 목록 전체 →'}
         </Link>
       </div>
     </div>

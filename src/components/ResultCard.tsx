@@ -7,6 +7,7 @@ interface Props {
   metaParts?: string[]
   note?: string | null
   isOpen?: boolean | null
+  lang?: 'ko' | 'en'
 }
 
 const footerLinkClass =
@@ -24,10 +25,11 @@ export default function ResultCard({
   metaParts = [],
   note,
   isOpen,
+  lang = 'ko',
 }: Props) {
   const isTel = (p: string) => /^[0-9-]+$/.test(p.replace(/\s+/g, ''))
 
-  const badgeText = note ?? (is24h ? '24시간' : null)
+  const badgeText = note ?? (is24h ? (lang === 'en' ? '24/7' : '24시간') : null)
   const badgeColor =
     is24h || isOpen !== false
       ? 'bg-green-100 text-green-800'
@@ -35,7 +37,7 @@ export default function ResultCard({
 
   const hasPhoneNumber = phone && isTel(phone)
 
-  let linkLabel = '사이트'
+  let linkLabel = lang === 'en' ? 'Website' : '사이트'
   if (!hasPhoneNumber && url) {
     try {
       linkLabel = new URL(url).hostname.replace(/^www\./, '')
@@ -48,34 +50,89 @@ export default function ResultCard({
   const hasFooter = hasLinkRow
 
   const phoneOutsideHours = !is24h && isOpen === false
+  const primaryHref =
+    hasPhoneNumber && !phoneOutsideHours
+      ? `tel:${phone.replace(/\s+/g, '')}`
+      : url
+  const primaryTarget =
+    primaryHref && !primaryHref.startsWith('tel:') ? '_blank' : undefined
+  const primaryRel =
+    primaryHref && !primaryHref.startsWith('tel:')
+      ? 'noopener noreferrer'
+      : undefined
+  const primaryAriaLabel = primaryHref
+    ? primaryHref.startsWith('tel:')
+      ? lang === 'en'
+        ? `Call ${name}`
+        : `${name} 전화 연결`
+      : lang === 'en'
+        ? `${name} website (opens in a new tab)`
+        : `${name} 사이트 (새 탭에서 열림)`
+    : undefined
 
   const metaLine =
     metaParts.length > 0 ? metaParts.join(' \u00b7 ') : null
 
   return (
     <article className="flex h-full flex-col rounded-2xl border border-stone-200 bg-white p-5 sm:p-6">
-      <div className="flex min-w-0 flex-wrap items-center gap-x-2 gap-y-1.5">
-        <h3 className="min-w-0 break-words text-xl font-semibold leading-snug text-stone-900 sm:text-2xl">
-          {name}
-        </h3>
-        {metaLine && (
-          <span className="min-w-0 text-base leading-7 text-stone-500">
-            {metaLine}
-          </span>
-        )}
-        {badgeText && (
-          <span
-            className={`shrink-0 whitespace-nowrap rounded-full px-3 py-1.5 text-sm font-medium sm:text-base ${badgeColor}`}
-          >
-            {badgeText}
-          </span>
-        )}
-      </div>
+      {primaryHref ? (
+        <a
+          href={primaryHref}
+          target={primaryTarget}
+          rel={primaryRel}
+          aria-label={primaryAriaLabel}
+          className="block rounded-xl transition-colors hover:bg-stone-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-600"
+        >
+          <div className="flex min-w-0 flex-wrap items-center gap-x-2 gap-y-1.5">
+            <h3 className="min-w-0 break-words text-xl font-semibold leading-snug text-stone-900 sm:text-2xl">
+              {name}
+            </h3>
+            {metaLine && (
+              <span className="min-w-0 text-base leading-7 text-stone-500">
+                {metaLine}
+              </span>
+            )}
+            {badgeText && (
+              <span
+                className={`shrink-0 whitespace-nowrap rounded-full px-3 py-1.5 text-sm font-medium sm:text-base ${badgeColor}`}
+              >
+                {badgeText}
+              </span>
+            )}
+          </div>
 
-      {description && (
-        <p className="mt-4 line-clamp-4 text-base leading-8 text-stone-600 sm:line-clamp-4 sm:text-lg">
-          {description}
-        </p>
+          {description && (
+            <p className="mt-4 line-clamp-4 text-base leading-8 text-stone-600 sm:line-clamp-4 sm:text-lg">
+              {description}
+            </p>
+          )}
+        </a>
+      ) : (
+        <>
+          <div className="flex min-w-0 flex-wrap items-center gap-x-2 gap-y-1.5">
+            <h3 className="min-w-0 break-words text-xl font-semibold leading-snug text-stone-900 sm:text-2xl">
+              {name}
+            </h3>
+            {metaLine && (
+              <span className="min-w-0 text-base leading-7 text-stone-500">
+                {metaLine}
+              </span>
+            )}
+            {badgeText && (
+              <span
+                className={`shrink-0 whitespace-nowrap rounded-full px-3 py-1.5 text-sm font-medium sm:text-base ${badgeColor}`}
+              >
+                {badgeText}
+              </span>
+            )}
+          </div>
+
+          {description && (
+            <p className="mt-4 line-clamp-4 text-base leading-8 text-stone-600 sm:line-clamp-4 sm:text-lg">
+              {description}
+            </p>
+          )}
+        </>
       )}
 
       {hasFooter && (
@@ -85,7 +142,11 @@ export default function ResultCard({
               href={url}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label={`${name} 사이트 (새 탭에서 열림)`}
+              aria-label={
+                lang === 'en'
+                  ? `${name} website (opens in a new tab)`
+                  : `${name} 사이트 (새 탭에서 열림)`
+              }
               className={footerLinkClass}
             >
               {linkLabel} &rarr;
@@ -94,12 +155,12 @@ export default function ResultCard({
           {hasPhoneNumber && (
             <a
               href={`tel:${phone.replace(/\s+/g, '')}`}
-              aria-label={`${name} 전화 연결`}
+              aria-label={lang === 'en' ? `Call ${name}` : `${name} 전화 연결`}
               className={
                 phoneOutsideHours ? phoneLinkMutedClass : footerLinkClass
               }
             >
-              전화 &rarr;
+              {lang === 'en' ? 'Call' : '전화'} &rarr;
             </a>
           )}
         </div>

@@ -2,6 +2,8 @@ import type { Metadata } from 'next'
 import { Noto_Sans_KR, Noto_Serif_KR } from 'next/font/google'
 import NavBar from '@/components/NavBar'
 import LayoutShell from '@/components/LayoutShell'
+import ChatbotBanner from '@/components/chatbot/ChatbotBanner'
+import FooterNote from '@/components/FooterNote'
 import { SITE_NAME } from '@/lib/constants'
 import './globals.css'
 
@@ -112,16 +114,15 @@ export default function RootLayout({
             __html: JSON.stringify(websiteJsonLd),
           }}
         />
+        <div className="sticky top-0 z-50">
+          <ChatbotBanner />
+        </div>
         <LayoutShell nav={<NavBar />}>
           {children}
         </LayoutShell>
         <footer className="border-t border-stone-200 bg-white/70 py-6">
           <div className="mx-auto max-w-5xl px-4 text-center text-sm leading-7 text-stone-500">
-            <p>
-              본 페이지는 다양한 위기 상황에 대한 긴급상담 기관들을 소개하기 위해 제작되었습니다.
-            </p>
-            <p className="mt-1">어떤 개인정보도 저장하지 않습니다.</p>
-            <p className="mt-1">helplinekorea@gmail.com</p>
+            <FooterNote />
           </div>
         </footer>
       </body>
