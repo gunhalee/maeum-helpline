@@ -189,13 +189,14 @@ ${JSON.stringify(orgSummaries, null, 2)}`,
     })
 
     const textBlock = response.content[0]
-    const text = (textBlock.type === 'text' ? textBlock.text : '').trim()
+    const rawText = (textBlock.type === 'text' ? textBlock.text : '').trim()
+    const text = rawText.replace(/^```(?:json)?\s*/i, '').replace(/\s*```$/i, '').trim()
 
     let result: MatchResult
     try {
       result = JSON.parse(text)
     } catch {
-      console.error('Failed to parse LLM response:', text)
+      console.error('Failed to parse LLM response:', rawText)
       return Response.json({ ...FALLBACK_GROUPS, orgMap })
     }
 
