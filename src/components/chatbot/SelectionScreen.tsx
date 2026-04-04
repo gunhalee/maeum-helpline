@@ -85,7 +85,7 @@ export default function SelectionScreen({ onSubmit }: Props) {
     <div className="flex flex-col gap-6">
       {step === 'crisis' ? (
         <>
-          <div className="space-y-1 text-center">
+          <div className="space-y-3 text-center">
             <p className="font-serif text-xl font-semibold text-stone-800">
               환영합니다.
             </p>
@@ -125,7 +125,7 @@ export default function SelectionScreen({ onSubmit }: Props) {
         </>
       ) : (
         <>
-          <div className="space-y-1 text-center">
+          <div className="space-y-3 text-center">
             <p className="font-serif text-xl font-semibold text-stone-800">
               질문 하나만 더 드릴게요.
             </p>
