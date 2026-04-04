@@ -17,17 +17,17 @@ const FALLBACK_GROUPS: MatchGroup[] = [
     label: '위기·긴급',
     preview: '자살위기 헬프라인, 생명의전화',
     orgs: [
-      { id: 1, note: null },
-      { id: 2, note: null },
+      { id: 1, note: '24시간', is_open: true },
+      { id: 2, note: '24시간', is_open: true },
     ],
   },
   {
     label: '우울·심리상담',
     preview: '지역 정신건강복지센터, 보건복지 콜센터 외 1곳',
     orgs: [
-      { id: 4, note: null },
-      { id: 3, note: null },
-      { id: 21, note: null },
+      { id: 4, note: null, is_open: null },
+      { id: 3, note: null, is_open: null },
+      { id: 21, note: null, is_open: null },
     ],
   },
 ]

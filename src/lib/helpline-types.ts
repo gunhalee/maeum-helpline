@@ -47,6 +47,7 @@ export interface CopingGuide {
 export interface OrgRef {
   id: number
   note: string | null
+  is_open: boolean | null
 }
 
 export interface MatchGroup {

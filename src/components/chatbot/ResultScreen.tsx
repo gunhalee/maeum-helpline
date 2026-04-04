@@ -75,7 +75,7 @@ function GroupSection({
                 key={org.id}
                 org={org}
                 note={ref.note}
-                alwaysExpanded={isCrisis}
+                isOpen={ref.is_open}
                 variant={variant}
               />
             ))}

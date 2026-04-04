@@ -1,23 +1,20 @@
-'use client'
-
-import { useState } from 'react'
 import type { OrgWithDetails } from '@/lib/helpline-types'
 
 interface Props {
   org: OrgWithDetails
   note?: string | null
-  alwaysExpanded?: boolean
+  isOpen?: boolean | null
   variant?: 'default' | 'crisis'
 }
 
 export default function ResultCard({
   org,
   note,
-  alwaysExpanded = false,
+  isOpen,
   variant = 'default',
 }: Props) {
-  const [expanded, setExpanded] = useState(alwaysExpanded)
   const isCrisis = variant === 'crisis'
+  const isTel = (phone: string) => /^[0-9-]+$/.test(phone.replace(/\s+/g, ''))
 
   const costLabel = org.cost
     ? org.cost.isFree
@@ -27,124 +24,85 @@ export default function ResultCard({
       : org.cost.detail || '유료'
     : null
 
-  const scheduleLabel = org.contacts.some((c) => c.is24h)
-    ? '24시간'
-    : null
+  const is24h = org.contacts.some((c) => c.is24h)
+  const contactTypes = [...new Set(org.contacts.map((c) => c.type))].join('·')
 
-  const contactTypes = [...new Set(org.contacts.map((c) => c.type))].join(
-    '·'
-  )
+  const languages = org.target?.language ?? []
+  const hasNonKorean = languages.some((l) => l !== '한국어' && l !== 'ko')
+  const languageLabel = hasNonKorean ? '다국어' : null
+
+  const metaParts = [contactTypes, costLabel, languageLabel].filter(Boolean)
+
+  const badgeText = note ?? (is24h ? '24시간' : null)
+  const badgeColor =
+    is24h || isOpen !== false
+      ? 'bg-green-100 text-green-800'
+      : 'bg-amber-100 text-amber-700'
+
+  const hasPhoneNumber = org.phone && isTel(org.phone)
+
+  let linkLabel = '사이트'
+  if (!hasPhoneNumber && org.url) {
+    try {
+      linkLabel = new URL(org.url).hostname.replace(/^www\./, '')
+    } catch {
+      /* keep default */
+    }
+  }
+
+  const borderClass = isCrisis ? 'border-red-200' : 'border-stone-200'
 
   return (
-    <div
-      className={`overflow-hidden rounded-xl border transition-colors ${
-        isCrisis ? 'border-red-100' : 'border-stone-100'
-      }`}
-    >
-      <button
-        type="button"
-        onClick={() => !alwaysExpanded && setExpanded((v) => !v)}
-        disabled={alwaysExpanded}
-        className={`flex min-h-[44px] w-full items-center justify-between px-4 py-3 text-left ${
-          alwaysExpanded ? 'cursor-default' : 'cursor-pointer'
-        }`}
-      >
-        <div className="flex items-center gap-2">
-          {note && (
-            <span className="rounded bg-amber-100 px-1.5 py-0.5 text-xs font-medium text-amber-700">
-              {note}
+    <article className={`rounded-xl border bg-white p-4 ${borderClass}`}>
+      {/* Header — 기관명 + 운영시간 배지 + 전화번호 */}
+      <div className="flex items-start justify-between gap-3">
+        <h3
+          className={`text-lg font-semibold leading-tight ${
+            isCrisis ? 'text-red-900' : 'text-stone-900'
+          }`}
+        >
+          {org.name}
+        </h3>
+        <div className="flex shrink-0 items-center gap-2">
+          {badgeText && (
+            <span
+              className={`whitespace-nowrap rounded-full px-2.5 py-1 text-xs font-medium ${badgeColor}`}
+            >
+              {badgeText}
             </span>
           )}
-          <span
-            className={`text-sm font-semibold ${isCrisis ? 'text-red-800' : 'text-stone-800'}`}
-          >
-            {org.name}
-          </span>
-          {scheduleLabel && (
-            <span className="rounded-full bg-green-100 px-2 py-0.5 text-xs text-green-700">
-              {scheduleLabel}
-            </span>
-          )}
-        </div>
-        <div className="flex items-center gap-2">
-          {org.phone && (
+          {hasPhoneNumber && (
             <a
               href={`tel:${org.phone.replace(/\s+/g, '')}`}
-              onClick={(e) => e.stopPropagation()}
-              className="text-sm font-bold text-blue-700 underline-offset-2 hover:underline"
+              className="text-xl font-bold text-stone-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-600"
             >
               {org.phone}
             </a>
           )}
-          {!alwaysExpanded && (
-            <span className="text-xs text-stone-400">
-              {expanded ? '▴' : '▾'}
-            </span>
-          )}
-        </div>
-      </button>
-
-      <div
-        className={`grid transition-[grid-template-rows] duration-200 ${
-          expanded ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'
-        }`}
-      >
-        <div className="overflow-hidden">
-          <div className="space-y-2 border-t border-stone-100 px-4 pb-4 pt-3">
-            {contactTypes && (
-              <p className="text-xs text-stone-500">
-                상담 방법: {contactTypes}
-              </p>
-            )}
-
-            {org.contacts.length > 0 && (
-              <div className="space-y-1">
-                {org.contacts.map((contact) => (
-                  <div key={contact.id} className="flex items-center gap-2 text-xs text-stone-600">
-                    <span className="rounded bg-stone-100 px-1.5 py-0.5">
-                      {contact.type}
-                    </span>
-                    {contact.contactInfo && (
-                      <a
-                        href={
-                          /^[0-9-]+$/.test(contact.contactInfo.replace(/\s/g, ''))
-                            ? `tel:${contact.contactInfo.replace(/\s/g, '')}`
-                            : undefined
-                        }
-                        className={
-                          /^[0-9-]+$/.test(contact.contactInfo.replace(/\s/g, ''))
-                            ? 'text-blue-700 underline-offset-2 hover:underline'
-                            : ''
-                        }
-                      >
-                        {contact.contactInfo}
-                      </a>
-                    )}
-                    {contact.is24h && (
-                      <span className="text-green-600">24시간</span>
-                    )}
-                  </div>
-                ))}
-              </div>
-            )}
-
-            {costLabel && (
-              <p className="text-xs text-stone-500">비용: {costLabel}</p>
-            )}
-
-            {org.url && (
-              <a
-                href={org.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-block text-xs text-blue-700 underline-offset-2 hover:underline"
-              >
-                사이트 바로가기 →
-              </a>
-            )}
-          </div>
         </div>
       </div>
-    </div>
+
+      {/* Footer — 메타 정보 + 사이트 링크 */}
+      {(metaParts.length > 0 || org.url) && (
+        <div className="mt-3 flex items-center justify-between gap-3 border-t border-stone-100 pt-3">
+          {metaParts.length > 0 && (
+            <p className="text-sm text-stone-500">
+              {metaParts.join(' \u00b7 ')}
+            </p>
+          )}
+          {org.url && (
+            <a
+              href={org.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`${org.name} 사이트 (새 탭에서 열림)`}
+              className="ml-auto shrink-0 text-sm font-medium text-blue-700 underline-offset-2 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-600"
+            >
+              {linkLabel} &rarr;
+            </a>
+          )}
+        </div>
+      )}
+    </article>
   )
 }
