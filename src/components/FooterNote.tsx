@@ -12,7 +12,7 @@ export default function FooterNote() {
       <p>
         {lang === 'en'
           ? 'This page is to help finding urgent helplines for various crisis situations in Korea.'
-          : '본 페이지는 다양한 위기 상황에 대한 긴급상담 기관들을 소개하기 위해 제작되었습니다.'}
+          : '본 페이지는 다양한 긴급상담 기관들을 소개하기 위해 제작되었습니다.'}
       </p>
       <p className="mt-1">
         {lang === 'en'
