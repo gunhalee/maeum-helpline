@@ -11,8 +11,8 @@ export default function FooterNote() {
     <>
       <p>
         {lang === 'en'
-          ? 'This page was created to introduce various urgent helplines in Korea.'
-          : '본 페이지는 다양한 긴급상담 기관들을 소개하기 위해 제작되었습니다.'}
+          ? 'This page introduces various urgent helplines in Korea.'
+          : '본 페이지는 다양한 긴급상담 기관들을 소개합니다.'}
       </p>
       <p className="mt-1">
         {lang === 'en'
