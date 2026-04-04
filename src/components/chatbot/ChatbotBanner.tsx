@@ -20,9 +20,10 @@ export default function ChatbotBanner() {
           <a
             key={item.id}
             href={`tel:${item.phone}`}
-            className="inline-flex min-h-[44px] items-center rounded-lg border border-green-700 bg-white px-4 py-2 text-sm font-bold text-green-700 transition-colors hover:bg-green-50 active:bg-green-100"
+            className="inline-flex min-h-[44px] flex-col items-center justify-center rounded-lg border border-green-700 bg-white px-4 py-2 text-green-700 transition-colors hover:bg-green-50 active:bg-green-100"
           >
-            {item.phone} {item.name}
+            <span className="text-base font-bold leading-tight">{item.phone}</span>
+            <span className="text-[10px] leading-tight">{item.name}</span>
           </a>
         ))}
       </div>

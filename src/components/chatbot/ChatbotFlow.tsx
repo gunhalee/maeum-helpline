@@ -9,8 +9,7 @@ import type { MatchGroup, OrgWithDetails } from '@/lib/helpline-types'
 type Screen = 'selection' | 'result' | 'loading'
 
 const SOLO_BUTTONS = new Set([
-  '잘 모르겠어요',
-  '해당 사항 없음',
+  '해당 없음',
 ])
 
 const FALLBACK_GROUPS: MatchGroup[] = [
@@ -103,7 +102,7 @@ export default function ChatbotFlow() {
   }
 
   return (
-    <div className="mx-auto w-full max-w-[420px] px-4 py-6">
+    <div className="mx-auto w-full max-w-[420px] px-4 pt-12 pb-6 md:max-w-[560px] md:pt-16 lg:max-w-[640px] lg:pt-20">
       {screen === 'selection' && <SelectionScreen onSubmit={handleSubmit} />}
 
       {screen === 'loading' && (

@@ -16,7 +16,7 @@ export default function LayoutShell({
   return (
     <>
       {!isHome && nav}
-      <main className="flex-1">{children}</main>
+      <main className="flex flex-1 flex-col">{children}</main>
     </>
   )
 }

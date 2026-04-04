@@ -9,18 +9,19 @@ interface Props {
 }
 
 const SITUATION_BUTTONS = [
-  '중독 (술·도박·약물)',
-  '폭력·피해',
-  '직장 스트레스',
+  '우울',
+  '여성',
+  '청소년',
   '성소수자',
   '이주민·외국인',
-  '청소년',
   '노인',
+  '폭력·피해',
+  '직장 문제',
+  '술·도박·약물',
 ] as const
 
 const SOLO_BUTTONS = new Set([
-  '잘 모르겠어요',
-  '해당 사항 없음',
+  '해당 없음',
 ])
 
 export default function SelectionScreen({ onSubmit }: Props) {
@@ -60,19 +61,31 @@ export default function SelectionScreen({ onSubmit }: Props) {
   }
 
   const hasSelection = selected.size > 0
+  const hasSoloSelected = [...SOLO_BUTTONS].some((b) => selected.has(b))
+  const hasNormalSelected = [...selected].some((s) => !SOLO_BUTTONS.has(s))
 
-  const btnClass = (active: boolean) =>
-    `rounded-xl border-[1.5px] px-3.5 py-2.5 text-sm transition-colors ${
-      active
-        ? 'border-green-600 bg-green-50 text-green-700'
-        : 'border-stone-200 bg-white text-stone-700 hover:border-green-300 hover:bg-green-50'
-    }`
+  const btnClass = (label: string) => {
+    const active = selected.has(label)
+    const isSolo = SOLO_BUTTONS.has(label)
+
+    if (active) return 'rounded-xl border-[1.5px] px-3.5 py-2.5 text-sm transition-colors border-green-600 bg-green-50 text-green-700'
+
+    if (isSolo && hasNormalSelected) {
+      return 'rounded-xl border-[1.5px] px-3.5 py-2.5 text-sm transition-colors border-stone-100 bg-stone-50 text-stone-300 cursor-not-allowed'
+    }
+
+    if (!isSolo && hasSoloSelected) {
+      return 'rounded-xl border-[1.5px] px-3.5 py-2.5 text-sm transition-colors border-stone-200 bg-white text-stone-400 hover:border-green-300 hover:bg-green-50 hover:text-stone-700'
+    }
+
+    return 'rounded-xl border-[1.5px] px-3.5 py-2.5 text-sm transition-colors border-stone-200 bg-white text-stone-700 hover:border-green-300 hover:bg-green-50'
+  }
 
   return (
     <div className="flex flex-col gap-6">
       {step === 'crisis' ? (
         <>
-          <div className="space-y-1">
+          <div className="space-y-1 text-center">
             <p className="font-serif text-xl font-semibold text-stone-800">
               환영합니다.
             </p>
@@ -85,25 +98,25 @@ export default function SelectionScreen({ onSubmit }: Props) {
             <p className="mb-3 text-sm font-medium text-stone-800">
               현재 죽고 싶거나 자신을 해치고 싶은 생각이 드나요?
             </p>
-            <div className="flex flex-col gap-2">
-              <button
-                type="button"
-                onClick={() => handleCrisisAnswer('yes')}
-                className="min-h-[44px] rounded-xl border-[1.5px] border-stone-200 bg-white px-4 py-3 text-left text-sm text-stone-700 transition-colors hover:border-green-300 hover:bg-green-50"
-              >
-                네
-              </button>
+            <div className="flex flex-wrap gap-2">
               <button
                 type="button"
                 onClick={() => handleCrisisAnswer('no')}
-                className="min-h-[44px] rounded-xl border-[1.5px] border-stone-200 bg-white px-4 py-3 text-left text-sm text-stone-700 transition-colors hover:border-green-300 hover:bg-green-50"
+                className="min-h-[44px] flex-1 rounded-xl border-[1.5px] border-stone-200 bg-white px-4 py-3 text-center text-sm text-stone-700 transition-colors hover:border-green-300 hover:bg-green-50"
               >
                 아니오
               </button>
               <button
                 type="button"
+                onClick={() => handleCrisisAnswer('yes')}
+                className="min-h-[44px] flex-1 rounded-xl border-[1.5px] border-stone-200 bg-white px-4 py-3 text-center text-sm text-stone-700 transition-colors hover:border-green-300 hover:bg-green-50"
+              >
+                네
+              </button>
+              <button
+                type="button"
                 onClick={() => handleCrisisAnswer('skip')}
-                className="min-h-[44px] rounded-xl border-[1.5px] border-stone-200 bg-white px-4 py-3 text-left text-sm text-stone-700 transition-colors hover:border-green-300 hover:bg-green-50"
+                className="min-h-[44px] w-full rounded-xl border-[1.5px] border-stone-200 bg-white px-4 py-3 text-center text-sm text-stone-700 transition-colors hover:border-green-300 hover:bg-green-50 md:w-auto md:flex-1"
               >
                 답하지 않아도 돼요
               </button>
@@ -112,7 +125,7 @@ export default function SelectionScreen({ onSubmit }: Props) {
         </>
       ) : (
         <>
-          <div className="space-y-1">
+          <div className="space-y-1 text-center">
             <p className="font-serif text-xl font-semibold text-stone-800">
               질문 하나만 더 드릴게요.
             </p>
@@ -134,13 +147,13 @@ export default function SelectionScreen({ onSubmit }: Props) {
               ‹ 이전 질문으로
             </button>
 
-            <div className="flex flex-wrap gap-2">
+            <div className="grid grid-cols-2 gap-2">
               {SITUATION_BUTTONS.map((label) => (
                 <button
                   key={label}
                   type="button"
                   onClick={() => toggleSelection(label)}
-                  className={btnClass(selected.has(label))}
+                  className={btnClass(label)}
                 >
                   {label}
                 </button>
@@ -151,7 +164,8 @@ export default function SelectionScreen({ onSubmit }: Props) {
                   key={label}
                   type="button"
                   onClick={() => toggleSelection(label)}
-                  className={btnClass(selected.has(label))}
+                  disabled={hasNormalSelected}
+                  className={btnClass(label)}
                 >
                   {label}
                 </button>
