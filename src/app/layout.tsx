@@ -21,11 +21,13 @@ const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, '') ??
   'https://helpline.or.kr'
 const googleSiteVerification = process.env.GOOGLE_SITE_VERIFICATION
-const siteMetaDescription = '당신은 혼자가 아닙니다.'
+const siteMetaTitle = '긴급상담 헬프라인 — 자살·위기 상담 기관 안내'
+const siteMetaDescription =
+  '자살, 가정폭력, 청소년 위기 등 다양한 긴급 상황에 맞는 상담 기관을 빠르게 안내해드립니다. 109, 119, 112.'
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: SITE_NAME,
+  title: siteMetaTitle,
   description: siteMetaDescription,
   keywords: [
     '정신건강',
@@ -52,14 +54,14 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'ko_KR',
-    title: '긴급상담 헬프라인',
-    description: '당신은 혼자가 아닙니다.',
+    title: siteMetaTitle,
+    description: siteMetaDescription,
     url: 'https://helpline.or.kr',
-    siteName: '긴급상담 헬프라인',
+    siteName: SITE_NAME,
   },
   twitter: {
     card: 'summary',
-    title: SITE_NAME,
+    title: siteMetaTitle,
     description: siteMetaDescription,
   },
   robots: {
