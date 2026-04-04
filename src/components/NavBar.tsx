@@ -29,7 +29,7 @@ export default function NavBar() {
 
   return (
     <nav
-      className="sticky top-[44px] z-40 border-b border-stone-200 bg-white"
+      className="sticky top-0 z-40 border-b border-stone-200 bg-white"
       aria-label="카테고리 네비게이션"
     >
       <div ref={scrollRef} className="scrollbar-hide overflow-x-auto">

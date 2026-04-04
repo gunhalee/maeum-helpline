@@ -1,10 +1,8 @@
 import type { Metadata } from 'next'
 import { Noto_Sans_KR, Noto_Serif_KR } from 'next/font/google'
-import EmergencyBar from '@/components/EmergencyBar'
 import NavBar from '@/components/NavBar'
 import LayoutShell from '@/components/LayoutShell'
 import { SITE_NAME } from '@/lib/constants'
-import { getEmergencyServices } from '@/lib/notion'
 import './globals.css'
 
 const notoSans = Noto_Sans_KR({
@@ -76,12 +74,11 @@ export const metadata: Metadata = {
   },
 }
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
 }>) {
-  const emergencyServices = await getEmergencyServices()
   const organizationJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Organization',
@@ -113,14 +110,7 @@ export default async function RootLayout({
             __html: JSON.stringify(websiteJsonLd),
           }}
         />
-        <LayoutShell
-          nav={
-            <>
-              <EmergencyBar services={emergencyServices} />
-              <NavBar />
-            </>
-          }
-        >
+        <LayoutShell nav={<NavBar />}>
           {children}
         </LayoutShell>
         <footer className="border-t border-stone-200 bg-white/70 py-6">

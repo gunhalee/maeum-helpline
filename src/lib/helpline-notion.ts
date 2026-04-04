@@ -177,11 +177,6 @@ export async function getTargetInfos(): Promise<TargetInfo[]> {
   })
 }
 
-export async function getFixedBannerOrgs(): Promise<HelplineOrg[]> {
-  const orgs = await getOrganizations()
-  return orgs.filter((o) => o.openingFixed && o.isActive)
-}
-
 export async function getOrgsWithDetails(): Promise<OrgWithDetails[]> {
   const [orgs, contacts, targets] = await Promise.all([
     getOrganizations(),
