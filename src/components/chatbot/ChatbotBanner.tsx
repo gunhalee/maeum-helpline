@@ -1,8 +1,7 @@
 'use client'
 
-import Link from 'next/link'
 import { useEffect, useLayoutEffect, useRef, useState } from 'react'
-import { usePathname, useSearchParams } from 'next/navigation'
+import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { normalizeLang } from '@/lib/i18n'
 
 const EMERGENCY_ITEMS = [
@@ -13,6 +12,7 @@ const EMERGENCY_ITEMS = [
 
 export default function ChatbotBanner() {
   const pathname = usePathname()
+  const router = useRouter()
   const searchParams = useSearchParams()
   const itemRefs = useRef<Array<HTMLAnchorElement | null>>([])
   const [buttonWidth, setButtonWidth] = useState<number | null>(null)
@@ -68,13 +68,14 @@ export default function ChatbotBanner() {
             : '지금 당장 위험한 상황이라면'}
         </p>
         <div className="absolute right-0 top-1/2 -translate-y-1/2">
-          <Link
-            href={toggleHref}
+          <button
+            type="button"
+            onClick={() => router.replace(toggleHref)}
             className="inline-flex items-center text-xs font-semibold tracking-[0.08em] text-stone-600 underline underline-offset-4 transition-colors hover:text-green-700"
             aria-label={currentLang === 'en' ? 'Switch to Korean' : 'Switch to English'}
           >
             {currentLang === 'en' ? 'KO' : 'EN'}
-          </Link>
+          </button>
         </div>
       </div>
       <div className="flex items-center justify-center gap-3">
