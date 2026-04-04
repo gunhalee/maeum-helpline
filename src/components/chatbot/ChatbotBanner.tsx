@@ -5,28 +5,24 @@ const EMERGENCY_ITEMS = [
 ] as const
 
 export default function ChatbotBanner() {
-
   return (
     <div
       role="banner"
       aria-label="긴급 연락처"
-      className="bg-green-50 px-4 py-3 text-center"
+      className="flex items-center justify-center gap-1.5 bg-green-50 px-4 py-2 text-sm"
     >
-      <p className="mb-2 text-sm font-medium text-stone-700">
-        지금 당장 위험한 상황이라면
-      </p>
-      <div className="flex items-center justify-center gap-3">
-        {EMERGENCY_ITEMS.map((item) => (
+      <span className="text-stone-500">위급 시</span>
+      {EMERGENCY_ITEMS.map((item, i) => (
+        <span key={item.id} className="inline-flex items-center gap-1.5">
+          {i > 0 && <span className="text-stone-300">·</span>}
           <a
-            key={item.id}
             href={`tel:${item.phone}`}
-            className="inline-flex min-h-[44px] flex-col items-center justify-center rounded-lg border border-green-700 bg-white px-4 py-2 text-green-700 transition-colors hover:bg-green-50 active:bg-green-100"
+            className="font-semibold text-green-700 hover:text-green-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-600"
           >
-            <span className="text-base font-bold leading-tight">{item.phone}</span>
-            <span className="text-[10px] leading-tight">{item.name}</span>
+            {item.phone}
           </a>
-        ))}
-      </div>
+        </span>
+      ))}
     </div>
   )
 }

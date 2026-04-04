@@ -114,14 +114,11 @@ export default function RootLayout({
           {children}
         </LayoutShell>
         <footer className="border-t border-stone-200 bg-white/70 py-6">
-          <div className="mx-auto max-w-5xl px-4 text-sm text-stone-500">
+          <div className="mx-auto max-w-5xl px-4 text-center text-sm text-stone-500">
             <p>
-              이 페이지는 비공식 안내 자료입니다. 정보 정정 및 추가 문의
-              helplinekorea@gmail.com
+              본 페이지는 다양한 위기 상황에 대한 긴급상담 기관들을 소개하기 위해 제작되었습니다.
             </p>
-            <p className="mt-1">
-              긴급 시 <span className="font-semibold text-red-600">119</span>에 먼저 전화하세요.
-            </p>
+            <p className="mt-1">helplinekorea@gmail.com</p>
           </div>
         </footer>
       </body>

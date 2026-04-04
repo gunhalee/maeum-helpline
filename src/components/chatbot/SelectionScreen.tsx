@@ -90,11 +90,11 @@ export default function SelectionScreen({ onSubmit }: Props) {
               환영합니다.
             </p>
             <p className="text-sm text-stone-600">
-              우선 드리고 싶은 질문이 있어요.
+              두 질문에 답해주시면 적절한 기관을 안내해드릴게요.
             </p>
           </div>
 
-          <div className="rounded-2xl border border-stone-100 p-4">
+          <div className="p-4">
             <p className="mb-3 text-sm font-medium text-stone-800">
               현재 죽고 싶거나 자신을 해치고 싶은 생각이 드나요?
             </p>
@@ -196,7 +196,7 @@ export default function SelectionScreen({ onSubmit }: Props) {
           href="/crisis"
           className="inline-block text-xs text-stone-900 underline-offset-2 hover:text-stone-600 hover:underline"
         >
-          전체 상담 기관 목록 →
+          상담 기관 목록 전체 →
         </a>
       </div>
     </div>
