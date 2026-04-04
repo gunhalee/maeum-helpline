@@ -64,8 +64,8 @@ export default function SelectionScreen({ onSubmit }: Props) {
   const btnClass = (active: boolean) =>
     `rounded-xl border-[1.5px] px-3.5 py-2.5 text-sm transition-colors ${
       active
-        ? 'border-[#534AB7] bg-[#EEEDFE] text-[#534AB7]'
-        : 'border-stone-200 bg-white text-stone-700 hover:border-stone-300 hover:bg-stone-50'
+        ? 'border-green-600 bg-green-50 text-green-700'
+        : 'border-stone-200 bg-white text-stone-700 hover:border-green-300 hover:bg-green-50'
     }`
 
   return (
@@ -89,21 +89,21 @@ export default function SelectionScreen({ onSubmit }: Props) {
               <button
                 type="button"
                 onClick={() => handleCrisisAnswer('yes')}
-                className="min-h-[44px] rounded-xl border-[1.5px] border-stone-200 bg-white px-4 py-3 text-left text-sm text-stone-700 transition-colors hover:border-stone-300 hover:bg-stone-50"
+                className="min-h-[44px] rounded-xl border-[1.5px] border-stone-200 bg-white px-4 py-3 text-left text-sm text-stone-700 transition-colors hover:border-green-300 hover:bg-green-50"
               >
                 네
               </button>
               <button
                 type="button"
                 onClick={() => handleCrisisAnswer('no')}
-                className="min-h-[44px] rounded-xl border-[1.5px] border-stone-200 bg-white px-4 py-3 text-left text-sm text-stone-700 transition-colors hover:border-stone-300 hover:bg-stone-50"
+                className="min-h-[44px] rounded-xl border-[1.5px] border-stone-200 bg-white px-4 py-3 text-left text-sm text-stone-700 transition-colors hover:border-green-300 hover:bg-green-50"
               >
                 아니오
               </button>
               <button
                 type="button"
                 onClick={() => handleCrisisAnswer('skip')}
-                className="min-h-[44px] rounded-xl border-[1.5px] border-stone-200 bg-white px-4 py-3 text-left text-sm text-stone-700 transition-colors hover:border-stone-300 hover:bg-stone-50"
+                className="min-h-[44px] rounded-xl border-[1.5px] border-stone-200 bg-white px-4 py-3 text-left text-sm text-stone-700 transition-colors hover:border-green-300 hover:bg-green-50"
               >
                 답하지 않아도 돼요
               </button>
@@ -165,7 +165,7 @@ export default function SelectionScreen({ onSubmit }: Props) {
             disabled={!hasSelection}
             className={`w-full rounded-xl px-4 py-3.5 text-sm font-semibold transition-colors ${
               hasSelection
-                ? 'bg-[#534AB7] text-white hover:bg-[#443d9a] active:bg-[#3a3488]'
+                ? 'bg-green-700 text-white hover:bg-green-800 active:bg-green-900'
                 : 'cursor-not-allowed border border-stone-200 bg-stone-100 text-stone-400'
             }`}
           >
