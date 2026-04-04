@@ -8,9 +8,6 @@ export interface HelplineOrg {
   isActive: boolean
   openingFixed: boolean
   lastVerified: string | null
-  isFree: boolean
-  costCondition: string
-  costDetail: string
 }
 
 export interface ContactMethod {
@@ -32,16 +29,8 @@ export interface TargetInfo {
   exclusionDescription: string
 }
 
-export interface CopingGuide {
-  id: number
-  title: string
-  triggerSituation: string
-  steps: string[]
-  isPublished: boolean
-}
-
 export interface OrgRef {
-  id: number
+  id: string
   note: string | null
   is_open: boolean | null
 }
@@ -59,4 +48,20 @@ export interface MatchResult {
 export interface OrgWithDetails extends HelplineOrg {
   contacts: ContactMethod[]
   target: TargetInfo | null
+}
+
+/** `/api/match` 성공 응답에만 포함되는 기관 요약 (전체 orgMap 미노출) */
+export interface MatchSerializedOrg {
+  id: string
+  name: string
+  phone: string | null
+  url: string | null
+  description: string | null
+  /** target.language — 카드 뱃지용 */
+  languages: string[]
+  contacts: {
+    type: string
+    contact_info: string | null
+    is_24h: boolean
+  }[]
 }

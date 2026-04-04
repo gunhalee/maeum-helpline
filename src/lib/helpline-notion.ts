@@ -17,7 +17,6 @@ const DB = {
   organizations: process.env.HELPLINE_DB_ORGANIZATIONS ?? '',
   contactInfo: process.env.HELPLINE_DB_CONTACT_INFO ?? '',
   targetInfo: process.env.HELPLINE_DB_TARGET_INFO ?? '',
-  copingGuides: process.env.HELPLINE_DB_COPING_GUIDES ?? '',
 } as const
 
 type RichTextItem = { plain_text?: string }
@@ -59,7 +58,9 @@ async function queryAll(databaseId: string, filter?: any) {
 }
 
 export function computeScheduleStatus(
-  contacts: ContactMethod[]
+  contacts: ContactMethod[],
+  /** 클라이언트 시각 등 기준 시각(절대시각). 생략 시 서버 현재 시각. */
+  referenceTime?: Date
 ): { note: string | null; isOpen: boolean | null } {
   if (contacts.some((c) => c.is24h)) {
     return { note: '24시간', isOpen: true }
@@ -68,8 +69,9 @@ export function computeScheduleStatus(
   const schedule = contacts[0]?.schedule
   if (!schedule) return { note: null, isOpen: null }
 
+  const ref = referenceTime ?? new Date()
   const now = new Date(
-    new Date().toLocaleString('en-US', { timeZone: 'Asia/Seoul' })
+    ref.toLocaleString('en-US', { timeZone: 'Asia/Seoul' })
   )
   const day = now.getDay()
   const hhmm = now.getHours() * 100 + now.getMinutes()
@@ -118,7 +120,7 @@ function tryParseJson<T>(value: string, fallback: T): T {
   }
 }
 
-export async function getOrganizations(): Promise<HelplineOrg[]> {
+async function getOrganizations(): Promise<HelplineOrg[]> {
   const pages = await queryAll(DB.organizations)
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   return pages.map((page: any) => {
@@ -133,14 +135,11 @@ export async function getOrganizations(): Promise<HelplineOrg[]> {
       isActive: p.is_active?.checkbox ?? false,
       openingFixed: p.opening_fixed?.checkbox ?? false,
       lastVerified: p.last_verified?.date?.start ?? null,
-      isFree: p.is_free?.checkbox ?? false,
-      costCondition: getRichText(p.cost_condition?.rich_text),
-      costDetail: getRichText(p.cost_detail?.rich_text),
     }
   })
 }
 
-export async function getContactMethods(): Promise<ContactMethod[]> {
+async function getContactMethods(): Promise<ContactMethod[]> {
   const pages = await queryAll(DB.contactInfo)
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   return pages.map((page: any) => {
@@ -159,7 +158,7 @@ export async function getContactMethods(): Promise<ContactMethod[]> {
   })
 }
 
-export async function getTargetInfos(): Promise<TargetInfo[]> {
+async function getTargetInfos(): Promise<TargetInfo[]> {
   const pages = await queryAll(DB.targetInfo)
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   return pages.map((page: any) => {

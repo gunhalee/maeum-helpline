@@ -7,8 +7,13 @@ interface Props {
   metaParts?: string[]
   note?: string | null
   isOpen?: boolean | null
-  variant?: 'default' | 'crisis'
 }
+
+const footerLinkClass =
+  'shrink-0 text-sm font-medium text-blue-700 underline-offset-2 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-600'
+
+const phoneLinkMutedClass =
+  'shrink-0 text-sm font-medium text-stone-400 underline-offset-2 hover:text-stone-500 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-300'
 
 export default function ResultCard({
   name,
@@ -19,7 +24,6 @@ export default function ResultCard({
   metaParts = [],
   note,
   isOpen,
-  variant = 'default',
 }: Props) {
   const isTel = (p: string) => /^[0-9-]+$/.test(p.replace(/\s+/g, ''))
 
@@ -40,61 +44,65 @@ export default function ResultCard({
     }
   }
 
-  const hasFooter = metaParts.length > 0 || url
+  const hasLinkRow = Boolean(url || hasPhoneNumber)
+  const hasFooter = hasLinkRow
+
+  const phoneOutsideHours = !is24h && isOpen === false
+
+  const metaLine =
+    metaParts.length > 0 ? metaParts.join(' \u00b7 ') : null
 
   return (
-    <article className="flex h-full flex-col rounded-xl border border-stone-200 bg-white p-4">
-      <div className="flex items-start justify-between gap-3">
-        <h3 className="text-lg font-semibold leading-tight text-stone-900">
+    <article className="flex h-full flex-col rounded-xl border border-stone-200 bg-white p-3 sm:p-4">
+      <div className="flex min-w-0 flex-wrap items-center gap-x-2 gap-y-1.5">
+        <h3 className="min-w-0 break-words text-base font-semibold leading-snug text-stone-900 sm:text-lg">
           {name}
         </h3>
-        <div className="flex shrink-0 items-center gap-2">
-          {badgeText && (
-            <span
-              className={`whitespace-nowrap rounded-full px-2.5 py-1 text-xs font-medium ${badgeColor}`}
-            >
-              {badgeText}
-            </span>
-          )}
-          {hasPhoneNumber && (
-            <a
-              href={`tel:${phone.replace(/\s+/g, '')}`}
-              className="text-xl font-bold text-stone-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-600"
-            >
-              {phone}
-            </a>
-          )}
-        </div>
+        {metaLine && (
+          <span className="min-w-0 text-sm leading-snug text-stone-500">
+            {metaLine}
+          </span>
+        )}
+        {badgeText && (
+          <span
+            className={`shrink-0 whitespace-nowrap rounded-full px-2.5 py-1 text-xs font-medium ${badgeColor}`}
+          >
+            {badgeText}
+          </span>
+        )}
       </div>
 
       {description && (
-        <p className="mt-1 line-clamp-2 text-sm text-stone-600">
+        <p className="mt-2 line-clamp-3 text-sm leading-relaxed text-stone-600 sm:line-clamp-2">
           {description}
         </p>
       )}
 
       {hasFooter && (
-        <>
-          <div className="min-h-3 flex-1" />
-          <div className="flex items-center justify-between gap-3 border-t border-stone-100 pt-3">
-            {metaParts.length > 0 && (
-              <p className="text-sm text-stone-500">
-                {metaParts.join(' \u00b7 ')}
-              </p>
-            )}
-            {url && (
-              <a
-                href={url}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={`${name} 사이트 (새 탭에서 열림)`}
-                className="ml-auto shrink-0 text-sm font-medium text-blue-700 underline-offset-2 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-600"
-              >
-                {linkLabel} &rarr;
-              </a>
-            )}
-          </div>
-        </>
+        <div className="mt-3 flex flex-wrap items-center justify-end gap-3 border-t border-stone-100 pt-3 sm:mt-auto">
+          {url && (
+            <a
+              href={url}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`${name} 사이트 (새 탭에서 열림)`}
+              className={footerLinkClass}
+            >
+              {linkLabel} &rarr;
+            </a>
+          )}
+          {hasPhoneNumber && (
+            <a
+              href={`tel:${phone.replace(/\s+/g, '')}`}
+              aria-label={`${name} 전화 연결`}
+              className={
+                phoneOutsideHours ? phoneLinkMutedClass : footerLinkClass
+              }
+            >
+              전화 &rarr;
+            </a>
+          )}
+        </div>
       )}
     </article>
   )

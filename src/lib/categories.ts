@@ -20,7 +20,7 @@ export const CATEGORY_META: Record<Category, CategoryMeta> = {
     textColor: 'text-indigo-700',
   },
   youth: {
-    label: '청소년·아동',
+    label: '청소년',
     icon: '',
     bgColor: 'bg-amber-50',
     textColor: 'text-amber-700',

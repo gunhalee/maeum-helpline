@@ -4,7 +4,7 @@ import { useState } from 'react'
 import SelectionScreen from './SelectionScreen'
 import type { CrisisAnswer } from './SelectionScreen'
 import ResultScreen from './ResultScreen'
-import type { MatchGroup, OrgWithDetails } from '@/lib/helpline-types'
+import type { MatchGroup, MatchSerializedOrg } from '@/lib/helpline-types'
 
 type Screen = 'selection' | 'result' | 'loading'
 
@@ -12,30 +12,10 @@ const SOLO_BUTTONS = new Set([
   '해당 없음',
 ])
 
-const FALLBACK_GROUPS: MatchGroup[] = [
-  {
-    label: '위기·긴급',
-    preview: '자살위기 헬프라인, 생명의전화',
-    orgs: [
-      { id: 1, note: '24시간', is_open: true },
-      { id: 2, note: '24시간', is_open: true },
-    ],
-  },
-  {
-    label: '우울·심리상담',
-    preview: '지역 정신건강복지센터, 보건복지 콜센터 외 1곳',
-    orgs: [
-      { id: 4, note: null, is_open: null },
-      { id: 3, note: null, is_open: null },
-      { id: 21, note: null, is_open: null },
-    ],
-  },
-]
-
 export default function ChatbotFlow() {
   const [screen, setScreen] = useState<Screen>('selection')
   const [groups, setGroups] = useState<MatchGroup[]>([])
-  const [orgMap, setOrgMap] = useState<Record<number, OrgWithDetails>>({})
+  const [orgMap, setOrgMap] = useState<Record<string, MatchSerializedOrg>>({})
   const [screenType, setScreenType] = useState<'2A' | '2B' | '2C'>('2A')
 
   const handleSubmit = async (
@@ -50,13 +30,23 @@ export default function ChatbotFlow() {
         const res = await fetch('/api/match', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ selections: [], crisis: true }),
+          body: JSON.stringify({
+            selections: [],
+            crisis: true,
+            current_time: new Date().toISOString(),
+          }),
         })
         const data = await res.json()
-        setGroups(data.groups ?? FALLBACK_GROUPS)
-        setOrgMap(data.orgMap ?? {})
+        if (!res.ok) {
+          setGroups([])
+          setOrgMap({})
+        } else {
+          setGroups(data.groups ?? [])
+          setOrgMap(data.orgData ?? {})
+        }
       } catch {
-        setGroups(FALLBACK_GROUPS)
+        setGroups([])
+        setOrgMap({})
       }
 
       setScreen('result')
@@ -82,14 +72,24 @@ export default function ChatbotFlow() {
       const res = await fetch('/api/match', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ selections, crisis: sendCrisis }),
+        body: JSON.stringify({
+          selections,
+          crisis: sendCrisis,
+          current_time: new Date().toISOString(),
+        }),
       })
       const data = await res.json()
-      setGroups(data.groups ?? FALLBACK_GROUPS)
-      setOrgMap(data.orgMap ?? {})
+      if (!res.ok) {
+        setGroups([])
+        setOrgMap({})
+      } else {
+        setGroups(data.groups ?? [])
+        setOrgMap(data.orgData ?? {})
+      }
     } catch (err) {
       console.error('Match failed:', err)
-      setGroups(FALLBACK_GROUPS)
+      setGroups([])
+      setOrgMap({})
     }
 
     setScreen('result')
@@ -116,7 +116,6 @@ export default function ChatbotFlow() {
         <ResultScreen
           groups={groups}
           orgMap={orgMap}
-          crisis={screenType === '2B'}
           screenType={screenType}
           onBack={handleBack}
         />

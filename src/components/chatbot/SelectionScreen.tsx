@@ -96,7 +96,7 @@ export default function SelectionScreen({ onSubmit }: Props) {
 
           <div className="p-4 text-center">
             <p className="mb-3 text-sm font-medium text-stone-800">
-              현재 죽고 싶거나 자신을 해치고 싶은 생각이 드나요?
+              죽고 싶거나 자신을 해치고 싶은가요?
             </p>
             <div className="flex flex-wrap gap-2">
               <button
@@ -113,14 +113,14 @@ export default function SelectionScreen({ onSubmit }: Props) {
               >
                 네
               </button>
-              <button
-                type="button"
-                onClick={() => handleCrisisAnswer('skip')}
-                className="min-h-[44px] w-full rounded-xl border-[1.5px] border-stone-200 bg-white px-4 py-3 text-center text-sm text-stone-700 transition-colors hover:border-green-300 hover:bg-green-50 md:w-auto md:flex-1"
-              >
-                답하지 않아도 돼요
-              </button>
             </div>
+            <button
+              type="button"
+              onClick={() => handleCrisisAnswer('skip')}
+              className="mt-3 inline-block text-xs text-stone-900 underline-offset-2 hover:text-stone-600 hover:underline"
+            >
+              답변하지 않기
+            </button>
           </div>
         </>
       ) : (
@@ -138,7 +138,6 @@ export default function SelectionScreen({ onSubmit }: Props) {
             <button
               type="button"
               onClick={() => {
-                setCrisisAnswer(crisisAnswer)
                 setStep('crisis')
                 setSelected(new Set())
               }}
@@ -188,17 +187,6 @@ export default function SelectionScreen({ onSubmit }: Props) {
         </>
       )}
 
-      <div className="space-y-3 text-center">
-        <p className="text-xs text-stone-400">
-          이 선택은 저장되지 않습니다
-        </p>
-        <a
-          href="/crisis"
-          className="inline-block text-xs text-stone-900 underline-offset-2 hover:text-stone-600 hover:underline"
-        >
-          상담 기관 목록 전체 →
-        </a>
-      </div>
     </div>
   )
 }

@@ -49,37 +49,13 @@ function sortByPriority(services: Service[]): Service[] {
 function serviceToCardProps(service: Service) {
   const is24h = isAlwaysOpen(service)
 
-  const displayTags = service.tags.filter((tag) => {
-    const n = normalizeText(tag)
-    return !(
-      n.includes('24시간') ||
-      n.includes('24h') ||
-      n.includes('상시운영')
-    )
-  })
-
-  const operatingHours = service.operatingHours?.trim() ?? ''
-  const ohNormalized = normalizeText(operatingHours)
-  const isOhDuplicate =
-    !operatingHours ||
-    is24h ||
-    service.tags.some((tag) => {
-      const tn = normalizeText(tag)
-      return tn.includes(ohNormalized) || ohNormalized.includes(tn)
-    })
-
-  const metaParts = [
-    ...displayTags,
-    ...(isOhDuplicate ? [] : [operatingHours]),
-  ]
-
   return {
     name: service.name,
     phone: service.phone,
     url: service.url,
     description: service.description,
     is24h,
-    metaParts,
+    metaParts: [],
   }
 }
 
@@ -96,7 +72,7 @@ export default function ServiceGrid({ services, groupByCategory = true }: Props)
 
   if (!groupByCategory) {
     return (
-      <section className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <section className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
         {orderedServices.map((service) => (
           <ResultCard key={service.id} {...serviceToCardProps(service)} />
         ))}
@@ -120,7 +96,7 @@ export default function ServiceGrid({ services, groupByCategory = true }: Props)
             <h2 className="mb-3 text-xl font-semibold text-stone-800">
               {meta.label}
             </h2>
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               {items.map((service) => (
                 <ResultCard key={service.id} {...serviceToCardProps(service)} />
               ))}

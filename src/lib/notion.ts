@@ -19,6 +19,103 @@ interface NotionQueryResponse {
   next_cursor: string | null
 }
 
+type NotionPage = {
+  id?: string
+  properties?: Record<string, unknown>
+}
+
+function getRichText(richText: unknown): string {
+  return (Array.isArray(richText) ? (richText as RichTextItem[]) : [])
+    .map((item) => item?.plain_text ?? '')
+    .join('')
+    .trim()
+}
+
+function getTitle(title: unknown): string {
+  return getRichText(title)
+}
+
+function getMultiSelectNames(value: unknown): string[] {
+  return Array.isArray(value)
+    ? (value as MultiSelectTag[])
+        .map((item) => item?.name?.trim() ?? '')
+        .filter(Boolean)
+    : []
+}
+
+function splitPipeList(value: string): string[] {
+  return value
+    .split('|')
+    .map((item) => item.trim())
+    .filter(Boolean)
+}
+
+function getPropertyText(property: unknown): string {
+  if (!property || typeof property !== 'object') return ''
+
+  const record = property as Record<string, unknown>
+  if ('rich_text' in record) return getRichText(record.rich_text)
+  if ('title' in record) return getTitle(record.title)
+  if ('phone_number' in record) return String(record.phone_number ?? '').trim()
+  if ('url' in record) return String(record.url ?? '').trim()
+  if ('select' in record) {
+    const select = record.select as { name?: string } | null | undefined
+    return select?.name?.trim() ?? ''
+  }
+
+  return ''
+}
+
+function getPropertyCheckbox(property: unknown): boolean | undefined {
+  if (!property || typeof property !== 'object') return undefined
+  if (!('checkbox' in (property as Record<string, unknown>))) return undefined
+  return Boolean((property as { checkbox?: unknown }).checkbox)
+}
+
+function getPropertyMultiValues(property: unknown): string[] {
+  if (!property || typeof property !== 'object') return []
+
+  const record = property as Record<string, unknown>
+  if ('multi_select' in record) return getMultiSelectNames(record.multi_select)
+
+  const text = getPropertyText(property)
+  return text ? splitPipeList(text) : []
+}
+
+function normalizeHoursType(rawHoursType: string, operatingHours: string, tags: string[]): string | undefined {
+  const normalizedHoursType = rawHoursType.trim().toLowerCase()
+  const normalizedOperating = operatingHours.replace(/\s+/g, '').toLowerCase()
+  const normalizedTags = tags.map((tag) => tag.replace(/\s+/g, '').toLowerCase())
+
+  if (
+    normalizedHoursType === '24h' ||
+    normalizedHoursType === '24시간' ||
+    normalizedTags.some((tag) => tag.includes('24시간') || tag.includes('24h')) ||
+    normalizedOperating.includes('24시간') ||
+    normalizedOperating.includes('24h')
+  ) {
+    return '24h'
+  }
+
+  if (
+    normalizedHoursType === 'weekday' ||
+    normalizedHoursType === 'weekdays' ||
+    normalizedOperating.includes('평일') ||
+    normalizedOperating.includes('weekday')
+  ) {
+    return 'weekday'
+  }
+
+  if (normalizedHoursType) return rawHoursType
+  if (operatingHours) return 'custom'
+  return undefined
+}
+
+function inferLanguages(tags: string[], explicitLanguages: string[]): string[] {
+  if (explicitLanguages.length > 0) return explicitLanguages
+  return tags.some((tag) => tag.includes('다국어')) ? ['다국어'] : []
+}
+
 function hasConfiguredNotionEnv(): boolean {
   const apiKey = process.env.NOTION_API_KEY ?? ''
   if (!DATABASE_ID || !apiKey) {
@@ -54,58 +151,64 @@ async function queryDatabase(payload: {
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function mapNotionToService(page: any): Service | null {
-  const getRichText = (richText: unknown) =>
-    (Array.isArray(richText) ? (richText as RichTextItem[]) : [])
-      .map((item) => item?.plain_text ?? '')
-      .join('')
-      .trim()
-
-  const getTitle = (title: unknown) =>
-    (Array.isArray(title) ? (title as RichTextItem[]) : [])
-      .map((item) => item?.plain_text ?? '')
-      .join('')
-      .trim()
-
-  const categories = Array.isArray(page?.properties?.category?.multi_select)
-    ? (page.properties.category.multi_select as MultiSelectTag[])
-        .map((item) => item?.name ?? '')
-        .filter((value): value is Category =>
-          CATEGORY_ORDER.includes(value as Category)
-        )
-    : []
+function mapNotionToService(page: any): Service | null {
+  const typedPage = page as NotionPage
+  const properties = typedPage.properties ?? {}
+  const categories = getPropertyMultiValues(properties['category']).filter(
+    (value): value is Category => CATEGORY_ORDER.includes(value as Category)
+  )
   if (categories.length === 0) {
     return null
   }
 
-  const isActive = page?.properties?.is_active?.checkbox ?? false
+  const isActive = getPropertyCheckbox(properties['is_active']) ?? false
   if (!isActive) {
     return null
   }
 
-  const name = getTitle(page?.properties?.name?.title)
+  const name = getPropertyText(properties['name'])
   if (!name) {
     return null
   }
 
+  const tags = getPropertyMultiValues(properties['tags'])
+  const operatingHours = getPropertyText(properties['operating_hours'])
+  const hoursDetail = getPropertyText(properties['hours_detail']) || operatingHours
+  const contactMethods = getPropertyMultiValues(properties['contact_method'])
+  const region = getPropertyText(properties['region']) || undefined
+  const rawHoursType = getPropertyText(properties['hours_type'])
+  const hoursType = normalizeHoursType(rawHoursType, operatingHours, tags)
+  const situationKeywords = getPropertyMultiValues(
+    properties['situation_keywords']
+  )
+  const languages = inferLanguages(
+    tags,
+    getPropertyMultiValues(properties['languages'])
+  )
+  const ageGroups = getPropertyMultiValues(properties['age_group'])
+  const exclusionDescription =
+    getPropertyText(properties['exclusion_description']) || undefined
+
   return {
-    id: page?.id ?? '',
+    id: typedPage.id ?? '',
     name,
-    phone: getRichText(page?.properties?.phone?.rich_text),
+    phone: getPropertyText(properties['phone']),
     category: categories,
-    description: getRichText(page?.properties?.description?.rich_text),
-    tags:
-      (Array.isArray(page?.properties?.tags?.multi_select)
-        ? (page.properties.tags.multi_select as MultiSelectTag[]).map(
-            (tag) => tag?.name ?? ''
-          )
-        : []) ??
-      [],
-    isEmergency: page?.properties?.is_emergency?.checkbox ?? false,
+    description: getPropertyText(properties['description']),
+    tags,
+    isEmergency: getPropertyCheckbox(properties['is_emergency']) ?? false,
     isActive,
-    url: page?.properties?.url?.url ?? undefined,
-    operatingHours:
-      getRichText(page?.properties?.operating_hours?.rich_text) || undefined,
+    url: getPropertyText(properties['url']) || undefined,
+    operatingHours: operatingHours || undefined,
+    isFree: getPropertyCheckbox(properties['is_free']) ?? tags.includes('무료'),
+    contactMethods,
+    region,
+    hoursType,
+    hoursDetail: hoursDetail || undefined,
+    situationKeywords,
+    languages,
+    ageGroups,
+    exclusionDescription,
   }
 }
 
@@ -128,7 +231,7 @@ export async function getServices(): Promise<Service[]> {
         },
         sorts: [
           {
-            property: 'title',
+            property: 'name',
             direction: 'ascending',
           },
         ],
@@ -150,4 +253,3 @@ export async function getServices(): Promise<Service[]> {
     return []
   }
 }
-

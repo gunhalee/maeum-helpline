@@ -71,7 +71,6 @@ export default async function CategoryPage({ params }: Props) {
   const services = await getServices()
   const filtered = services.filter((service) => service.category.includes(category))
   const meta = CATEGORY_META[category]
-  const headerTitle = `${meta.label} 상담`
   const breadcrumbJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
@@ -99,11 +98,7 @@ export default async function CategoryPage({ params }: Props) {
           __html: JSON.stringify(breadcrumbJsonLd),
         }}
       />
-      <section className="mx-auto max-w-5xl px-4 pb-12 pt-8">
-        <header className="text-center">
-          <h1 className="text-3xl font-semibold md:text-4xl">{headerTitle}</h1>
-        </header>
-
+      <section className="mx-auto w-[640px] max-w-full px-4 pb-12 pt-6">
         <ServiceGrid services={filtered} groupByCategory={false} />
       </section>
     </>

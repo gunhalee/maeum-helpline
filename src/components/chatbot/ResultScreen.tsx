@@ -1,34 +1,27 @@
 'use client'
 
-import type { MatchGroup, OrgRef, OrgWithDetails } from '@/lib/helpline-types'
+import Link from 'next/link'
+import type {
+  MatchGroup,
+  MatchSerializedOrg,
+  OrgRef,
+} from '@/lib/helpline-types'
 import ResultCard from '@/components/ResultCard'
 
-const FREE_COUNSELING_ORG_IDS = [5, 6, 13]
-const COUNSELING_KEYWORDS = ['우울', '심리상담', '심리', '상담']
+function orgToCardProps(org: MatchSerializedOrg) {
+  const is24h = org.contacts.some((c) => c.is_24h)
 
-function orgToCardProps(org: OrgWithDetails) {
-  const costLabel = org.isFree
-    ? org.costCondition
-      ? `무료 (${org.costCondition})`
-      : '무료'
-    : org.costDetail || null
-
-  const is24h = org.contacts.some((c) => c.is24h)
-  const contactTypes = [...new Set(org.contacts.map((c) => c.type))].join('·')
-
-  const languages = org.target?.language ?? []
+  const languages = org.languages
   const hasNonKorean = languages.some((l) => l !== '한국어' && l !== 'ko')
   const languageLabel = hasNonKorean ? '다국어' : null
 
-  const metaParts = [contactTypes, costLabel, languageLabel].filter(
-    Boolean
-  ) as string[]
+  const metaParts = [languageLabel].filter(Boolean) as string[]
 
   return {
     name: org.name,
-    phone: org.phone,
-    url: org.url || undefined,
-    description: org.description || undefined,
+    phone: org.phone ?? '',
+    url: org.url ?? undefined,
+    description: org.description ?? undefined,
     is24h,
     metaParts,
   }
@@ -36,8 +29,7 @@ function orgToCardProps(org: OrgWithDetails) {
 
 interface Props {
   groups: MatchGroup[]
-  orgMap: Record<number, OrgWithDetails>
-  crisis: boolean
+  orgMap: Record<string, MatchSerializedOrg>
   screenType: '2A' | '2B' | '2C'
   onBack: () => void
 }
@@ -45,15 +37,15 @@ interface Props {
 function GroupSection({
   group,
   orgMap,
-  variant,
 }: {
   group: MatchGroup
-  orgMap: Record<number, OrgWithDetails>
-  variant: 'default' | 'crisis'
+  orgMap: Record<string, MatchSerializedOrg>
 }) {
-  const resolvedOrgs: { org: OrgWithDetails; ref: OrgRef }[] = group.orgs
+  const resolvedOrgs: { org: MatchSerializedOrg; ref: OrgRef }[] = group.orgs
     .map((ref) => ({ org: orgMap[ref.id], ref }))
-    .filter((item): item is { org: OrgWithDetails; ref: OrgRef } => !!item.org)
+    .filter(
+      (item): item is { org: MatchSerializedOrg; ref: OrgRef } => !!item.org
+    )
 
   if (resolvedOrgs.length === 0) return null
 
@@ -79,41 +71,7 @@ function GroupSection({
             {...orgToCardProps(org)}
             note={ref.note}
             isOpen={ref.is_open}
-            variant={variant}
           />
-        ))}
-      </div>
-    </div>
-  )
-}
-
-function FreeCounselingSection({
-  orgMap,
-  shownOrgIds,
-}: {
-  orgMap: Record<number, OrgWithDetails>
-  shownOrgIds: Set<number>
-}) {
-  const freeOrgs = FREE_COUNSELING_ORG_IDS
-    .filter((id) => !shownOrgIds.has(id) && orgMap[id])
-    .map((id) => orgMap[id])
-
-  if (freeOrgs.length === 0) return null
-
-  return (
-    <div className="rounded-2xl border border-stone-100">
-      <div className="px-4 py-3">
-        <p className="text-sm font-semibold text-stone-800">
-          정부 지원 심리상담 지원금
-        </p>
-        <p className="mt-0.5 text-xs text-stone-500">
-          {freeOrgs.map((o) => o.name).join(', ')}
-        </p>
-      </div>
-
-      <div className="space-y-2 p-3 pt-0">
-        {freeOrgs.map((org) => (
-          <ResultCard key={org.id} {...orgToCardProps(org)} />
         ))}
       </div>
     </div>
@@ -123,7 +81,6 @@ function FreeCounselingSection({
 export default function ResultScreen({
   groups,
   orgMap,
-  crisis,
   screenType,
   onBack,
 }: Props) {
@@ -138,19 +95,19 @@ export default function ResultScreen({
 
   const showCrisisExpanded = screenType === '2B' || screenType === '2C'
 
-  const crisisGroups = showCrisisExpanded
-    ? groups.filter((g) => g.orgs.some((ref) => ref.id === 1))
-    : []
-  const normalGroups = showCrisisExpanded
-    ? groups.filter((g) => !crisisGroups.includes(g))
-    : groups
+  const isCrisisLabel = (label: string) => /위기/.test(label)
 
-  const shownOrgIds = new Set(groups.flatMap((g) => g.orgs.map((ref) => ref.id)))
+  let crisisGroups: MatchGroup[] = []
+  let normalGroups: MatchGroup[] = []
 
-  const hasCounselingGroup =
-    groups.some((g) =>
-      COUNSELING_KEYWORDS.some((kw) => g.label.includes(kw))
-    ) || screenType === '2C'
+  if (!showCrisisExpanded) {
+    normalGroups = groups
+  } else if (screenType === '2B') {
+    crisisGroups = groups
+  } else {
+    crisisGroups = groups.filter((g) => isCrisisLabel(g.label))
+    normalGroups = groups.filter((g) => !isCrisisLabel(g.label))
+  }
 
   return (
     <div className="flex flex-col gap-4">
@@ -178,7 +135,6 @@ export default function ResultScreen({
               key={`crisis-${i}`}
               group={group}
               orgMap={orgMap}
-              variant="crisis"
             />
           ))}
         </div>
@@ -191,14 +147,9 @@ export default function ResultScreen({
               key={`normal-${i}`}
               group={group}
               orgMap={orgMap}
-              variant="default"
             />
           ))}
         </div>
-      )}
-
-      {hasCounselingGroup && (
-        <FreeCounselingSection orgMap={orgMap} shownOrgIds={shownOrgIds} />
       )}
 
       {groups.length === 0 && (
@@ -206,6 +157,15 @@ export default function ResultScreen({
           적합한 기관을 찾지 못했습니다. 109(자살 위기 헬프라인)으로 전화해 주세요.
         </div>
       )}
+
+      <div className="mt-2 text-center">
+        <Link
+          href="/crisis"
+          className="inline-block text-xs text-stone-900 underline-offset-2 hover:text-stone-600 hover:underline"
+        >
+          상담 기관 목록 전체 →
+        </Link>
+      </div>
     </div>
   )
 }

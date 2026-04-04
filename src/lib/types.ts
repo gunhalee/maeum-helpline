@@ -19,6 +19,15 @@ export interface Service {
   isActive: boolean
   url?: string
   operatingHours?: string
+  isFree?: boolean
+  contactMethods: string[]
+  region?: string
+  hoursType?: string
+  hoursDetail?: string
+  situationKeywords: string[]
+  languages: string[]
+  ageGroups: string[]
+  exclusionDescription?: string
 }
 
 export interface CategoryMeta {
