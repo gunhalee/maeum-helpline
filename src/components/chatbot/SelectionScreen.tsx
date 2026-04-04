@@ -86,30 +86,31 @@ export default function SelectionScreen({ onSubmit }: Props) {
       {step === 'crisis' ? (
         <>
           <div className="space-y-3 text-center">
-            <p className="font-serif text-xl font-semibold text-stone-800">
+            <p className="font-serif text-[clamp(1.45rem,1.2rem+1vw,1.95rem)] font-semibold leading-tight text-stone-800">
               환영합니다.
             </p>
-            <p className="text-sm text-stone-600">
-              두 질문에 답해주시면 적절한 긴급상담 기관을 안내해드릴게요.
+            <p className="mx-auto max-w-[32rem] text-base leading-7 text-stone-600">
+              두 질문에 답해주시면
+              <br className="sm:hidden" /> 적절한 긴급상담 기관을 안내해드릴게요.
             </p>
           </div>
 
           <div className="p-4 text-center">
-            <p className="mb-3 text-sm font-medium text-stone-800">
+            <p className="mb-4 text-base font-medium leading-7 text-stone-800">
               죽고 싶거나 자신을 해치고 싶은가요?
             </p>
             <div className="flex flex-wrap gap-2">
               <button
                 type="button"
                 onClick={() => handleCrisisAnswer('no')}
-                className="min-h-[44px] flex-1 rounded-xl border-[1.5px] border-stone-200 bg-white px-4 py-3 text-center text-sm text-stone-700 transition-colors hover:border-green-300 hover:bg-green-50"
+                className="min-h-[50px] flex-1 rounded-xl border-[1.5px] border-stone-200 bg-white px-4 py-3.5 text-center text-base text-stone-700 transition-colors hover:border-green-300 hover:bg-green-50"
               >
                 아니오
               </button>
               <button
                 type="button"
                 onClick={() => handleCrisisAnswer('yes')}
-                className="min-h-[44px] flex-1 rounded-xl border-[1.5px] border-stone-200 bg-white px-4 py-3 text-center text-sm text-stone-700 transition-colors hover:border-green-300 hover:bg-green-50"
+                className="min-h-[50px] flex-1 rounded-xl border-[1.5px] border-stone-200 bg-white px-4 py-3.5 text-center text-base text-stone-700 transition-colors hover:border-green-300 hover:bg-green-50"
               >
                 네
               </button>
@@ -117,7 +118,7 @@ export default function SelectionScreen({ onSubmit }: Props) {
             <button
               type="button"
               onClick={() => handleCrisisAnswer('skip')}
-              className="mt-3 inline-block text-xs text-stone-900 underline-offset-2 hover:text-stone-600 hover:underline"
+              className="mt-4 inline-block text-sm text-stone-900 underline-offset-2 hover:text-stone-600 hover:underline"
             >
               답변하지 않기
             </button>
@@ -126,10 +127,10 @@ export default function SelectionScreen({ onSubmit }: Props) {
       ) : (
         <>
           <div className="space-y-3 text-center">
-            <p className="font-serif text-xl font-semibold text-stone-800">
+            <p className="font-serif text-[clamp(1.45rem,1.2rem+1vw,1.95rem)] font-semibold leading-tight text-stone-800">
               질문 하나만 더 드릴게요.
             </p>
-            <p className="text-sm text-stone-600">
+            <p className="mx-auto max-w-[32rem] text-base leading-7 text-stone-600">
               해당되는 버튼을 모두 선택해 주세요.
             </p>
           </div>
@@ -141,7 +142,7 @@ export default function SelectionScreen({ onSubmit }: Props) {
                 setStep('crisis')
                 setSelected(new Set())
               }}
-              className="min-h-[40px] self-start rounded-lg px-2 text-xs text-stone-500 hover:bg-stone-100"
+              className="min-h-[44px] self-start rounded-lg px-2 py-1 text-sm text-stone-500 hover:bg-stone-100"
             >
               ‹ 이전 질문으로
             </button>
@@ -176,7 +177,7 @@ export default function SelectionScreen({ onSubmit }: Props) {
             type="button"
             onClick={() => onSubmit([...selected], crisisAnswer)}
             disabled={!hasSelection}
-            className={`w-full rounded-xl px-4 py-3.5 text-sm font-semibold transition-colors ${
+            className={`w-full rounded-xl px-4 py-4 text-base font-semibold transition-colors ${
               hasSelection
                 ? 'bg-green-700 text-white hover:bg-green-800 active:bg-green-900'
                 : 'cursor-not-allowed border border-stone-200 bg-stone-100 text-stone-400'

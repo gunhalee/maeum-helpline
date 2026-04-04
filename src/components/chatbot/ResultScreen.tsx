@@ -114,17 +114,17 @@ export default function ResultScreen({
       <button
         type="button"
         onClick={onBack}
-        className="flex items-center gap-1 self-start text-sm text-stone-500 transition-colors hover:text-stone-700"
+        className="flex min-h-[44px] items-center gap-1 self-start text-base text-stone-500 transition-colors hover:text-stone-700"
       >
         ← 다시 선택
       </button>
 
       <div className="space-y-1">
-        <p className="font-serif text-xl font-semibold text-stone-800">
+        <p className="font-serif text-[clamp(1.45rem,1.2rem+1vw,1.95rem)] font-semibold leading-tight text-stone-800">
           {heading}
         </p>
         {subheading && (
-          <p className="text-sm text-stone-600">{subheading}</p>
+          <p className="text-base leading-7 text-stone-600">{subheading}</p>
         )}
       </div>
 
@@ -153,7 +153,7 @@ export default function ResultScreen({
       )}
 
       {groups.length === 0 && (
-        <div className="rounded-xl border border-stone-200 bg-white p-6 text-center text-sm text-stone-500">
+        <div className="rounded-xl border border-stone-200 bg-white p-6 text-center text-base leading-7 text-stone-500">
           적합한 기관을 찾지 못했습니다. 109(자살 위기 헬프라인)으로 전화해 주세요.
         </div>
       )}
@@ -161,7 +161,7 @@ export default function ResultScreen({
       <div className="mt-2 text-center">
         <Link
           href="/crisis"
-          className="inline-block text-xs text-stone-900 underline-offset-2 hover:text-stone-600 hover:underline"
+          className="inline-block text-sm text-stone-900 underline-offset-2 hover:text-stone-600 hover:underline"
         >
           상담 기관 목록 전체 →
         </Link>

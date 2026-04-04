@@ -10,10 +10,10 @@ interface Props {
 }
 
 const footerLinkClass =
-  'shrink-0 text-sm font-medium text-blue-700 underline-offset-2 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-600'
+  'shrink-0 text-base font-medium text-blue-700 underline-offset-2 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-600'
 
 const phoneLinkMutedClass =
-  'shrink-0 text-sm font-medium text-stone-400 underline-offset-2 hover:text-stone-500 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-300'
+  'shrink-0 text-base font-medium text-stone-400 underline-offset-2 hover:text-stone-500 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-300'
 
 export default function ResultCard({
   name,
@@ -53,19 +53,19 @@ export default function ResultCard({
     metaParts.length > 0 ? metaParts.join(' \u00b7 ') : null
 
   return (
-    <article className="flex h-full flex-col rounded-xl border border-stone-200 bg-white p-3 sm:p-4">
+    <article className="flex h-full flex-col rounded-xl border border-stone-200 bg-white p-4 sm:p-5">
       <div className="flex min-w-0 flex-wrap items-center gap-x-2 gap-y-1.5">
-        <h3 className="min-w-0 break-words text-base font-semibold leading-snug text-stone-900 sm:text-lg">
+        <h3 className="min-w-0 break-words text-lg font-semibold leading-snug text-stone-900 sm:text-xl">
           {name}
         </h3>
         {metaLine && (
-          <span className="min-w-0 text-sm leading-snug text-stone-500">
+          <span className="min-w-0 text-base leading-snug text-stone-500">
             {metaLine}
           </span>
         )}
         {badgeText && (
           <span
-            className={`shrink-0 whitespace-nowrap rounded-full px-2.5 py-1 text-xs font-medium ${badgeColor}`}
+            className={`shrink-0 whitespace-nowrap rounded-full px-3 py-1.5 text-sm font-medium ${badgeColor}`}
           >
             {badgeText}
           </span>
@@ -73,13 +73,13 @@ export default function ResultCard({
       </div>
 
       {description && (
-        <p className="mt-2 line-clamp-3 text-xs leading-relaxed text-stone-600 sm:line-clamp-2">
+        <p className="mt-3 line-clamp-3 text-sm leading-7 text-stone-600 sm:line-clamp-3 sm:text-base">
           {description}
         </p>
       )}
 
       {hasFooter && (
-        <div className="mt-3 flex flex-wrap items-center justify-end gap-3 border-t border-stone-100 pt-3 sm:mt-auto">
+        <div className="mt-4 flex flex-wrap items-center justify-end gap-4 border-t border-stone-100 pt-4 sm:mt-auto">
           {url && (
             <a
               href={url}

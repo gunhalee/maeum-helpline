@@ -102,13 +102,13 @@ export default function ChatbotFlow() {
   }
 
   return (
-    <div className="mx-auto w-full max-w-[420px] px-4 pt-12 pb-6 md:max-w-[560px] md:pt-16 lg:max-w-[640px] lg:pt-20">
+    <div className="mx-auto w-full max-w-[460px] px-4 pt-10 pb-8 md:max-w-[620px] md:px-6 md:pt-14 lg:max-w-[700px] lg:pt-18">
       {screen === 'selection' && <SelectionScreen onSubmit={handleSubmit} />}
 
       {screen === 'loading' && (
-        <div className="flex flex-col items-center gap-3 py-12">
-          <div className="h-8 w-8 animate-spin rounded-full border-2 border-stone-300 border-t-green-700" />
-          <p className="text-sm text-stone-500">맞는 상담을 찾고 있어요…</p>
+        <div className="flex flex-col items-center gap-4 py-14">
+          <div className="h-9 w-9 animate-spin rounded-full border-2 border-stone-300 border-t-green-700" />
+          <p className="text-base leading-7 text-stone-500">맞는 상담을 찾고 있어요…</p>
         </div>
       )}
 

@@ -114,7 +114,7 @@ export default function RootLayout({
           {children}
         </LayoutShell>
         <footer className="border-t border-stone-200 bg-white/70 py-6">
-          <div className="mx-auto max-w-5xl px-4 text-center text-xs text-stone-500">
+          <div className="mx-auto max-w-5xl px-4 text-center text-sm leading-7 text-stone-500">
             <p>
               본 페이지는 다양한 위기 상황에 대한 긴급상담 기관들을 소개하기 위해 제작되었습니다.
             </p>
