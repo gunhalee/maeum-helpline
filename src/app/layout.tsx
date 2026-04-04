@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { Suspense } from 'react'
 import { Noto_Sans_KR, Noto_Serif_KR } from 'next/font/google'
 import NavBar from '@/components/NavBar'
 import LayoutShell from '@/components/LayoutShell'
@@ -115,14 +116,24 @@ export default function RootLayout({
           }}
         />
         <div className="sticky top-0 z-50">
-          <ChatbotBanner />
+          <Suspense fallback={<div className="bg-green-50 px-4 py-3" />}>
+            <ChatbotBanner />
+          </Suspense>
         </div>
-        <LayoutShell nav={<NavBar />}>
+        <LayoutShell
+          nav={(
+            <Suspense fallback={<div className="sticky top-0 z-40 border-b border-stone-200 bg-white py-6" />}>
+              <NavBar />
+            </Suspense>
+          )}
+        >
           {children}
         </LayoutShell>
         <footer className="border-t border-stone-200 bg-white/70 py-6">
           <div className="mx-auto max-w-5xl px-4 text-center text-sm leading-7 text-stone-500">
-            <FooterNote />
+            <Suspense fallback={<p className="mt-1">helplinekorea@gmail.com</p>}>
+              <FooterNote />
+            </Suspense>
           </div>
         </footer>
       </body>

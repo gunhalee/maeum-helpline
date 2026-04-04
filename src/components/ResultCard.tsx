@@ -46,8 +46,7 @@ export default function ResultCard({
     }
   }
 
-  const hasLinkRow = Boolean(url || hasPhoneNumber)
-  const hasFooter = hasLinkRow
+  const hasFooter = Boolean(url || hasPhoneNumber)
 
   const phoneOutsideHours = !is24h && isOpen === false
   const primaryHref =

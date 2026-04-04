@@ -1,9 +1,8 @@
 'use client'
 
 import Link from 'next/link'
-import { useLayoutEffect, useRef, useState } from 'react'
+import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { usePathname, useSearchParams } from 'next/navigation'
-import type { Lang } from '@/lib/i18n'
 import { normalizeLang } from '@/lib/i18n'
 
 const EMERGENCY_ITEMS = [
@@ -12,16 +11,15 @@ const EMERGENCY_ITEMS = [
   { id: 99, name: '경찰 신고', phone: '112' },
 ] as const
 
-export default function ChatbotBanner({ lang = 'ko' }: { lang?: Lang }) {
+export default function ChatbotBanner() {
   const pathname = usePathname()
   const searchParams = useSearchParams()
   const itemRefs = useRef<Array<HTMLAnchorElement | null>>([])
   const [buttonWidth, setButtonWidth] = useState<number | null>(null)
-  const currentLang = normalizeLang(searchParams.get('lang') ?? lang)
+  const currentLang = normalizeLang(searchParams.get('lang'))
   const nextParams = new URLSearchParams(searchParams.toString())
-  const toggleLang = currentLang === 'en' ? 'ko' : 'en'
 
-  if (toggleLang === 'en') {
+  if (currentLang !== 'en') {
     nextParams.set('lang', 'en')
   } else {
     nextParams.delete('lang')
@@ -31,22 +29,36 @@ export default function ChatbotBanner({ lang = 'ko' }: { lang?: Lang }) {
     ? `${pathname}?${nextParams.toString()}`
     : pathname
 
-  useLayoutEffect(() => {
-    const updateWidth = () => {
-      const widths = itemRefs.current.map((node) => node?.offsetWidth ?? 0)
-      const maxWidth = Math.max(...widths, 0)
-      setButtonWidth(maxWidth > 0 ? maxWidth : null)
-    }
+  const updateWidth = () => {
+    const widths = itemRefs.current.map((node) => node?.offsetWidth ?? 0)
+    const maxWidth = Math.max(...widths, 0)
+    setButtonWidth((prev) => (maxWidth > 0 && prev !== maxWidth ? maxWidth : prev))
+  }
 
+  useLayoutEffect(() => {
     updateWidth()
     window.addEventListener('resize', updateWidth)
     return () => window.removeEventListener('resize', updateWidth)
   }, [currentLang])
 
+  useEffect(() => {
+    const observer = new ResizeObserver(() => updateWidth())
+    itemRefs.current.forEach((node) => {
+      if (node) observer.observe(node)
+    })
+
+    const fonts = document.fonts
+    if (fonts?.ready) {
+      fonts.ready.then(() => updateWidth()).catch(() => {})
+    }
+
+    return () => observer.disconnect()
+  }, [currentLang])
+
   return (
     <div
       role="banner"
-      aria-label={lang === 'en' ? 'Emergency contacts' : '긴급 연락처'}
+      aria-label={currentLang === 'en' ? 'Emergency contacts' : '긴급 연락처'}
       className="bg-green-50 px-4 py-3 text-center"
     >
       <div className="relative mb-2">
@@ -78,7 +90,7 @@ export default function ChatbotBanner({ lang = 'ko' }: { lang?: Lang }) {
           >
             <span className="text-base font-bold leading-tight">{item.phone}</span>
             <span className="text-[10px] leading-tight">
-              {lang === 'en'
+              {currentLang === 'en'
                 ? item.id === 1
                   ? 'Suicide crisis'
                   : item.id === 98
