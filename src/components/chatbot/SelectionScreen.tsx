@@ -142,9 +142,9 @@ export default function SelectionScreen({ onSubmit }: Props) {
                 setStep('crisis')
                 setSelected(new Set())
               }}
-              className="min-h-[50px] self-start rounded-xl border-[1.5px] border-stone-200 bg-white px-4 py-3 text-base text-stone-700 transition-colors hover:border-green-300 hover:bg-green-50"
+              className="flex min-h-[44px] items-center gap-1 self-start text-base text-stone-500 transition-colors hover:text-stone-700"
             >
-              ‹ 이전 질문으로
+              ← 다시 선택
             </button>
 
             <div className="grid grid-cols-2 gap-2">
