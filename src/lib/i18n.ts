@@ -5,7 +5,7 @@ export function normalizeLang(value: string | null | undefined): Lang {
 }
 
 export function withLang(path: string, lang: Lang): string {
-  return lang === 'en' ? `${path}?lang=en` : path
+  return `${path}?lang=${lang}`
 }
 
 export function translateCategoryLabel(label: string, lang: Lang): string {

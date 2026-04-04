@@ -19,11 +19,7 @@ export default function ChatbotBanner() {
   const currentLang = normalizeLang(searchParams.get('lang'))
   const nextParams = new URLSearchParams(searchParams.toString())
 
-  if (currentLang !== 'en') {
-    nextParams.set('lang', 'en')
-  } else {
-    nextParams.delete('lang')
-  }
+  nextParams.set('lang', currentLang === 'en' ? 'ko' : 'en')
 
   const toggleHref = nextParams.size > 0
     ? `${pathname}?${nextParams.toString()}`

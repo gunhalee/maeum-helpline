@@ -5,6 +5,7 @@ import NavBar from '@/components/NavBar'
 import LayoutShell from '@/components/LayoutShell'
 import ChatbotBanner from '@/components/chatbot/ChatbotBanner'
 import FooterNote from '@/components/FooterNote'
+import LangRedirect from '@/components/LangRedirect'
 import { SITE_NAME } from '@/lib/constants'
 import './globals.css'
 
@@ -103,6 +104,9 @@ export default function RootLayout({
       <body
         className={`${notoSans.variable} ${notoSerif.variable} flex min-h-screen flex-col bg-stone-50 font-sans`}
       >
+        <Suspense fallback={null}>
+          <LangRedirect />
+        </Suspense>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
