@@ -41,8 +41,7 @@ export default function NavBar() {
           {CATEGORY_ORDER.map((category) => {
             const meta = CATEGORY_META[category]
             const href = `/${category}`
-            const isActive =
-              pathname === href || (category === 'crisis' && pathname === '/')
+              const isActive = pathname === href
             return (
               <Link
                 key={category}
