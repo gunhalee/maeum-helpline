@@ -194,7 +194,7 @@ export default function SelectionScreen({ onSubmit }: Props) {
         </p>
         <a
           href="/crisis"
-          className="inline-block text-xs text-stone-400 underline-offset-2 hover:text-stone-600 hover:underline"
+          className="inline-block text-xs text-stone-900 underline-offset-2 hover:text-stone-600 hover:underline"
         >
           전체 상담 기관 목록 →
         </a>

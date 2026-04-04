@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { Fragment, useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { CATEGORY_META, CATEGORY_ORDER } from '@/lib/categories'
@@ -38,23 +38,32 @@ export default function NavBar() {
             hasOverflow ? 'justify-start' : 'justify-center'
           }`}
         >
-          {CATEGORY_ORDER.map((category) => {
+          {CATEGORY_ORDER.map((category, index) => {
             const meta = CATEGORY_META[category]
             const href = `/${category}`
-              const isActive = pathname === href
+            const isActive = pathname === href
             return (
-              <Link
-                key={category}
-                href={href}
-                className={`${tabBaseClass} ${
-                  isActive
-                    ? 'bg-green-700 text-white'
-                    : 'text-stone-500 hover:bg-stone-100 hover:text-stone-800'
-                }`}
-                aria-current={isActive ? 'page' : undefined}
-              >
-                <span>{meta.label}</span>
-              </Link>
+              <Fragment key={category}>
+                {index === 0 && (
+                  <Link
+                    href="/"
+                    className={`${tabBaseClass} bg-stone-100 text-stone-500 hover:bg-stone-200 hover:text-stone-700`}
+                  >
+                    <span>챗</span>
+                  </Link>
+                )}
+                <Link
+                  href={href}
+                  className={`${tabBaseClass} ${
+                    isActive
+                      ? 'bg-green-700 text-white'
+                      : 'text-stone-500 hover:bg-stone-100 hover:text-stone-800'
+                  }`}
+                  aria-current={isActive ? 'page' : undefined}
+                >
+                  <span>{meta.label}</span>
+                </Link>
+              </Fragment>
             )
           })}
         </div>
