@@ -144,7 +144,7 @@ export default function SelectionScreen({ onSubmit }: Props) {
               }}
               className="flex min-h-[44px] items-center gap-1 self-start text-base text-stone-500 transition-colors hover:text-stone-700"
             >
-              ← 다시 선택
+              ← 이전으로
             </button>
 
             <div className="grid grid-cols-2 gap-2">
