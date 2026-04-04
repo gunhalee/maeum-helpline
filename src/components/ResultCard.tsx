@@ -83,7 +83,7 @@ export default function ResultCard({
           className="block rounded-xl transition-colors hover:bg-stone-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-600"
         >
           <div className="flex min-w-0 flex-wrap items-center gap-x-2 gap-y-1.5">
-            <h3 className="min-w-0 break-words text-xl font-semibold leading-snug text-stone-900 sm:text-2xl">
+            <h3 className="min-w-0 break-words text-lg font-semibold leading-snug text-stone-900 sm:text-xl">
               {name}
             </h3>
             {metaLine && (
@@ -109,7 +109,7 @@ export default function ResultCard({
       ) : (
         <>
           <div className="flex min-w-0 flex-wrap items-center gap-x-2 gap-y-1.5">
-            <h3 className="min-w-0 break-words text-xl font-semibold leading-snug text-stone-900 sm:text-2xl">
+            <h3 className="min-w-0 break-words text-lg font-semibold leading-snug text-stone-900 sm:text-xl">
               {name}
             </h3>
             {metaLine && (
