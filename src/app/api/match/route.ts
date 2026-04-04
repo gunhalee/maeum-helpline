@@ -13,6 +13,12 @@ type SelectionRule = {
   keywords?: string[]
 }
 
+type AudiencePenaltyRule = {
+  selection: string
+  keywords: string[]
+  categories?: Category[]
+}
+
 type ServiceStatus = {
   note: string | null
   isOpen: boolean | null
@@ -67,6 +73,55 @@ const SELECTION_RULES: Record<string, SelectionRule> = {
   },
 }
 
+const AUDIENCE_PENALTY_RULES: AudiencePenaltyRule[] = [
+  {
+    selection: '청소년',
+    categories: ['youth'],
+    keywords: [
+      '청소년',
+      '학생',
+      '학교',
+      '1388',
+      '가출',
+      '학업',
+      '고등학생',
+      '중학생',
+    ],
+  },
+  {
+    selection: '직장 문제',
+    keywords: [
+      '직장',
+      '회사',
+      '상사',
+      'eap',
+      '번아웃',
+      '업무스트레스',
+      '중소기업',
+    ],
+  },
+  {
+    selection: '성소수자',
+    categories: ['queer'],
+    keywords: ['성소수자', '퀴어', 'lgbt', '트랜스젠더', '커밍아웃'],
+  },
+  {
+    selection: '이주민·외국인',
+    categories: ['migrant'],
+    keywords: ['이주민', '외국인', '다문화', '이주여성', '통역', '다국어'],
+  },
+  {
+    selection: '노인',
+    categories: ['elder'],
+    keywords: ['노인', '어르신', '치매', '돌봄', '노인학대'],
+  },
+  {
+    selection: '여성',
+    categories: ['women'],
+    keywords: ['여성', '이주여성', '가정폭력', '성폭력', '스토킹', '교제폭력'],
+  },
+]
+
 const SYSTEM_INSTRUCTIONS = `당신은 심리상담 핫라인 매핑 시스템입니다.
 
 역할:
@@ -93,6 +148,7 @@ service 필드 의미:
 3. label은 10자 이내 한국어.
 4. preview는 비워두거나 임의값이어도 된다. 서버가 재계산한다.
 5. selections와 category가 직접 맞는 기관을 우선하고, 세부 적합성은 description/situation_keywords로 보정한다.
+6. 특정 대상 전용 기관은 그 대상이 selections에 없으면 일반 그룹에 우선 배치하지 않는다.
 
 위기·긴급 그룹 (crisis=true, selections 빈 배열):
 - 첫 번째 그룹 label을 정확히 "위기·긴급"으로 한다.
@@ -267,6 +323,33 @@ function scoreService(service: Service, selections: string[], crisis: boolean): 
   if (service.isFree) score += 1
   if (service.hoursType === '24h') score += 1
 
+  const hasGeneralDepressionSelection =
+    selections.length === 1 && selections[0] === '우울'
+
+  if (hasGeneralDepressionSelection) {
+    for (const rule of AUDIENCE_PENALTY_RULES) {
+      if (selections.includes(rule.selection)) continue
+
+      const categoryHit =
+        rule.categories?.some((category) => service.category.includes(category)) ?? false
+      const keywordHit = rule.keywords.some((keyword) =>
+        haystack.includes(keyword.toLowerCase())
+      )
+
+      if (categoryHit) score -= 6
+      else if (keywordHit) score -= 4
+    }
+
+    const isGeneralDepressionService =
+      service.category.includes('depression') &&
+      !AUDIENCE_PENALTY_RULES.some((rule) =>
+        (rule.categories?.some((category) => service.category.includes(category)) ?? false) ||
+        rule.keywords.some((keyword) => haystack.includes(keyword.toLowerCase()))
+      )
+
+    if (isGeneralDepressionService) score += 3
+  }
+
   return score
 }
 
@@ -300,7 +383,8 @@ function prefilterServices(services: Service[], selections: string[], crisis: bo
     return services.filter((service) => service.isActive).slice(0, 12)
   }
 
-  return scored.slice(0, 14).map(({ service }) => service)
+  const limit = selections.length === 1 && selections[0] === '우울' ? 8 : 12
+  return scored.slice(0, limit).map(({ service }) => service)
 }
 
 function buildFallbackGroups(

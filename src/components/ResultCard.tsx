@@ -73,7 +73,7 @@ export default function ResultCard({
       </div>
 
       {description && (
-        <p className="mt-2 line-clamp-3 text-sm leading-relaxed text-stone-600 sm:line-clamp-2">
+        <p className="mt-2 line-clamp-3 text-xs leading-relaxed text-stone-600 sm:line-clamp-2">
           {description}
         </p>
       )}
