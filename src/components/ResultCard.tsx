@@ -53,19 +53,19 @@ export default function ResultCard({
     metaParts.length > 0 ? metaParts.join(' \u00b7 ') : null
 
   return (
-    <article className="flex h-full flex-col rounded-xl border border-stone-200 bg-white p-4 sm:p-5">
+    <article className="flex h-full flex-col rounded-2xl border border-stone-200 bg-white p-5 sm:p-6">
       <div className="flex min-w-0 flex-wrap items-center gap-x-2 gap-y-1.5">
-        <h3 className="min-w-0 break-words text-lg font-semibold leading-snug text-stone-900 sm:text-xl">
+        <h3 className="min-w-0 break-words text-xl font-semibold leading-snug text-stone-900 sm:text-2xl">
           {name}
         </h3>
         {metaLine && (
-          <span className="min-w-0 text-base leading-snug text-stone-500">
+          <span className="min-w-0 text-base leading-7 text-stone-500">
             {metaLine}
           </span>
         )}
         {badgeText && (
           <span
-            className={`shrink-0 whitespace-nowrap rounded-full px-3 py-1.5 text-sm font-medium ${badgeColor}`}
+            className={`shrink-0 whitespace-nowrap rounded-full px-3 py-1.5 text-sm font-medium sm:text-base ${badgeColor}`}
           >
             {badgeText}
           </span>
@@ -73,13 +73,13 @@ export default function ResultCard({
       </div>
 
       {description && (
-        <p className="mt-3 line-clamp-3 text-sm leading-7 text-stone-600 sm:line-clamp-3 sm:text-base">
+        <p className="mt-4 line-clamp-4 text-base leading-8 text-stone-600 sm:line-clamp-4 sm:text-lg">
           {description}
         </p>
       )}
 
       {hasFooter && (
-        <div className="mt-4 flex flex-wrap items-center justify-end gap-4 border-t border-stone-100 pt-4 sm:mt-auto">
+        <div className="mt-5 flex flex-wrap items-center justify-end gap-4 border-t border-stone-100 pt-4 sm:mt-auto">
           {url && (
             <a
               href={url}

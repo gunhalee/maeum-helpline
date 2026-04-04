@@ -50,21 +50,17 @@ function GroupSection({
   if (resolvedOrgs.length === 0) return null
 
   return (
-    <div
-      className={`rounded-2xl border ${
-        'border-stone-100'
-      }`}
-    >
-      <div className="px-4 py-3">
+    <section>
+      <div className="px-1 pb-3">
         <p
-          className="text-sm font-semibold text-stone-800"
+          className="text-base font-semibold text-stone-800"
         >
           {group.label}
         </p>
-        <p className="mt-0.5 text-xs text-stone-500">{group.preview}</p>
+        <p className="mt-1 text-sm leading-6 text-stone-500">{group.preview}</p>
       </div>
 
-      <div className="space-y-2 p-3 pt-0">
+      <div className="space-y-3">
         {resolvedOrgs.map(({ org, ref }) => (
           <ResultCard
             key={org.id}
@@ -74,7 +70,7 @@ function GroupSection({
           />
         ))}
       </div>
-    </div>
+    </section>
   )
 }
 
