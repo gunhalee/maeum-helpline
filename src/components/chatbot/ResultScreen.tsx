@@ -1,11 +1,38 @@
 'use client'
 
-import { useState } from 'react'
 import type { MatchGroup, OrgRef, OrgWithDetails } from '@/lib/helpline-types'
-import ResultCard from './ResultCard'
+import ResultCard from '@/components/ResultCard'
 
 const FREE_COUNSELING_ORG_IDS = [5, 6, 13]
 const COUNSELING_KEYWORDS = ['우울', '심리상담', '심리', '상담']
+
+function orgToCardProps(org: OrgWithDetails) {
+  const costLabel = org.isFree
+    ? org.costCondition
+      ? `무료 (${org.costCondition})`
+      : '무료'
+    : org.costDetail || null
+
+  const is24h = org.contacts.some((c) => c.is24h)
+  const contactTypes = [...new Set(org.contacts.map((c) => c.type))].join('·')
+
+  const languages = org.target?.language ?? []
+  const hasNonKorean = languages.some((l) => l !== '한국어' && l !== 'ko')
+  const languageLabel = hasNonKorean ? '다국어' : null
+
+  const metaParts = [contactTypes, costLabel, languageLabel].filter(
+    Boolean
+  ) as string[]
+
+  return {
+    name: org.name,
+    phone: org.phone,
+    url: org.url || undefined,
+    description: org.description || undefined,
+    is24h,
+    metaParts,
+  }
+}
 
 interface Props {
   groups: MatchGroup[]
@@ -18,69 +45,43 @@ interface Props {
 function GroupSection({
   group,
   orgMap,
-  defaultExpanded,
   variant,
 }: {
   group: MatchGroup
   orgMap: Record<number, OrgWithDetails>
-  defaultExpanded: boolean
   variant: 'default' | 'crisis'
 }) {
-  const [expanded, setExpanded] = useState(defaultExpanded)
   const resolvedOrgs: { org: OrgWithDetails; ref: OrgRef }[] = group.orgs
     .map((ref) => ({ org: orgMap[ref.id], ref }))
     .filter((item): item is { org: OrgWithDetails; ref: OrgRef } => !!item.org)
 
   if (resolvedOrgs.length === 0) return null
 
-  const isCrisis = variant === 'crisis'
-
   return (
     <div
-      className={`overflow-hidden rounded-2xl border ${
-        isCrisis ? 'border-red-100' : 'border-stone-100'
+      className={`rounded-2xl border ${
+        'border-stone-100'
       }`}
     >
-      <button
-        type="button"
-        onClick={() => !isCrisis && setExpanded((v) => !v)}
-        className={`flex min-h-[44px] w-full items-center justify-between px-4 py-3 text-left ${
-          isCrisis ? 'cursor-default' : 'cursor-pointer hover:bg-stone-50/50'
-        }`}
-      >
-        <div>
-          <p
-            className={`text-sm font-semibold ${isCrisis ? 'text-red-800' : 'text-stone-800'}`}
-          >
-            {group.label}
-          </p>
-          <p className="mt-0.5 text-xs text-stone-500">{group.preview}</p>
-        </div>
-        {!isCrisis && (
-          <span className="text-xs text-stone-400">
-            {expanded ? '▴' : '▾'}
-          </span>
-        )}
-      </button>
+      <div className="px-4 py-3">
+        <p
+          className="text-sm font-semibold text-stone-800"
+        >
+          {group.label}
+        </p>
+        <p className="mt-0.5 text-xs text-stone-500">{group.preview}</p>
+      </div>
 
-      <div
-        className={`grid transition-[grid-template-rows] duration-200 ${
-          expanded || isCrisis ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'
-        }`}
-      >
-        <div className="overflow-hidden">
-          <div className="space-y-2 p-3">
-            {resolvedOrgs.map(({ org, ref }) => (
-              <ResultCard
-                key={org.id}
-                org={org}
-                note={ref.note}
-                isOpen={ref.is_open}
-                variant={variant}
-              />
-            ))}
-          </div>
-        </div>
+      <div className="space-y-2 p-3 pt-0">
+        {resolvedOrgs.map(({ org, ref }) => (
+          <ResultCard
+            key={org.id}
+            {...orgToCardProps(org)}
+            note={ref.note}
+            isOpen={ref.is_open}
+            variant={variant}
+          />
+        ))}
       </div>
     </div>
   )
@@ -93,7 +94,6 @@ function FreeCounselingSection({
   orgMap: Record<number, OrgWithDetails>
   shownOrgIds: Set<number>
 }) {
-  const [expanded, setExpanded] = useState(false)
   const freeOrgs = FREE_COUNSELING_ORG_IDS
     .filter((id) => !shownOrgIds.has(id) && orgMap[id])
     .map((id) => orgMap[id])
@@ -101,37 +101,20 @@ function FreeCounselingSection({
   if (freeOrgs.length === 0) return null
 
   return (
-    <div className="overflow-hidden rounded-2xl border border-stone-100">
-      <button
-        type="button"
-        onClick={() => setExpanded((v) => !v)}
-        className="flex min-h-[44px] w-full items-center justify-between px-4 py-3 text-left hover:bg-stone-50/50"
-      >
-        <div>
-          <p className="text-sm font-semibold text-stone-800">
-            정부 지원 심리상담 지원금
-          </p>
-          <p className="mt-0.5 text-xs text-stone-500">
-            {freeOrgs.map((o) => o.name).join(', ')}
-          </p>
-        </div>
-        <span className="text-xs text-stone-400">
-          {expanded ? '▴' : '▾'}
-        </span>
-      </button>
+    <div className="rounded-2xl border border-stone-100">
+      <div className="px-4 py-3">
+        <p className="text-sm font-semibold text-stone-800">
+          정부 지원 심리상담 지원금
+        </p>
+        <p className="mt-0.5 text-xs text-stone-500">
+          {freeOrgs.map((o) => o.name).join(', ')}
+        </p>
+      </div>
 
-      <div
-        className={`grid transition-[grid-template-rows] duration-200 ${
-          expanded ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'
-        }`}
-      >
-        <div className="overflow-hidden">
-          <div className="space-y-2 p-3">
-            {freeOrgs.map((org) => (
-              <ResultCard key={org.id} org={org} />
-            ))}
-          </div>
-        </div>
+      <div className="space-y-2 p-3 pt-0">
+        {freeOrgs.map((org) => (
+          <ResultCard key={org.id} {...orgToCardProps(org)} />
+        ))}
       </div>
     </div>
   )
@@ -195,7 +178,6 @@ export default function ResultScreen({
               key={`crisis-${i}`}
               group={group}
               orgMap={orgMap}
-              defaultExpanded
               variant="crisis"
             />
           ))}
@@ -209,7 +191,6 @@ export default function ResultScreen({
               key={`normal-${i}`}
               group={group}
               orgMap={orgMap}
-              defaultExpanded={i === 0}
               variant="default"
             />
           ))}

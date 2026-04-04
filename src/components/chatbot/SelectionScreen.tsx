@@ -188,9 +188,17 @@ export default function SelectionScreen({ onSubmit }: Props) {
         </>
       )}
 
-      <p className="text-center text-xs text-stone-400">
-        이 선택은 저장되지 않습니다
-      </p>
+      <div className="space-y-3 text-center">
+        <p className="text-xs text-stone-400">
+          이 선택은 저장되지 않습니다
+        </p>
+        <a
+          href="/crisis"
+          className="inline-block text-xs text-stone-400 underline-offset-2 hover:text-stone-600 hover:underline"
+        >
+          전체 상담 기관 목록 →
+        </a>
+      </div>
     </div>
   )
 }

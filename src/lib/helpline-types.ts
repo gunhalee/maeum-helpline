@@ -2,11 +2,15 @@ export interface HelplineOrg {
   id: number
   pageId: string
   name: string
+  description: string
   phone: string
   url: string
   isActive: boolean
   openingFixed: boolean
   lastVerified: string | null
+  isFree: boolean
+  costCondition: string
+  costDetail: string
 }
 
 export interface ContactMethod {
@@ -16,14 +20,6 @@ export interface ContactMethod {
   contactInfo: string
   is24h: boolean
   schedule: Record<string, string | null> | null
-}
-
-export interface CostInfo {
-  id: number
-  orgId: number
-  isFree: boolean
-  condition: string
-  detail: string
 }
 
 export interface TargetInfo {
@@ -62,6 +58,5 @@ export interface MatchResult {
 
 export interface OrgWithDetails extends HelplineOrg {
   contacts: ContactMethod[]
-  cost: CostInfo | null
   target: TargetInfo | null
 }

@@ -1,5 +1,5 @@
 import { CATEGORY_META, CATEGORY_ORDER } from '@/lib/categories'
-import ServiceCard from '@/components/ServiceCard'
+import ResultCard from '@/components/ResultCard'
 import type { Service } from '@/lib/types'
 
 interface Props {
@@ -46,6 +46,43 @@ function sortByPriority(services: Service[]): Service[] {
   })
 }
 
+function serviceToCardProps(service: Service) {
+  const is24h = isAlwaysOpen(service)
+
+  const displayTags = service.tags.filter((tag) => {
+    const n = normalizeText(tag)
+    return !(
+      n.includes('24시간') ||
+      n.includes('24h') ||
+      n.includes('상시운영')
+    )
+  })
+
+  const operatingHours = service.operatingHours?.trim() ?? ''
+  const ohNormalized = normalizeText(operatingHours)
+  const isOhDuplicate =
+    !operatingHours ||
+    is24h ||
+    service.tags.some((tag) => {
+      const tn = normalizeText(tag)
+      return tn.includes(ohNormalized) || ohNormalized.includes(tn)
+    })
+
+  const metaParts = [
+    ...displayTags,
+    ...(isOhDuplicate ? [] : [operatingHours]),
+  ]
+
+  return {
+    name: service.name,
+    phone: service.phone,
+    url: service.url,
+    description: service.description,
+    is24h,
+    metaParts,
+  }
+}
+
 export default function ServiceGrid({ services, groupByCategory = true }: Props) {
   const orderedServices = sortByPriority(services)
 
@@ -61,7 +98,7 @@ export default function ServiceGrid({ services, groupByCategory = true }: Props)
     return (
       <section className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {orderedServices.map((service) => (
-          <ServiceCard key={service.id} service={service} />
+          <ResultCard key={service.id} {...serviceToCardProps(service)} />
         ))}
       </section>
     )
@@ -85,7 +122,7 @@ export default function ServiceGrid({ services, groupByCategory = true }: Props)
             </h2>
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {items.map((service) => (
-                <ServiceCard key={service.id} service={service} />
+                <ResultCard key={service.id} {...serviceToCardProps(service)} />
               ))}
             </div>
           </section>
