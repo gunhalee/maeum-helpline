@@ -60,6 +60,12 @@ export default function ChatbotFlow() {
 
     const isSoloSelection =
       selections.length === 1 && SOLO_BUTTONS.has(selections[0])
+    const isSkipNoneSelection =
+      crisisAnswer === 'skip' &&
+      selections.length === 1 &&
+      selections[0] === '해당 없음'
+
+    const effectiveSelections = isSkipNoneSelection ? ['우울'] : selections
 
     if (isSoloSelection && crisisAnswer === 'no') {
       setScreenType('2C')
@@ -71,14 +77,14 @@ export default function ChatbotFlow() {
 
     setScreen('loading')
 
-    const sendCrisis = crisisAnswer === 'skip'
+    const sendCrisis = isSkipNoneSelection ? false : crisisAnswer === 'skip'
 
     try {
       const res = await fetch('/api/match', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          selections,
+          selections: effectiveSelections,
           crisis: sendCrisis,
           current_time: new Date().toISOString(),
           lang,

@@ -47,22 +47,24 @@ export default function ChatbotBanner({ lang = 'ko' }: { lang?: Lang }) {
     <div
       role="banner"
       aria-label={lang === 'en' ? 'Emergency contacts' : '긴급 연락처'}
-      className="relative bg-green-50 px-4 py-3 text-center"
+      className="bg-green-50 px-4 py-3 text-center"
     >
-      <div className="absolute right-4 top-3">
-        <Link
-          href={toggleHref}
-          className="inline-flex min-h-[36px] items-center text-xs font-semibold tracking-[0.08em] text-stone-600 underline underline-offset-4 transition-colors hover:text-green-700"
-          aria-label={currentLang === 'en' ? 'Switch to Korean' : 'Switch to English'}
-        >
-          {currentLang === 'en' ? 'KO' : 'EN'}
-        </Link>
+      <div className="relative mb-2">
+        <p className="px-10 text-sm font-medium text-stone-700">
+          {currentLang === 'en'
+            ? 'If you are in immediate danger'
+            : '지금 당장 위험한 상황이라면'}
+        </p>
+        <div className="absolute right-0 top-1/2 -translate-y-1/2">
+          <Link
+            href={toggleHref}
+            className="inline-flex items-center text-xs font-semibold tracking-[0.08em] text-stone-600 underline underline-offset-4 transition-colors hover:text-green-700"
+            aria-label={currentLang === 'en' ? 'Switch to Korean' : 'Switch to English'}
+          >
+            {currentLang === 'en' ? 'KO' : 'EN'}
+          </Link>
+        </div>
       </div>
-      <p className="mb-2 text-sm font-medium text-stone-700">
-        {currentLang === 'en'
-          ? 'If you are in immediate danger'
-          : '지금 당장 위험한 상황이라면'}
-      </p>
       <div className="flex items-center justify-center gap-3">
         {EMERGENCY_ITEMS.map((item, index) => (
           <a

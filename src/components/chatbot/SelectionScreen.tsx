@@ -30,7 +30,6 @@ export default function SelectionScreen({ lang, onSubmit }: Props) {
   const [step, setStep] = useState<'crisis' | 'situation'>('crisis')
   const [crisisAnswer, setCrisisAnswer] = useState<CrisisAnswer>('no')
   const [selected, setSelected] = useState<Set<string>>(new Set())
-  const soloDisabled = crisisAnswer === 'skip'
 
   const handleCrisisAnswer = (answer: CrisisAnswer) => {
     setCrisisAnswer(answer)
@@ -45,9 +44,6 @@ export default function SelectionScreen({ lang, onSubmit }: Props) {
     setSelected((prev) => {
       const next = new Set(prev)
       if (SOLO_BUTTONS.has(label)) {
-        if (soloDisabled) {
-          return next
-        }
         if (next.has(label)) {
           next.delete(label)
         } else {
@@ -76,7 +72,7 @@ export default function SelectionScreen({ lang, onSubmit }: Props) {
 
     if (active) return 'rounded-xl border-[1.5px] px-3.5 py-2.5 text-sm transition-colors border-green-600 bg-green-50 text-green-700'
 
-    if (isSolo && (hasNormalSelected || soloDisabled)) {
+    if (isSolo && hasNormalSelected) {
       return 'rounded-xl border-[1.5px] px-3.5 py-2.5 text-sm transition-colors border-stone-100 bg-stone-50 text-stone-300 cursor-not-allowed'
     }
 
@@ -143,7 +139,7 @@ export default function SelectionScreen({ lang, onSubmit }: Props) {
             </p>
             <p className="mx-auto max-w-[32rem] text-base leading-7 text-stone-600">
               {lang === 'en'
-                ? 'Select every option that applies to you.'
+                ? 'Select options that apply to you.'
                 : '해당되는 버튼을 모두 선택해 주세요.'}
             </p>
           </div>
@@ -177,7 +173,7 @@ export default function SelectionScreen({ lang, onSubmit }: Props) {
                   key={label}
                   type="button"
                   onClick={() => toggleSelection(label)}
-                  disabled={hasNormalSelected || soloDisabled}
+                  disabled={hasNormalSelected}
                   className={btnClass(label)}
                 >
                   {translateSelectionLabel(label, lang)}
