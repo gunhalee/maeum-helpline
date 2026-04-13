@@ -25,166 +25,166 @@ type GuideEntryCopy = {
 const CATEGORY_EDITORIAL: Record<Category, Record<Lang, CategoryEditorial>> = {
   crisis: {
     ko: {
-      heading: '자살 위기와 극심한 불안은 혼자 버티지 않아도 됩니다',
+      heading: '지금 이 순간이 견딜 수 없다면, 읽기보다 연결이 먼저입니다',
       paragraphs: [
-        '죽고 싶다는 생각이 반복되거나, 구체적인 방법을 떠올리고 있거나, 지금 당장 자신을 해칠 수 있다는 느낌이 들면 일반 정보 탐색보다 즉시 연결이 우선입니다. 이 페이지는 109 같은 자살예방 상담과 함께 응급 구조와 경찰 연결이 필요한 상황을 빠르게 구분할 수 있도록 정리했습니다.',
-        '통화가 어렵다면 가까운 사람에게 함께 전화해 달라고 요청하고, 혼자 있지 말고, 위험한 물건을 잠시 멀리 두세요. 이미 행동 직전이거나 생명과 안전에 즉각적인 위험이 있으면 119나 112를 먼저 사용해야 합니다.',
+        '지금 죽고 싶다는 생각에 사로잡혀 있다면, 이 페이지를 끝까지 읽을 필요가 없습니다. 109에 전화하세요. 말이 잘 안 나와도 괜찮습니다. 수화기를 들고 숨소리만 들려도 상담사는 기다립니다. 이미 자신을 해칠 수 있는 물건이 가까이 있거나 행동 직전이라면, 109보다 119나 112가 먼저입니다.',
+        '전화를 걸기 어려운 상태라면, 지금 옆에 아무나 — 가족이든, 이웃이든, 편의점 직원이든 — 한 사람만 불러 주세요. 혼자 있지 않는 것, 그것만으로도 지금 이 순간의 위험이 줄어듭니다. 위험한 물건은 다른 방이나 눈에 안 보이는 곳으로 잠시 치워 두세요. 완벽한 판단이 아니라 물리적 거리를 확보하는 것이 지금은 더 중요합니다.',
       ],
-      highlights: ['109 자살 위기 상담', '즉각 위험 시 119·112 우선', '24시간 연결 기관 중심'],
+      highlights: ['109 자살위기 상담 (24시간)', '행동 직전이면 119·112 먼저', '전화가 어려우면 곁에 한 사람만 부르기'],
     },
     en: {
-      heading: 'Suicidal crisis and acute distress do not need to be handled alone',
+      heading: 'If this moment feels unbearable, connection comes before reading',
       paragraphs: [
-        'If thoughts of suicide keep returning, you are planning a method, or you feel you may hurt yourself soon, immediate connection matters more than continued browsing. This page helps you quickly compare hotline 109 with other emergency response options in Korea.',
-        'If speaking feels hard, ask someone nearby to stay with you and make the call together. Move away from sharp objects, medication, or anything you could use to harm yourself. If there is immediate danger to life or safety, call 119 or 112 first.',
+        'If you are consumed by thoughts of ending your life, you do not need to finish reading this page. Call 109. You do not have to speak clearly — the counselor will stay on the line even if all you can manage is breathing. If you already have access to something you could use to hurt yourself or you are about to act, call 119 or 112 before 109.',
+        'If making a call feels impossible right now, get one person near you — anyone: a family member, a neighbor, a store clerk. Not being alone is the single most protective thing in this moment. Move anything dangerous to another room or out of sight. This is not about making the right decision — it is about creating physical distance between you and harm.',
       ],
-      highlights: ['109 suicide crisis line', 'Use 119 or 112 for immediate danger', '24/7 services listed first'],
+      highlights: ['109 suicide crisis line (24/7)', 'Call 119 or 112 if you are about to act', 'Get one person nearby if calling feels impossible'],
     },
   },
   depression: {
     ko: {
-      heading: '우울, 번아웃, 불안이 길어질수록 더 일찍 연결하는 편이 좋습니다',
+      heading: '아무것도 하고 싶지 않은 상태가 계속되고 있다면',
       paragraphs: [
-        '기분 저하가 2주 이상 이어지거나, 잠과 식사 패턴이 크게 흔들리거나, 일과 관계가 무너질 정도로 무기력하다면 상담 연결 시점을 미루지 않는 것이 좋습니다. 이 페이지는 정신건강복지센터, 무료 심리상담, 바우처와 같은 접근 경로를 한곳에서 비교할 수 있게 정리했습니다.',
-        '위기 상황이 아니라도 상담은 충분히 이용할 수 있습니다. 지금 상태를 정확히 설명하지 못해도 괜찮고, “요즘 버티기 어렵다”는 한 문장만으로도 시작할 수 있습니다. 비용, 운영시간, 접근 방식이 다른 기관을 함께 살펴보세요.',
+        '"이 정도로 상담을 받아도 되나" 하는 생각이 드는 것 자체가 이미 오래 버텨 왔다는 신호일 수 있습니다. 잠이 안 오거나 너무 많이 자는 날이 반복되고, 출근이나 등교 전에 몸이 굳는 느낌이 들고, 좋아하던 것에 아무 감정이 없어졌다면 — 그건 게으름이나 의지 부족이 아닙니다. 뇌의 기능이 달라진 상태입니다.',
+        '이 페이지에 정리된 기관 중에는 오늘 바로 전화할 수 있는 곳도 있고, 예약이 필요한 곳도 있습니다. 비용이 걱정이라면 정신건강복지센터(무료)나 심리상담 바우처(소득 무관, 8회)부터 확인해 보세요. 처음 전화할 때 "요즘 너무 힘든데 상담받을 수 있는지 알고 싶어서요"라고만 해도 됩니다. 자기 상태를 완벽하게 설명하는 건 상담사의 일이지, 당신의 일이 아닙니다.',
       ],
-      highlights: ['무료·저비용 상담 경로', '정신건강복지센터 안내', '불안·번아웃 지원 포함'],
+      highlights: ['정신건강복지센터 — 전국 무료', '심리상담 바우처 — 소득·나이 무관 8회', '"요즘 힘들다" 한 마디로 시작 가능'],
     },
     en: {
-      heading: 'Depression, burnout, and anxiety are easier to address when support starts early',
+      heading: 'If the numbness or exhaustion has not lifted for weeks',
       paragraphs: [
-        'If low mood lasts for more than two weeks, your sleep or appetite has changed, or daily life feels difficult to maintain, it helps to connect with support sooner rather than later. This page compares mental health centers, voucher routes, and low-cost counseling options in Korea.',
-        'You do not need to be in immediate crisis to use counseling. It is enough to say that things feel hard lately. Compare cost, hours, and access routes here, then start with the option that feels easiest to reach today.',
+        'Wondering whether you are "bad enough" to deserve support is itself a sign that you have been enduring for a long time. When sleep collapses in either direction, when getting out of bed for work or school takes everything you have, when things you used to enjoy now feel like nothing — that is not laziness. It is a change in how your brain is functioning.',
+        'Some services listed here can be reached today; others require booking. If cost is a barrier, start with community mental health centers (free) or the counseling voucher program (8 sessions, no income restriction). When you call for the first time, saying "I have been struggling and I want to know if I can get counseling" is enough. Explaining your condition precisely is the counselor\'s job, not yours.',
       ],
-      highlights: ['Free and low-cost support', 'Mental health center access', 'Burnout and anxiety guidance'],
+      highlights: ['Community mental health centers — free nationwide', 'Counseling voucher — 8 sessions, no income limit', 'One sentence is enough to start'],
     },
   },
   women: {
     ko: {
-      heading: '폭력과 통제는 참을 일이 아니라 도움을 요청할 일입니다',
+      heading: '지금 안전하지 않다면, 이 페이지보다 먼저 해야 할 일이 있습니다',
       paragraphs: [
-        '가정폭력, 성폭력, 스토킹, 데이트폭력처럼 관계 안에서 반복되는 위협과 통제는 시간이 갈수록 위험해질 수 있습니다. 이 페이지는 1366과 피해자 지원 기관을 중심으로, 전화 연결 후 어떤 도움을 받을 수 있는지 빠르게 비교할 수 있게 구성했습니다.',
-        '안전한 통화가 어려운 상황이라면 통화 기록과 위치 노출 가능성도 함께 고려해야 합니다. 급박한 위협이 있으면 먼저 112나 119로 연결하고, 이후 보호·법률·쉼터 지원까지 이어질 수 있는 기관을 확인해 보세요.',
+        '가해자가 같은 공간에 있거나, 전화 기록이 확인될 수 있거나, 지금 이 화면을 보는 것조차 위험한 상황이라면 — 이 페이지를 저장하거나 기억하려 하지 마세요. 급박한 위협이 있으면 112에 먼저 전화하세요. 몸이 다쳤으면 119가 먼저입니다. 지금 당장은 아니지만 반복되는 폭력이나 통제 속에 있다면, 통화가 안전한 시간과 장소를 먼저 확보한 뒤 1366에 연결하세요.',
+        '1366에 전화하면 상담사가 지금 상황의 위험도를 함께 판단하고, 경찰 연계·긴급 쉼터·법률 지원·의료 연결까지 다음 단계를 안내합니다. "폭력"이라는 단어가 맞는지 잘 모르겠어도 괜찮습니다. 맞고 있거나, 감시당하고 있거나, 무섭다면 — 그것만으로 전화할 이유가 됩니다.',
       ],
-      highlights: ['1366 여성긴급전화', '가정폭력·성폭력·스토킹 대응', '보호·쉼터·법률 연계'],
+      highlights: ['급박한 위협 → 112 먼저', '안전한 시간 확보 후 1366 연결', '쉼터·법률·의료 연계까지 안내'],
     },
     en: {
-      heading: 'Violence and coercive control are reasons to seek help, not to endure silently',
+      heading: 'If you are not safe right now, there are steps before this page',
       paragraphs: [
-        'Domestic violence, sexual violence, stalking, and dating abuse often escalate over time. This page helps you compare the 1366 women support hotline with other organizations that can provide crisis counseling, shelter referrals, and next-step support in Korea.',
-        'If calling is not fully safe, think about call logs, location sharing, and whether someone nearby can overhear you. If the threat is immediate, contact 112 or 119 first, then use the listed organizations for protection, legal guidance, and victim support.',
+        'If the person who hurts you is nearby, if your call history may be checked, if even viewing this page is risky — do not try to save or memorize it. If there is an immediate physical threat, call 112 first. If you are injured, call 119. If the violence is ongoing but not happening at this exact moment, find a safe time and place before calling 1366.',
+        'When you reach 1366, a counselor will assess the level of danger with you and walk you through what comes next: police coordination, emergency shelter, legal support, or medical care. You do not need to be certain that the word "violence" applies. If you are being hit, monitored, or you feel afraid — that is reason enough to call.',
       ],
-      highlights: ['1366 women support line', 'Violence response options', 'Shelter and legal support links'],
+      highlights: ['Immediate threat → call 112 first', 'Find a safe moment, then call 1366', 'Shelter, legal, and medical referrals available'],
     },
   },
   youth: {
     ko: {
-      heading: '청소년 위기는 늦기 전에 안전한 어른과 연결되는 것이 중요합니다',
+      heading: '어른한테 말해 봤자 소용없다고 느껴질 수 있습니다',
       paragraphs: [
-        '학교폭력, 가출, 학업 스트레스, 가족 갈등, 자해 충동은 혼자 감당하기 어려운 청소년 위기로 이어질 수 있습니다. 이 페이지는 1388, 청소년상담복지센터, 문자·온라인 상담 등 접근 방식이 다른 기관을 빠르게 살펴볼 수 있도록 정리했습니다.',
-        '전화가 부담스러운 청소년에게는 문자나 온라인 상담이 더 쉬운 시작점이 될 수 있습니다. 지금 당장 집이나 학교에서 안전하지 않다면, 혼자 버티지 말고 긴급 기관과 신뢰할 수 있는 어른에게 바로 도움을 요청하세요.',
+        '학교에서 맞거나 따돌림을 당하고 있거나, 집이 안전하지 않거나, 스스로를 다치게 하고 싶은 충동이 반복된다면 — 그건 네가 약해서가 아닙니다. "말해 봤자 달라지는 게 없다"는 경험을 이미 했을 수도 있습니다. 그래도 1388에는 학교나 부모와 다른 방식으로 듣는 사람들이 있습니다. 전화가 부담스러우면 카카오톡에서 "1388"을 검색해 채팅으로 시작할 수 있습니다.',
+        '지금 당장 집이나 학교에서 벗어나야 할 만큼 위험하다면, 1388에서 청소년 쉼터 연결도 가능합니다. "상담" 같은 거창한 것을 할 준비가 안 돼도 괜찮습니다. 지금 무슨 일이 벌어지고 있는지 한 줄만 써서 보내도 됩니다. 비밀이 보장되고, 네 허락 없이 부모에게 연락하지 않습니다.',
       ],
-      highlights: ['1388 위기상담', '문자·온라인 상담 가능', '학교폭력·가정갈등 대응'],
+      highlights: ['1388 전화 또는 카카오톡 채팅', '청소년 쉼터 연결 가능', '부모 동의 없이 비밀 상담 가능'],
     },
     en: {
-      heading: 'Youth crises are easier to address when a safe adult is involved early',
+      heading: 'It might feel like telling an adult will not change anything',
       paragraphs: [
-        'School violence, running away, family conflict, academic pressure, and self-harm urges can grow into urgent youth crises. This page helps you compare hotline 1388, youth counseling centers, and text or online support options in Korea.',
-        'For teenagers who find phone calls difficult, text-based or online counseling may be the easiest first step. If home or school does not feel safe right now, ask a trusted adult for help and contact the emergency or youth support lines listed here.',
+        'If you are being bullied or hit at school, if home does not feel safe, if you keep wanting to hurt yourself — that is not because you are weak. You may have already tried telling someone and nothing changed. But 1388 has people who listen differently from teachers or parents. If calling feels like too much, search "1388" on KakaoTalk and start with a text message.',
+        'If you need to get away from home or school right now because it is that dangerous, 1388 can also connect you to a youth shelter. You do not need to be ready for "counseling." Sending one line about what is happening is enough. It is confidential, and they will not contact your parents without your permission.',
       ],
-      highlights: ['1388 youth hotline', 'Text and online counseling', 'School and family crisis support'],
+      highlights: ['1388 by phone or KakaoTalk chat', 'Youth shelter connection available', 'Confidential — no parental contact without permission'],
     },
   },
   queer: {
     ko: {
-      heading: '정체성 때문에 설명을 포기하지 않아도 되는 상담이 필요할 수 있습니다',
+      heading: '정체성을 설명하느라 지치기 전에, 이미 이해하는 곳으로 연결되어야 합니다',
       paragraphs: [
-        '성소수자와 트랜스젠더 당사자는 일반 상담 환경에서 정체성을 다시 설명하거나 방어해야 한다는 부담 때문에 도움 요청을 미루기 쉽습니다. 이 페이지는 퀴어 친화적 상담, 커밍아웃 고민, 우울과 불안 지원처럼 실제 필요에 가까운 기관을 모아 두었습니다.',
-        '모든 기관이 완벽히 같은 언어와 태도를 제공하는 것은 아니므로, 먼저 전화로 상담 범위와 친화성을 확인하는 것도 도움이 됩니다. 안전하고 존중받는 환경에서 시작하는 것이 지속적인 지원 연결에 더 유리합니다.',
+        '상담이 필요해서 전화했는데, 정체성부터 설명해야 하고, 때로는 교정이나 설득의 대상이 되는 경험 — 그런 일을 한 번이라도 겪었다면 다시 도움을 요청하기까지 오래 걸리는 것이 당연합니다. 이 페이지에는 성소수자 당사자 상담 경험이 있거나 퀴어 친화를 명시한 기관을 모았습니다. 모든 곳이 동일한 수준의 이해를 제공하지는 않기 때문에, 첫 통화에서 "성소수자 관련 상담이 가능한지" 직접 물어보는 것이 시간을 아끼는 방법입니다.',
+        '커밍아웃 이후의 가족 갈등, 직장이나 학교에서의 차별, 혐오 경험으로 인한 우울과 불안, 트랜스젠더 의료 접근 과정의 스트레스 — 이런 것들은 정체성 "자체"의 문제가 아니라, 적대적인 환경에 놓인 사람이라면 누구나 겪을 수 있는 반응입니다. 그 반응에 대해 안전하게 이야기할 수 있는 곳을 찾는 것이 첫 단계입니다.',
       ],
-      highlights: ['퀴어 친화 상담 안내', '커밍아웃 고민 지원', '우울·불안과 정체성 이슈 함께 고려'],
+      highlights: ['퀴어 친화 명시 기관 모음', '첫 통화에서 친화 여부 직접 확인 권장', '정체성이 아닌 환경의 문제로 접근'],
     },
     en: {
-      heading: 'Support should not require you to defend or re-explain your identity',
+      heading: 'You should not have to educate your counselor before getting help',
       paragraphs: [
-        'LGBTQ+ and transgender people often delay reaching out because many support settings feel unsafe or exhausting to explain. This page gathers queer-friendly counseling options in Korea, including support for coming out, identity stress, depression, and anxiety.',
-        'Not every organization will use the same language or level of cultural competence, so it can help to ask about counseling scope before a full session. Starting in a respectful environment often makes ongoing support easier to continue.',
+        'If you have ever called a helpline only to spend the session explaining your identity — or worse, been treated as someone who needs correction — it makes sense that reaching out again feels difficult. This page lists organizations that have stated queer-affirming practices or have counseling experience with LGBTQ+ individuals. Since not all are at the same level, asking directly on the first call whether they can support your specific situation saves time and protects your energy.',
+        'Family conflict after coming out, discrimination at work or school, depression and anxiety from repeated exposure to hostility, stress around transgender healthcare access — these are not problems with who you are. They are responses anyone would have in a hostile environment. Finding a place where you can talk about those responses without defending your existence is the first step.',
       ],
-      highlights: ['Queer-friendly resources', 'Coming-out and identity support', 'Mental health care with safety in mind'],
+      highlights: ['Verified queer-affirming services listed', 'Ask about LGBTQ+ experience on the first call', 'Framed as environmental stress, not identity pathology'],
     },
   },
   migrant: {
     ko: {
-      heading: '언어와 체류 조건 때문에 도움을 포기하지 않도록 안내가 필요합니다',
+      heading: '한국어가 서툴러도, 비자가 불안정해도, 도움받을 권리는 같습니다',
       paragraphs: [
-        '외국인, 이주노동자, 결혼이주여성은 위기 상황에서도 언어 장벽과 제도 정보 부족 때문에 적절한 지원을 놓치기 쉽습니다. 이 페이지는 다국어 상담 여부, 지원 범위, 접근 가능한 기관을 중심으로 빠르게 확인할 수 있도록 구성했습니다.',
-        '상황 설명이 길지 않아도 괜찮습니다. 한국어가 익숙하지 않다면 가능한 언어 지원부터 확인하고, 통역이 가능한 기관이나 외국인 전용 핫라인을 먼저 이용해도 됩니다. 긴급 위험이 있으면 국적과 체류 자격과 무관하게 먼저 구조 요청이 우선입니다.',
+        '위기 상황에서 어디에 전화해야 하는지, 한국어를 못 하면 도움을 받을 수 있는지, 신고하면 체류 자격에 문제가 생기는지 — 이런 질문들 때문에 도움 요청 자체를 포기하는 경우가 많습니다. 이 페이지에는 다국어 상담이 가능한 기관, 이주민 전용 핫라인, 통역 지원 여부를 함께 표시했습니다. 119, 112 같은 긴급 구조는 국적이나 체류 자격과 관계없이 누구나 이용할 수 있습니다.',
+        '전화할 때 상황을 완벽하게 설명하지 않아도 됩니다. 가능한 언어를 먼저 말하면 통역 연결이나 해당 언어 상담사로 전환됩니다. 이주노동자의 임금 체불, 결혼이주여성의 가정폭력, 유학생의 고립감 — 각각 다른 기관이 더 적합할 수 있으므로 상황에 맞는 곳을 아래에서 확인하세요.',
       ],
-      highlights: ['다국어 상담 여부 확인', '외국인·이주민 지원 기관', '긴급 구조는 체류 자격과 무관'],
+      highlights: ['긴급 구조(119·112)는 체류 자격 무관', '다국어 상담·통역 지원 기관 표시', '이주노동·가정폭력·유학생 상황별 안내'],
     },
     en: {
-      heading: 'People should not lose access to help because of language or migration status',
+      heading: 'Limited Korean or uncertain visa status does not remove your right to help',
       paragraphs: [
-        'Foreign residents, migrant workers, and marriage migrants in Korea can miss support simply because information is hard to access in a familiar language. This page highlights multilingual counseling options, support scope, and the easiest entry points for migrant-focused help.',
-        'You do not need to explain everything perfectly in Korean. Start with services that offer language support or migrant-specific guidance. If there is immediate danger, emergency help comes first regardless of nationality or visa status.',
+        'Many migrants in Korea give up on seeking help because of unanswered questions: where to call, whether services work without Korean, whether reporting will create visa problems. This page marks which organizations offer multilingual counseling, migrant-specific hotlines, and interpreter support. Emergency services like 119 and 112 are available to everyone regardless of nationality or visa status.',
+        'You do not need to explain your situation perfectly when you call. State your preferred language first — the service can then transfer you to an interpreter or a counselor who speaks it. Wage theft for migrant workers, domestic violence for marriage migrants, isolation for international students — different organizations are better suited for each, and they are listed by situation below.',
       ],
-      highlights: ['Multilingual support options', 'Migrant-focused organizations', 'Emergency help first in urgent danger'],
+      highlights: ['Emergency services (119, 112) available regardless of visa', 'Multilingual and interpreter services marked', 'Organized by situation: labor, violence, isolation'],
     },
   },
   addiction: {
     ko: {
-      heading: '중독은 의지 부족이 아니라 반복해서 지원이 필요한 문제일 수 있습니다',
+      heading: '끊겠다는 다짐이 반복해서 무너지는 건, 의지가 아니라 질병의 특성입니다',
       paragraphs: [
-        '도박, 알코올, 약물, 게임, 인터넷 사용이 통제되지 않아 생활과 관계가 무너지고 있다면 빠른 상담 연결이 도움이 됩니다. 이 페이지는 중독관리통합지원센터와 전문 상담기관을 비교해, 어떤 문제에 어떤 기관이 더 적합한지 볼 수 있게 정리했습니다.',
-        '당사자가 바로 도움을 요청하지 못하더라도 가족이 먼저 상담을 받는 것만으로도 대응 방식이 달라질 수 있습니다. 빚, 갈등, 재발 때문에 지쳐 있다면 혼자 해결하려 하기보다 초기 평가와 가족 지원이 가능한 기관부터 연결해 보세요.',
+        '도박을 그만두겠다, 술을 줄이겠다, 게임을 끊겠다고 수십 번 다짐하고 매번 실패하면 "나는 왜 이것도 못 하나"라는 자책이 따라옵니다. 하지만 중독은 보상 회로가 변형된 뇌의 상태이고, 의지만으로 조절이 안 되는 것이 이 질환의 핵심 특징입니다. 재발은 치료 실패가 아니라 만성 질환의 경과 중 하나이고, 다시 연결하면 됩니다.',
+        '본인이 아직 준비가 안 됐더라도, 가족이 먼저 상담받는 것은 매우 흔한 시작점입니다. 빚 때문에 가정이 무너지고 있거나, 폭력이나 거짓말이 반복되고 있다면, 가족의 안전을 먼저 확인하는 것도 중독 상담기관이 하는 일입니다. 아래에서 문제 유형별로 더 적합한 기관을 확인하세요.',
       ],
-      highlights: ['도박·알코올·약물·게임 대응', '가족 상담도 시작 가능', '초기 평가와 재발 대응'],
+      highlights: ['재발은 실패가 아닌 만성 질환의 경과', '가족이 먼저 상담 시작 가능', '도박·알코올·약물·게임 유형별 안내'],
     },
     en: {
-      heading: 'Addiction often needs repeated support, not just stronger willpower',
+      heading: 'Repeatedly breaking promises to quit is a feature of the illness, not a character flaw',
       paragraphs: [
-        'If gambling, alcohol, drugs, gaming, or internet use are disrupting daily life, relationships, or finances, early counseling can make the next steps clearer. This page compares Korean addiction support centers and specialist counseling options by problem type.',
-        'Even if the person directly affected is not ready to ask for help, family members can often start with counseling themselves. If debt, conflict, or relapse are exhausting everyone involved, begin with services that can assess the situation and support both the person and the family.',
+        'If you have promised to stop gambling, drinking, or gaming dozens of times and failed each time, the shame of "why can\'t I even do this" follows every attempt. But addiction is a state where the brain\'s reward system has been altered, and the inability to control it through willpower alone is the defining characteristic of the condition. Relapse is not treatment failure — it is part of the course of a chronic illness, and reconnecting with support is the appropriate next step.',
+        'Even if the person who is struggling is not ready, it is very common for family members to start with counseling first. If debt is destroying the household, or if violence and deception are recurring, protecting the family\'s safety is also part of what addiction services do. Check below for organizations matched to specific problem types.',
       ],
-      highlights: ['Gambling, alcohol, drug, and gaming support', 'Family counseling can start first', 'Relapse-aware support options'],
+      highlights: ['Relapse is part of chronic illness, not failure', 'Family members can start counseling first', 'Organized by type: gambling, alcohol, drugs, gaming'],
     },
   },
   elder: {
     ko: {
-      heading: '노년기 위기는 돌봄과 연결이 끊길 때 더 깊어질 수 있습니다',
+      heading: '돌봄의 손길이 닿지 않는 곳에서, 위기는 소리 없이 깊어집니다',
       paragraphs: [
-        '노인 학대, 고립, 우울, 돌봄 공백은 겉으로 드러나지 않아도 빠르게 악화될 수 있습니다. 이 페이지는 노인보호전문기관, 보건복지상담센터, 정서 지원 기관을 함께 비교해 지금 필요한 연결점을 찾을 수 있도록 만들었습니다.',
-        '당사자가 직접 도움을 요청하지 못하는 경우 가족이나 이웃, 돌봄 제공자가 먼저 상담을 받는 것도 중요합니다. 신고가 필요한 상황과 생활 지원이 필요한 상황을 구분하면서, 안전과 돌봄을 동시에 살펴보는 것이 좋습니다.',
+        '식사를 거르고, 약을 빠뜨리고, 며칠째 밖에 나오지 않는 어르신 — 그것이 단순한 노화인지, 우울인지, 방임인지, 학대인지 구분하기 어려울 수 있습니다. 하지만 구분이 완벽하지 않아도 연결은 할 수 있습니다. 노인보호전문기관은 학대 신고뿐 아니라, 지금 이 상황이 어떤 종류의 도움이 필요한지 함께 판단하는 역할도 합니다.',
+        '어르신 본인이 도움을 거부하는 경우도 많습니다. "괜찮다", "신세 지기 싫다"는 말 뒤에 수치심이나 체념이 있을 수 있습니다. 가족, 이웃, 관리인, 택배 기사 — 누구든 반복되는 위험 신호를 발견했다면 먼저 연락해도 됩니다. 익명 신고도 가능하고, 연락한다고 해서 바로 강제 조치가 이뤄지는 것은 아닙니다.',
       ],
-      highlights: ['노인학대 신고와 상담', '고립·우울 정서 지원', '가족·이웃의 대리 상담 가능'],
+      highlights: ['학대·방임·우울 구분 전에도 연결 가능', '누구든 먼저 신고·상담 요청 가능', '익명 신고 가능, 강제 조치는 아님'],
     },
     en: {
-      heading: 'Older-adult crises often worsen when care and connection are interrupted',
+      heading: 'Where care does not reach, crisis deepens in silence',
       paragraphs: [
-        'Elder abuse, isolation, depression, and gaps in care can become serious even when they are not immediately visible. This page compares Korean elder abuse reporting lines, welfare counseling, and emotional support resources so people can find the right starting point quickly.',
-        'Older adults may not always be the first person to ask for help, so family members, neighbors, and care workers often need guidance too. It helps to separate urgent safety concerns from care-planning concerns while still addressing both together.',
+        'An older person skipping meals, missing medication, not leaving the house for days — it can be hard to tell whether that is aging, depression, neglect, or abuse. But you do not need a perfect distinction to make a connection. Elder protection services do not only handle abuse reports — they also help assess what kind of support the situation actually needs.',
+        'Older adults often refuse help. Behind "I am fine" or "I do not want to be a burden," there may be shame or resignation. Family, neighbors, building managers, delivery workers — anyone who notices repeated warning signs can reach out first. Anonymous reporting is available, and making contact does not automatically trigger forced intervention.',
       ],
-      highlights: ['Elder abuse reporting', 'Isolation and depression support', 'Family and caregiver guidance'],
+      highlights: ['Connection possible before clear diagnosis', 'Anyone can report or request guidance', 'Anonymous reporting available, not automatic forced action'],
     },
   },
 }
 
 const GUIDE_INDEX_COPY: Record<Lang, GuideIndexCopy> = {
   ko: {
-    title: '도움 요청 가이드 | 위기 대응, 우울, 폭력, 중독 안내',
+    title: '도움 요청 가이드 | 전화하기 전에 알아두면 덜 막막한 것들',
     description:
-      '위기 대응, 우울, 폭력 피해, 청소년 지원, 중독, 이주민·노인 지원까지 한국 상담기관을 이용하기 전 알아두면 좋은 실전 가이드 모음입니다.',
+      '자살 위기, 우울, 폭력, 청소년 위기, 중독, 이주민·노인 지원까지 — 전화번호만이 아니라 실제로 전화했을 때 무슨 일이 일어나는지, 뭘 말해야 하는지, 어디가 내 상황에 맞는지를 정리했습니다.',
     intro:
-      '전화번호만 보여 주는 디렉터리를 넘어서, 실제로 어떤 상황에서 어디에 먼저 연결해야 하는지 이해할 수 있도록 실전형 가이드를 모았습니다. 각 글은 상담을 시작할 때 바로 도움이 되는 말, 우선순위, 관련 페이지 링크를 함께 제공합니다.',
-    focusPoints: ['즉각 위험 구분', '상황별 첫 연결점', '기관 이용 전 준비 포인트'],
+      '전화번호는 알겠는데 막상 전화하려면 막막한 — 그 간격을 줄이기 위한 글 모음입니다. "뭐라고 말하지?", "여기가 맞나?", "전화하면 뭐가 달라지지?" 같은 질문에 먼저 답하고, 관련 기관 페이지로 바로 연결됩니다.',
+    focusPoints: ['전화하면 실제로 무슨 일이 일어나는지', '내 상황에 맞는 첫 연결점 찾기', '처음 전화할 때 뭐라고 말하면 되는지'],
   },
   en: {
-    title: 'Help-Seeking Guides | Crisis, Depression, Violence, Addiction',
+    title: 'Help-Seeking Guides | What to know before the first call',
     description:
-      'Practical guides for using Korean crisis helplines, including suicide risk, depression, violence, youth support, addiction, migrant support, and older-adult care.',
+      'Practical guides covering suicide crisis, depression, violence, youth support, addiction, migrant services, and elder care in Korea — not just phone numbers, but what happens when you actually call.',
     intro:
-      'This guide section goes beyond a phone-number directory and explains where to start, what to say, and what to prioritize in common support scenarios across Korea. Each section points to the most relevant directory page so you can move from information to action more quickly.',
-    focusPoints: ['How to tell what is urgent', 'Where to start first', 'What to prepare before calling'],
+      'Knowing a phone number and actually calling it are very different things. These guides address the gap: what to say, which service fits your situation, and what happens after you dial. Each one links directly to the relevant directory page so you can move from reading to action.',
+    focusPoints: ['What actually happens when you call', 'Finding the right first contact for your situation', 'What to say on the first call'],
   },
 }
 
@@ -193,31 +193,31 @@ const GUIDE_ENTRIES = [
     slug: 'friend-suicide-signs',
     category: 'crisis',
     ko: {
-      title: '친구가 자살을 암시할 때 어떻게 말하고 어디에 연결할까',
+      title: '친구가 죽고 싶다고 말했을 때 — 하지 말아야 할 말, 해야 할 행동',
       description:
-        '죽고 싶다, 사라지고 싶다 같은 말을 들었을 때 피해야 할 말과 바로 연결해야 할 상담기관을 정리했습니다.',
+        '"죽고 싶다"는 말을 들었을 때 대부분의 사람은 얼어붙거나, 말리려 하거나, 비밀을 지켜주겠다고 합니다. 세 가지 모두 도움이 되지 않습니다.',
       paragraphs: [
-        '친구가 “죽고 싶다”, “사라지고 싶다”, “이제 끝내고 싶다”처럼 삶을 포기하는 표현을 반복한다면 단순한 하소연으로 넘기지 않는 편이 안전합니다. 비밀을 지켜 주겠다고 약속하기보다, 지금 얼마나 구체적인지와 혼자 있는지, 이미 위험한 물건이나 계획이 있는지를 차분하게 확인하는 것이 중요합니다.',
-        '설득하거나 혼내기보다 곁에 남아 있는 것이 우선입니다. 혼자 두지 말고, 가능한 한 함께 109나 응급 번호로 연결하세요. 직접 말하기 어려우면 “내가 대신 같이 전화해도 돼”라고 제안하는 식의 구체적인 도움이 실제 연결 확률을 높입니다.',
+        '"죽고 싶다", "없어지고 싶다", "더 이상 못 하겠다" — 이런 말을 들었을 때, 비밀을 지켜주겠다고 약속하지 마세요. 비밀을 지키겠다는 약속은 당신을 혼자서 그 무게를 감당해야 하는 위치에 놓고, 정작 필요한 연결을 막습니다. 대신 이렇게 말할 수 있습니다: "네가 이 얘기를 해줘서 다행이야. 나 혼자 감당하긴 어려울 수 있는데, 같이 도움받을 수 있는 데를 찾아보자."',
+        '설득하려 하지 마세요. "살아야 할 이유"를 나열하는 것은 지금 극심한 고통 속에 있는 사람에게 "네 고통은 이유가 부족하다"는 메시지로 들릴 수 있습니다. 대신 지금 혼자 있는지, 구체적인 방법이나 계획이 있는지, 근처에 위험한 물건이 있는지를 차분하게 물어보세요. 그리고 가능하면 함께 109에 전화하세요. "내가 옆에서 같이 전화할게"라는 한 마디가 혼자 전화하라는 말보다 실제 연결 가능성을 훨씬 높입니다.',
       ],
       checklist: [
-        '죽고 싶다는 말이 구체적인 계획으로 이어지는지 확인하기',
-        '혼자 두지 않고 가까운 어른이나 보호자에게 알리기',
-        '즉각 위험 시 109, 119, 112 순서로 바로 연결하기',
+        '"비밀 지켜줄게" 대신 "같이 도움받을 곳 찾아보자"고 말하기',
+        '혼자 있는지, 구체적 계획이 있는지, 위험한 물건이 가까운지 확인하기',
+        '109에 혼자 전화하라고 하지 말고, 함께 전화하거나 대신 걸어 주기',
       ],
     },
     en: {
-      title: 'How to respond when a friend hints at suicide',
+      title: 'When a friend says they want to die — what not to say, and what to do',
       description:
-        'A practical guide to what to say, what to avoid, and which Korean crisis lines to contact when a friend talks about wanting to die.',
+        'Most people freeze, try to talk them out of it, or promise to keep it secret when they hear "I want to die." None of these help.',
       paragraphs: [
-        'If a friend keeps saying things like “I want to disappear” or “I want it to end,” it is safer to treat that as a real warning sign rather than ordinary venting. Instead of promising secrecy, ask calm and direct questions about whether they are alone, whether they have a plan, and whether there is immediate access to anything they could use to hurt themselves.',
-        'Staying with the person is usually more helpful than trying to argue them out of how they feel. If possible, make the call together to 109 or emergency services in Korea. If they cannot speak much, offer a concrete next step such as calling on speakerphone together or contacting another trusted adult right away.',
+        'When someone says "I want to die," "I want to disappear," or "I can\'t do this anymore" — do not promise to keep it secret. That promise traps you into carrying the weight alone and blocks the connection they actually need. Instead, try: "I\'m glad you told me. This might be too much for me to handle alone — let\'s find help together."',
+        'Do not try to persuade them with reasons to live. Listing reasons why life is worth living can sound like "your pain is not a good enough reason" to someone in acute suffering. Instead, ask calmly: are you alone right now? Do you have a specific plan or method? Is there anything nearby you could use to hurt yourself? Then, if possible, call 109 together. "I will sit with you and we will call together" is far more likely to result in actual connection than "you should call a hotline."',
       ],
       checklist: [
-        'Ask whether there is a plan, timing, or immediate access to means',
-        'Do not leave the person alone if danger feels near',
-        'Use 109 first, or 119 and 112 when the danger is immediate',
+        'Say "let\'s find help together" instead of "I\'ll keep your secret"',
+        'Ask if they are alone, have a plan, or have access to means',
+        'Call 109 with them or on their behalf — do not just tell them to call',
       ],
     },
   },
@@ -225,31 +225,31 @@ const GUIDE_ENTRIES = [
     slug: 'depression-next-steps',
     category: 'depression',
     ko: {
-      title: '우울 증상이 계속될 때 무료 상담과 첫 연결점을 찾는 방법',
+      title: '"이 정도로 상담받아도 되나?" — 그 생각이 드는 시점이 상담 시작점입니다',
       description:
-        '우울, 무기력, 불안이 이어질 때 어떤 기관부터 연락하면 좋은지와 비용 부담을 줄이는 경로를 정리했습니다.',
+        '우울 증상이 지속될 때, 무료 상담은 어디서 받는지, 처음 전화하면 뭐라고 하는지, 진단서가 필요한지를 정리했습니다.',
       paragraphs: [
-        '우울 증상이 오래 지속되면 “더 심해지기 전까지는 괜찮다”고 버티기 쉽지만, 실제로는 초기에 연결할수록 선택지가 넓습니다. 정신건강복지센터, 심리상담 바우처, 직장 EAP처럼 접근 경로가 여러 가지이기 때문에, 현재의 비용 부담과 지역, 이용 가능한 시간을 기준으로 첫 연결점을 정하는 것이 좋습니다.',
-        '상담을 처음 받을 때는 진단명을 정확히 말할 필요가 없습니다. 잠을 못 자는지, 출근이나 등교가 버거운지, 식사와 집중이 무너졌는지 같은 변화만 이야기해도 충분합니다. 오늘 바로 연결 가능한 곳과 예약이 필요한 곳을 구분해 두면 실제 행동으로 옮기기 쉬워집니다.',
+        '우울 증상이 오래 이어질수록 "더 심해지면 그때 가야지"라는 생각이 강해집니다. 하지만 실제로는 증상이 깊어질수록 전화를 걸 에너지 자체가 사라집니다. 지금 "상담을 받아야 하나 말아야 하나" 고민이 되고 있다면, 역설적으로 지금이 가장 연결하기 쉬운 시점입니다. 정신건강복지센터는 전국 시·군·구에 있고, 전화 한 통으로 초기 상담 일정을 잡을 수 있습니다. 진단서나 의뢰서가 없어도 됩니다.',
+        '심리상담 바우처는 소득이나 나이 제한 없이 전문 상담 8회를 지원받을 수 있는 제도입니다(의뢰서 필요). 직장인이라면 근로자지원프로그램(EAP)을 통해 연 7회 무료 상담을 회사에 알리지 않고 받을 수 있습니다. 처음 전화할 때 "우울 증상이 있어서 상담을 받아보고 싶은데, 어떻게 시작하면 되는지 알고 싶어서요"라고 하면 됩니다. 상담사가 나머지를 안내합니다.',
       ],
       checklist: [
-        '2주 이상 이어진 수면·식사·집중 변화 적어 보기',
-        '무료 또는 저비용 기관부터 먼저 확인하기',
-        '오늘 연결 가능한 기관과 예약 기관을 나눠 보기',
+        '정신건강복지센터에 전화해서 초기 상담 일정 문의하기 (진단서 불필요)',
+        '비용이 부담이면 심리상담 바우처(8회)나 EAP(직장인, 7회) 확인하기',
+        '"우울 증상이 있어서 상담받고 싶다"고만 말하면 충분함',
       ],
     },
     en: {
-      title: 'How to find a first step when depression symptoms keep going',
+      title: '"Am I bad enough to get counseling?" — that thought means it is time',
       description:
-        'A practical guide to free or low-cost support routes in Korea when depression, numbness, anxiety, or burnout continue.',
+        'Where to get free counseling in Korea when depression persists, what to say on the first call, and whether you need a referral or diagnosis.',
       paragraphs: [
-        'When depression or burnout continues, many people wait because they feel they are not “bad enough” yet. In practice, early support often means more options and less disruption later. Korea has several entry points, including mental health welfare centers, voucher-based counseling, and workplace assistance programs, so it helps to begin with the route that matches your cost and scheduling limits.',
-        'You do not need a precise diagnosis to start. It is enough to describe what has changed in your sleep, appetite, concentration, work, school, or relationships. Separating options into “can contact today” and “requires booking” can make the next action feel much more manageable.',
+        'The longer depression continues, the stronger the thought becomes: "I will go when it gets worse." But the deeper symptoms get, the less energy you have to make a call. If you are debating whether to seek support right now, this is paradoxically the easiest moment to connect. Community mental health centers exist in every district nationwide, and a single phone call can set up an initial consultation. No diagnosis or referral letter is needed.',
+        'The counseling voucher program provides 8 professional sessions regardless of income or age (a referral form is needed). If you are employed, the Employee Assistance Program (EAP) offers 7 free sessions per year without notifying your employer. On the first call, say: "I have been experiencing symptoms of depression and I want to know how to start counseling." The counselor handles the rest.',
       ],
       checklist: [
-        'Write down symptom changes lasting more than two weeks',
-        'Check free or low-cost routes before assuming counseling is unaffordable',
-        'Separate same-day options from services that need an appointment',
+        'Call a local mental health center to schedule an initial session (no diagnosis required)',
+        'If cost is a concern, check the voucher program (8 sessions) or EAP (7 sessions for workers)',
+        'Saying "I have depression symptoms and want counseling" is enough to start',
       ],
     },
   },
@@ -257,31 +257,31 @@ const GUIDE_ENTRIES = [
     slug: 'violence-safety-reporting',
     category: 'women',
     ko: {
-      title: '가정폭력이나 스토킹 피해가 있을 때 안전하게 기록하고 신고 준비하기',
+      title: '폭력 피해 기록과 신고 — 안전이 증거보다 먼저입니다',
       description:
-        '통화가 안전하지 않은 상황에서 어떤 기록이 도움이 되는지, 어떤 기관에 먼저 연결할지 정리한 안전 중심 가이드입니다.',
+        '가정폭력, 데이트폭력, 스토킹 상황에서 증거를 모으는 것보다 안전한 연락 경로를 확보하는 것이 왜 먼저인지, 그리고 1366에 전화하면 실제로 무슨 일이 일어나는지 정리했습니다.',
       paragraphs: [
-        '가정폭력, 데이트폭력, 스토킹은 피해 사실을 설명하는 것 자체가 위험할 수 있다는 점을 먼저 고려해야 합니다. 통화기록, 메시지, 사진, 날짜 메모 같은 자료는 나중에 도움이 될 수 있지만, 기록을 남기는 행동이 당장의 안전을 위협한다면 보관 방식부터 다시 점검해야 합니다.',
-        '위협이 급박하면 증거 정리보다 즉시 안전한 장소와 긴급 연락이 우선입니다. 이후에는 1366이나 피해자 지원기관에 연결해 보호, 상담, 법률 지원, 쉼터 가능성까지 함께 확인하는 편이 좋습니다. 혼자 모든 단계를 계획하려 하기보다, 현재 위험도와 다음 행동을 같이 정리해 줄 기관에 먼저 연결하세요.',
+        '증거를 모아야 한다는 생각에 위험한 상황에서 녹음을 하거나, 사진을 찍거나, 메시지를 저장하려다 발각되면 폭력이 더 심해질 수 있습니다. 증거 수집은 중요하지만, 그것 때문에 지금의 안전이 위협받아서는 안 됩니다. 가해자가 휴대폰, 클라우드, 위치 공유를 확인할 수 있는 상황이라면, 기록보다 안전한 연락 경로를 먼저 확보하세요 — 신뢰할 수 있는 사람의 전화기, 공공장소 전화, 피해자 지원기관 방문.',
+        '1366에 전화하면 상담사가 현재 위험도를 평가하고, 상황에 따라 경찰 출동 요청, 긴급 쉼터 배정, 의료 연결, 법률 상담 연계까지 한 번의 통화로 시작할 수 있습니다. "아직 신고할 준비가 안 됐다"고 해도 괜찮습니다 — 상담만 먼저 받고, 신고 여부는 나중에 결정해도 됩니다. 1366은 연중무휴 24시간 운영됩니다.',
       ],
       checklist: [
-        '현재 위치와 통화 기록 노출 위험부터 확인하기',
-        '즉각 위험이면 112 또는 119를 먼저 사용하기',
-        '1366과 피해자 지원기관에서 보호·법률·쉼터 연계를 함께 묻기',
+        '증거 수집 전에, 가해자가 기기·위치를 감시하고 있는지 먼저 확인하기',
+        '급박한 위험이면 증거보다 112 신고와 안전한 장소 확보가 먼저',
+        '1366에서는 신고 없이 상담만 먼저 받는 것도 가능',
       ],
     },
     en: {
-      title: 'How to document violence safely and prepare for reporting',
+      title: 'Documenting violence and reporting — safety comes before evidence',
       description:
-        'A safety-first guide for domestic violence, dating violence, and stalking situations in Korea, including when to prioritize emergency help.',
+        'Why securing a safe way to communicate matters more than collecting evidence in domestic violence and stalking situations, and what actually happens when you call 1366.',
       paragraphs: [
-        'Domestic violence and stalking can make even simple help-seeking risky. Notes, screenshots, dates, and photos may later support reporting, but saving them should never increase immediate danger. Think first about whether your phone, cloud account, messages, or shared location are being monitored.',
-        'If the threat feels urgent, focus on physical safety and emergency contact before evidence organization. After the immediate risk is addressed, services like 1366 and victim-support organizations can help you think through protection, shelter options, counseling, and legal next steps without having to plan every step alone.',
+        'The urge to collect evidence — recordings, photos, saved messages — can put you in greater danger if the person who hurts you discovers what you are doing. Evidence matters, but it should never come at the cost of your immediate safety. If your phone, cloud storage, or location sharing are being monitored, secure a safe communication channel first: a trusted person\'s phone, a public phone, or an in-person visit to a victim support center.',
+        'When you call 1366, the counselor assesses your current level of danger and can initiate police dispatch, emergency shelter placement, medical connection, or legal consultation — all from a single call. It is fine to say "I am not ready to report yet." You can receive counseling first and decide about reporting later. 1366 operates 24 hours, 365 days.',
       ],
       checklist: [
-        'Check whether your device or location may be monitored',
-        'Use 112 or 119 first if danger feels immediate',
-        'Ask 1366 about protection, shelter, and legal support together',
+        'Before collecting evidence, check whether your devices or location are being monitored',
+        'If danger is immediate, prioritize 112 and physical safety over evidence',
+        'Counseling through 1366 is possible without filing a report',
       ],
     },
   },
@@ -289,31 +289,31 @@ const GUIDE_ENTRIES = [
     slug: 'teen-self-harm-support',
     category: 'youth',
     ko: {
-      title: '청소년이 자해를 말할 때 부모와 보호자가 바로 할 수 있는 일',
+      title: '아이가 자해를 하고 있다고 말했을 때 — 부모가 해야 할 일과 하지 말아야 할 일',
       description:
-        '놀라서 통제하기보다 안전과 연결을 우선하는 방식으로 1388과 청소년 상담기관을 활용하는 가이드입니다.',
+        '놀라고 무섭겠지만, 지금 가장 위험한 반응은 화를 내거나 통제하려는 것입니다. 대화를 끊지 않으면서 안전을 확보하는 방법을 정리했습니다.',
       paragraphs: [
-        '청소년이 자해 경험이나 충동을 털어놓았을 때 가장 먼저 필요한 것은 판단보다 안전 확인입니다. 혼내거나 휴대폰을 빼앗는 방식은 대화를 끊을 수 있으므로, 지금 다칠 위험이 있는지, 혼자 있는지, 위험한 물건이 가까운지부터 차분하게 확인하는 것이 중요합니다.',
-        '보호자는 모든 답을 알고 있어야 할 필요가 없습니다. 1388이나 청소년상담복지센터에 먼저 연락해 어떻게 대화를 이어갈지 도움을 받을 수 있습니다. 학교, 병원, 가족을 어떻게 연결할지 혼자 정리하려 하기보다, 지금 가장 안전한 다음 한 걸음을 만드는 데 집중하세요.',
+        '아이가 자해를 고백했을 때 부모의 첫 반응이 가장 중요합니다. "왜 그런 짓을 해", "그게 말이 되니", "그거 보여줘" — 이런 반응은 아이가 다시는 말하지 않게 만듭니다. 지금 필요한 것은 판단이 아니라, "말해줘서 고마워. 네가 얼마나 힘들었는지 같이 알아보자"입니다. 그리고 바로 다음에 확인해야 할 것은 지금 다칠 위험이 있는지, 최근에 자해를 했는지, 상처 치료가 필요한 수준인지입니다.',
+        '휴대폰을 뺏거나, 방문을 잠그거나, 24시간 감시하겠다는 반응은 안전을 높이는 것이 아니라 신뢰를 무너뜨립니다. 부모가 모든 답을 알고 있을 필요가 없습니다. 1388에 전화하면 "아이가 자해를 한다고 해서 부모로서 어떻게 해야 할지 모르겠다"고 말하면 됩니다. 상담사가 대화를 어떻게 이어갈지, 병원에 가야 하는지, 학교에 알려야 하는지를 함께 정리해 줍니다.',
       ],
       checklist: [
-        '현재 자해 위험과 주변 환경부터 확인하기',
-        '비난이나 압박보다 안전한 대화 유지하기',
-        '1388 또는 청소년상담복지센터에 보호자도 먼저 연락하기',
+        '화를 내거나 통제하려 하지 않기 — 대화가 끊기면 위험이 더 커짐',
+        '지금 다칠 위험이 있는지, 상처 치료가 필요한지 먼저 확인하기',
+        '1388에 부모로서 전화해서 다음 단계를 함께 정리하기',
       ],
     },
     en: {
-      title: 'What parents or caregivers can do when a teen talks about self-harm',
+      title: 'When your child says they are self-harming — what to do and what to avoid',
       description:
-        'A practical guide for responding with safety and connection first, including when to use 1388 and youth counseling resources in Korea.',
+        'It is frightening, but the most dangerous response right now is anger or control. How to keep the conversation open while securing safety.',
       paragraphs: [
-        'When a teenager talks about self-harm, the first priority is safety rather than control or punishment. Taking away a phone or reacting with anger can shut down the conversation. Start by checking whether the person is alone, whether there is immediate danger, and whether anything nearby could be used for self-harm.',
-        'Parents and caregivers do not need to solve everything alone. Korean youth resources such as 1388 and local youth counseling centers can help you decide how to continue the conversation, when to involve school or medical care, and how to support the teen without escalating fear or shame.',
+        'Your first reaction when a child discloses self-harm is the most important moment. "Why would you do that," "That makes no sense," "Show me" — these responses guarantee they will never tell you again. What is needed is not judgment but: "Thank you for telling me. I want to understand how hard things have been." Then check immediately: is there a risk of harm right now, have they self-harmed recently, and does any wound need medical attention.',
+        'Taking away their phone, locking their door, or announcing 24-hour surveillance does not increase safety — it destroys trust. You do not need to have all the answers. Call 1388 and say: "My child told me they are self-harming and I do not know what to do as a parent." The counselor will help you figure out how to continue the conversation, whether a hospital visit is needed, and whether the school should be informed.',
       ],
       checklist: [
-        'Check immediate risk and the surrounding environment first',
-        'Keep the conversation open instead of reacting with blame',
-        'Use 1388 or youth counseling centers for caregiver guidance too',
+        'Do not react with anger or control — losing the conversation increases risk',
+        'Check for immediate danger and whether wounds need medical attention',
+        'Call 1388 as a parent to work through the next steps together',
       ],
     },
   },
@@ -321,31 +321,31 @@ const GUIDE_ENTRIES = [
     slug: 'burnout-free-counseling',
     category: 'depression',
     ko: {
-      title: '직장 번아웃과 무기력감이 심할 때 무료 상담을 연결하는 순서',
+      title: '직장 번아웃 — "회사에 알려지지 않을까?"가 상담을 미루는 가장 큰 이유입니다',
       description:
-        '회사에 알리지 않고도 확인할 수 있는 무료·저비용 심리상담 경로와 EAP 활용 포인트를 정리했습니다.',
+        '회사에 알리지 않고 이용할 수 있는 무료·저비용 심리상담 경로 세 가지와, 각각의 비밀보장 방식을 비교했습니다.',
       paragraphs: [
-        '번아웃은 단순한 피로가 아니라 수면, 집중, 감정 조절, 업무 지속에 영향을 주는 상태로 이어질 수 있습니다. 비용이 부담돼 도움을 미루고 있다면 지역 정신건강복지센터, 바우처, 회사 EAP처럼 비교적 접근 장벽이 낮은 경로부터 확인하는 것이 좋습니다.',
-        '회사에 알려질까 걱정되는 경우에도 이용 경로마다 개인정보 처리 방식과 연결 범위가 다릅니다. “당장 퇴사해야 하나” 같은 큰 결론보다, 이번 주 안에 한 번 연결 가능한 상담 창구를 정하는 것이 더 현실적인 첫 단계가 될 수 있습니다.',
+        '번아웃으로 상담이 필요하다고 느끼면서도, "회사에 알려지면 어떡하지"라는 걱정 때문에 아무것도 하지 못하는 상태가 가장 흔한 막힘입니다. 결론부터 말하면, 정신건강복지센터와 심리상담 바우처는 직장에 통보되지 않습니다. 근로자지원프로그램(EAP)도 상담 내용은 회사에 공유되지 않지만, 회사를 통해 제공되는 서비스이므로 이용 사실 자체의 비밀보장 범위는 회사 정책에 따라 다를 수 있습니다.',
+        '"퇴사해야 하나" 같은 큰 결론을 먼저 내리려고 하면 오히려 아무것도 못 합니다. 지금 해야 할 일은 하나입니다: 이번 주 안에 한 곳에 전화해서 초기 상담 일정을 잡는 것. 정신건강복지센터는 예약 없이 전화 상담이 가능한 곳도 있고, 대면 상담은 보통 1~2주 내 시작됩니다.',
       ],
       checklist: [
-        '수면·집중·감정 변화가 업무에 미치는 영향 적어 보기',
-        '정신건강복지센터·바우처·EAP를 비교하기',
-        '이번 주 안에 연결 가능한 한 곳을 먼저 정하기',
+        '정신건강복지센터·바우처는 직장에 통보되지 않음을 확인하기',
+        'EAP는 상담 내용 비공유, 이용 사실 비밀보장은 회사 정책 확인 필요',
+        '큰 결정 전에, 이번 주 한 곳에 전화하는 것부터 시작하기',
       ],
     },
     en: {
-      title: 'A simple order for finding free counseling during work burnout',
+      title: 'Work burnout — "Will my employer find out?" is the biggest reason people delay',
       description:
-        'A practical guide to low-cost mental health routes in Korea when burnout, numbness, or work stress start affecting daily functioning.',
+        'Three free or low-cost counseling routes available without employer notification in Korea, with a comparison of how each handles confidentiality.',
       paragraphs: [
-        'Burnout is more than feeling tired. It can change sleep, concentration, emotional regulation, and the ability to keep working or studying. If cost is the main reason you have delayed support, start with Korean routes that have lower barriers, such as mental health welfare centers, vouchers, or employee assistance programs.',
-        'If you worry about privacy, compare how each route handles access and confidentiality before assuming counseling will reach your workplace. Instead of trying to decide everything at once, begin by choosing one option you could realistically contact this week.',
+        'The most common reason people with burnout delay seeking help is the fear that their employer will find out. To be direct: community mental health centers and the counseling voucher program do not notify your workplace. The Employee Assistance Program (EAP) does not share counseling content with your employer, but because it is an employer-provided benefit, whether your usage itself remains confidential depends on your company\'s specific policy.',
+        'Trying to decide whether to quit your job before getting support puts the cart before the horse. The only action item right now is this: call one service this week and schedule an initial session. Some mental health centers accept walk-in phone consultations, and in-person sessions typically begin within one to two weeks.',
       ],
       checklist: [
-        'Notice how burnout is affecting sleep, focus, and daily function',
-        'Compare community centers, vouchers, and workplace assistance',
-        'Choose one realistic contact point for this week',
+        'Mental health centers and voucher counseling do not notify employers',
+        'EAP keeps content private, but usage confidentiality varies by company policy',
+        'Before any big decisions, start by calling one place this week',
       ],
     },
   },
@@ -353,31 +353,31 @@ const GUIDE_ENTRIES = [
     slug: 'family-gambling-support',
     category: 'addiction',
     ko: {
-      title: '가족이 도박 문제로 무너질 때 당사자보다 먼저 상담받아도 괜찮습니다',
+      title: '가족이 도박을 멈추지 못할 때 — 본인보다 가족이 먼저 전화해야 하는 이유',
       description:
-        '빚, 거짓말, 재발로 지친 가족이 중독 상담기관에 먼저 연락해도 되는 이유와 준비할 내용을 정리했습니다.',
+        '빚, 거짓말, 재발의 반복 속에서 "본인이 안 하겠다는데 내가 뭘 할 수 있지?"라는 무력감에 대한 현실적인 답.',
       paragraphs: [
-        '도박 문제는 당사자뿐 아니라 가족의 생활과 안전에도 큰 영향을 줍니다. 빚, 거짓말, 분노, 반복되는 약속 위반 때문에 지쳐 있다면 “본인이 싫다는데 내가 먼저 상담받아도 되나”라는 고민이 들 수 있지만, 가족이 먼저 도움을 요청하는 것은 매우 일반적이고 도움이 됩니다.',
-        '처음 연락할 때는 모든 사실을 정리해 두지 않아도 괜찮습니다. 최근 반복되는 행동, 금전 문제, 갈등 정도, 현재 안전 문제만 간단히 메모해도 충분합니다. 중독 상담기관은 당사자 개입 여부와 별개로 가족이 지금 무엇을 하지 말아야 하는지, 어떤 경계를 세워야 하는지 함께 안내할 수 있습니다.',
+        '도박 문제에서 가장 흔한 패턴은 이것입니다: 당사자가 "이번이 마지막"이라고 하고 → 가족이 빚을 대신 갚고 → 재발하고 → 가족이 더 큰 빚을 떠안는 순환. 이 순환에서 가족이 할 수 있는 가장 중요한 행동은 "빚을 대신 갚지 않는 것"이고, 그 경계를 세우기 위해 전문 상담이 필요합니다. 당사자가 치료를 거부해도 가족 상담은 시작할 수 있고, 시작해야 합니다.',
+        '한국도박문제관리센터(1336)에 전화하면 가족 상담을 직접 신청할 수 있습니다. 처음 전화할 때 "가족이 도박을 하고 있고, 빚이 반복되고 있는데, 가족으로서 어떻게 해야 하는지 상담받고 싶다"고 말하면 됩니다. 상담사는 지금 가족이 하고 있는 행동 중 무엇이 문제를 유지시키고 있는지, 어떤 경계가 필요한지, 폭력이나 안전 문제는 없는지를 함께 정리합니다.',
       ],
       checklist: [
-        '최근 반복되는 도박 행동과 금전 문제를 간단히 메모하기',
-        '가족 안전이나 폭력 위험이 있는지 먼저 확인하기',
-        '당사자 동의가 없어도 가족 상담이 가능한 기관부터 연결하기',
+        '"빚 대신 갚기"가 문제를 유지시키는 패턴인지 점검하기',
+        '한국도박문제관리센터(1336)에 가족 상담 직접 신청하기',
+        '폭력이나 안전 위협이 있다면 중독 상담과 별개로 112나 1366 먼저 연결하기',
       ],
     },
     en: {
-      title: 'It is okay for family members to seek gambling support first',
+      title: 'When a family member cannot stop gambling — why the family should call first',
       description:
-        'A practical guide for families affected by debt, secrecy, relapse, and stress around gambling problems in Korea.',
+        'A realistic answer to "what can I do if they refuse to stop?" amid cycles of debt, lies, and relapse.',
       paragraphs: [
-        'Gambling problems affect more than the person who is betting. Debt, secrecy, repeated promises, anger, and relapse can destabilize an entire household. Families often hesitate because they think support only makes sense if the person directly affected agrees first, but family counseling is often a valid and helpful starting point.',
-        'You do not need a perfect timeline before contacting an addiction service. A short note about recent gambling behavior, money issues, conflict, and safety concerns is enough to begin. Counselors can help family members think about boundaries, urgent risks, and what kinds of responses may reduce harm even before the person is ready for treatment.',
+        'The most common pattern in gambling addiction looks like this: the person says "this is the last time" → the family pays off the debt → relapse occurs → the family absorbs even larger debt. The most important thing a family can do in this cycle is stop paying off the debt, and setting that boundary requires professional support. Family counseling can and should begin even if the person refuses treatment.',
+        'Call the Korea Center on Gambling Problems (1336) to request family counseling directly. On the first call, say: "A family member has a gambling problem, debt keeps recurring, and I want counseling on what I should do as a family member." The counselor will help identify which of the family\'s current behaviors are sustaining the problem, what boundaries are needed, and whether there are any violence or safety concerns.',
       ],
       checklist: [
-        'Write down the recent pattern of gambling, debt, and conflict',
-        'Check for safety risks such as threats, violence, or severe financial crisis',
-        'Start with services that support family members even without full buy-in',
+        'Examine whether paying off debts is sustaining the cycle',
+        'Call 1336 to request family counseling directly',
+        'If there is violence or safety threat, connect to 112 or 1366 separately from addiction services',
       ],
     },
   },
@@ -385,31 +385,31 @@ const GUIDE_ENTRIES = [
     slug: 'foreigner-mental-health-korea',
     category: 'migrant',
     ko: {
-      title: '한국에서 외국인·이주민이 언어 장벽 없이 상담을 시작하는 법',
+      title: '한국에서 외국인이 심리상담을 받으려면 — 언어별·상황별 첫 연락처',
       description:
-        '영어 또는 다국어 상담이 가능한 기관을 먼저 고르고, 긴급 상황에서 어떤 번호를 우선 써야 하는지 정리했습니다.',
+        '영어, 중국어, 베트남어 등 가능한 언어별로 어디에 먼저 전화하는지, 비자 걱정 없이 이용할 수 있는 서비스는 무엇인지 정리했습니다.',
       paragraphs: [
-        '한국에서 생활하는 외국인과 이주민은 상담이 필요해도 어디로 전화해야 하는지, 한국어가 부족해도 괜찮은지부터 막히는 경우가 많습니다. 이런 경우에는 문제를 전부 설명하려 하기보다, 먼저 가능한 언어와 지원 범위를 확인할 수 있는 기관부터 연결하는 편이 훨씬 수월합니다.',
-        '긴급 위험이 있으면 통역 가능 여부를 완벽히 확인하기 전에 구조 요청을 우선해야 합니다. 위기가 지난 뒤에는 외국인 전용 핫라인이나 다국어 상담기관을 통해 체류, 노동, 가족 문제와 정서 지원을 함께 정리할 수 있습니다. 필요한 언어로 천천히 설명해도 된다는 점을 기억하세요.',
+        '한국에서 정신적으로 힘든 상황에 처한 외국인이 가장 먼저 부딪히는 벽은 "한국어로 내 상태를 설명할 수 없다"는 것입니다. 그래서 첫 단계는 상담 기관을 고르는 것이 아니라, 내가 사용할 수 있는 언어로 연결되는 곳을 찾는 것입니다. 다누리콜센터(1577-1366)는 13개 언어로 상담 가능하고, 외국인력상담센터(1644-0644)는 이주노동자 전문입니다. 긴급 상황이면 119에 전화하세요 — 통역 연결이 가능하고, 비자 상태를 묻지 않습니다.',
+        '신고하면 추방당하지 않을까 하는 두려움 때문에 위기 상황에서도 전화를 못 하는 경우가 많습니다. 119, 112 긴급 구조는 체류 자격과 무관하게 이용할 수 있습니다. 가정폭력 피해 이주여성은 체류 자격 연장이나 독립 비자 전환이 가능한 경우도 있으므로, 법률 상담을 함께 받는 것이 중요합니다.',
       ],
       checklist: [
-        '가능한 언어 지원 여부부터 먼저 확인하기',
-        '즉각 위험이면 통역보다 구조 요청을 우선하기',
-        '외국인·이주민 전용 기관에서 정서와 생활 문제를 함께 묻기',
+        '가능한 언어부터 확인: 다누리(1577-1366, 13개 언어), 외국인력상담(1644-0644)',
+        '119·112는 비자 상태와 무관, 통역 연결 가능',
+        '가정폭력 피해 이주여성은 체류 자격 관련 법률 상담 함께 받기',
       ],
     },
     en: {
-      title: 'How foreigners and migrants in Korea can start counseling despite language barriers',
+      title: 'Mental health support for foreigners in Korea — where to call by language and situation',
       description:
-        'A practical guide to multilingual helplines, urgent safety choices, and the easiest first contact points for foreigners in Korea.',
+        'Which services are available in English, Chinese, Vietnamese and other languages, and which ones can be used without visa concerns.',
       paragraphs: [
-        'Many foreigners and migrants in Korea get stuck before support even starts because they are unsure which numbers can handle English or other languages. In those situations, begin by checking language support and service scope first instead of trying to explain the whole problem immediately in Korean.',
-        'If there is immediate danger, emergency response comes before perfect interpretation. Once the urgent situation is safer, migrant-focused or multilingual services can help with emotional support, family stress, work issues, and practical guidance. Taking the first step in a language you can manage is often the fastest path forward.',
+        'The first barrier a foreigner in Korea faces during a mental health crisis is not the lack of services — it is "I cannot explain my situation in Korean." So the first step is not choosing a counseling center but finding one that connects in your language. The Danuri Call Center (1577-1366) offers counseling in 13 languages. The Foreign Workers Counseling Center (1644-0644) specializes in migrant labor issues. In an emergency, call 119 — interpreter services are available, and they do not ask about your visa status.',
+        'Fear of deportation prevents many migrants from calling even in emergencies. Emergency services 119 and 112 are available to everyone regardless of residency status. Marriage migrants experiencing domestic violence may be eligible for visa extensions or independent visa conversion, which makes concurrent legal consultation important.',
       ],
       checklist: [
-        'Check which services can support your preferred language',
-        'Use emergency response first when the danger is immediate',
-        'Ask migrant-focused services about both emotional and practical concerns',
+        'Find your language first: Danuri (1577-1366, 13 languages), Foreign Workers Center (1644-0644)',
+        '119 and 112 do not check visa status and offer interpreter support',
+        'Marriage migrants experiencing violence should seek legal advice about visa options',
       ],
     },
   },
@@ -417,31 +417,31 @@ const GUIDE_ENTRIES = [
     slug: 'older-adult-loneliness-support',
     category: 'elder',
     ko: {
-      title: '고립된 어르신을 도울 때 신고와 돌봄 지원을 함께 보는 방법',
+      title: '혼자 사는 어르신이 걱정될 때 — "외로움"과 "위험"을 구분하는 기준',
       description:
-        '노인학대 신고가 필요한 상황과 정서·생활 지원이 필요한 상황을 구분하면서도 함께 살피는 방법을 안내합니다.',
+        '며칠째 연락이 안 되거나, 식사를 거르거나, 집 안이 방치된 상태라면 — 단순한 외로움이 아닐 수 있습니다. 누가, 어디에, 어떻게 연락하는지를 정리했습니다.',
       paragraphs: [
-        '혼자 지내는 어르신이 식사, 약 복용, 안전 확인, 정서적 교류에서 계속 어려움을 겪고 있다면 단순한 외로움 문제로만 보지 않는 편이 좋습니다. 고립과 우울은 학대, 방임, 건강 악화와도 연결될 수 있으므로, 신고가 필요한 상황인지 생활 지원이 더 시급한 상황인지 함께 살펴야 합니다.',
-        '가족이나 이웃이 먼저 상담을 요청해도 괜찮습니다. 반복되는 위험 신호를 간단히 정리해 두고, 노인보호전문기관이나 복지 상담기관에 현재 상황을 설명해 보세요. 당장 신고가 필요한지, 정기 방문이나 돌봄 연결이 우선인지, 감정 지원이 필요한지를 나눠서 안내받을 수 있습니다.',
+        '"괜찮다"고 하는 어르신이 실제로 괜찮지 않은 경우는 매우 많습니다. 도움을 거부하는 이유는 다양합니다: 자식에게 짐이 되기 싫다, 낯선 사람이 집에 오는 것이 싫다, 이미 체념한 상태다. 하지만 며칠째 식사를 거르거나, 약을 먹지 않거나, 집 안에 쓰레기가 쌓이거나, 계절에 맞지 않는 옷을 입고 있다면 — 그것은 "성격"이 아니라 돌봄이 필요한 상태입니다. 학대나 방임이 의심되면 노인보호전문기관(1577-1389)에 신고할 수 있고, 익명으로도 가능합니다.',
+        '학대까지는 아닌 것 같지만 혼자 지내는 것이 걱정된다면, 보건복지콜센터(129)에 전화해서 해당 지역의 독거노인 돌봄 서비스 연결을 요청할 수 있습니다. 정기 방문, 안부 확인 전화, 식사 배달, 응급안전서비스 등이 있습니다. 가족이 아니어도 이웃, 관리인, 통장(이장)이 요청할 수 있습니다.',
       ],
       checklist: [
-        '식사·약·위생·안전 확인 같은 생활 신호를 먼저 살피기',
-        '학대나 방임 의심 시 신고 가능성을 함께 점검하기',
-        '가족·이웃도 먼저 상담을 요청할 수 있다는 점 기억하기',
+        '식사·약·위생·외출 여부 등 구체적 생활 신호를 먼저 확인하기',
+        '학대·방임 의심 시 노인보호전문기관(1577-1389)에 익명 신고 가능',
+        '돌봄 서비스 연결은 129에 전화 — 가족이 아닌 이웃도 요청 가능',
       ],
     },
     en: {
-      title: 'How to look at reporting and care support together for isolated older adults',
+      title: 'When you are worried about an older person living alone — telling "lonely" from "at risk"',
       description:
-        'A guide to recognizing when elder abuse reporting may be needed and when emotional or daily care support should be arranged in Korea.',
+        'If they have been unreachable for days, skipping meals, or their home is deteriorating — it may not be simple loneliness. Who should contact whom, and how.',
       paragraphs: [
-        'When an older adult is increasingly isolated, missing meals, struggling with medication, or losing contact with others, it helps not to frame the issue as “loneliness only.” Isolation can overlap with neglect, depression, worsening health, and even abuse, so the next step may involve both safety assessment and care planning.',
-        'Family members, neighbors, and care workers can seek advice first. A short record of repeated warning signs is enough to begin. Korean elder protection and welfare services can help clarify whether the situation calls for formal reporting, ongoing support visits, emotional care, or a combination of these steps.',
+        'Older adults who say "I am fine" are very often not fine. The reasons they refuse help vary: not wanting to burden their children, not wanting strangers in their home, having given up. But if someone is skipping meals for days, not taking medication, letting trash accumulate, or wearing clothes wrong for the season — that is not "personality." It is a state requiring care. If abuse or neglect is suspected, it can be reported to the Elder Protection Agency (1577-1389), and anonymous reporting is available.',
+        'If it does not seem like abuse but the isolation itself is concerning, call the Health and Welfare Call Center (129) to request connection to local elderly care services for that area. Options include regular visits, welfare check calls, meal delivery, and emergency safety devices. You do not need to be a family member — neighbors, building managers, and community leaders can request these services.',
       ],
       checklist: [
-        'Notice daily living warning signs such as food, medication, and hygiene',
-        'Check whether abuse or neglect may be part of the situation',
-        'Remember that family or neighbors can ask for guidance first',
+        'Check specific daily-living indicators: meals, medication, hygiene, going outside',
+        'If abuse or neglect is suspected, report to Elder Protection Agency (1577-1389) — anonymous reporting available',
+        'For care service connection, call 129 — neighbors and non-family can also request',
       ],
     },
   },
