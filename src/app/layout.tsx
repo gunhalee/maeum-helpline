@@ -7,6 +7,12 @@ import ChatbotBanner from '@/components/chatbot/ChatbotBanner'
 import FooterNote from '@/components/FooterNote'
 import LangRedirect from '@/components/LangRedirect'
 import { SITE_NAME } from '@/lib/constants'
+import {
+  GOOGLE_SITE_VERIFICATION,
+  SITE_DESCRIPTION,
+  SITE_TITLE,
+  SITE_URL,
+} from '@/lib/seo'
 import './globals.css'
 
 const notoSans = Noto_Sans_KR({
@@ -21,18 +27,11 @@ const notoSerif = Noto_Serif_KR({
   variable: '--font-serif',
 })
 
-const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, '') ??
-  'https://helpline.or.kr'
-const googleSiteVerification = process.env.GOOGLE_SITE_VERIFICATION
-const siteMetaTitle = '긴급상담 헬프라인 — 자살·위기 상담 기관 안내'
-const siteMetaDescription =
-  '자살, 가정폭력, 청소년 위기 등 다양한 긴급 상황에 맞는 상담 기관을 빠르게 안내해드립니다. 109, 119, 112.'
-
 export const metadata: Metadata = {
-  metadataBase: new URL(siteUrl),
-  title: siteMetaTitle,
-  description: siteMetaDescription,
+  metadataBase: new URL(SITE_URL),
+  title: SITE_TITLE,
+  description: SITE_DESCRIPTION,
+  applicationName: SITE_NAME,
   keywords: [
     '정신건강',
     '자살예방',
@@ -52,28 +51,33 @@ export const metadata: Metadata = {
     '외국인',
     '치료',
   ],
-  alternates: {
-    canonical: '/',
-  },
   openGraph: {
     type: 'website',
     locale: 'ko_KR',
-    title: siteMetaTitle,
-    description: siteMetaDescription,
-    url: 'https://helpline.or.kr',
+    alternateLocale: ['en_US'],
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+    url: SITE_URL,
     siteName: SITE_NAME,
   },
   twitter: {
     card: 'summary',
-    title: siteMetaTitle,
-    description: siteMetaDescription,
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
   },
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+      'max-video-preview': -1,
+    },
   },
   verification: {
-    google: googleSiteVerification,
+    google: GOOGLE_SITE_VERIFICATION,
     other: {
       'naver-site-verification': 'a1ca50b0cb5985926c31ef7d07966e591951215d',
     },
@@ -89,14 +93,16 @@ export default function RootLayout({
     '@context': 'https://schema.org',
     '@type': 'Organization',
     name: SITE_NAME,
-    url: siteUrl,
+    url: SITE_URL,
+    description: SITE_DESCRIPTION,
   }
   const websiteJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     name: SITE_NAME,
-    url: siteUrl,
+    url: SITE_URL,
     inLanguage: 'ko-KR',
+    description: SITE_DESCRIPTION,
   }
 
   return (

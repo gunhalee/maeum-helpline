@@ -1,24 +1,18 @@
 import type { MetadataRoute } from 'next'
 import { CATEGORY_ORDER } from '@/lib/categories'
+import { getLanguageAlternates, getLocalizedUrl } from '@/lib/seo'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl =
-    process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, '') ??
-    'https://helpline.or.kr'
   const now = new Date()
+  const pages = ['/', ...CATEGORY_ORDER.map((category) => `/${category}`)]
 
-  return [
-    {
-      url: `${baseUrl}/`,
-      lastModified: now,
-      changeFrequency: 'hourly',
-      priority: 1,
+  return pages.map((path) => ({
+    url: getLocalizedUrl(path, 'ko'),
+    lastModified: now,
+    changeFrequency: path === '/' ? 'daily' : 'weekly',
+    priority: path === '/' ? 1 : 0.8,
+    alternates: {
+      languages: getLanguageAlternates(path),
     },
-    ...CATEGORY_ORDER.map((category) => ({
-      url: `${baseUrl}/${category}`,
-      lastModified: now,
-      changeFrequency: 'hourly' as const,
-      priority: 0.8,
-    })),
-  ]
+  }))
 }
