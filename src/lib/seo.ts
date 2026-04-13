@@ -98,7 +98,7 @@ const CATEGORY_COPY = {
   crisis: {
     ko: {
       title: '자살예방 상담전화 109 · 위기 긴급상담 기관 안내 | 헬프라인',
-      heading: '자살예방 상담전화 · 위기 긴급상담',
+      heading: '위기·긴급 상담 기관',
       description:
         '죽고 싶거나 위험한 상황일 때 전화할 수 있는 곳을 안내합니다. 자살예방 상담전화 109, 생명의전화 등 24시간 위기상담 기관의 전화번호와 운영시간을 확인하세요.',
       keywords: [
@@ -127,7 +127,7 @@ const CATEGORY_COPY = {
   depression: {
     ko: {
       title: '우울증 상담 · 무료 심리상담 전화번호 안내 | 헬프라인',
-      heading: '우울증 상담 · 무료 심리상담',
+      heading: '우울 상담 기관',
       description:
         '우울할 때 전화할 수 있는 무료 심리상담 기관을 안내합니다. 정신건강복지센터, 심리상담 바우처, 직장인 EAP 등 상담 전화번호와 이용 방법을 비교하세요.',
       keywords: [
@@ -155,7 +155,7 @@ const CATEGORY_COPY = {
   women: {
     ko: {
       title: '여성긴급전화 1366 · 가정폭력·성폭력 상담 안내 | 헬프라인',
-      heading: '여성긴급전화 1366 · 폭력 피해 상담',
+      heading: '여성 상담 기관',
       description:
         '가정폭력, 성폭력, 스토킹, 데이트폭력 피해 시 전화할 수 있는 기관을 안내합니다. 여성긴급전화 1366 등 여성 지원 상담기관의 전화번호와 운영시간을 확인하세요.',
       keywords: [
@@ -183,7 +183,7 @@ const CATEGORY_COPY = {
   youth: {
     ko: {
       title: '청소년 위기상담 1388 · 학교폭력·가출 상담 안내 | 헬프라인',
-      heading: '청소년 위기상담 1388',
+      heading: '청소년 상담 기관',
       description:
         '학교폭력, 가출, 학업 스트레스, 자해 등 청소년 위기상담 기관을 안내합니다. 1388 전화·카카오톡 상담과 청소년상담복지센터 이용 방법을 확인하세요.',
       keywords: [
@@ -211,7 +211,7 @@ const CATEGORY_COPY = {
   queer: {
     ko: {
       title: '성소수자(LGBTQ+) 상담 · 퀴어 친화 정신건강 지원 | 헬프라인',
-      heading: '성소수자 상담 · LGBTQ+ 지원',
+      heading: '성소수자 상담 기관',
       description:
         '성소수자 친화 상담기관, 퀴어 정신건강 지원, 커밍아웃 상담 등 한국 LGBTQ+ 지원 기관을 안내합니다. 전화번호와 이용 방법을 확인하세요.',
       keywords: [
@@ -239,7 +239,7 @@ const CATEGORY_COPY = {
   migrant: {
     ko: {
       title: '외국인·이주민 상담전화 · Foreigner Helpline Korea | 헬프라인',
-      heading: '외국인·이주민 상담전화',
+      heading: '이주민·외국인 상담 기관',
       description:
         '한국 거주 외국인, 이주노동자, 결혼이주여성을 위한 다국어 상담전화 안내입니다. 언어 지원과 상담 가능 기관을 빠르게 확인하세요.',
       keywords: [
@@ -267,7 +267,7 @@ const CATEGORY_COPY = {
   addiction: {
     ko: {
       title: '중독 상담전화 · 도박·알코올·게임·약물 중독 지원 | 헬프라인',
-      heading: '중독 상담전화 · 도박·알코올·게임 중독',
+      heading: '중독 상담 기관',
       description:
         '도박, 알코올, 게임, 약물 중독 상담 기관을 안내합니다. 중독관리통합지원센터 등 전화번호와 이용 방법을 비교해 보세요.',
       keywords: [
@@ -295,7 +295,7 @@ const CATEGORY_COPY = {
   elder: {
     ko: {
       title: '노인 상담전화 · 노인학대 신고·독거노인 지원 안내 | 헬프라인',
-      heading: '노인 상담전화 · 학대 신고와 돌봄 지원',
+      heading: '노인 상담 기관',
       description:
         '노인학대 신고, 독거노인 돌봄, 어르신 우울증 상담 등 노인 지원 기관 전화번호를 안내합니다. 보건복지콜센터와 노인보호전문기관 이용 방법을 확인하세요.',
       keywords: [
