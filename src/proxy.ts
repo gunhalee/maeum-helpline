@@ -5,7 +5,6 @@ import { isLang } from '@/lib/i18n'
 export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl
   const firstSegment = pathname.split('/')[1]
-
   if (isLang(firstSegment)) {
     return NextResponse.next()
   }

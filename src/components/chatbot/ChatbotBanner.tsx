@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useLayoutEffect, useRef, useState } from 'react'
-import { usePathname, useRouter, useSearchParams } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import {
   getLangFromPathname,
   getPathWithoutLang,
@@ -17,19 +17,11 @@ const EMERGENCY_ITEMS = [
 export default function ChatbotBanner() {
   const pathname = usePathname()
   const router = useRouter()
-  const searchParams = useSearchParams()
   const itemRefs = useRef<Array<HTMLAnchorElement | null>>([])
   const [buttonWidth, setButtonWidth] = useState<number | null>(null)
   const currentLang = getLangFromPathname(pathname)
   const nextLang = currentLang === 'en' ? 'ko' : 'en'
-  const nextParams = new URLSearchParams(searchParams.toString())
-
-  nextParams.delete('lang')
-
-  const localizedPath = withLang(getPathWithoutLang(pathname), nextLang)
-  const toggleHref = nextParams.size > 0
-    ? `${localizedPath}?${nextParams.toString()}`
-    : localizedPath
+  const toggleHref = withLang(getPathWithoutLang(pathname), nextLang)
 
   const updateWidth = () => {
     const widths = itemRefs.current.map((node) => node?.offsetWidth ?? 0)
