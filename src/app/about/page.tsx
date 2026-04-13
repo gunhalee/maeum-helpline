@@ -78,14 +78,14 @@ export default async function AboutPage({ searchParams }: Props) {
 
   return (
     <div lang={lang} className="flex flex-1 flex-col bg-white">
-      <section className="mx-auto w-full max-w-[760px] px-4 pt-8 pb-6 md:px-6 md:pt-10">
-        <div className="rounded-[2rem] border border-stone-200 bg-stone-50 px-5 py-6 shadow-sm md:px-8 md:py-8">
+      <section className="mx-auto w-[760px] max-w-full px-4 pb-12 pt-6 md:px-6">
+        <header className="rounded-[2rem] border border-stone-200 bg-stone-50 px-5 py-6 shadow-sm md:px-8 md:py-8">
           <p className="text-xs font-semibold uppercase tracking-[0.22em] text-green-700">
             {isEnglish
               ? 'Korean crisis support directory'
               : '한국 위기 지원 디렉터리'}
           </p>
-          <h1 className="mt-4 font-serif text-[clamp(2rem,1.6rem+1.8vw,3.1rem)] leading-tight text-stone-900">
+          <h1 className="mt-3 font-serif text-[clamp(2rem,1.6rem+1.8vw,3rem)] leading-tight text-stone-900">
             {isEnglish
               ? 'Find the right Korean crisis helpline quickly'
               : '상황에 맞는 긴급상담 기관을 빠르게 찾으세요'}
@@ -114,7 +114,7 @@ export default async function AboutPage({ searchParams }: Props) {
             ))}
           </div>
 
-          <div className="mt-8 rounded-2xl border border-green-200 bg-green-50/80 px-4 py-4">
+          <div className="mt-8 rounded-2xl border border-stone-200 bg-white px-4 py-4">
             <p className="text-sm font-semibold text-stone-900">
               {isEnglish
                 ? 'If there is immediate danger, call first'
@@ -124,7 +124,7 @@ export default async function AboutPage({ searchParams }: Props) {
               {emergencyNumbers.map((item) => (
                 <div
                   key={item.number}
-                  className="rounded-2xl border border-white/80 bg-white px-4 py-3"
+                  className="rounded-2xl border border-stone-200 bg-stone-50 px-4 py-3"
                 >
                   <p className="text-lg font-semibold text-stone-900">
                     {item.number}
@@ -136,7 +136,7 @@ export default async function AboutPage({ searchParams }: Props) {
               ))}
             </div>
           </div>
-        </div>
+        </header>
       </section>
 
       <section className="mx-auto w-full max-w-[760px] px-4 pb-14 md:px-6">
