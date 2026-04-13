@@ -29,10 +29,3 @@ export interface Service {
   ageGroups: string[]
   exclusionDescription?: string
 }
-
-export interface CategoryMeta {
-  label: string
-  icon: string
-  bgColor: string
-  textColor: string
-}

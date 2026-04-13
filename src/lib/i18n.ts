@@ -10,11 +10,6 @@ export function normalizeLang(value: string | null | undefined): Lang {
   return value?.toLowerCase() === 'en' ? 'en' : 'ko'
 }
 
-export function getLangFromPathname(pathname: string): Lang {
-  const segment = pathname.split('/')[1]
-  return isLang(segment) ? segment : 'ko'
-}
-
 export function getPathWithoutLang(pathname: string): string {
   if (!pathname) return '/'
 

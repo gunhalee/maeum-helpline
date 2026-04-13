@@ -1,26 +1,54 @@
 'use client'
 
 import { useState } from 'react'
-import { usePathname } from 'next/navigation'
 import SelectionScreen from './SelectionScreen'
 import type { CrisisAnswer } from './SelectionScreen'
 import ResultScreen from './ResultScreen'
 import type { MatchGroup, MatchSerializedOrg } from '@/lib/helpline-types'
-import { getLangFromPathname } from '@/lib/i18n'
+import type { Lang } from '@/lib/i18n'
 
 type Screen = 'selection' | 'result' | 'loading'
 
-const SOLO_BUTTONS = new Set([
-  '해당 없음',
-])
+const SOLO_BUTTONS = new Set(['해당 없음'])
 
-export default function ChatbotFlow() {
-  const pathname = usePathname()
-  const lang = getLangFromPathname(pathname)
+interface Props {
+  lang: Lang
+}
+
+export default function ChatbotFlow({ lang }: Props) {
   const [screen, setScreen] = useState<Screen>('selection')
   const [groups, setGroups] = useState<MatchGroup[]>([])
   const [orgMap, setOrgMap] = useState<Record<string, MatchSerializedOrg>>({})
   const [screenType, setScreenType] = useState<'2A' | '2B' | '2C'>('2A')
+
+  const runMatch = async (selections: string[], crisis: boolean) => {
+    try {
+      const res = await fetch('/api/match', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          selections,
+          crisis,
+          current_time: new Date().toISOString(),
+          lang,
+        }),
+      })
+      const data = await res.json()
+
+      if (!res.ok) {
+        setGroups([])
+        setOrgMap({})
+        return
+      }
+
+      setGroups(data.groups ?? [])
+      setOrgMap(data.orgData ?? {})
+    } catch (err) {
+      console.error('Match failed:', err)
+      setGroups([])
+      setOrgMap({})
+    }
+  }
 
   const handleSubmit = async (
     selections: string[],
@@ -29,31 +57,7 @@ export default function ChatbotFlow() {
     if (crisisAnswer === 'yes') {
       setScreenType('2B')
       setScreen('loading')
-
-      try {
-        const res = await fetch('/api/match', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            selections: [],
-            crisis: true,
-            current_time: new Date().toISOString(),
-            lang,
-          }),
-        })
-        const data = await res.json()
-        if (!res.ok) {
-          setGroups([])
-          setOrgMap({})
-        } else {
-          setGroups(data.groups ?? [])
-          setOrgMap(data.orgData ?? {})
-        }
-      } catch {
-        setGroups([])
-        setOrgMap({})
-      }
-
+      await runMatch([], true)
       setScreen('result')
       return
     }
@@ -66,44 +70,11 @@ export default function ChatbotFlow() {
       selections[0] === '해당 없음'
 
     const effectiveSelections = isSkipNoneSelection ? ['우울'] : selections
-
-    if (isSoloSelection && crisisAnswer === 'no') {
-      setScreenType('2C')
-    } else if (crisisAnswer === 'skip') {
-      setScreenType('2A')
-    } else {
-      setScreenType('2A')
-    }
-
-    setScreen('loading')
-
     const sendCrisis = isSkipNoneSelection ? false : crisisAnswer === 'skip'
 
-    try {
-      const res = await fetch('/api/match', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          selections: effectiveSelections,
-          crisis: sendCrisis,
-          current_time: new Date().toISOString(),
-          lang,
-        }),
-      })
-      const data = await res.json()
-      if (!res.ok) {
-        setGroups([])
-        setOrgMap({})
-      } else {
-        setGroups(data.groups ?? [])
-        setOrgMap(data.orgData ?? {})
-      }
-    } catch (err) {
-      console.error('Match failed:', err)
-      setGroups([])
-      setOrgMap({})
-    }
-
+    setScreenType(isSoloSelection && crisisAnswer === 'no' ? '2C' : '2A')
+    setScreen('loading')
+    await runMatch(effectiveSelections, sendCrisis)
     setScreen('result')
   }
 
@@ -114,7 +85,7 @@ export default function ChatbotFlow() {
   }
 
   return (
-    <div className="mx-auto w-full max-w-[460px] px-4 pt-10 pb-8 md:max-w-[620px] md:px-6 md:pt-14 lg:max-w-[700px] lg:pt-18">
+    <div className="mx-auto w-full max-w-[460px] px-4 pb-8 pt-10 md:max-w-[620px] md:px-6 md:pt-14 lg:max-w-[700px] lg:pt-18">
       {screen === 'selection' && (
         <SelectionScreen lang={lang} onSubmit={handleSubmit} />
       )}
@@ -123,20 +94,20 @@ export default function ChatbotFlow() {
         <div className="flex flex-col items-center gap-4 py-14">
           <div className="h-9 w-9 animate-spin rounded-full border-2 border-stone-300 border-t-green-700" />
           <p className="text-base leading-7 text-stone-500">
-            {lang === 'en' ? 'Finding the best match…' : '맞는 상담을 찾고 있어요…'}
+            {lang === 'en' ? 'Finding the best match...' : '맞는 상담처를 찾고 있어요.'}
           </p>
         </div>
       )}
 
       {screen === 'result' && (
-          <ResultScreen
-            groups={groups}
-            orgMap={orgMap}
-            screenType={screenType}
-            onBack={handleBack}
-            lang={lang}
-          />
-        )}
-      </div>
-    )
+        <ResultScreen
+          groups={groups}
+          orgMap={orgMap}
+          screenType={screenType}
+          onBack={handleBack}
+          lang={lang}
+        />
+      )}
+    </div>
+  )
 }

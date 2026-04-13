@@ -586,7 +586,7 @@ function validateAndDedup(
 }
 
 function errorResponse(
-  type: 'org_fetch_failed' | 'llm_failed' | 'bad_request',
+  type: 'org_fetch_failed' | 'bad_request',
   status: number
 ) {
   return Response.json({ error: type, groups: [] }, { status })

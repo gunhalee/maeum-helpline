@@ -1,8 +1,10 @@
+import Link from 'next/link'
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import ServiceGrid from '@/components/ServiceGrid'
 import { CATEGORY_META, CATEGORY_ORDER } from '@/lib/categories'
 import { SITE_NAME } from '@/lib/constants'
+import { getCategoryEditorial } from '@/lib/editorial'
 import {
   getLanguageAlternates,
   getAlternateOpenGraphLocale,
@@ -17,6 +19,7 @@ import {
   SUPPORTED_LANGS,
   translateCategoryLabel,
   type Lang,
+  withLang,
 } from '@/lib/i18n'
 import type { Category, Service } from '@/lib/types'
 
@@ -77,8 +80,9 @@ function buildOrganizationSchema(
   lang: Lang
 ) {
   const organizationId = `${categoryUrl}#org-${service.id || index + 1}`
-  const availableLanguage = getAvailableLanguages(service)
+  const availableLanguage = getAvailableLanguages(service) ?? ['Korean']
   const hoursAvailable = getHoursAvailable(service)
+  const areaServed = service.region || 'KR'
   const contactType =
     lang === 'en' ? `${categoryLabel} counseling` : `${categoryLabel} 상담`
 
@@ -89,7 +93,7 @@ function buildOrganizationSchema(
     description: service.description || undefined,
     url: service.url || undefined,
     telephone: service.phone || undefined,
-    areaServed: service.region || undefined,
+    areaServed,
     keywords:
       service.situationKeywords.length > 0
         ? service.situationKeywords.join(', ')
@@ -100,7 +104,7 @@ function buildOrganizationSchema(
         contactType,
         telephone: service.phone || undefined,
         url: service.url || undefined,
-        areaServed: service.region || undefined,
+        areaServed,
         availableLanguage,
         hoursAvailable,
       },
@@ -130,12 +134,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     }
   }
 
-  const { title, description } = getCategorySeoCopy(category, currentLang)
+  const { title, description, keywords } = getCategorySeoCopy(category, currentLang)
   const url = getLocalizedUrl(`/${category}`, currentLang)
 
   return {
     title,
     description,
+    keywords,
     alternates: {
       canonical: url,
       languages: getLanguageAlternates(`/${category}`),
@@ -150,7 +155,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description,
     },
     twitter: {
-      card: 'summary',
+      card: 'summary_large_image',
       title,
       description,
     },
@@ -169,6 +174,7 @@ export default async function LocalizedCategoryPage({ params }: Props) {
   const filtered = services.filter((service) => service.category.includes(category))
   const meta = CATEGORY_META[category]
   const { heading, description } = getCategorySeoCopy(category, currentLang)
+  const editorial = getCategoryEditorial(category, currentLang)
   const canonicalUrl = getLocalizedUrl(`/${category}`, currentLang)
   const categoryLabel = translateCategoryLabel(meta.label, currentLang)
   const organizationSchemas = filtered.map((service, index) =>
@@ -281,6 +287,34 @@ export default async function LocalizedCategoryPage({ params }: Props) {
             </span>
           </div>
         </header>
+        <section className="mt-6 rounded-[2rem] border border-stone-200 bg-white px-5 py-6 shadow-sm md:px-8">
+          <h2 className="text-lg font-semibold text-stone-900">{editorial.heading}</h2>
+          <div className="mt-4 space-y-4 text-sm leading-7 text-stone-700 md:text-[15px]">
+            {editorial.paragraphs.map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
+          </div>
+          <div className="mt-5 flex flex-wrap gap-2 text-sm text-stone-700">
+            {editorial.highlights.map((item) => (
+              <span
+                key={item}
+                className="rounded-full border border-stone-200 bg-stone-50 px-4 py-2"
+              >
+                {item}
+              </span>
+            ))}
+          </div>
+          <div className="mt-5">
+            <Link
+              href={withLang('/guide', currentLang)}
+              className="inline-flex items-center rounded-full border border-green-700 px-4 py-2 text-sm font-medium text-green-700 transition-colors hover:bg-green-50"
+            >
+              {currentLang === 'en'
+                ? 'Read help-seeking guides'
+                : '도움 요청 가이드 보기'}
+            </Link>
+          </div>
+        </section>
         <ServiceGrid
           services={filtered}
           groupByCategory={false}

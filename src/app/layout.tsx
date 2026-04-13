@@ -1,13 +1,10 @@
 import type { Metadata } from 'next'
-import { Suspense } from 'react'
 import { Noto_Sans_KR, Noto_Serif_KR } from 'next/font/google'
-import NavBar from '@/components/NavBar'
-import ChatbotBanner from '@/components/chatbot/ChatbotBanner'
-import FooterNote from '@/components/FooterNote'
 import { SITE_NAME } from '@/lib/constants'
 import {
   GOOGLE_SITE_VERIFICATION,
   SITE_DESCRIPTION,
+  SITE_KEYWORDS,
   SITE_TITLE,
   SITE_URL,
 } from '@/lib/seo'
@@ -30,25 +27,7 @@ export const metadata: Metadata = {
   title: SITE_TITLE,
   description: SITE_DESCRIPTION,
   applicationName: SITE_NAME,
-  keywords: [
-    '정신건강',
-    '자살예방',
-    '심리상담',
-    '위기상담',
-    '여성',
-    '청소년',
-    '아동',
-    '노인',
-    '치매',
-    '피해자',
-    '위기',
-    '긴급',
-    '상담',
-    '성소수자',
-    '이주민',
-    '외국인',
-    '치료',
-  ],
+  keywords: SITE_KEYWORDS,
   openGraph: {
     type: 'website',
     locale: 'ko_KR',
@@ -59,7 +38,7 @@ export const metadata: Metadata = {
     siteName: SITE_NAME,
   },
   twitter: {
-    card: 'summary',
+    card: 'summary_large_image',
     title: SITE_TITLE,
     description: SITE_DESCRIPTION,
   },
@@ -87,20 +66,35 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
-  const organizationJsonLd = {
+  const organizationId = `${SITE_URL}#organization`
+  const websiteId = `${SITE_URL}#website`
+  const siteGraphJsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'Organization',
-    name: SITE_NAME,
-    url: SITE_URL,
-    description: SITE_DESCRIPTION,
-  }
-  const websiteJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'WebSite',
-    name: SITE_NAME,
-    url: SITE_URL,
-    inLanguage: 'ko-KR',
-    description: SITE_DESCRIPTION,
+    '@graph': [
+      {
+        '@type': 'Organization',
+        '@id': organizationId,
+        name: SITE_NAME,
+        alternateName: ['Helpline Korea', '헬프라인'],
+        url: SITE_URL,
+        email: 'helplinekorea@gmail.com',
+        areaServed: 'KR',
+        knowsLanguage: ['ko', 'en'],
+        description: SITE_DESCRIPTION,
+      },
+      {
+        '@type': 'WebSite',
+        '@id': websiteId,
+        name: SITE_NAME,
+        alternateName: ['Helpline Korea', '헬프라인'],
+        url: SITE_URL,
+        inLanguage: ['ko', 'en'],
+        description: SITE_DESCRIPTION,
+        publisher: {
+          '@id': organizationId,
+        },
+      },
+    ],
   }
 
   return (
@@ -111,31 +105,10 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify(organizationJsonLd),
+            __html: JSON.stringify(siteGraphJsonLd),
           }}
         />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(websiteJsonLd),
-          }}
-        />
-        <div className="sticky top-0 z-50">
-          <Suspense fallback={<div className="bg-green-50 px-4 py-3" />}>
-            <ChatbotBanner />
-          </Suspense>
-        </div>
-        <Suspense fallback={<div className="sticky top-0 z-40 border-b border-stone-200 bg-white py-6" />}>
-          <NavBar />
-        </Suspense>
-        <main className="flex flex-1 flex-col">{children}</main>
-        <footer className="border-t border-stone-200 bg-white/70 py-6">
-          <div className="mx-auto max-w-5xl px-4 text-center text-sm leading-7 text-stone-500">
-            <Suspense fallback={<p className="mt-1">helplinekorea@gmail.com</p>}>
-              <FooterNote />
-            </Suspense>
-          </div>
-        </footer>
+        {children}
       </body>
     </html>
   )

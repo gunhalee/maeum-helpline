@@ -3,7 +3,7 @@ import { CATEGORY_ORDER } from '@/lib/categories'
 import { SUPPORTED_LANGS, type Lang } from '@/lib/i18n'
 import { getLanguageAlternates, getLocalizedUrl } from '@/lib/seo'
 
-const STATIC_PAGES = ['/', '/about', ...CATEGORY_ORDER.map((category) => `/${category}`)]
+const STATIC_PAGES = ['/', '/about', '/guide', ...CATEGORY_ORDER.map((category) => `/${category}`)]
 
 function getPriority(path: string): number {
   if (path === '/') {
@@ -12,6 +12,10 @@ function getPriority(path: string): number {
 
   if (path === '/about') {
     return 0.9
+  }
+
+  if (path === '/guide') {
+    return 0.85
   }
 
   return 0.8

@@ -1,6 +1,8 @@
+import Link from 'next/link'
 import type { Metadata } from 'next'
 import { SITE_NAME } from '@/lib/constants'
 import { isLang, type Lang } from '@/lib/i18n'
+import { withLang } from '@/lib/i18n'
 import {
   getAlternateOpenGraphLocale,
   getHomeSeoCopy,
@@ -16,12 +18,13 @@ interface Props {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { lang } = await params
   const currentLang: Lang = isLang(lang) ? lang : 'ko'
-  const { title, description } = getHomeSeoCopy(currentLang)
+  const { title, description, keywords } = getHomeSeoCopy(currentLang)
   const url = getLocalizedUrl('/about', currentLang)
 
   return {
     title,
     description,
+    keywords,
     alternates: {
       canonical: url,
       languages: getLanguageAlternates('/about'),
@@ -36,7 +39,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description,
     },
     twitter: {
-      card: 'summary',
+      card: 'summary_large_image',
       title,
       description,
     },
@@ -145,6 +148,24 @@ export default async function LocalizedAboutPage({ params }: Props) {
                 : '생명이나 안전에 즉각적인 위험이 있다면 일반 상담 목록보다 먼저 109, 112, 119에 연락해야 합니다.'}
             </p>
           </article>
+        </div>
+        <div className="mt-6 rounded-[2rem] border border-stone-200 bg-white px-5 py-5 shadow-sm md:px-6">
+          <h2 className="text-lg font-semibold text-stone-900">
+            {isEnglish ? 'Need practical next-step guides?' : '조금 더 구체적인 도움 요청 가이드가 필요하신가요?'}
+          </h2>
+          <p className="mt-3 text-sm leading-7 text-stone-600">
+            {isEnglish
+              ? 'Open the guide section for practical help on suicide warning signs, depression, violence safety planning, youth support, addiction, migrant support, and older-adult care.'
+              : '자살 위험 신호, 우울 상담 시작, 폭력 피해 대응, 청소년 지원, 중독, 이주민 지원, 노년기 돌봄까지 상황별로 먼저 무엇을 하면 좋은지 가이드로 정리해 두었습니다.'}
+          </p>
+          <div className="mt-5">
+            <Link
+              href={withLang('/guide', currentLang)}
+              className="inline-flex items-center rounded-full border border-green-700 px-4 py-2 text-sm font-medium text-green-700 transition-colors hover:bg-green-50"
+            >
+              {isEnglish ? 'Open guides' : '가이드 열기'}
+            </Link>
+          </div>
         </div>
       </section>
     </div>

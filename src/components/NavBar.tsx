@@ -4,15 +4,18 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { CATEGORY_META, CATEGORY_ORDER } from '@/lib/categories'
 import {
-  getLangFromPathname,
   getPathWithoutLang,
   translateCategoryLabel,
+  type Lang,
   withLang,
 } from '@/lib/i18n'
 
-export default function NavBar() {
+interface Props {
+  lang: Lang
+}
+
+export default function NavBar({ lang }: Props) {
   const pathname = usePathname()
-  const lang = getLangFromPathname(pathname)
   const currentPath = getPathWithoutLang(pathname)
   const tabBaseClass =
     'flex items-center gap-1.5 whitespace-nowrap rounded-full px-3 py-1.5 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-600'

@@ -1,12 +1,10 @@
-'use client'
+import type { Lang } from '@/lib/i18n'
 
-import { usePathname } from 'next/navigation'
-import { getLangFromPathname } from '@/lib/i18n'
+interface Props {
+  lang: Lang
+}
 
-export default function FooterNote() {
-  const pathname = usePathname()
-  const lang = getLangFromPathname(pathname)
-
+export default function FooterNote({ lang }: Props) {
   return (
     <>
       <p>
