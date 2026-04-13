@@ -1,8 +1,6 @@
-import Link from 'next/link'
 import type { Metadata } from 'next'
-import { CATEGORY_META, CATEGORY_ORDER } from '@/lib/categories'
 import { SITE_NAME } from '@/lib/constants'
-import { normalizeLang, translateCategoryLabel, type Lang } from '@/lib/i18n'
+import { normalizeLang } from '@/lib/i18n'
 import {
   getAlternateOpenGraphLocale,
   getHomeSeoCopy,
@@ -13,14 +11,6 @@ import {
 
 interface Props {
   searchParams?: Promise<{ lang?: string }>
-}
-
-function getCategoryHref(category: string, lang: Lang): string {
-  return lang === 'en' ? `/${category}?lang=en` : `/${category}`
-}
-
-function getChatHref(lang: Lang): string {
-  return lang === 'en' ? '/?lang=en' : '/'
 }
 
 export async function generateMetadata({
@@ -79,7 +69,7 @@ export default async function AboutPage({ searchParams }: Props) {
   return (
     <div lang={lang} className="flex flex-1 flex-col bg-white">
       <section className="mx-auto w-[760px] max-w-full px-4 pb-12 pt-6 md:px-6">
-        <header className="rounded-[2rem] border border-stone-200 bg-stone-50 px-5 py-6 shadow-sm md:px-8 md:py-8">
+        <header className="rounded-[2rem] border border-stone-200 bg-white px-5 py-6 shadow-sm md:px-8 md:py-8">
           <p className="text-xs font-semibold uppercase tracking-[0.22em] text-green-700">
             {isEnglish
               ? 'Korean crisis support directory'
@@ -95,24 +85,6 @@ export default async function AboutPage({ searchParams }: Props) {
               ? 'Compare Korean helplines by topic, urgency, and hours. You can start with the chat screen or jump directly to crisis, youth, women, addiction, migrant, and older-adult support pages.'
               : '주제별, 긴급도별, 운영시간별로 한국 상담 기관을 비교해 보세요. 챗 화면에서 바로 시작하거나 위기, 청소년, 여성, 중독, 이주민, 노인 지원 페이지로 바로 이동할 수 있습니다.'}
           </p>
-
-          <div className="mt-6 flex flex-wrap gap-2">
-            <Link
-              href={getChatHref(lang)}
-              className="rounded-full bg-green-700 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-green-800"
-            >
-              {isEnglish ? 'Start Chat' : '챗으로 시작하기'}
-            </Link>
-            {CATEGORY_ORDER.map((category) => (
-              <Link
-                key={category}
-                href={getCategoryHref(category, lang)}
-                className="rounded-full border border-stone-200 bg-white px-4 py-2 text-sm font-medium text-stone-700 transition-colors hover:border-green-300 hover:bg-green-50 hover:text-green-800"
-              >
-                {translateCategoryLabel(CATEGORY_META[category].label, lang)}
-              </Link>
-            ))}
-          </div>
 
           <div className="mt-8 rounded-2xl border border-stone-200 bg-white px-4 py-4">
             <p className="text-sm font-semibold text-stone-900">
