@@ -45,7 +45,7 @@ export default function NavBar() {
                     className={`${tabBaseClass} ${
                       isAboutActive
                         ? 'bg-green-700 text-white'
-                        : 'bg-stone-100 text-stone-500 hover:bg-stone-200 hover:text-stone-700'
+                        : 'text-stone-500 hover:bg-stone-100 hover:text-stone-800'
                     }`}
                     aria-current={isAboutActive ? 'page' : undefined}
                   >

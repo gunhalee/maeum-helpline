@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import ServiceGrid from '@/components/ServiceGrid'
 import { CATEGORY_META, CATEGORY_ORDER } from '@/lib/categories'
@@ -132,8 +131,6 @@ export default async function CategoryPage({ params, searchParams }: Props) {
       })),
     },
   }
-  const homeHref = lang === 'en' ? '/?lang=en' : '/'
-
   return (
     <>
       <script
@@ -153,13 +150,7 @@ export default async function CategoryPage({ params, searchParams }: Props) {
         className="mx-auto w-[760px] max-w-full px-4 pb-12 pt-6 md:px-6"
       >
         <header className="rounded-[2rem] border border-stone-200 bg-stone-50 px-5 py-6 shadow-sm md:px-8 md:py-8">
-          <Link
-            href={homeHref}
-            className="text-sm font-medium text-stone-500 transition-colors hover:text-stone-800"
-          >
-            {lang === 'en' ? '← Back to home' : '← 홈으로'}
-          </Link>
-          <p className="mt-4 text-xs font-semibold uppercase tracking-[0.22em] text-green-700">
+          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-green-700">
             {lang === 'en'
               ? 'Korean crisis support directory'
               : '한국 위기 지원 디렉터리'}
