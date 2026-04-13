@@ -2,7 +2,11 @@
 
 import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
-import { normalizeLang } from '@/lib/i18n'
+import {
+  getLangFromPathname,
+  getPathWithoutLang,
+  withLang,
+} from '@/lib/i18n'
 
 const EMERGENCY_ITEMS = [
   { id: 1, name: '자살 위기', phone: '109' },
@@ -16,14 +20,16 @@ export default function ChatbotBanner() {
   const searchParams = useSearchParams()
   const itemRefs = useRef<Array<HTMLAnchorElement | null>>([])
   const [buttonWidth, setButtonWidth] = useState<number | null>(null)
-  const currentLang = normalizeLang(searchParams.get('lang'))
+  const currentLang = getLangFromPathname(pathname)
+  const nextLang = currentLang === 'en' ? 'ko' : 'en'
   const nextParams = new URLSearchParams(searchParams.toString())
 
-  nextParams.set('lang', currentLang === 'en' ? 'ko' : 'en')
+  nextParams.delete('lang')
 
+  const localizedPath = withLang(getPathWithoutLang(pathname), nextLang)
   const toggleHref = nextParams.size > 0
-    ? `${pathname}?${nextParams.toString()}`
-    : pathname
+    ? `${localizedPath}?${nextParams.toString()}`
+    : localizedPath
 
   const updateWidth = () => {
     const widths = itemRefs.current.map((node) => node?.offsetWidth ?? 0)

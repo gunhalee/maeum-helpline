@@ -1,11 +1,11 @@
 'use client'
 
-import { useSearchParams } from 'next/navigation'
-import { normalizeLang } from '@/lib/i18n'
+import { usePathname } from 'next/navigation'
+import { getLangFromPathname } from '@/lib/i18n'
 
 export default function FooterNote() {
-  const searchParams = useSearchParams()
-  const lang = normalizeLang(searchParams.get('lang'))
+  const pathname = usePathname()
+  const lang = getLangFromPathname(pathname)
 
   return (
     <>

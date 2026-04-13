@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { SITE_NAME } from '@/lib/constants'
-import { normalizeLang } from '@/lib/i18n'
+import { isLang, type Lang } from '@/lib/i18n'
 import {
   getAlternateOpenGraphLocale,
   getHomeSeoCopy,
@@ -10,15 +10,14 @@ import {
 } from '@/lib/seo'
 
 interface Props {
-  searchParams?: Promise<{ lang?: string }>
+  params: Promise<{ lang: string }>
 }
 
-export async function generateMetadata({
-  searchParams,
-}: Props): Promise<Metadata> {
-  const lang = normalizeLang((await searchParams)?.lang)
-  const { title, description } = getHomeSeoCopy(lang)
-  const url = getLocalizedUrl('/about', lang)
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { lang } = await params
+  const currentLang: Lang = isLang(lang) ? lang : 'ko'
+  const { title, description } = getHomeSeoCopy(currentLang)
+  const url = getLocalizedUrl('/about', currentLang)
 
   return {
     title,
@@ -29,8 +28,8 @@ export async function generateMetadata({
     },
     openGraph: {
       type: 'website',
-      locale: getLocaleForMetadata(lang),
-      alternateLocale: getAlternateOpenGraphLocale(lang),
+      locale: getLocaleForMetadata(currentLang),
+      alternateLocale: getAlternateOpenGraphLocale(currentLang),
       url,
       siteName: SITE_NAME,
       title,
@@ -44,9 +43,10 @@ export async function generateMetadata({
   }
 }
 
-export default async function AboutPage({ searchParams }: Props) {
-  const lang = normalizeLang((await searchParams)?.lang)
-  const isEnglish = lang === 'en'
+export default async function LocalizedAboutPage({ params }: Props) {
+  const { lang } = await params
+  const currentLang: Lang = isLang(lang) ? lang : 'ko'
+  const isEnglish = currentLang === 'en'
   const emergencyNumbers = [
     {
       number: '109',
@@ -67,7 +67,7 @@ export default async function AboutPage({ searchParams }: Props) {
   ]
 
   return (
-    <div lang={lang} className="flex flex-1 flex-col bg-white">
+    <div lang={currentLang} className="flex flex-1 flex-col bg-white">
       <section className="mx-auto w-[760px] max-w-full px-4 pb-12 pt-6 md:px-6">
         <header className="rounded-[2rem] border border-stone-200 bg-white px-5 py-6 shadow-sm md:px-8 md:py-8">
           <p className="text-xs font-semibold uppercase tracking-[0.22em] text-green-700">

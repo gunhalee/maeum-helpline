@@ -1,11 +1,40 @@
-export type Lang = 'ko' | 'en'
+export const SUPPORTED_LANGS = ['ko', 'en'] as const
+
+export type Lang = (typeof SUPPORTED_LANGS)[number]
+
+export function isLang(value: string | null | undefined): value is Lang {
+  return value === 'ko' || value === 'en'
+}
 
 export function normalizeLang(value: string | null | undefined): Lang {
   return value?.toLowerCase() === 'en' ? 'en' : 'ko'
 }
 
+export function getLangFromPathname(pathname: string): Lang {
+  const segment = pathname.split('/')[1]
+  return isLang(segment) ? segment : 'ko'
+}
+
+export function getPathWithoutLang(pathname: string): string {
+  if (!pathname) return '/'
+
+  const match = pathname.match(/^\/(ko|en)(\/.*)?$/)
+  if (!match) {
+    return pathname
+  }
+
+  return match[2] ?? '/'
+}
+
 export function withLang(path: string, lang: Lang): string {
-  return `${path}?lang=${lang}`
+  const normalizedPath = path.startsWith('/') ? path : `/${path}`
+  const pathWithoutLang = getPathWithoutLang(normalizedPath)
+
+  if (pathWithoutLang === '/') {
+    return `/${lang}`
+  }
+
+  return `/${lang}${pathWithoutLang}`
 }
 
 export function translateCategoryLabel(label: string, lang: Lang): string {

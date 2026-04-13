@@ -1,6 +1,6 @@
 import { CATEGORY_META } from '@/lib/categories'
 import { SITE_NAME } from '@/lib/constants'
-import { translateCategoryLabel, type Lang } from '@/lib/i18n'
+import { translateCategoryLabel, type Lang, withLang } from '@/lib/i18n'
 import type { Category } from '@/lib/types'
 
 export const SITE_URL =
@@ -39,15 +39,7 @@ export const SITE_TITLE = HOME_COPY.ko.title
 export const SITE_DESCRIPTION = HOME_COPY.ko.description
 
 export function getLocalizedPath(path: string, lang: Lang): string {
-  const normalizedPath = path || '/'
-
-  if (lang === 'ko') {
-    return normalizedPath
-  }
-
-  return normalizedPath.includes('?')
-    ? `${normalizedPath}&lang=en`
-    : `${normalizedPath}?lang=en`
+  return withLang(path || '/', lang)
 }
 
 export function getLocalizedUrl(path: string, lang: Lang): string {

@@ -1,12 +1,12 @@
 'use client'
 
 import { useState } from 'react'
-import { useSearchParams } from 'next/navigation'
+import { usePathname } from 'next/navigation'
 import SelectionScreen from './SelectionScreen'
 import type { CrisisAnswer } from './SelectionScreen'
 import ResultScreen from './ResultScreen'
 import type { MatchGroup, MatchSerializedOrg } from '@/lib/helpline-types'
-import { normalizeLang } from '@/lib/i18n'
+import { getLangFromPathname } from '@/lib/i18n'
 
 type Screen = 'selection' | 'result' | 'loading'
 
@@ -15,8 +15,8 @@ const SOLO_BUTTONS = new Set([
 ])
 
 export default function ChatbotFlow() {
-  const searchParams = useSearchParams()
-  const lang = normalizeLang(searchParams.get('lang'))
+  const pathname = usePathname()
+  const lang = getLangFromPathname(pathname)
   const [screen, setScreen] = useState<Screen>('selection')
   const [groups, setGroups] = useState<MatchGroup[]>([])
   const [orgMap, setOrgMap] = useState<Record<string, MatchSerializedOrg>>({})

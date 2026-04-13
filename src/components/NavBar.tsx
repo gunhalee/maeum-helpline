@@ -1,34 +1,39 @@
 'use client'
 
 import Link from 'next/link'
-import { usePathname, useSearchParams } from 'next/navigation'
+import { usePathname } from 'next/navigation'
 import { CATEGORY_META, CATEGORY_ORDER } from '@/lib/categories'
-import { normalizeLang, translateCategoryLabel, withLang } from '@/lib/i18n'
+import {
+  getLangFromPathname,
+  getPathWithoutLang,
+  translateCategoryLabel,
+  withLang,
+} from '@/lib/i18n'
 
 export default function NavBar() {
   const pathname = usePathname()
-  const searchParams = useSearchParams()
-  const lang = normalizeLang(searchParams.get('lang'))
+  const lang = getLangFromPathname(pathname)
+  const currentPath = getPathWithoutLang(pathname)
   const tabBaseClass =
     'flex items-center gap-1.5 whitespace-nowrap rounded-full px-3 py-1.5 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-600'
   const links = [
     {
       href: withLang('/', lang),
       label: lang === 'en' ? 'Chat' : '챗',
-      isActive: pathname === '/',
+      isActive: currentPath === '/',
       inactiveClass:
         'bg-stone-100 text-stone-500 hover:bg-stone-200 hover:text-stone-700',
     },
     {
       href: withLang('/about', lang),
       label: lang === 'en' ? 'About' : '소개',
-      isActive: pathname === '/about',
+      isActive: currentPath === '/about',
       inactiveClass: 'text-stone-500 hover:bg-stone-100 hover:text-stone-800',
     },
     ...CATEGORY_ORDER.map((category) => ({
       href: withLang(`/${category}`, lang),
       label: translateCategoryLabel(CATEGORY_META[category].label, lang),
-      isActive: pathname === `/${category}`,
+      isActive: currentPath === `/${category}`,
       inactiveClass: 'text-stone-500 hover:bg-stone-100 hover:text-stone-800',
     })),
   ]

@@ -4,7 +4,6 @@ import { Noto_Sans_KR, Noto_Serif_KR } from 'next/font/google'
 import NavBar from '@/components/NavBar'
 import ChatbotBanner from '@/components/chatbot/ChatbotBanner'
 import FooterNote from '@/components/FooterNote'
-import LangRedirect from '@/components/LangRedirect'
 import { SITE_NAME } from '@/lib/constants'
 import {
   GOOGLE_SITE_VERIFICATION,
@@ -109,9 +108,6 @@ export default function RootLayout({
       <body
         className={`${notoSans.variable} ${notoSerif.variable} flex min-h-screen flex-col bg-stone-50 font-sans`}
       >
-        <Suspense fallback={null}>
-          <LangRedirect />
-        </Suspense>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
