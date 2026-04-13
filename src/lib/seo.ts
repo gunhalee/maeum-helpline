@@ -22,6 +22,19 @@ const HOME_COPY = {
   },
 } as const
 
+const CHAT_COPY = {
+  ko: {
+    title: '긴급상담 헬프라인 챗 — 상황별 상담 찾기',
+    description:
+      '두 가지 질문에 답하고 상황에 맞는 한국 긴급상담 기관을 빠르게 찾아보세요.',
+  },
+  en: {
+    title: 'Korean Crisis Helpline Chat',
+    description:
+      'Answer two short questions and find Korean crisis helplines that fit your situation.',
+  },
+} as const
+
 export const SITE_TITLE = HOME_COPY.ko.title
 export const SITE_DESCRIPTION = HOME_COPY.ko.description
 
@@ -51,6 +64,10 @@ export function getLanguageAlternates(path: string): Record<string, string> {
 
 export function getHomeSeoCopy(lang: Lang) {
   return HOME_COPY[lang]
+}
+
+export function getChatSeoCopy(lang: Lang) {
+  return CHAT_COPY[lang]
 }
 
 export function getCategorySeoCopy(category: Category, lang: Lang) {

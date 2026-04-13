@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { useState } from 'react'
 import { useSearchParams } from 'next/navigation'
 import SelectionScreen from './SelectionScreen'
 import type { CrisisAnswer } from './SelectionScreen'
@@ -17,33 +17,10 @@ const SOLO_BUTTONS = new Set([
 export default function ChatbotFlow() {
   const searchParams = useSearchParams()
   const lang = normalizeLang(searchParams.get('lang'))
-  const containerRef = useRef<HTMLDivElement>(null)
   const [screen, setScreen] = useState<Screen>('selection')
   const [groups, setGroups] = useState<MatchGroup[]>([])
   const [orgMap, setOrgMap] = useState<Record<string, MatchSerializedOrg>>({})
   const [screenType, setScreenType] = useState<'2A' | '2B' | '2C'>('2A')
-
-  useEffect(() => {
-    const container = containerRef.current
-
-    if (!container) {
-      return
-    }
-
-    const frameId = window.requestAnimationFrame(() => {
-      const banner = document.querySelector('[role="banner"]')
-      const bannerHeight = banner instanceof HTMLElement ? banner.offsetHeight : 0
-      const targetTop =
-        container.getBoundingClientRect().top + window.scrollY - bannerHeight - 16
-
-      window.scrollTo({
-        top: Math.max(targetTop, 0),
-        behavior: 'smooth',
-      })
-    })
-
-    return () => window.cancelAnimationFrame(frameId)
-  }, [])
 
   const handleSubmit = async (
     selections: string[],
@@ -137,10 +114,7 @@ export default function ChatbotFlow() {
   }
 
   return (
-    <div
-      ref={containerRef}
-      className="mx-auto w-full max-w-[460px] px-4 pt-10 pb-8 md:max-w-[620px] md:px-6 md:pt-14 lg:max-w-[700px] lg:pt-18"
-    >
+    <div className="mx-auto w-full max-w-[460px] px-4 pt-10 pb-8 md:max-w-[620px] md:px-6 md:pt-14 lg:max-w-[700px] lg:pt-18">
       {screen === 'selection' && (
         <SelectionScreen lang={lang} onSubmit={handleSubmit} />
       )}

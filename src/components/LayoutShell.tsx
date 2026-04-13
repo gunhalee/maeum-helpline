@@ -1,6 +1,5 @@
 'use client'
 
-import { usePathname } from 'next/navigation'
 import type { ReactNode } from 'react'
 
 export default function LayoutShell({
@@ -10,12 +9,9 @@ export default function LayoutShell({
   nav: ReactNode
   children: ReactNode
 }) {
-  const pathname = usePathname()
-  const isHome = pathname === '/'
-
   return (
     <>
-      {!isHome && nav}
+      {nav}
       <main className="flex flex-1 flex-col">{children}</main>
     </>
   )

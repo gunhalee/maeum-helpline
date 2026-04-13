@@ -12,6 +12,8 @@ export default function NavBar() {
   const lang = normalizeLang(searchParams.get('lang'))
   const tabBaseClass =
     'flex items-center gap-1.5 whitespace-nowrap rounded-full px-3 py-1.5 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-600'
+  const isChatActive = pathname === '/'
+  const isAboutActive = pathname === '/about'
 
   return (
     <nav
@@ -26,12 +28,30 @@ export default function NavBar() {
           return (
             <Fragment key={category}>
               {index === 0 && (
-                <Link
-                  href={withLang('/', lang)}
-                  className={`${tabBaseClass} bg-stone-100 text-stone-500 hover:bg-stone-200 hover:text-stone-700`}
-                >
-                  <span>{lang === 'en' ? 'Chat' : '챗'}</span>
-                </Link>
+                <>
+                  <Link
+                    href={withLang('/', lang)}
+                    className={`${tabBaseClass} ${
+                      isChatActive
+                        ? 'bg-green-700 text-white'
+                        : 'bg-stone-100 text-stone-500 hover:bg-stone-200 hover:text-stone-700'
+                    }`}
+                    aria-current={isChatActive ? 'page' : undefined}
+                  >
+                    <span>{lang === 'en' ? 'Chat' : '챗'}</span>
+                  </Link>
+                  <Link
+                    href={withLang('/about', lang)}
+                    className={`${tabBaseClass} ${
+                      isAboutActive
+                        ? 'bg-green-700 text-white'
+                        : 'bg-stone-100 text-stone-500 hover:bg-stone-200 hover:text-stone-700'
+                    }`}
+                    aria-current={isAboutActive ? 'page' : undefined}
+                  >
+                    <span>{lang === 'en' ? 'About' : '소개'}</span>
+                  </Link>
+                </>
               )}
               <Link
                 href={withLang(href, lang)}
