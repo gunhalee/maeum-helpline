@@ -113,7 +113,7 @@ const CATEGORY_COPY = {
     },
     en: {
       title: 'Suicide Prevention Hotline 109 and Crisis Helplines in Korea | Helpline',
-      heading: 'Suicide Prevention Hotline 109',
+      heading: 'Crisis Helplines',
       description:
         'Find Korean crisis helplines you can call during suicidal thoughts or immediate danger, including 109 and other 24/7 emergency counseling services.',
       keywords: [
@@ -141,7 +141,7 @@ const CATEGORY_COPY = {
     },
     en: {
       title: 'Depression Counseling and Free Mental Health Support in Korea | Helpline',
-      heading: 'Depression Counseling in Korea',
+      heading: 'Depression Helplines',
       description:
         'Compare Korean depression counseling options, mental health centers, and low-cost support lines when you need help with sadness, anxiety, or burnout.',
       keywords: [
@@ -169,7 +169,7 @@ const CATEGORY_COPY = {
     },
     en: {
       title: 'Women Support Hotline 1366 and Violence Counseling in Korea | Helpline',
-      heading: 'Women Support Hotline 1366',
+      heading: 'Women Helplines',
       description:
         'Find Korean hotlines for domestic violence, sexual violence, stalking, and dating violence, including the 1366 women support line.',
       keywords: [
@@ -197,7 +197,7 @@ const CATEGORY_COPY = {
     },
     en: {
       title: 'Youth Helpline 1388 and Teen Crisis Support in Korea | Helpline',
-      heading: 'Youth Helpline 1388',
+      heading: 'Youth Helplines',
       description:
         'Explore Korean support lines for school violence, runaway youth, academic stress, and teen self-harm, including hotline 1388.',
       keywords: [
@@ -225,7 +225,7 @@ const CATEGORY_COPY = {
     },
     en: {
       title: 'LGBTQ+ Counseling and Queer-Friendly Support in Korea | Helpline',
-      heading: 'LGBTQ+ Counseling in Korea',
+      heading: 'LGBTQ+ Helplines',
       description:
         'Find queer-friendly counseling, coming-out support, and mental health resources for LGBTQ+ people in Korea.',
       keywords: [
@@ -253,7 +253,7 @@ const CATEGORY_COPY = {
     },
     en: {
       title: 'Foreigner and Migrant Helplines in Korea | Helpline',
-      heading: 'Foreigner Helpline Korea',
+      heading: 'Migrants / Foreigners Helplines',
       description:
         'Find multilingual counseling and crisis support numbers for foreigners, migrant workers, and marriage migrants living in Korea.',
       keywords: [
@@ -281,7 +281,7 @@ const CATEGORY_COPY = {
     },
     en: {
       title: 'Addiction Counseling for Gambling, Alcohol, Drugs, and Gaming | Helpline',
-      heading: 'Addiction Counseling in Korea',
+      heading: 'Addiction Helplines',
       description:
         'Compare Korean addiction counseling services for gambling, alcohol, drugs, gaming, and internet overuse.',
       keywords: [
@@ -309,7 +309,7 @@ const CATEGORY_COPY = {
     },
     en: {
       title: 'Older Adult Support and Elder Abuse Reporting in Korea | Helpline',
-      heading: 'Older Adult Support in Korea',
+      heading: 'Older Adults Helplines',
       description:
         'Find support numbers for elder abuse reporting, older adult counseling, loneliness, and care services in Korea.',
       keywords: [
