@@ -70,9 +70,9 @@ export default async function LocalizedAboutPage({ params }: Props) {
   ]
 
   return (
-    <div lang={currentLang} className="flex flex-1 flex-col bg-white">
+    <div lang={currentLang} className="flex flex-1 flex-col bg-stone-50">
       <section className="mx-auto w-[760px] max-w-full px-4 pb-12 pt-6 md:px-6">
-        <header className="rounded-[2rem] border border-stone-200 bg-white px-5 py-6 shadow-sm md:px-8 md:py-8">
+        <header className="rounded-[2rem] border border-stone-200 bg-stone-50 px-5 py-6 shadow-sm md:px-8 md:py-8">
           <p className="text-xs font-semibold uppercase tracking-[0.22em] text-green-700">
             {isEnglish
               ? 'Korean crisis support directory'
