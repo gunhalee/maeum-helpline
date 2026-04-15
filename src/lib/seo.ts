@@ -27,12 +27,12 @@ const GLOBAL_KEYWORDS = {
     '노인 상담전화',
   ],
   en: [
-    'Korean crisis helpline',
+    'Korean crisis hotline',
     'Korea emergency counseling',
     'suicide prevention hotline Korea',
-    'mental health helpline Korea',
+    'mental health hotline Korea',
     'women support hotline Korea',
-    'youth helpline Korea',
+    'youth hotline Korea',
     'LGBTQ counseling Korea',
     'migrant support hotline Korea',
     'addiction counseling Korea',
@@ -58,9 +58,9 @@ const HOME_COPY = {
   en: {
     title: 'Korean Crisis Helpline Directory | Emergency Support Numbers',
     description:
-      'Browse Korean crisis helplines for suicide risk, youth distress, violence, addiction, migrants, and older adults. Compare support numbers, hours, and access notes.',
+      'Browse Korean crisis hotlines for suicide risk, youth distress, violence, addiction, migrants, and older adults. Compare support numbers, hours, and access notes.',
     keywords: [
-      'Korean crisis helpline directory',
+      'Korean crisis hotline directory',
       'emergency support numbers Korea',
       ...GLOBAL_KEYWORDS.en,
     ],
@@ -100,7 +100,7 @@ const CATEGORY_COPY = {
       title: '자살예방 상담전화 109 · 위기 긴급상담 기관 안내 | 헬프라인',
       heading: '위기·긴급 상담 기관',
       description:
-        '죽고 싶거나 위험한 상황일 때 전화할 수 있는 곳을 안내합니다. 자살예방 상담전화 109, 생명의전화 등 24시간 위기상담 기관의 전화번호와 운영시간을 확인하세요.',
+        '죽고 싶거나 위험한 상황일 때 전화할 수 있는 곳을 안내합니다. 자살·자해 예방 상담전화 109, 생명의전화 등 24시간 정신건강 위기상담 기관의 전화번호와 운영시간을 확인하세요.',
       keywords: [
         '자살예방 상담전화',
         '109 전화번호',
@@ -115,11 +115,11 @@ const CATEGORY_COPY = {
       title: 'Suicide Prevention Hotline 109 and Crisis Helplines in Korea | Helpline',
       heading: 'Crisis Helplines',
       description:
-        'Find Korean crisis helplines you can call during suicidal thoughts or immediate danger, including 109 and other 24/7 emergency counseling services.',
+        'Find Korean mental health crisis hotlines you can call during suicidal thoughts or immediate danger, including 109 and other 24/7 emergency counseling services.',
       keywords: [
         'suicide prevention hotline Korea',
         '109 hotline Korea',
-        'crisis helpline Korea',
+        'crisis hotline Korea',
         '24/7 suicide counseling Korea',
       ],
     },
