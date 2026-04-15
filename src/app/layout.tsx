@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Noto_Sans_KR, Noto_Serif_KR } from 'next/font/google'
+import { Analytics } from '@vercel/analytics/next'
 import { SITE_NAME } from '@/lib/constants'
 import {
   GOOGLE_SITE_VERIFICATION,
@@ -109,6 +110,7 @@ export default function RootLayout({
           }}
         />
         {children}
+        <Analytics />
       </body>
     </html>
   )
