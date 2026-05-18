@@ -242,7 +242,7 @@ export default async function LocalizedNoticePage({ params }: Props) {
                 <p key={paragraph}>{paragraph}</p>
               ))}
             </div>
-            {section.bullets ? (
+            {'bullets' in section ? (
               <ul className="mt-4 space-y-2 text-[15px] leading-7 text-stone-700">
                 {section.bullets.map((item) => (
                   <li key={item} className="flex gap-3">
@@ -252,7 +252,7 @@ export default async function LocalizedNoticePage({ params }: Props) {
                 ))}
               </ul>
             ) : null}
-            {section.notes ? (
+            {'notes' in section ? (
               <div className="mt-4 rounded-2xl border border-stone-200 bg-stone-50 px-4 py-3 text-sm leading-7 text-stone-700">
                 {section.notes.map((note) => (
                   <p key={note}>{note}</p>
