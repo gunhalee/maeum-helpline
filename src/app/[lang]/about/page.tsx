@@ -72,7 +72,7 @@ export default async function LocalizedAboutPage({ params }: Props) {
   return (
     <div lang={currentLang} className="flex flex-1 flex-col bg-stone-50">
       <section className="mx-auto w-full max-w-[860px] px-4 pb-12 pt-6 md:px-6">
-        <header className="rounded-[2rem] border border-stone-200 bg-stone-50 px-5 py-6 shadow-sm md:px-8 md:py-8">
+        <header className="rounded-2xl border border-stone-200 bg-stone-50 px-5 py-6 shadow-sm md:px-8 md:py-8">
           <p className="text-xs font-semibold uppercase tracking-[0.22em] text-green-700">
             {isEnglish
               ? 'Korean crisis support directory'
@@ -116,7 +116,7 @@ export default async function LocalizedAboutPage({ params }: Props) {
 
       <section className="mx-auto w-full max-w-[860px] px-4 pb-14 md:px-6">
         <div className="grid gap-4 md:grid-cols-3">
-          <article className="rounded-3xl border border-stone-200 bg-white p-5 shadow-sm">
+          <article className="rounded-2xl border border-stone-200 bg-white p-5 shadow-sm">
             <h2 className="text-lg font-semibold text-stone-900">
               {isEnglish ? 'Who this is for' : '누구를 위한 서비스인가요'}
             </h2>
@@ -127,7 +127,7 @@ export default async function LocalizedAboutPage({ params }: Props) {
             </p>
           </article>
 
-          <article className="rounded-3xl border border-stone-200 bg-white p-5 shadow-sm">
+          <article className="rounded-2xl border border-stone-200 bg-white p-5 shadow-sm">
             <h2 className="text-lg font-semibold text-stone-900">
               {isEnglish ? 'What you can compare' : '무엇을 비교할 수 있나요'}
             </h2>
@@ -138,7 +138,7 @@ export default async function LocalizedAboutPage({ params }: Props) {
             </p>
           </article>
 
-          <article className="rounded-3xl border border-stone-200 bg-white p-5 shadow-sm">
+          <article className="rounded-2xl border border-stone-200 bg-white p-5 shadow-sm">
             <h2 className="text-lg font-semibold text-stone-900">
               {isEnglish ? 'When to use emergency lines' : '긴급 번호를 먼저 써야 할 때'}
             </h2>
@@ -149,7 +149,7 @@ export default async function LocalizedAboutPage({ params }: Props) {
             </p>
           </article>
         </div>
-        <div className="mt-6 rounded-[2rem] border border-stone-200 bg-white px-5 py-5 shadow-sm md:px-6">
+        <div className="mt-6 rounded-2xl border border-stone-200 bg-white px-5 py-5 shadow-sm md:px-6">
           <h2 className="text-lg font-semibold text-stone-900">
             {isEnglish ? 'Need practical next-step guides?' : '조금 더 구체적인 도움 요청 가이드가 필요하신가요?'}
           </h2>

@@ -63,8 +63,8 @@ const CATEGORY_EDITORIAL: Record<Category, Record<Lang, CategoryEditorial>> = {
     ko: {
       heading: '급박한 위협이 있으면 112에 먼저 전화하세요',
       paragraphs: [
-        '지금 당장은 아니지만 반복되는 폭력이나 통제 속에 있다면, 통화가 안전한 시간에 1366으로 연결하세요. 신고 없이 상담만 먼저 받는 것도 가능합니다.',
-        '이 페이지는 가정폭력, 성폭력, 스토킹, 데이트폭력 상황에서 연결할 수 있는 기관 목록입니다. "폭력"이라는 단어가 맞는지 잘 모르겠어도, 맞고 있거나 무섭다면 전화할 수 있습니다.',
+        '반복되는 폭력이나 통제가 있지만 지금 당장 급박한 상황은 아니라면, 통화가 안전한 시간에 1366으로 연결하세요. 신고 없이 상담만 먼저 받는 것도 가능합니다.',
+        '이 페이지는 가정폭력, 성폭력, 스토킹, 데이트폭력 상황에서 연결할 수 있는 기관을 모아 둔 목록입니다. "폭력"이라는 단어가 맞는지 확신이 없어도, 맞고 있거나 무섭다면 충분히 전화할 이유가 됩니다.',
       ],
       highlights: ['1366 — 24시간', '신고 없이 상담만 가능', '쉼터·법률·의료 연계'],
     },
@@ -117,7 +117,7 @@ const CATEGORY_EDITORIAL: Record<Category, Record<Lang, CategoryEditorial>> = {
     ko: {
       heading: '가능한 언어부터 확인하세요',
       paragraphs: [
-        '다누리콜센터(1577-1366)는 13개 언어, 외국인력상담센터(1644-0644)는 이주노동 전문입니다. 긴급 상황이면 119에 전화하세요 — 통역 연결이 가능하며, 긴급 구조는 법적으로 체류 자격과 무관하게 제공됩니다.',
+        '다누리콜센터(1577-1366)는 13개 언어를 지원하고, 외국인력상담센터(1644-0644)는 이주노동 상담에 특화되어 있습니다. 긴급 상황이면 119에 먼저 전화하세요. 통역 연결이 가능하며, 긴급 구조는 법적으로 체류 자격과 무관하게 제공됩니다.',
         '이 페이지는 다국어 상담 여부, 이주민 전용 핫라인, 상황별(노동, 가정폭력, 유학) 적합 기관을 비교할 수 있게 구성했습니다.',
       ],
       highlights: ['다누리 1577-1366 — 13개 언어', '119·112 — 체류 자격 무관', '노동·가정폭력·유학 상황별 안내'],
@@ -135,7 +135,7 @@ const CATEGORY_EDITORIAL: Record<Category, Record<Lang, CategoryEditorial>> = {
     ko: {
       heading: '문제 유형별 중독 상담 기관 비교',
       paragraphs: [
-        '도박, 알코올, 약물, 게임 등 유형에 따라 더 적합한 기관이 다릅니다. 본인이 준비되지 않았더라도 가족이 먼저 상담을 시작할 수 있습니다.',
+        '도박, 알코올, 약물, 게임 등 문제 유형에 따라 더 적합한 기관이 다릅니다. 본인이 아직 준비되지 않았더라도 가족이 먼저 상담을 시작할 수 있습니다.',
         '재발이 일어났다고 해서 상담을 다시 받을 수 없는 것이 아닙니다. 다시 연결하면 됩니다.',
       ],
       highlights: ['도박·알코올·약물·게임 유형별', '가족 먼저 상담 가능', '재발 후 재연결 가능'],
@@ -175,7 +175,7 @@ const GUIDE_INDEX_COPY: Record<Lang, GuideIndexCopy> = {
     description:
       '각 상담 기관에 전화하면 실제로 어떤 절차가 진행되는지, 누가 전화할 수 있는지, 비용과 비밀보장은 어떻게 되는지를 정리했습니다.',
     intro:
-      '전화번호는 알겠는데 "전화하면 뭐가 달라지지?", "뭘 물어보지?", "돈이 드나?" 같은 질문 때문에 망설여진다면, 아래 글이 도움이 될 수 있습니다. 각 글은 관련 기관 페이지로 바로 연결됩니다. 이 가이드는 기관 이용을 돕기 위한 안내이며, 전문 상담을 대체하지 않습니다.',
+      '전화번호는 알겠는데, "전화하면 뭐가 달라지지?", "뭘 물어보지?", "돈이 드나?" 같은 질문 때문에 망설여질 수 있습니다. 아래 가이드는 이런 고민을 줄이기 위해 준비했습니다. 각 글은 관련 기관 페이지로 바로 연결되며, 전문 상담을 대신하지는 않습니다.',
     focusPoints: ['전화하면 어떤 절차가 진행되는지', '비용·비밀보장·접수 방식 비교', '누가 전화할 수 있는지'],
   },
   en: {
@@ -183,7 +183,7 @@ const GUIDE_INDEX_COPY: Record<Lang, GuideIndexCopy> = {
     description:
       'What actually happens when you call each service, who can call, and how cost and confidentiality work.',
     intro:
-      'If you have the phone number but hesitate because you do not know what happens next, what they will ask, or whether it costs anything — these guides can help. Each one links to the relevant directory page. These guides help you navigate services and do not replace professional counseling.',
+      'Even if you have a phone number, it is common to hesitate because you are unsure what happens next, what they will ask, or whether there is a cost. These guides are designed to make that first step easier. Each guide links directly to the relevant directory page and does not replace professional counseling.',
     focusPoints: ['What happens after you call', 'Cost, confidentiality, and intake comparison', 'Who is eligible to call'],
   },
 }
@@ -197,8 +197,8 @@ const GUIDE_ENTRIES = [
       description:
         '본인이 아닌 제3자도 전화할 수 있는지, 상담사가 무엇을 물어보는지, 전화 후 어떤 조치가 이어지는지를 정리했습니다.',
       paragraphs: [
-        '109는 24시간 운영되는 자살예방 상담전화입니다. 본인뿐 아니라 주변 사람이 대신 전화할 수 있습니다. 연결되면 상담사가 먼저 말을 꺼내고, 지금 상황이 어떤지, 혼자 있는지, 즉각적인 위험이 있는지를 확인합니다. 모든 것을 정리해서 설명하지 않아도 됩니다.',
-        '상담사가 위험이 높다고 판단하면, 본인 동의를 받은 뒤 지역 정신건강복지센터나 자살예방센터로 연계하여 추가 상담과 사례관리를 받을 수 있게 합니다. 급박한 위험이 있으면 긴급 출동을 요청할 수도 있습니다. 대기 시간이 발생할 수 있으므로, 전화가 바로 연결되지 않으면 끊지 말고 기다리거나 119로 전환하세요. 비용은 없습니다.',
+        '109는 24시간 운영되는 자살예방 상담전화입니다. 본인뿐 아니라 주변 사람도 대신 전화할 수 있습니다. 연결되면 상담사가 먼저 말을 걸고, 현재 상황, 혼자 있는지 여부, 즉각적인 위험 여부를 차분히 확인합니다. 모든 내용을 정리해 말하지 않아도 괜찮습니다.',
+        '상담사가 위험이 높다고 판단하면, 본인 동의를 받은 뒤 지역 정신건강복지센터나 자살예방센터로 연계해 추가 상담과 사례관리를 받을 수 있도록 돕습니다. 급박한 위험이 있으면 긴급 출동을 요청할 수 있습니다. 대기 시간이 생길 수 있으니 전화가 바로 연결되지 않으면 끊지 말고 기다리거나 119로 전환하세요. 비용은 없습니다.',
       ],
       checklist: [
         '본인 또는 제3자 모두 전화 가능',

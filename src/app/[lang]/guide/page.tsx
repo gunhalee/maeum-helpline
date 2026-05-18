@@ -108,7 +108,7 @@ export default async function LocalizedGuidePage({ params }: Props) {
         lang={currentLang}
         className="mx-auto w-full max-w-[860px] px-4 pb-14 pt-6 md:px-6"
       >
-        <header className="rounded-[2rem] border border-stone-200 bg-white px-5 py-6 shadow-sm md:px-8 md:py-8">
+        <header className="rounded-2xl border border-stone-200 bg-white px-5 py-6 shadow-sm md:px-8 md:py-8">
           <p className="text-xs font-semibold uppercase tracking-[0.22em] text-green-700">
             {currentLang === 'en' ? 'Help-seeking guides' : '도움 요청 가이드'}
           </p>
@@ -135,7 +135,7 @@ export default async function LocalizedGuidePage({ params }: Props) {
             <article
               key={guide.slug}
               id={guide.slug}
-              className="rounded-[2rem] border border-stone-200 bg-white px-5 py-6 shadow-sm md:px-8"
+              className="rounded-2xl border border-stone-200 bg-white px-5 py-6 shadow-sm md:px-8"
             >
               <div className="flex flex-wrap items-center gap-2 text-sm">
                 <span className="rounded-full bg-green-50 px-3 py-1 font-medium text-green-700">

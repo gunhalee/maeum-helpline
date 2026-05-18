@@ -11,10 +11,10 @@ interface Props {
 }
 
 const footerLinkClass =
-  'shrink-0 text-base font-medium text-blue-700 underline-offset-2 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-600'
+  'shrink-0 text-sm font-medium text-blue-700 underline-offset-2 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-600'
 
 const phoneLinkMutedClass =
-  'shrink-0 text-base font-medium text-stone-400 underline-offset-2 hover:text-stone-500 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-300'
+  'shrink-0 text-sm font-medium text-stone-400 underline-offset-2 hover:text-stone-500 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-300'
 
 export default function ResultCard({
   name,
@@ -73,27 +73,27 @@ export default function ResultCard({
     metaParts.length > 0 ? metaParts.join(' \u00b7 ') : null
 
   return (
-    <article className="flex h-full flex-col rounded-2xl border border-stone-200 bg-white p-5 sm:p-6">
+    <article className="flex h-full flex-col rounded-2xl border border-stone-200 bg-white p-5">
       {primaryHref ? (
         <a
           href={primaryHref}
           target={primaryTarget}
           rel={primaryRel}
           aria-label={primaryAriaLabel}
-          className="block rounded-xl transition-colors hover:bg-stone-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-600"
+          className="block rounded-lg transition-colors hover:bg-stone-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-600"
         >
           <div className="flex min-w-0 flex-wrap items-center gap-x-2 gap-y-1.5">
-            <h3 className="min-w-0 break-words text-lg font-semibold leading-snug text-stone-900 sm:text-xl">
+            <h3 className="min-w-0 break-words text-lg font-semibold leading-snug text-stone-900">
               {name}
             </h3>
             {metaLine && (
-              <span className="min-w-0 text-base leading-7 text-stone-500">
+              <span className="min-w-0 text-sm leading-6 text-stone-500">
                 {metaLine}
               </span>
             )}
             {badgeText && (
               <span
-                className={`shrink-0 whitespace-nowrap rounded-full px-3 py-1.5 text-sm font-medium sm:text-base ${badgeColor}`}
+                className={`shrink-0 whitespace-nowrap rounded-full px-3 py-1.5 text-xs font-medium sm:text-sm ${badgeColor}`}
               >
                 {badgeText}
               </span>
@@ -101,7 +101,7 @@ export default function ResultCard({
           </div>
 
           {description && (
-            <p className="mt-4 line-clamp-4 text-base leading-8 text-stone-600 sm:line-clamp-4 sm:text-lg">
+            <p className="mt-4 line-clamp-4 text-[15px] leading-7 text-stone-600 sm:line-clamp-4">
               {description}
             </p>
           )}
@@ -109,17 +109,17 @@ export default function ResultCard({
       ) : (
         <>
           <div className="flex min-w-0 flex-wrap items-center gap-x-2 gap-y-1.5">
-            <h3 className="min-w-0 break-words text-lg font-semibold leading-snug text-stone-900 sm:text-xl">
+            <h3 className="min-w-0 break-words text-lg font-semibold leading-snug text-stone-900">
               {name}
             </h3>
             {metaLine && (
-              <span className="min-w-0 text-base leading-7 text-stone-500">
+              <span className="min-w-0 text-sm leading-6 text-stone-500">
                 {metaLine}
               </span>
             )}
             {badgeText && (
               <span
-                className={`shrink-0 whitespace-nowrap rounded-full px-3 py-1.5 text-sm font-medium sm:text-base ${badgeColor}`}
+                className={`shrink-0 whitespace-nowrap rounded-full px-3 py-1.5 text-xs font-medium sm:text-sm ${badgeColor}`}
               >
                 {badgeText}
               </span>
@@ -127,7 +127,7 @@ export default function ResultCard({
           </div>
 
           {description && (
-            <p className="mt-4 line-clamp-4 text-base leading-8 text-stone-600 sm:line-clamp-4 sm:text-lg">
+            <p className="mt-4 line-clamp-4 text-[15px] leading-7 text-stone-600 sm:line-clamp-4">
               {description}
             </p>
           )}

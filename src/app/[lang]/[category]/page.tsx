@@ -257,7 +257,7 @@ export default async function LocalizedCategoryPage({ params }: Props) {
         lang={currentLang}
         className="mx-auto w-full max-w-[860px] px-4 pb-12 pt-6 md:px-6"
       >
-        <header className="rounded-[2rem] border border-stone-200 bg-stone-50 px-5 py-6 shadow-sm md:px-8 md:py-8">
+        <header className="rounded-2xl border border-stone-200 bg-stone-50 px-5 py-6 shadow-sm md:px-8 md:py-8">
           <p className="text-xs font-semibold uppercase tracking-[0.22em] text-green-700">
             {currentLang === 'en'
               ? 'Korean crisis support directory'
@@ -287,7 +287,7 @@ export default async function LocalizedCategoryPage({ params }: Props) {
             </span>
           </div>
         </header>
-        <section className="mt-6 rounded-[2rem] border border-stone-200 bg-white px-5 py-6 shadow-sm md:px-8">
+        <section className="mt-6 rounded-2xl border border-stone-200 bg-white px-5 py-6 shadow-sm md:px-8">
           <h2 className="text-lg font-semibold text-stone-900">{editorial.heading}</h2>
           <div className="mt-4 space-y-4 text-sm leading-7 text-stone-700 md:text-[15px]">
             {editorial.paragraphs.map((paragraph) => (
