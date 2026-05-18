@@ -96,11 +96,11 @@ const NOTICE_COPY = {
     description:
       'Read the usage guide and disclaimer for Helpline Korea, including emergency contacts and service limits.',
     eyebrow: 'Usage Guide & Disclaimer',
-    heading: 'How this website can help you',
+    heading: 'How this website may help',
     intro:
       'It may have taken a lot of strength to get here. Helpline Korea is a guidance website designed to help you quickly find counseling hotlines, emergency numbers, and public support resources in Korea.',
     subIntro:
-      'We hope this site can be a small but practical help in finding support that fits your situation.',
+      'We hope this site can be a small but practical help in finding support that fits you.',
     sections: [
       {
         title: 'If you are in danger right now',

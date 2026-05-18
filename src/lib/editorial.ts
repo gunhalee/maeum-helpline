@@ -171,7 +171,7 @@ const CATEGORY_EDITORIAL: Record<Category, Record<Lang, CategoryEditorial>> = {
 
 const GUIDE_INDEX_COPY: Record<Lang, GuideIndexCopy> = {
   ko: {
-    title: '전화하기 전에 | 상담 기관 이용 안내',
+    title: '전화하기 전에 | 상담 이용 안내',
     description:
       '각 상담 기관에 전화하면 실제로 어떤 절차가 진행되는지, 누가 전화할 수 있는지, 비용과 비밀보장은 어떻게 되는지를 정리했습니다.',
     intro:
@@ -179,7 +179,7 @@ const GUIDE_INDEX_COPY: Record<Lang, GuideIndexCopy> = {
     focusPoints: ['전화하면 어떤 절차가 진행되는지', '비용·비밀보장·접수 방식 비교', '누가 전화할 수 있는지'],
   },
   en: {
-    title: 'Before You Call | Service Navigation Guide',
+    title: 'Service Navigation Guide',
     description:
       'What actually happens when you call each service, who can call, and how cost and confidentiality work.',
     intro:
@@ -239,7 +239,7 @@ const GUIDE_ENTRIES = [
       ],
     },
     en: {
-      title: 'What happens when you first call a mental health center',
+      title: 'What happens when you call a mental health center',
       description:
         'Whether you need a diagnosis, what it costs, what to say on the first call, and how long until in-person sessions begin.',
       paragraphs: [
