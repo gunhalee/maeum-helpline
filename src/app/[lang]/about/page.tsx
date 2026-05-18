@@ -71,7 +71,7 @@ export default async function LocalizedAboutPage({ params }: Props) {
 
   return (
     <div lang={currentLang} className="flex flex-1 flex-col bg-stone-50">
-      <section className="mx-auto w-[760px] max-w-full px-4 pb-12 pt-6 md:px-6">
+      <section className="mx-auto w-full max-w-[860px] px-4 pb-12 pt-6 md:px-6">
         <header className="rounded-[2rem] border border-stone-200 bg-stone-50 px-5 py-6 shadow-sm md:px-8 md:py-8">
           <p className="text-xs font-semibold uppercase tracking-[0.22em] text-green-700">
             {isEnglish
@@ -86,7 +86,7 @@ export default async function LocalizedAboutPage({ params }: Props) {
           <p className="mt-4 max-w-3xl text-base leading-8 text-stone-600">
             {isEnglish
               ? 'Compare Korean helplines by topic, urgency, and hours. You can start with the chat screen or jump directly to crisis, youth, women, addiction, migrant, and older-adult support pages.'
-              : '주제별, 긴급도별, 운영시간별로 한국 상담 기관을 비교해 보세요. 챗 화면에서 바로 시작하거나 위기, 청소년, 여성, 중독, 이주민, 노인 지원 페이지로 바로 이동할 수 있습니다.'}
+              : '주제별, 긴급도별, 운영시간별로 한국 상담 기관을 비교해 보세요. 챗 화면에서 바로 시작하거나, 위기·청소년·여성·중독·이주민·노인 지원 페이지로 이동할 수 있습니다.'}
           </p>
 
           <div className="mt-8 rounded-2xl border border-stone-200 bg-white px-4 py-4">
@@ -114,7 +114,7 @@ export default async function LocalizedAboutPage({ params }: Props) {
         </header>
       </section>
 
-      <section className="mx-auto w-full max-w-[760px] px-4 pb-14 md:px-6">
+      <section className="mx-auto w-full max-w-[860px] px-4 pb-14 md:px-6">
         <div className="grid gap-4 md:grid-cols-3">
           <article className="rounded-3xl border border-stone-200 bg-white p-5 shadow-sm">
             <h2 className="text-lg font-semibold text-stone-900">
@@ -156,7 +156,7 @@ export default async function LocalizedAboutPage({ params }: Props) {
           <p className="mt-3 text-sm leading-7 text-stone-600">
             {isEnglish
               ? 'Open the guide section for practical help on suicide warning signs, depression, violence safety planning, youth support, addiction, migrant support, and older-adult care.'
-              : '자살 위험 신호, 우울 상담 시작, 폭력 피해 대응, 청소년 지원, 중독, 이주민 지원, 노년기 돌봄까지 상황별로 먼저 무엇을 하면 좋은지 가이드로 정리해 두었습니다.'}
+              : '자살 위험 신호, 우울 상담 시작, 폭력 피해 대응, 청소년 지원, 중독, 이주민 지원, 노년기 돌봄까지 다룹니다. 상황별로 먼저 할 일을 쉽게 확인할 수 있도록 정리했습니다.'}
           </p>
           <div className="mt-5">
             <Link

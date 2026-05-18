@@ -255,7 +255,7 @@ export default async function LocalizedCategoryPage({ params }: Props) {
       />
       <section
         lang={currentLang}
-        className="mx-auto w-[760px] max-w-full px-4 pb-12 pt-6 md:px-6"
+        className="mx-auto w-full max-w-[860px] px-4 pb-12 pt-6 md:px-6"
       >
         <header className="rounded-[2rem] border border-stone-200 bg-stone-50 px-5 py-6 shadow-sm md:px-8 md:py-8">
           <p className="text-xs font-semibold uppercase tracking-[0.22em] text-green-700">
@@ -283,7 +283,7 @@ export default async function LocalizedCategoryPage({ params }: Props) {
             <span className="rounded-full border border-stone-200 bg-white px-4 py-2">
               {currentLang === 'en'
                 ? 'Support scope and access notes'
-                : '지원 대상과 이용 안내'}
+                : '지원 대상과 이용 방법'}
             </span>
           </div>
         </header>

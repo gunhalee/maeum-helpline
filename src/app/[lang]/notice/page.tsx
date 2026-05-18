@@ -26,7 +26,8 @@ const NOTICE_COPY = {
       {
         title: '지금 위험한 상황이라면',
         paragraphs: [
-          '지금 생명이나 몸의 안전이 위험하거나, 폭력·범죄·응급상황이 벌어지고 있다면 이 사이트를 더 살펴보거나 이메일 답변을 기다리지 말고 다음으로 바로 연락해 주세요.',
+          '지금 생명이나 신체의 안전이 위험하거나, 폭력·범죄·응급상황이 벌어지고 있다면 이 사이트를 더 살펴보지 말고 바로 연락해 주세요.',
+          '이메일 답변을 기다리기보다 아래 번호에 먼저 연결하는 것이 안전합니다.',
         ],
         bullets: [
           '112 범죄, 폭력, 위협, 스토킹, 신변 위험',
@@ -35,7 +36,7 @@ const NOTICE_COPY = {
         ],
         notes: [
           '이메일은 실시간으로 확인되지 않을 수 있습니다.',
-          '긴급한 상황에서는 이메일보다 112, 119, 109가 먼저입니다.',
+          '긴급한 상황에서는 이메일보다 112, 119, 109가 우선입니다.',
         ],
       },
       {
@@ -49,7 +50,7 @@ const NOTICE_COPY = {
           '잘못된 번호나 끊어진 링크를 고치는 일',
         ],
         notes: [
-          '이메일로 문의를 주시면, 비긴급 상황에 한해 가능한 범위에서 일반적인 정보 안내를 드릴 수 있습니다.',
+          '비긴급 상황에서 이메일로 문의해 주시면, 가능한 범위에서 일반적인 정보 안내를 드릴 수 있습니다.',
         ],
       },
       {
@@ -78,7 +79,7 @@ const NOTICE_COPY = {
         title: '정보는 계속 확인하고 고치고 있습니다',
         paragraphs: [
           'Helpline Korea는 공식 기관 자료와 공개된 안내를 바탕으로 정보를 정리하려고 노력합니다.',
-          '하지만 기관의 전화번호, 운영시간, 지원 내용은 바뀔 수 있습니다. 중요한 결정을 하기 전에는 해당 기관의 공식 홈페이지나 전화로 최신 정보를 한 번 더 확인해 주세요.',
+          '다만 기관의 전화번호, 운영시간, 지원 내용은 바뀔 수 있습니다. 중요한 결정을 하기 전에는 해당 기관의 공식 홈페이지나 전화로 최신 정보를 한 번 더 확인해 주세요.',
           '잘못된 정보, 바뀐 번호, 끊어진 링크를 발견하셨다면 알려주세요. 확인 후 수정하겠습니다.',
         ],
       },
@@ -104,7 +105,8 @@ const NOTICE_COPY = {
       {
         title: 'If you are in danger right now',
         paragraphs: [
-          'If your life or physical safety is at risk right now, or if violence, crime, or a medical emergency is happening, do not keep browsing this site and do not wait for an email reply. Contact the numbers below immediately.',
+          'If your life or physical safety is at risk right now, or if violence, crime, or a medical emergency is happening, do not keep browsing this site. Contact the numbers below immediately.',
+          'Do not wait for an email reply in urgent situations.',
         ],
         bullets: [
           '112 Crime, violence, threats, stalking, immediate personal danger',
@@ -113,7 +115,7 @@ const NOTICE_COPY = {
         ],
         notes: [
           'Email may not be checked in real time.',
-          'In urgent situations, 112, 119, and 109 come before email.',
+          'In urgent situations, 112, 119, and 109 should come before email.',
         ],
       },
       {
@@ -127,7 +129,7 @@ const NOTICE_COPY = {
           'Fixing incorrect numbers or broken links',
         ],
         notes: [
-          'If you contact us by email, we may provide general information within a non-emergency scope.',
+          'If you contact us by email in a non-emergency situation, we may provide general guidance within scope.',
         ],
       },
       {
@@ -156,7 +158,7 @@ const NOTICE_COPY = {
         title: 'We continuously review and correct information',
         paragraphs: [
           'Helpline Korea tries to organize information based on official sources and publicly available guidance.',
-          'However, phone numbers, service hours, and support details can change. Before making important decisions, please confirm the latest information directly through the organization’s official website or phone line.',
+          'However, phone numbers, service hours, and support details can change. Before making important decisions, please confirm the latest information through the organization’s official website or phone line.',
           'If you find incorrect information, changed numbers, or broken links, please let us know. We will review and update it.',
         ],
       },
