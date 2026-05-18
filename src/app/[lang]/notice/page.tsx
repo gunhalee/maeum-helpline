@@ -89,7 +89,6 @@ const NOTICE_COPY = {
       '지금 당장 위험하다면, 다음 전화로 바로 연락해 주세요.',
     ],
     closingEmergency: ['긴급상황 112·119', '자살위기 상담 109'],
-    sectionLabel: '중요 안내',
   },
   en: {
     title: 'Usage Guide & Disclaimer | Helpline Korea',
@@ -168,7 +167,6 @@ const NOTICE_COPY = {
       'If you are in immediate danger, call the numbers below right away.',
     ],
     closingEmergency: ['Emergency 112 · 119', 'Suicide crisis counseling 109'],
-    sectionLabel: 'Important guidance',
   },
 } as const
 
@@ -212,7 +210,7 @@ export default async function LocalizedNoticePage({ params }: Props) {
       lang={currentLang}
       className="mx-auto w-full max-w-[860px] px-4 pb-14 pt-6 md:px-6"
     >
-      <header className="rounded-[2rem] border border-stone-200 bg-white px-5 py-6 shadow-sm md:px-8 md:py-8">
+      <header className="rounded-2xl border border-stone-200 bg-white px-5 py-6 shadow-sm md:px-8 md:py-8">
         <p className="text-xs font-semibold uppercase tracking-[0.22em] text-green-700">
           {copy.eyebrow}
         </p>
@@ -231,11 +229,8 @@ export default async function LocalizedNoticePage({ params }: Props) {
         {copy.sections.map((section) => (
           <article
             key={section.title}
-            className="rounded-[2rem] border border-stone-200 bg-white px-5 py-6 shadow-sm md:px-8"
+            className="rounded-2xl border border-stone-200 bg-white px-5 py-6 shadow-sm md:px-8"
           >
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-green-700">
-              {copy.sectionLabel}
-            </p>
             <h2 className="text-xl font-semibold text-stone-900">{section.title}</h2>
             <div className="mt-3 space-y-3 text-base leading-8 text-stone-600">
               {section.paragraphs.map((paragraph) => (
@@ -263,7 +258,7 @@ export default async function LocalizedNoticePage({ params }: Props) {
         ))}
       </div>
 
-      <div className="mt-6 rounded-[2rem] border border-green-200 bg-green-50 px-5 py-6 shadow-sm md:px-8">
+      <div className="mt-6 rounded-2xl border border-green-200 bg-green-50 px-5 py-6 shadow-sm md:px-8">
         <h2 className="text-xl font-semibold text-stone-900">{copy.closingTitle}</h2>
         <div className="mt-3 space-y-3 text-base leading-8 text-stone-700">
           {copy.closingParagraphs.map((paragraph) => (
