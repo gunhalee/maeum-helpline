@@ -10,13 +10,8 @@ export default function FooterNote({ lang }: Props) {
     <>
       <p>
         {lang === 'en'
-          ? 'This page introduces various urgent helplines in Korea.'
-          : '본 페이지는 다양한 긴급상담 기관들을 소개합니다.'}
-      </p>
-      <p className="mt-1">
-        {lang === 'en'
-          ? 'We do not store any personal information.'
-          : '어떤 개인정보도 저장하지 않습니다.'}
+          ? 'This page introduces various urgent helplines in Korea. We also do not store any personal information.'
+          : '본 페이지는 다양한 긴급상담 기관들을 소개합니다. 또한 개인정보를 저장하지 않습니다.'}
       </p>
       <p className="mt-1">
         {lang === 'en'
@@ -28,15 +23,19 @@ export default function FooterNote({ lang }: Props) {
           ? 'This website and email responses do not replace professional counseling, diagnosis, treatment, legal advice, or emergency rescue services.'
           : '이 사이트와 이메일 답변은 전문 상담·진단·치료·법률 자문·긴급 구조를 대체하지 않습니다.'}
       </p>
-      <p className="mt-2">
+      <p className="mt-1">
+        {lang === 'en'
+          ? 'Report errors or contact us: helpline@gmail.com'
+          : '오류 신고 · 문의하기 helpline@gmail.com'}
+      </p>
+      <p className="mt-1">
         <Link
           href={withLang('/notice', lang)}
-          className="inline-flex items-center rounded-full border border-stone-300 px-3 py-1 text-xs font-medium text-stone-600 transition-colors hover:bg-stone-100 hover:text-stone-800"
+          className="text-stone-700 underline-offset-2 transition-colors hover:text-green-700 hover:underline"
         >
           {lang === 'en' ? 'Usage guide & disclaimer' : '사용 안내 및 면책 고지'}
         </Link>
       </p>
-      <p className="mt-1">helplinekorea@gmail.com</p>
     </>
   )
 }
