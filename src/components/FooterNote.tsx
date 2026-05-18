@@ -8,11 +8,6 @@ interface Props {
 export default function FooterNote({ lang }: Props) {
   return (
     <>
-      <p>
-        {lang === 'en'
-          ? 'This page introduces various urgent helplines in Korea. We also do not store any personal information.'
-          : '본 페이지는 다양한 긴급상담 기관들을 소개합니다. 또한 개인정보를 저장하지 않습니다.'}
-      </p>
       <p className="mt-1">
         {lang === 'en'
           ? 'Helpline Korea provides information about counseling agencies and public support resources, and may offer limited general guidance by email.'
