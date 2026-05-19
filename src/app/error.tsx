@@ -14,7 +14,7 @@ export default function Error({ reset }: Props) {
       <button
         type="button"
         onClick={reset}
-        className="mt-6 rounded-full bg-green-700 px-5 py-2 text-white hover:bg-green-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-600"
+        className="mt-6 inline-flex min-h-[44px] items-center rounded-full bg-green-700 px-5 py-2 text-white hover:bg-green-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-600"
       >
         새로고침
       </button>

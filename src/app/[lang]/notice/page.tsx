@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import EmergencyText from '@/components/EmergencyText'
 import { SITE_NAME } from '@/lib/constants'
 import { isLang, type Lang } from '@/lib/i18n'
 import {
@@ -236,7 +237,9 @@ export default async function LocalizedNoticePage({ params }: Props) {
             <h2 className="text-xl font-semibold text-stone-900">{section.title}</h2>
             <div className="mt-3 space-y-3 text-base leading-8 text-stone-600">
               {section.paragraphs.map((paragraph) => (
-                <p key={paragraph}>{paragraph}</p>
+                <p key={paragraph}>
+                  <EmergencyText text={paragraph} />
+                </p>
               ))}
             </div>
             {'bullets' in section ? (
@@ -244,7 +247,9 @@ export default async function LocalizedNoticePage({ params }: Props) {
                 {section.bullets.map((item) => (
                   <li key={item} className="flex gap-3">
                     <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-green-700" />
-                    <span>{item}</span>
+                    <span>
+                      <EmergencyText text={item} />
+                    </span>
                   </li>
                 ))}
               </ul>
@@ -252,7 +257,9 @@ export default async function LocalizedNoticePage({ params }: Props) {
             {'notes' in section ? (
               <div className="mt-4 rounded-2xl border border-stone-200 bg-stone-50 px-4 py-3 text-sm leading-7 text-stone-700">
                 {section.notes.map((note) => (
-                  <p key={note}>{note}</p>
+                  <p key={note}>
+                    <EmergencyText text={note} />
+                  </p>
                 ))}
               </div>
             ) : null}
@@ -264,14 +271,19 @@ export default async function LocalizedNoticePage({ params }: Props) {
         <h2 className="text-xl font-semibold text-stone-900">{copy.closingTitle}</h2>
         <div className="mt-3 space-y-3 text-base leading-8 text-stone-700">
           {copy.closingParagraphs.map((paragraph) => (
-            <p key={paragraph}>{paragraph}</p>
+            <p key={paragraph}>
+              <EmergencyText text={paragraph} />
+            </p>
           ))}
         </div>
-        <div className="mt-5 space-y-1">
+        <div className="mt-5 flex flex-wrap gap-2">
           {copy.closingEmergency.map((item) => (
-            <p key={item} className="text-lg font-semibold text-green-800">
-              {item}
-            </p>
+            <span
+              key={item}
+              className="rounded-full border border-green-700 bg-white px-4 py-2 text-lg font-semibold text-green-800"
+            >
+              <EmergencyText text={item} />
+            </span>
           ))}
         </div>
       </div>

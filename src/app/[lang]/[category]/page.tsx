@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
+import EmergencyText from '@/components/EmergencyText'
 import ServiceGrid from '@/components/ServiceGrid'
 import { CATEGORY_META, CATEGORY_ORDER } from '@/lib/categories'
 import { SITE_NAME } from '@/lib/constants'
@@ -291,7 +292,9 @@ export default async function LocalizedCategoryPage({ params }: Props) {
           <h2 className="text-lg font-semibold text-stone-900">{editorial.heading}</h2>
           <div className="mt-4 space-y-4 text-sm leading-7 text-stone-700 md:text-[15px]">
             {editorial.paragraphs.map((paragraph) => (
-              <p key={paragraph}>{paragraph}</p>
+              <p key={paragraph}>
+                <EmergencyText text={paragraph} />
+              </p>
             ))}
           </div>
           <div className="mt-5 flex flex-wrap gap-2 text-sm text-stone-700">
@@ -300,14 +303,14 @@ export default async function LocalizedCategoryPage({ params }: Props) {
                 key={item}
                 className="rounded-full border border-stone-200 bg-stone-50 px-4 py-2"
               >
-                {item}
+                <EmergencyText text={item} />
               </span>
             ))}
           </div>
           <div className="mt-5">
             <Link
               href={withLang('/guide', currentLang)}
-              className="inline-flex items-center rounded-full border border-green-700 px-4 py-2 text-sm font-medium text-green-700 transition-colors hover:bg-green-50"
+              className="inline-flex min-h-[44px] items-center rounded-full border border-green-700 px-4 py-2 text-sm font-medium text-green-700 transition-colors hover:bg-green-50"
             >
               {currentLang === 'en'
                 ? 'Read help-seeking guides'

@@ -7,7 +7,7 @@ export default function NotFound() {
       <p className="mt-2 text-stone-500">요청하신 페이지를 찾을 수 없습니다.</p>
       <Link
         href="/ko"
-        className="mt-6 rounded-full bg-green-700 px-5 py-2 text-white hover:bg-green-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-600"
+        className="mt-6 inline-flex min-h-[44px] items-center rounded-full bg-green-700 px-5 py-2 text-white hover:bg-green-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-600"
       >
         홈으로 돌아가기
       </Link>

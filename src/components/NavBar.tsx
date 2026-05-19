@@ -18,7 +18,7 @@ export default function NavBar({ lang }: Props) {
   const pathname = usePathname()
   const currentPath = getPathWithoutLang(pathname)
   const tabBaseClass =
-    'flex items-center gap-1.5 whitespace-nowrap rounded-full px-3 py-1.5 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-600'
+    'flex min-h-[44px] items-center gap-1.5 whitespace-nowrap rounded-full px-3.5 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-600'
   const links = [
     {
       href: withLang('/', lang),
@@ -43,10 +43,10 @@ export default function NavBar({ lang }: Props) {
 
   return (
     <nav
-      className="sticky top-0 z-40 border-b border-stone-200 bg-white"
+      className="border-b border-stone-200 bg-white"
       aria-label={lang === 'en' ? 'Category navigation' : '카테고리 네비게이션'}
     >
-      <div className="mx-auto flex max-w-5xl flex-wrap justify-center gap-1 px-4 py-2">
+      <div className="scrollbar-hide mx-auto flex max-w-5xl flex-nowrap justify-start gap-1 overflow-x-auto px-4 py-2 md:justify-center">
         {links.map((link) => (
           <Link
             key={link.href}

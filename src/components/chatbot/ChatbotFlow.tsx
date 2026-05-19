@@ -85,7 +85,7 @@ export default function ChatbotFlow({ lang }: Props) {
   }
 
   return (
-    <div className="mx-auto w-full max-w-[460px] px-4 pb-8 pt-10 md:max-w-[620px] md:px-6 md:pt-14 lg:max-w-[700px] lg:pt-18">
+    <div className="mx-auto w-full max-w-[460px] px-4 pb-8 pt-6 md:max-w-[620px] md:px-6 md:pt-12 lg:max-w-[700px] lg:pt-16">
       {screen === 'selection' && (
         <SelectionScreen lang={lang} onSubmit={handleSubmit} />
       )}

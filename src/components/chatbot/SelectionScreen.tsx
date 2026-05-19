@@ -70,17 +70,17 @@ export default function SelectionScreen({ lang, onSubmit }: Props) {
     const active = selected.has(label)
     const isSolo = SOLO_BUTTONS.has(label)
 
-    if (active) return 'rounded-xl border-[1.5px] px-3.5 py-2.5 text-sm transition-colors border-green-600 bg-green-50 text-green-700'
+    if (active) return 'min-h-[44px] rounded-xl border-[1.5px] px-3.5 py-2.5 text-sm transition-colors border-green-600 bg-green-50 text-green-700'
 
     if (isSolo && hasNormalSelected) {
-      return 'rounded-xl border-[1.5px] px-3.5 py-2.5 text-sm transition-colors border-stone-100 bg-stone-50 text-stone-300 cursor-not-allowed'
+      return 'min-h-[44px] rounded-xl border-[1.5px] px-3.5 py-2.5 text-sm transition-colors border-stone-100 bg-stone-50 text-stone-300 cursor-not-allowed'
     }
 
     if (!isSolo && hasSoloSelected) {
-      return 'rounded-xl border-[1.5px] px-3.5 py-2.5 text-sm transition-colors border-stone-200 bg-white text-stone-400 hover:border-green-300 hover:bg-green-50 hover:text-stone-700'
+      return 'min-h-[44px] rounded-xl border-[1.5px] px-3.5 py-2.5 text-sm transition-colors border-stone-200 bg-white text-stone-400 hover:border-green-300 hover:bg-green-50 hover:text-stone-700'
     }
 
-    return 'rounded-xl border-[1.5px] px-3.5 py-2.5 text-sm transition-colors border-stone-200 bg-white text-stone-700 hover:border-green-300 hover:bg-green-50'
+    return 'min-h-[44px] rounded-xl border-[1.5px] px-3.5 py-2.5 text-sm transition-colors border-stone-200 bg-white text-stone-700 hover:border-green-300 hover:bg-green-50'
   }
 
   return (
@@ -106,6 +106,11 @@ export default function SelectionScreen({ lang, onSubmit }: Props) {
                 ? 'Are you thinking about suicide or self-harm?'
                 : '죽고 싶거나 자해하고 싶은가요?'}
             </p>
+            <p className="-mt-2 mb-4 text-sm leading-6 text-stone-500">
+              {lang === 'en'
+                ? 'If yes, we will show crisis helplines right away.'
+                : '네를 누르면 바로 연결 가능한 상담처를 보여드려요.'}
+            </p>
             <div className="flex flex-wrap gap-2">
               <button
                 type="button"
@@ -117,7 +122,7 @@ export default function SelectionScreen({ lang, onSubmit }: Props) {
               <button
                 type="button"
                 onClick={() => handleCrisisAnswer('yes')}
-                className="min-h-[50px] flex-1 rounded-xl border-[1.5px] border-stone-200 bg-white px-4 py-3.5 text-center text-base text-stone-700 transition-colors hover:border-green-300 hover:bg-green-50"
+                className="min-h-[50px] flex-1 rounded-xl border-[1.5px] border-green-600 bg-green-50 px-4 py-3.5 text-center text-base font-semibold text-green-800 transition-colors hover:bg-green-100"
               >
                 {lang === 'en' ? 'Yes' : '네'}
               </button>
@@ -125,7 +130,7 @@ export default function SelectionScreen({ lang, onSubmit }: Props) {
             <button
               type="button"
               onClick={() => handleCrisisAnswer('skip')}
-              className="mt-4 inline-block text-sm text-stone-900 underline-offset-2 hover:text-stone-600 hover:underline"
+              className="mt-4 inline-flex min-h-[44px] items-center justify-center rounded-full px-4 text-sm text-stone-700 underline-offset-2 hover:bg-stone-100 hover:text-stone-900 hover:underline"
             >
               {lang === 'en' ? 'Skip this question' : '답변하지 않기'}
             </button>
@@ -156,7 +161,7 @@ export default function SelectionScreen({ lang, onSubmit }: Props) {
               {lang === 'en' ? '← Back' : '← 이전으로'}
             </button>
 
-            <div className="grid grid-cols-2 gap-2">
+            <div className="grid grid-cols-1 gap-2 min-[420px]:grid-cols-2">
               {SITUATION_BUTTONS.map((label) => (
                 <button
                   key={label}

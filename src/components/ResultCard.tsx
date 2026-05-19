@@ -11,10 +11,10 @@ interface Props {
 }
 
 const footerLinkClass =
-  'shrink-0 text-sm font-medium text-blue-700 underline-offset-2 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-600'
+  'inline-flex min-h-[44px] shrink-0 items-center text-sm font-medium text-blue-700 underline-offset-2 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-600'
 
 const phoneLinkMutedClass =
-  'shrink-0 text-sm font-medium text-stone-400 underline-offset-2 hover:text-stone-500 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-300'
+  'inline-flex min-h-[44px] shrink-0 items-center text-sm font-medium text-stone-400 underline-offset-2 hover:text-stone-500 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-300'
 
 export default function ResultCard({
   name,

@@ -22,6 +22,10 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+a {
+  overflow-wrap: anywhere;
+}
+
 .scrollbar-hide {
   -ms-overflow-style: none;
   scrollbar-width: none;

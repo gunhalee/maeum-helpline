@@ -97,17 +97,18 @@ export default async function LocalizedAboutPage({ params }: Props) {
             </p>
             <div className="mt-3 grid gap-3 sm:grid-cols-3">
               {emergencyNumbers.map((item) => (
-                <div
+                <a
                   key={item.number}
-                  className="rounded-2xl border border-stone-200 bg-stone-50 px-4 py-3"
+                  href={`tel:${item.number}`}
+                  className="flex min-h-[76px] flex-col justify-center rounded-2xl border border-green-700 bg-white px-4 py-3 text-green-800 transition-colors hover:bg-green-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700"
                 >
-                  <p className="text-lg font-semibold text-stone-900">
+                  <p className="text-xl font-bold">
                     {item.number}
                   </p>
-                  <p className="mt-1 text-sm leading-6 text-stone-600">
+                  <p className="mt-1 text-sm font-medium leading-6">
                     {item.description}
                   </p>
-                </div>
+                </a>
               ))}
             </div>
           </div>
@@ -161,7 +162,7 @@ export default async function LocalizedAboutPage({ params }: Props) {
           <div className="mt-5">
             <Link
               href={withLang('/guide', currentLang)}
-              className="inline-flex items-center rounded-full border border-green-700 px-4 py-2 text-sm font-medium text-green-700 transition-colors hover:bg-green-50"
+              className="inline-flex min-h-[44px] items-center rounded-full border border-green-700 px-4 py-2 text-sm font-medium text-green-700 transition-colors hover:bg-green-50"
             >
               {isEnglish ? 'Open guides' : '가이드 열기'}
             </Link>

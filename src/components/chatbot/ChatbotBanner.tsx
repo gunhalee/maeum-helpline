@@ -5,9 +5,9 @@ import { usePathname } from 'next/navigation'
 import { getPathWithoutLang, type Lang, withLang } from '@/lib/i18n'
 
 const EMERGENCY_ITEMS = [
-  { id: 1, name: '자살 위기', phone: '109' },
-  { id: 98, name: '응급 구조', phone: '119' },
-  { id: 99, name: '경찰 신고', phone: '112' },
+  { id: 1, koLabel: '자살위기', enLabel: 'Crisis', phone: '109' },
+  { id: 98, koLabel: '응급', enLabel: 'EMS', phone: '119' },
+  { id: 99, koLabel: '경찰', enLabel: 'Police', phone: '112' },
 ] as const
 
 interface Props {
@@ -25,37 +25,29 @@ export default function ChatbotBanner({ lang }: Props) {
       aria-label={lang === 'en' ? 'Emergency contacts' : '긴급 연락처'}
       className="bg-green-50 px-4 py-3 text-center"
     >
-      <div className="relative mb-2">
-        <p className="px-10 text-sm font-medium text-stone-700">
-          {lang === 'en' ? 'If you are in immediate danger' : '지금 당장 위험한 상황이라면'}
+      <div className="mx-auto mb-3 flex max-w-[460px] items-center justify-between gap-3">
+        <p className="text-left text-sm font-semibold leading-5 text-stone-800">
+          {lang === 'en' ? 'If you are in danger, call now' : '위험하면 지금 바로 전화하세요'}
         </p>
-        <div className="absolute right-0 top-1/2 -translate-y-1/2">
-          <Link
-            href={toggleHref}
-            replace
-            className="inline-flex items-center text-xs font-semibold tracking-[0.08em] text-stone-600 underline underline-offset-4 transition-colors hover:text-green-700"
-            aria-label={lang === 'en' ? 'Switch to Korean' : 'Switch to English'}
-          >
-            {lang === 'en' ? 'KO' : 'EN'}
-          </Link>
-        </div>
+        <Link
+          href={toggleHref}
+          replace
+          className="inline-flex min-h-[36px] shrink-0 items-center rounded-full border border-green-700 px-3 text-xs font-semibold tracking-[0.08em] text-green-800 transition-colors hover:bg-white"
+          aria-label={lang === 'en' ? 'Switch to Korean' : 'Switch to English'}
+        >
+          {lang === 'en' ? 'KO' : 'EN'}
+        </Link>
       </div>
-      <div className="mx-auto grid max-w-[420px] grid-cols-3 gap-3">
+      <div className="mx-auto grid max-w-[460px] grid-cols-3 gap-2 min-[380px]:gap-3">
         {EMERGENCY_ITEMS.map((item) => (
           <a
             key={item.id}
             href={`tel:${item.phone}`}
-            className="inline-flex min-h-[44px] w-full flex-col items-center justify-center rounded-lg border border-green-700 bg-white px-4 py-2 text-green-700 transition-colors hover:bg-green-50 active:bg-green-100"
+            className="inline-flex min-h-[58px] w-full flex-col items-center justify-center rounded-xl border border-green-700 bg-white px-2 py-2 text-green-700 transition-colors hover:bg-green-50 active:bg-green-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700"
           >
-            <span className="text-base font-bold leading-tight">{item.phone}</span>
-            <span className="text-[10px] leading-tight">
-              {lang === 'en'
-                ? item.id === 1
-                  ? 'Suicide crisis'
-                  : item.id === 98
-                    ? 'Emergencies'
-                    : 'Police'
-                : item.name}
+            <span className="text-lg font-bold leading-tight">{item.phone}</span>
+            <span className="text-xs font-medium leading-tight">
+              {lang === 'en' ? item.enLabel : item.koLabel}
             </span>
           </a>
         ))}

@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
+import EmergencyText from '@/components/EmergencyText'
 import { SITE_NAME } from '@/lib/constants'
 import { getGuidePageCopy, getGuides } from '@/lib/editorial'
 import { isLang, type Lang, withLang } from '@/lib/i18n'
@@ -116,7 +117,7 @@ export default async function LocalizedGuidePage({ params }: Props) {
             {copy.title}
           </h1>
           <p className="mt-4 max-w-3xl text-base leading-8 text-stone-600">
-            {copy.intro}
+            <EmergencyText text={copy.intro} />
           </p>
           <div className="mt-6 flex flex-wrap gap-2 text-sm text-stone-700">
             {copy.focusPoints.map((item) => (
@@ -124,7 +125,7 @@ export default async function LocalizedGuidePage({ params }: Props) {
                 key={item}
                 className="rounded-full border border-stone-200 bg-stone-50 px-4 py-2"
               >
-                {item}
+                <EmergencyText text={item} />
               </span>
             ))}
           </div>
@@ -149,11 +150,13 @@ export default async function LocalizedGuidePage({ params }: Props) {
                 {guide.title}
               </h2>
               <p className="mt-3 text-base leading-8 text-stone-600">
-                {guide.description}
+                <EmergencyText text={guide.description} />
               </p>
               <div className="mt-5 space-y-4 text-sm leading-7 text-stone-700 md:text-[15px]">
                 {guide.paragraphs.map((paragraph) => (
-                  <p key={paragraph}>{paragraph}</p>
+                  <p key={paragraph}>
+                    <EmergencyText text={paragraph} />
+                  </p>
                 ))}
               </div>
               <div className="mt-6 rounded-2xl border border-stone-200 bg-stone-50 px-4 py-4">
@@ -164,7 +167,9 @@ export default async function LocalizedGuidePage({ params }: Props) {
                   {guide.checklist.map((item) => (
                     <li key={item} className="flex gap-3">
                       <span className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-green-700" />
-                      <span>{item}</span>
+                      <span>
+                        <EmergencyText text={item} />
+                      </span>
                     </li>
                   ))}
                 </ul>
@@ -172,7 +177,7 @@ export default async function LocalizedGuidePage({ params }: Props) {
               <div className="mt-6">
                 <Link
                   href={withLang(`/${guide.category}`, currentLang)}
-                  className="inline-flex items-center rounded-full border border-green-700 px-4 py-2 text-sm font-medium text-green-700 transition-colors hover:bg-green-50"
+                  className="inline-flex min-h-[44px] items-center rounded-full border border-green-700 px-4 py-2 text-sm font-medium text-green-700 transition-colors hover:bg-green-50"
                 >
                   {currentLang === 'en'
                     ? `Open ${guide.categoryLabel} directory`
