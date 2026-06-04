@@ -80,11 +80,6 @@ export default function SelectionScreen({ lang, onSubmit }: Props) {
                 ? 'Are you thinking about suicide or self-harm?'
                 : '죽고 싶거나 자해하고 싶은가요?'}
             </p>
-            <p className="-mt-2 mb-4 text-sm leading-6 text-stone-500">
-              {lang === 'en'
-                ? 'If yes, we will show crisis helplines right away.'
-                : '네를 누르면 바로 연결 가능한 상담처를 보여드려요.'}
-            </p>
             <div className="flex flex-wrap gap-2">
               <button
                 type="button"
