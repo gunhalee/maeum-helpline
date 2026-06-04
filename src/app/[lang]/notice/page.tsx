@@ -15,9 +15,9 @@ interface Props {
 
 const NOTICE_COPY = {
   ko: {
-    title: '사용 안내 및 면책 고지 | Helpline Korea',
+    title: '사용 안내 및 면책 고지 | 긴급상담 헬프라인',
     description:
-      'Helpline Korea 이용 안내와 면책 고지를 확인하세요. 긴급 상황 연락처와 서비스 범위를 쉽게 안내합니다.',
+      '긴급상담 헬프라인의 이용 범위, 긴급 상황 연락처, 전문 상담·의료·법률 자문을 대체하지 않는다는 면책 고지를 확인하세요.',
     eyebrow: '사용 안내 및 면책 고지',
     heading: '이 사이트는 이렇게 도와드려요',
     intro:
@@ -93,9 +93,9 @@ const NOTICE_COPY = {
     closingEmergency: ['긴급상황 112·119', '자살위기 상담 109'],
   },
   en: {
-    title: 'Usage Guide & Disclaimer | Helpline Korea',
+    title: 'Usage Guide and Disclaimer | Helpline Korea',
     description:
-      'Read the usage guide and disclaimer for Helpline Korea, including emergency contacts and service limits.',
+      'Read the usage guide, emergency contact notice, and disclaimer explaining that Helpline Korea does not replace professional counseling, medical care, legal advice, or emergency rescue.',
     eyebrow: 'Usage Guide & Disclaimer',
     heading: 'How this website may help',
     intro:

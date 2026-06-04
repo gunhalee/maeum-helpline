@@ -51,6 +51,11 @@ export default async function LocalizedHomePage({ params }: Props) {
 
   return (
     <div lang={currentLang} className="flex flex-1 flex-col bg-white">
+      <h1 className="sr-only">
+        {currentLang === 'en'
+          ? 'Find a Korean crisis helpline'
+          : '상황에 맞는 상담처 찾기'}
+      </h1>
       <div className="flex flex-1 items-start justify-center">
         <ChatbotFlow lang={currentLang} />
       </div>

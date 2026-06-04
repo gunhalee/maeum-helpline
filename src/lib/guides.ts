@@ -10,7 +10,7 @@ type GuideIndexCopy = {
   focusPoints: string[]
 }
 
-export type GuideSectionId =
+type GuideSectionId =
   | 'when'
   | 'firstCall'
   | 'privacy'
@@ -77,7 +77,7 @@ const GUIDE_INDEX_COPY: Record<Lang, GuideIndexCopy> = {
   },
 }
 
-export const GUIDE_ANCHOR_BY_CATEGORY: Record<Category, string> = {
+const GUIDE_ANCHOR_BY_CATEGORY: Record<Category, string> = {
   crisis: 'guide-119',
   depression: 'guide-109',
   women: 'guide-1366',

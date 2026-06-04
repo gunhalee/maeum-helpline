@@ -29,4 +29,9 @@ export interface Service {
   languages: string[]
   ageGroups: string[]
   exclusionDescription?: string
+  seoDescription?: string
+  searchIntents: string[]
+  lastVerified?: string
+  sourcePriority?: string
+  sourceType?: string
 }

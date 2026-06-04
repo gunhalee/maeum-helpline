@@ -4,9 +4,12 @@ import { Analytics } from '@vercel/analytics/next'
 import { SITE_NAME } from '@/lib/constants'
 import {
   GOOGLE_SITE_VERIFICATION,
+  NAVER_SITE_VERIFICATION,
+  SEO_CONTENT_UPDATED_AT,
   SITE_DESCRIPTION,
   SITE_KEYWORDS,
   SITE_TITLE,
+  SITE_TOPICS,
   SITE_URL,
 } from '@/lib/seo'
 import './globals.css'
@@ -28,7 +31,9 @@ export const metadata: Metadata = {
   title: SITE_TITLE,
   description: SITE_DESCRIPTION,
   applicationName: SITE_NAME,
+  category: 'public support directory',
   keywords: SITE_KEYWORDS,
+  referrer: 'origin-when-cross-origin',
   openGraph: {
     type: 'website',
     locale: 'ko_KR',
@@ -57,7 +62,7 @@ export const metadata: Metadata = {
   verification: {
     google: GOOGLE_SITE_VERIFICATION,
     other: {
-      'naver-site-verification': 'a1ca50b0cb5985926c31ef7d07966e591951215d',
+      'naver-site-verification': NAVER_SITE_VERIFICATION,
     },
   },
 }
@@ -81,6 +86,7 @@ export default function RootLayout({
         email: 'helplinekorea@gmail.com',
         areaServed: 'KR',
         knowsLanguage: ['ko', 'en'],
+        knowsAbout: SITE_TOPICS,
         description: SITE_DESCRIPTION,
       },
       {
@@ -91,6 +97,7 @@ export default function RootLayout({
         url: SITE_URL,
         inLanguage: ['ko', 'en'],
         description: SITE_DESCRIPTION,
+        dateModified: SEO_CONTENT_UPDATED_AT,
         publisher: {
           '@id': organizationId,
         },

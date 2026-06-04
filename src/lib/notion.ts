@@ -72,6 +72,15 @@ function getPropertyCheckbox(property: unknown): boolean | undefined {
   return Boolean((property as { checkbox?: unknown }).checkbox)
 }
 
+function getPropertyDate(property: unknown): string | undefined {
+  if (!property || typeof property !== 'object') return undefined
+  const record = property as Record<string, unknown>
+  if (!('date' in record)) return undefined
+
+  const date = record.date as { start?: string | null } | null | undefined
+  return date?.start ?? undefined
+}
+
 function getPropertyMultiValues(property: unknown): string[] {
   if (!property || typeof property !== 'object') return []
 
@@ -188,6 +197,11 @@ function mapNotionToService(page: any): Service | null {
   const ageGroups = getPropertyMultiValues(properties['age_group'])
   const exclusionDescription =
     getPropertyText(properties['exclusion_description']) || undefined
+  const seoDescription = getPropertyText(properties['seo_summary']) || undefined
+  const searchIntents = getPropertyMultiValues(properties['search_intent'])
+  const lastVerified = getPropertyDate(properties['last_verified'])
+  const sourcePriority = getPropertyText(properties['source_priority']) || undefined
+  const sourceType = getPropertyText(properties['source_type']) || undefined
 
   return {
     id: typedPage.id ?? '',
@@ -209,6 +223,11 @@ function mapNotionToService(page: any): Service | null {
     languages,
     ageGroups,
     exclusionDescription,
+    seoDescription,
+    searchIntents,
+    lastVerified,
+    sourcePriority,
+    sourceType,
   }
 }
 

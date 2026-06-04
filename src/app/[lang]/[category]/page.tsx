@@ -8,6 +8,7 @@ import { SITE_NAME } from '@/lib/constants'
 import { getCategoryEditorial } from '@/lib/editorial'
 import { getGuideAnchorForCategory } from '@/lib/guides'
 import {
+  SEO_CONTENT_UPDATED_AT,
   getLanguageAlternates,
   getAlternateOpenGraphLocale,
   getCategorySeoCopy,
@@ -85,6 +86,25 @@ function buildOrganizationSchema(
   const availableLanguage = getAvailableLanguages(service) ?? ['Korean']
   const hoursAvailable = getHoursAvailable(service)
   const areaServed = service.region || 'KR'
+  const keywords = [
+    ...new Set([...service.situationKeywords, ...service.searchIntents]),
+  ]
+  const additionalProperty = [
+    service.sourceType
+      ? {
+          '@type': 'PropertyValue',
+          name: 'source type',
+          value: service.sourceType,
+        }
+      : null,
+    service.sourcePriority
+      ? {
+          '@type': 'PropertyValue',
+          name: 'source priority',
+          value: service.sourcePriority,
+        }
+      : null,
+  ].filter(Boolean)
   const contactType =
     lang === 'en' ? `${categoryLabel} counseling` : `${categoryLabel} 상담`
 
@@ -92,14 +112,15 @@ function buildOrganizationSchema(
     '@type': 'Organization',
     '@id': organizationId,
     name: service.name,
-    description: service.description || undefined,
+    description: service.seoDescription || service.description || undefined,
     url: service.url || undefined,
     telephone: service.phone || undefined,
     areaServed,
-    keywords:
-      service.situationKeywords.length > 0
-        ? service.situationKeywords.join(', ')
-        : undefined,
+    keywords: keywords.length > 0 ? keywords.join(', ') : undefined,
+    knowsAbout: keywords.length > 0 ? keywords : undefined,
+    dateModified: service.lastVerified,
+    additionalProperty:
+      additionalProperty.length > 0 ? additionalProperty : undefined,
     contactPoint: [
       {
         '@type': 'ContactPoint',
@@ -175,7 +196,13 @@ export default async function LocalizedCategoryPage({ params }: Props) {
   const services = await getServices()
   const filtered = services.filter((service) => service.category.includes(category))
   const meta = CATEGORY_META[category]
-  const { heading, description } = getCategorySeoCopy(category, currentLang)
+  const {
+    heading,
+    description,
+    keywords,
+    searchIntents,
+    primaryServices,
+  } = getCategorySeoCopy(category, currentLang)
   const editorial = getCategoryEditorial(category, currentLang)
   const canonicalUrl = getLocalizedUrl(`/${category}`, currentLang)
   const categoryLabel = translateCategoryLabel(meta.label, currentLang)
@@ -213,6 +240,19 @@ export default async function LocalizedCategoryPage({ params }: Props) {
     description,
     url: canonicalUrl,
     inLanguage: currentLang === 'en' ? 'en' : 'ko-KR',
+    dateModified: SEO_CONTENT_UPDATED_AT,
+    keywords: keywords.join(', '),
+    about: primaryServices.map((name) => ({
+      '@type': 'Thing',
+      name,
+    })),
+    audience: {
+      '@type': 'Audience',
+      audienceType:
+        currentLang === 'en'
+          ? `${categoryLabel} support seekers in Korea`
+          : `${categoryLabel} 지원이 필요한 사람`,
+    },
     isPartOf: {
       '@type': 'WebSite',
       name: SITE_NAME,
@@ -232,7 +272,16 @@ export default async function LocalizedCategoryPage({ params }: Props) {
   }
   const organizationGraphJsonLd = {
     '@context': 'https://schema.org',
-    '@graph': organizationSchemas,
+    '@graph': organizationSchemas.map((organization) => {
+      const knowsAbout = [
+        ...new Set([...(organization.knowsAbout ?? []), ...searchIntents]),
+      ]
+
+      return {
+        ...organization,
+        knowsAbout,
+      }
+    }),
   }
 
   return (

@@ -6,7 +6,9 @@ import { SITE_NAME } from '@/lib/constants'
 import { getGuidePageCopy, getGuides } from '@/lib/guides'
 import { isLang, type Lang, withLang } from '@/lib/i18n'
 import {
+  SEO_CONTENT_UPDATED_AT,
   getAlternateOpenGraphLocale,
+  getGuideSeoKeywords,
   getLanguageAlternates,
   getLocaleForMetadata,
   getLocalizedUrl,
@@ -21,22 +23,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const currentLang: Lang = isLang(lang) ? lang : 'ko'
   const { title, description } = getGuidePageCopy(currentLang)
   const url = getLocalizedUrl('/guide', currentLang)
-  const keywords =
-    currentLang === 'en'
-      ? [
-          'Korean helpline guide',
-          'what happens when calling Korean hotlines',
-          'Korea crisis support guide',
-          'Korea counseling confidentiality',
-          'Korea emergency counseling numbers',
-        ]
-      : [
-          '상담 전화 가이드',
-          '전화하기 전에 확인',
-          '상담 비밀보장',
-          '상담 비용 안내',
-          '신고 없이 상담',
-        ]
+  const keywords = getGuideSeoKeywords(currentLang)
 
   return {
     title,
@@ -69,6 +56,25 @@ export default async function LocalizedGuidePage({ params }: Props) {
   const copy = getGuidePageCopy(currentLang)
   const guides = getGuides(currentLang)
   const canonicalUrl = getLocalizedUrl('/guide', currentLang)
+  const keywords = getGuideSeoKeywords(currentLang)
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: SITE_NAME,
+        item: getLocalizedUrl('/', currentLang),
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: currentLang === 'en' ? 'Guides' : '가이드',
+        item: canonicalUrl,
+      },
+    ],
+  }
   const collectionPageJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',
@@ -76,6 +82,8 @@ export default async function LocalizedGuidePage({ params }: Props) {
     description: copy.description,
     url: canonicalUrl,
     inLanguage: currentLang === 'en' ? 'en' : 'ko-KR',
+    dateModified: SEO_CONTENT_UPDATED_AT,
+    keywords: keywords.join(', '),
     isPartOf: {
       '@type': 'WebSite',
       name: SITE_NAME,
@@ -93,6 +101,14 @@ export default async function LocalizedGuidePage({ params }: Props) {
           headline: guide.title,
           description: guide.shortAnswer,
           about: guide.categoryLabel,
+          inLanguage: currentLang === 'en' ? 'en' : 'ko-KR',
+          isAccessibleForFree: true,
+          dateModified: SEO_CONTENT_UPDATED_AT,
+          publisher: {
+            '@type': 'Organization',
+            name: SITE_NAME,
+            url: getLocalizedUrl('/', currentLang),
+          },
         },
       })),
     },
@@ -101,6 +117,12 @@ export default async function LocalizedGuidePage({ params }: Props) {
   return (
     <>
       <GuideHashScroller />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbJsonLd),
+        }}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{

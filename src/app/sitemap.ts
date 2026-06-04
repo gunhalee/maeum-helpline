@@ -1,48 +1,25 @@
 import type { MetadataRoute } from 'next'
-import { CATEGORY_ORDER } from '@/lib/categories'
 import { SUPPORTED_LANGS, type Lang } from '@/lib/i18n'
-import { getLanguageAlternates, getLocalizedUrl } from '@/lib/seo'
-
-const STATIC_PAGES = [
-  '/',
-  '/about',
-  '/guide',
-  '/notice',
-  ...CATEGORY_ORDER.map((category) => `/${category}`),
-]
-
-function getPriority(path: string): number {
-  if (path === '/') {
-    return 1
-  }
-
-  if (path === '/about') {
-    return 0.9
-  }
-
-  if (path === '/guide') {
-    return 0.85
-  }
-
-  if (path === '/notice') {
-    return 0.7
-  }
-
-  return 0.8
-}
+import {
+  SEO_CONTENT_UPDATED_DATE,
+  SEO_INDEXED_PATHS,
+  getLanguageAlternates,
+  getLocalizedUrl,
+  getSitemapProfile,
+} from '@/lib/seo'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const now = new Date()
+  return SEO_INDEXED_PATHS.flatMap((path) => {
+    const profile = getSitemapProfile(path)
 
-  return STATIC_PAGES.flatMap((path) =>
-    SUPPORTED_LANGS.map((lang) => ({
+    return SUPPORTED_LANGS.map((lang) => ({
       url: getLocalizedUrl(path, lang as Lang),
-      lastModified: now,
-      changeFrequency: path === '/' ? 'daily' : 'weekly',
-      priority: getPriority(path),
+      lastModified: SEO_CONTENT_UPDATED_DATE,
+      changeFrequency: profile.changeFrequency,
+      priority: profile.priority,
       alternates: {
         languages: getLanguageAlternates(path),
       },
     }))
-  )
+  })
 }
