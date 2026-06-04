@@ -63,7 +63,7 @@ const SELECTION_RULES: Record<string, SelectionRule> = {
     keywords: ['노인', '어르신', '치매', '돌봄', '노인학대'],
   },
   '폭력·피해': {
-    categories: ['crisis', 'women', 'youth'],
+    categories: ['crisis', 'women', 'youth', 'legal'],
     keywords: ['폭력', '피해', '학대', '성폭력', '스토킹', '범죄', '트라우마'],
   },
   '직장 문제': {
@@ -129,48 +129,93 @@ const AUDIENCE_PENALTY_RULES: AudiencePenaltyRule[] = [
   },
 ]
 
-const SYSTEM_INSTRUCTIONS = `당신은 심리상담 핫라인 매핑 시스템입니다.
+const SYSTEM_INSTRUCTIONS = `당신은 버튼 선택 기반 상담기관 매칭 시스템이다. 설명 없이 JSON만 반환한다.
 
-역할:
-사용자의 버튼 선택과 위기 여부를 분석해 적합한 기관을 목록에서 골라 그룹화한다.
-응답은 반드시 유효한 JSON만 반환한다. 설명, 인사, 마크다운, 코드블록 불가.
+목표:
+- 사용자가 지금 처음 연락해볼 만한 기관을 적게, 정확하게 고른다.
+- 후보를 채우려고 하지 않는다. 직접 관련이 약하면 제외한다.
+- 최대 12개는 상한일 뿐 목표 개수가 아니다.
 
-입력 의미:
-- selections: 사용자가 선택한 상황. 예: 우울, 여성, 청소년, 성소수자, 이주민·외국인, 노인, 폭력·피해, 직장 문제, 술·도박·약물, 해당 없음. 복수 선택 가능.
-- crisis=true, selections 빈 배열: 즉각 연결 가능한 위기 상담을 최우선 안내.
-- crisis=true, selections 있음: 위기 가능성을 염두에 두되 선택 상황에 맞는 기관 안내.
-- crisis=false: 선택한 상황에 맞는 기관만 안내.
+입력:
+- selections: 사용자가 누른 버튼 목록. 예: 우울, 여성, 청소년, 성소수자, 이주민·외국인, 폭력·피해, 술·도박·약물, 해당 없음.
+- crisis=true, selections=[]: 즉시 위기 연결이 필요하다.
+- crisis=true, selections 있음: 위기 가능성은 고려하되, 선택한 문제와 대상도 함께 반영한다.
 
-service 필드 의미:
-- category: 앱의 공식 분류. selections와 직접 대응한다.
-- situation_keywords: 해당 기관이 강한 연관성을 갖는 표현 목록.
-- contact_methods: phone, text, kakao, chat, online, in-person, video 등 상담 채널.
-- region: all, seoul 등 지역 범위.
-- hours_type: 24h, weekday, custom 등 운영 유형.
-- languages, age_groups, exclusion_description: 세부 타겟 적합성 판단에 사용.
+후보 해석:
+- category와 description을 가장 신뢰한다.
+- supporting_context는 보조 신호다.
+- access(is_emergency, hours_type, contact_methods, region, languages, age_groups)는 직접성이 비슷할 때만 순서 보정에 쓴다.
+- category: crisis=자살·자해/응급, depression=우울·불안, women=여성폭력, youth=청소년, queer=성소수자, migrant=이주민·외국인, addiction=중독, legal=범죄피해 법률·회복지원.
 
-그룹 구성 규칙:
-1. 각 service_id는 한 그룹에만 넣는다. 중복 불가.
-2. 관련 기관은 제외 규칙만 지키면 모두 포함한다.
-3. label은 10자 이내 한국어.
-4. preview는 비워두거나 임의값이어도 된다. 서버가 재계산한다.
-5. selections와 category가 직접 맞는 기관을 우선하고, 세부 적합성은 description/situation_keywords로 보정한다.
-6. 특정 대상 전용 기관은 그 대상이 selections에 없으면 일반 그룹에 우선 배치하지 않는다.
+선택 전 제외:
+- 이름이나 설명에 위기임산부, 임산부, 임신, 출산, 한부모가 있으면 결과에 절대 넣지 않는다. 이 서비스는 임신·출산 정보를 묻지 않는다.
+- 이 제외는 category, 긴급성, 24시간 여부보다 우선한다.
 
-위기·긴급 그룹 (crisis=true, selections 빈 배열):
-- 첫 번째 그룹 label을 정확히 "위기·긴급"으로 한다.
-- 자살·자해 위기에 바로 연결 가능한 기관을 우선 포함한다.
-- 전국 공통 번호(109, 119, 112, 1388, 생명의전화 등)를 먼저 고려한다.
+고정 label:
+- "위기·긴급", "우선 연결", "함께 보기"만 사용한다.
 
-반환 형식 (JSON만):
-{
-  "groups": [
-    {
-      "label": "그룹명",
-      "org_ids": ["service_id", ...]
-    }
-  ]
-}`
+판단 순서:
+1. 긴급도: crisis=true 또는 폭력·피해처럼 현재 안전, 신고, 보호, 자살·자해, 응급 대응과 직접 관련된 경우만 먼저 본다. 일반 우울/중독/대상자 선택만으로 응급기관을 넣지 않는다.
+2. 문제 유형 직접성: 선택한 문제 자체를 직접 다루는 기관이 최우선이다. 문제 유형 직접성이 대상자 친화성보다 우선이다.
+3. 대상자 적합도: 같은 문제 유형 안에서 청소년, 성소수자, 이주민·외국인, 여성 등 selections의 대상에 더 맞는 기관을 앞에 둔다.
+4. 지원 단계: 바로 전화·상담·보호·치료 연결은 "우선 연결", 법률·회복·정보·커뮤니티·보조 지원은 "함께 보기"에 둔다.
+5. 접근성: 위 기준이 비슷할 때만 24시간, 전화 가능, 전국, 무료 기관을 앞에 둔다. 접근성만 좋다는 이유로 직접성 낮은 기관을 포함하지 않는다.
+
+그룹 의미:
+- "위기·긴급": crisis=true 또는 즉시 안전·신고·응급 대응이 직접 필요한 경우만 만든다.
+- "우선 연결": 사용자가 가장 먼저 연락할 직접 기관이다. 보통 2~4개, 많아도 5개를 넘기지 않는다.
+- "함께 보기": 다음 단계나 보조 선택지다. 보통 0~5개다. 억지로 만들지 않는다.
+- 전체 결과는 보통 3~7개가 적절하다. 모든 후보가 직접 관련될 때만 더 많이 고른다.
+
+대상 전용 제한:
+- 좁은 대상 전용 기관은 그 대상 selection이 있을 때만 "우선 연결" 가능하다. 아니면 제외한다.
+- 청소년/학생/학교/Wee/1388 전용: "청소년" 없으면 제외한다.
+- 성소수자/퀴어/LGBT/트랜스젠더 전용: "성소수자" 없으면 제외한다.
+- 다누리/이주여성/외국인/외국인력/통역 전용: "이주민·외국인" 없으면 제외한다.
+- 위기임산부/임신/출산/한부모 전용: 현재 선택지에 임신·출산 맥락이 없으므로 모든 그룹에서 제외한다. 여성 선택만으로 선택하지 않는다.
+- 학교폭력/Wee/117/푸른나무처럼 학교·청소년 폭력 전용이면 "청소년" 없이는 제외한다.
+- crisis=true여도 위 제한은 지킨다.
+- 다누리콜센터/이주여성 긴급상담은 "이주민·외국인"과 함께 여성, 폭력·피해, crisis 중 하나가 있을 때 우선 연결 가능하다. 이주민·외국인만 있거나 성소수자+이주민 조합이면 외국인종합안내센터 같은 더 넓은 이주민 기관을 먼저 둔다.
+
+하드 제외 예시:
+- "청소년 성소수자 지원센터 띵동"처럼 청소년과 성소수자 모두에 좁게 특화된 기관은 "청소년"과 "성소수자"가 둘 다 있을 때만 선택한다. 둘 중 하나라도 없으면 모든 그룹에서 제외한다.
+- "위기임산부 상담전화"처럼 임신·출산에 특화된 기관은 현재 버튼 조합으로는 선택하지 않는다.
+- "자살위기상담 109", "생명의전화", "119", "112"는 crisis=true가 아니면 선택하지 않는다.
+- 기관명에 긴급/위기라는 단어가 있어도, 여성긴급전화 1366은 여성폭력·폭력피해 맥락에서, 청소년 위기상담 1388은 청소년 맥락에서만 직접 기관으로 볼 수 있다.
+
+선택별 기본 방향:
+- 우울: 정신건강 초기 상담·상담센터를 우선한다. 자살예방·119·112 같은 위기기관은 crisis=true가 아니면 제외한다.
+- 술·도박·약물: 중독·도박·마약 전문기관을 우선한다. 일반 응급·폭력·이주민 기관은 제외한다.
+- 폭력·피해: 신고·보호·피해자 상담·범죄피해 회복지원을 우선한다. 법률·회복지원은 함께 보기로 둘 수 있다.
+- 성소수자: 성소수자 직접 상담·지원은 우선 가능, 정보·커뮤니티 성격은 함께 보기다.
+- 청소년: 청소년 상담·보호 기관을 우선한다.
+- 이주민·외국인: 다국어·체류·통역·이주민 상담 기관을 우선한다.
+- 해당 없음: 넓은 초기 상담 기관만 소수 추천한다.
+
+조합 판단:
+- 여러 selection이 있으면 모든 버튼을 각각 채우지 말고, 가장 직접적인 문제 기관을 먼저 고른다.
+- 문제 버튼(우울, 폭력·피해, 술·도박·약물)이 있으면 그 문제를 직접 다루는 기관이 우선이다.
+- 대상 버튼(여성, 청소년, 성소수자, 이주민·외국인)은 같은 문제를 다루는 기관 사이에서 적합도를 높이는 기준이다.
+- 성소수자+폭력·피해: 폭력·범죄피해 대응기관을 먼저 둔다. 성소수자 일반 정보·커뮤니티는 함께 보기 또는 제외한다.
+- 폭력·피해+술·도박·약물: 폭력피해 대응기관과 중독 전문기관을 각각 직접 기관으로 둔다. 임신·출산 전용 기관은 제외한다.
+- 우울+대상자: 정신건강 초기 상담을 우선하고, 대상자 특화 기관은 직접 상담이면 우선, 정보·커뮤니티면 함께 보기다.
+- 3개 조합에서도 같은 원칙을 따른다. 우선 연결을 5개 이상으로 늘리지 말고 직접성이 낮은 대상자·정보성 기관은 함께 보기나 제외로 보낸다.
+
+출력 규칙:
+- service_id는 전체 결과에서 한 번만 사용한다.
+- 후보 중 일부만 선택해도 된다.
+- org_ids에는 service_id만 넣는다.
+- preview는 만들지 않는다.
+- 반환 형식:
+{"groups":[{"label":"우선 연결","org_ids":["service_id"]}]}`
+
+const FINAL_SELECTION_CHECK = `최종 검수 후 JSON을 반환한다.
+- 위기임산부/임산부/임신/출산/한부모 관련 후보는 모든 org_ids에서 제거한다.
+- 청소년 성소수자/띵동 후보는 selections에 "청소년"과 "성소수자"가 모두 있을 때만 남긴다.
+- "선택되지 않은 버튼"에 청소년이 있으면 청소년/학생/학교폭력/Wee/117/1388/띵동 후보를 제거한다.
+- 다누리/이주여성 긴급상담 후보는 "이주민·외국인"과 함께 여성, 폭력·피해, crisis 중 하나가 있을 때만 우선 연결에 남긴다.
+- 119, 112, 109, 생명의전화 후보는 crisis=true가 아닐 때 제거한다.
+- 제거 후 빈자리를 억지로 채우지 않는다.`
 
 function parseReferenceTime(currentTime: string | undefined): Date {
   if (currentTime) {
@@ -380,7 +425,7 @@ function prefilterServices(services: Service[], selections: string[], crisis: bo
       })
 
     if (emergencyServices.length > 0) {
-      return emergencyServices
+      return emergencyServices.slice(0, 12)
     }
   }
 
@@ -399,8 +444,7 @@ function prefilterServices(services: Service[], selections: string[], crisis: bo
     return services.filter((service) => service.isActive).slice(0, 12)
   }
 
-  const limit = selections.length === 1 && selections[0] === '우울' ? 8 : 12
-  return scored.slice(0, limit).map(({ service }) => service)
+  return scored.slice(0, 12).map(({ service }) => service)
 }
 
 function buildFallbackGroups(
@@ -482,18 +526,57 @@ function buildServiceSummary(service: Service): object {
     name: service.name,
     category: service.category,
     description: service.description,
-    tags: service.tags,
-    is_emergency: service.isEmergency,
-    is_free: service.isFree ?? null,
-    contact_methods: service.contactMethods,
-    region: service.region ?? null,
-    hours_type: service.hoursType ?? null,
-    hours_detail: service.hoursDetail ?? service.operatingHours ?? null,
-    languages: service.languages,
-    age_groups: service.ageGroups,
-    exclusion_description: service.exclusionDescription ?? null,
-    situation_keywords: service.situationKeywords,
+    access: {
+      is_emergency: service.isEmergency,
+      is_free: service.isFree ?? null,
+      contact_methods: service.contactMethods,
+      region: service.region ?? null,
+      hours_type: service.hoursType ?? null,
+      hours_detail: service.hoursDetail ?? service.operatingHours ?? null,
+      languages: service.languages,
+      age_groups: service.ageGroups,
+    },
+    supporting_context: {
+      tags: service.tags,
+      situation_keywords: service.situationKeywords,
+      exclusion_description: service.exclusionDescription ?? null,
+    },
   }
+}
+
+function extractJsonObject(text: string): string {
+  const start = text.indexOf('{')
+  if (start === -1) return text
+
+  let depth = 0
+  let inString = false
+  let escaped = false
+
+  for (let index = start; index < text.length; index++) {
+    const char = text[index]
+
+    if (inString) {
+      if (escaped) {
+        escaped = false
+      } else if (char === '\\') {
+        escaped = true
+      } else if (char === '"') {
+        inString = false
+      }
+      continue
+    }
+
+    if (char === '"') {
+      inString = true
+    } else if (char === '{') {
+      depth += 1
+    } else if (char === '}') {
+      depth -= 1
+      if (depth === 0) return text.slice(start, index + 1)
+    }
+  }
+
+  return text
 }
 
 async function llmMatch(
@@ -506,10 +589,24 @@ async function llmMatch(
 ): Promise<MatchResult> {
   const serviceMap = Object.fromEntries(services.map((service) => [service.id, service]))
   const serviceSummaries = services.map(buildServiceSummary)
+  const knownSelections = [
+    '우울',
+    '여성',
+    '청소년',
+    '성소수자',
+    '이주민·외국인',
+    '폭력·피해',
+    '술·도박·약물',
+    '해당 없음',
+  ]
+  const missingSelections = knownSelections.filter(
+    (selection) => !selections.includes(selection)
+  )
 
   const response = await client.messages.create({
     model: 'claude-haiku-4-5-20251001',
     max_tokens: 2048,
+    temperature: 0,
     system: [
       {
         type: 'text' as const,
@@ -521,21 +618,27 @@ async function llmMatch(
         text: `후보 기관 목록:\n${JSON.stringify(serviceSummaries)}`,
         cache_control: { type: 'ephemeral' as const },
       },
+      {
+        type: 'text' as const,
+        text: FINAL_SELECTION_CHECK,
+      },
     ],
     messages: [
       {
         role: 'user',
-        content: `사용자 선택: ${JSON.stringify(selections)}\n위기 여부(crisis): ${crisis}`,
+        content: `사용자 선택: ${JSON.stringify(selections)}\n선택되지 않은 버튼: ${JSON.stringify(missingSelections)}\n임신·출산 버튼: 없음\n위기 여부(crisis): ${crisis}`,
       },
     ],
   })
 
   const textBlock = response.content[0]
   const rawText = (textBlock.type === 'text' ? textBlock.text : '').trim()
-  const text = rawText
-    .replace(/^```(?:json)?\s*/i, '')
-    .replace(/\s*```$/i, '')
-    .trim()
+  const text = extractJsonObject(
+    rawText
+      .replace(/^```(?:json)?\s*/i, '')
+      .replace(/\s*```$/i, '')
+      .trim()
+  )
 
   const parsed = JSON.parse(text) as {
     groups?: { label: string; org_ids?: string[] }[]
@@ -626,7 +729,9 @@ export async function POST(request: Request) {
 
   let result: MatchResult
   const apiKey = process.env.ANTHROPIC_API_KEY
-  if (!apiKey) {
+  if (crisis && selections.length === 0) {
+    result = buildFallbackGroups(candidateServices, selections, crisis, referenceTime, lang)
+  } else if (!apiKey) {
     result = buildFallbackGroups(candidateServices, selections, crisis, referenceTime, lang)
   } else {
     try {

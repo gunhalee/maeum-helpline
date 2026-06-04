@@ -167,6 +167,24 @@ const CATEGORY_EDITORIAL: Record<Category, Record<Lang, CategoryEditorial>> = {
       highlights: ['1577-1389 — abuse report, anonymous OK', '129 — care service connection', 'Neighbors and non-family can request'],
     },
   },
+  legal: {
+    ko: {
+      heading: '긴급한 위험이 있으면 112가 먼저입니다',
+      paragraphs: [
+        '범죄가 지금 진행 중이거나 가해자가 가까이 있어 신변 위험이 있으면 112에 먼저 연락하세요. 이 페이지의 기관들은 신고 이후 또는 급박한 위험이 지난 뒤 치료비, 생계비, 법률상담, 수사기관·법정 동행 같은 회복 지원을 찾을 때 도움이 됩니다.',
+        '범죄피해자지원센터, 법률구조 기관, 인권·피해자 지원 기관은 사건 유형과 피해 정도에 따라 연결 가능한 지원이 다릅니다. 어떤 지원을 받을 수 있는지 확신이 없어도, 피해 사실과 현재 필요한 일을 말하면 다음 절차를 함께 정리할 수 있습니다.',
+      ],
+      highlights: ['112 — 현재 위험·신고 우선', '피해자지원센터 — 회복 지원 연결', '법률·의료·생계 지원 확인'],
+    },
+    en: {
+      heading: 'If danger is immediate, call 112 first',
+      paragraphs: [
+        'If a crime is happening now or the offender is nearby and you are unsafe, call 112 first. The organizations on this page are most useful after reporting, or once immediate danger has passed, when you need recovery support such as medical or living expense assistance, legal counseling, or accompaniment to investigation and court steps.',
+        'Victim support centers, legal aid organizations, and human rights or victim advocacy groups offer different support depending on the case type and level of harm. You do not need to know exactly what you qualify for before calling; describing what happened and what you need now is enough to start sorting out next steps.',
+      ],
+      highlights: ['112 — current danger or reporting first', 'Victim support centers — recovery support', 'Check legal, medical, and living support'],
+    },
+  },
 }
 
 const GUIDE_INDEX_COPY: Record<Lang, GuideIndexCopy> = {
@@ -442,6 +460,38 @@ const GUIDE_ENTRIES = [
         '1577-1389 — anonymous OK, anyone can report',
         'Report → on-site assessment (in-person) → confirm wishes → connect services',
         'Forced separation only for immediate danger; care services via 129 separately',
+      ],
+    },
+  },
+  {
+    slug: 'how-victim-support-center-works',
+    category: 'legal',
+    ko: {
+      title: '범죄피해자지원센터에 연락하면 어떤 도움을 받나요',
+      description:
+        '범죄피해 이후 치료비, 생계비, 법률상담, 수사기관·법정 동행 같은 지원을 어떻게 문의하는지 정리했습니다.',
+      paragraphs: [
+        '범죄피해자지원센터는 범죄 피해 이후 회복과 절차를 돕는 지원기관입니다. 전화하면 피해 유형, 현재 안전 여부, 이미 신고했는지, 병원 치료나 법률상담이 필요한지 같은 기본 상황을 확인합니다. 지금 가해자가 가까이 있거나 위협이 계속되면 센터보다 112가 먼저입니다.',
+        '상황에 따라 치료비, 심리상담, 긴급생계, 법률상담, 수사기관·법정 동행, 보호기관 연계 등을 안내받을 수 있습니다. 지원 가능 여부는 사건 유형, 피해 정도, 신청 시점에 따라 달라질 수 있으므로, 필요한 서류와 다음 절차를 먼저 확인하는 통화로 생각하면 부담이 줄어듭니다.',
+      ],
+      checklist: [
+        '현재 위험하면 112 우선',
+        '피해 유형·신고 여부·필요한 지원을 차례로 확인',
+        '치료비·생계비·법률상담·동행 지원 가능 여부 문의',
+      ],
+    },
+    en: {
+      title: 'What happens when you contact a crime victim support center',
+      description:
+        'How to ask about medical costs, living support, legal counseling, and accompaniment after crime victimization.',
+      paragraphs: [
+        'Crime victim support centers help with recovery and practical steps after a crime. On the call, staff may ask what type of harm occurred, whether you are currently safe, whether a report has been filed, and whether you need medical treatment or legal counseling. If the offender is nearby or the threat is ongoing, call 112 before contacting a center.',
+        'Depending on your situation, you may be guided toward medical cost support, counseling, emergency living assistance, legal counseling, accompaniment to police or court, or referral to a protection service. Eligibility can depend on the case type, level of harm, and timing, so it can help to treat the first call as a way to confirm documents and next steps.',
+      ],
+      checklist: [
+        'Call 112 first if danger is current',
+        'Expect questions about harm type, reporting status, and needed support',
+        'Ask about medical, living, legal, and accompaniment support',
       ],
     },
   },

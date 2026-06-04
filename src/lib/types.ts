@@ -7,6 +7,7 @@ export type Category =
   | 'queer'
   | 'elder'
   | 'migrant'
+  | 'legal'
 
 export interface Service {
   id: string

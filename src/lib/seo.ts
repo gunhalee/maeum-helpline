@@ -320,6 +320,37 @@ const CATEGORY_COPY = {
       ],
     },
   },
+  legal: {
+    ko: {
+      title: '범죄피해 지원 · 법률상담·피해자지원센터 안내 | 헬프라인',
+      heading: '범죄피해 지원 기관',
+      description:
+        '범죄피해 이후 신고, 법률상담, 치료비·생계비, 수사기관·법정 동행 등 지원을 찾을 수 있는 기관을 안내합니다. 범죄피해자지원센터, 법률구조, 피해자 보호 연계 정보를 확인하세요.',
+      keywords: [
+        '범죄피해 지원',
+        '범죄피해자지원센터',
+        '범죄피해 상담',
+        '피해자 법률상담',
+        '범죄피해 구조금',
+        '법률구조 상담',
+        '112 이후 지원',
+      ],
+    },
+    en: {
+      title: 'Crime Victim and Legal Support Services in Korea | Helpline',
+      heading: 'Crime / Legal Support',
+      description:
+        'Find Korean support services after crime victimization, including victim support centers, legal counseling, medical or living expense assistance, and accompaniment for investigation or court steps.',
+      keywords: [
+        'crime victim support Korea',
+        'legal support Korea',
+        'victim support center Korea',
+        'crime victim compensation Korea',
+        'legal counseling Korea',
+        'post-crime support Korea',
+      ],
+    },
+  },
 } as const
 
 export const SITE_TITLE = HOME_COPY.ko.title

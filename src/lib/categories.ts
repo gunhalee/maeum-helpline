@@ -9,6 +9,7 @@ export const CATEGORY_META: Record<Category, { label: string }> = {
   queer: { label: '성소수자' },
   elder: { label: '노인' },
   migrant: { label: '이주민·외국인' },
+  legal: { label: '범죄피해' },
 }
 
 export const CATEGORY_ORDER: Category[] = [
@@ -20,4 +21,5 @@ export const CATEGORY_ORDER: Category[] = [
   'migrant',
   'addiction',
   'elder',
+  'legal',
 ]

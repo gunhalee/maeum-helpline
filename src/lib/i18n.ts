@@ -44,6 +44,7 @@ export function translateCategoryLabel(label: string, lang: Lang): string {
     성소수자: 'LGBTQ+',
     노인: 'Older Adults',
     '이주민·외국인': 'Migrants / Foreigners',
+    범죄피해: 'Crime / Legal Support',
   }
 
   return map[label] ?? label
