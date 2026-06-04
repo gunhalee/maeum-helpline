@@ -10,34 +10,27 @@ type GuideIndexCopy = {
   focusPoints: string[]
 }
 
-type GuideSectionId =
-  | 'when'
-  | 'firstCall'
-  | 'privacy'
-  | 'alternatives'
-  | 'after'
-  | 'urgent'
-
-type GuideSection = {
-  id: GuideSectionId
-  title: string
-  body: string[]
-  list?: string[]
-  example?: string[]
-}
-
 type GuideSourceLink = {
   label: string
   href: string
 }
 
+type GuideDetail = {
+  title: string
+  body?: string[]
+  list?: string[]
+}
+
 type GuideEntryCopy = {
   serviceName: string
   title: string
-  shortAnswer: string
-  lead: string
+  summary: string
+  starterPhrases: string[]
+  counselorChecks: string[]
+  concerns: string[]
+  urgentNote: string
   ctaLabel: string
-  sections: GuideSection[]
+  details: GuideDetail[]
   sourceLinks: GuideSourceLink[]
 }
 
@@ -56,24 +49,24 @@ export type GuideEntry = GuideEntryCopy & {
 
 const GUIDE_INDEX_COPY: Record<Lang, GuideIndexCopy> = {
   ko: {
-    title: '전화하기 전에 먼저 확인해도 괜찮습니다',
+    title: '전화하기 전, 이것만 확인해도 괜찮아요',
     description:
-      '상담처를 알아도 바로 전화하기는 어렵습니다. 무엇을 말해야 하는지, 비용이 드는지, 비밀이 지켜지는지, 신고나 보호자 연락으로 이어지는지 걱정될 수 있습니다.',
+      '상담전화에 연락하기 전 가장 많이 걱정되는 첫마디, 비용, 비밀, 신고·연계 가능성을 짧게 확인할 수 있는 가이드입니다.',
     intro:
-      '아래 글은 각 상담처에 연락하기 전 가장 많이 걸리는 질문을 먼저 정리합니다. 정확히 설명하지 못해도 괜찮은지, 상담원이 보통 무엇을 묻는지, 통화 뒤 어떤 지원으로 이어질 수 있는지 차분히 확인해보세요.',
+      '상황을 완벽히 설명하지 않아도 됩니다. 이 가이드는 내가 상담 대상인지 판정하기보다, 지금 말할 수 있는 첫 문장과 연결 뒤 일어날 일을 짧게 보여줍니다.',
     urgentNotice:
-      '지금 누군가 다칠 위험이 있거나 이미 다친 상황이라면, 이 가이드를 끝까지 읽기보다 112 또는 119가 먼저입니다. 상담처는 위험이 지나간 뒤에도 다시 연결할 수 있습니다.',
-    focusPoints: ['상담원이 묻는 것', '비밀·비용·신고 여부', '전화가 어려울 때의 다른 방법'],
+      '지금 다칠 위험이 있거나 이미 다쳤다면 가이드를 읽기보다 112 또는 119가 먼저입니다. 안전해진 뒤 다시 돌아와도 됩니다.',
+    focusPoints: ['처음 할 말', '상담원이 확인할 것', '걱정되는 점'],
   },
   en: {
-    title: 'It is okay to check before you call',
+    title: 'Check only what you need before you call',
     description:
-      'Even with the right number, calling can feel hard. You may wonder what to say, whether it costs money, whether it is confidential, or whether it triggers reporting or family contact.',
+      'Short guides for what to say first, what a counselor may ask, cost, privacy, reporting, and follow-up when contacting Korean helplines.',
     intro:
-      'These guides answer the questions people often have just before contacting a service: whether your situation is enough, what the first call is like, and what support may follow.',
+      'You do not need a perfect explanation. These guides are not a test of whether you qualify. They show a first sentence, what may happen next, and the main things people worry about.',
     urgentNotice:
-      'If someone may be hurt right now, or someone has already been hurt, call 112 or 119 before reading further. You can return to these support services after the immediate danger passes.',
-    focusPoints: ['What they may ask', 'Confidentiality, cost, and reporting', 'Options when calling is hard'],
+      'If someone may be hurt right now, or someone has already been hurt, call 112 or 119 before reading further. You can return after immediate danger passes.',
+    focusPoints: ['First words', 'What they may check', 'Common worries'],
   },
 }
 
@@ -95,62 +88,36 @@ const GUIDE_ENTRIES: LocalizedGuideEntry[] = [
     category: 'crisis',
     ko: {
       serviceName: '119',
-      title: '119에 전화하면 무엇부터 말해야 할까요?',
-      shortAnswer:
-        '응급인지 애매해도 의식, 호흡, 출혈, 약물, 자해 수단, 심한 통증처럼 몸의 안전이 걸린 상황이면 119에 먼저 전화해도 됩니다.',
-      lead:
-        '119는 "정말 큰일일 때만" 누르는 번호처럼 느껴질 수 있습니다. 하지만 응급상황에서는 스스로 판단을 오래 붙잡고 있는 시간이 더 위험할 수 있습니다. 환자가 있거나, 내가 다쳤거나, 누군가 지금 다칠 수 있다면 먼저 연결하세요. 상황 설명은 통화하면서 함께 정리할 수 있습니다.',
+      title: '119는 몸의 안전이 걱정될 때 먼저 연결하는 번호예요',
+      summary:
+        '응급인지 확신이 없어도 의식, 호흡, 출혈, 약물, 심한 통증이 걱정되면 먼저 말해도 됩니다.',
+      starterPhrases: [
+        '응급인지 모르겠는데 사람이 쓰러져 있어요.',
+        '숨쉬기 힘들어 하고 가슴이 아프다고 해요.',
+        '약을 많이 먹었을 수도 있어요.',
+      ],
+      counselorChecks: ['지금 위치', '의식·호흡·출혈·통증 상태', '곁에 있는 사람이 할 수 있는 일'],
+      concerns: [
+        '응급 상황의 119 구급차 이용은 무료입니다.',
+        '정확한 주소를 몰라도 주변 건물, 가게, 도로명으로 시작할 수 있습니다.',
+        '폭력이나 범죄가 함께 있으면 112가 같이 필요할 수 있습니다.',
+      ],
+      urgentNote:
+        '이미 다쳤거나 의식·호흡 문제가 있으면 이 가이드보다 119 연결이 먼저입니다.',
       ctaLabel: '위기·긴급 상담처 보기',
-      sections: [
+      details: [
         {
-          id: 'when',
-          title: '이럴 때 연락해도 됩니다',
-          body: [],
+          title: '말하기 어렵다면',
           list: [
-            '의식이 흐려지거나 깨우기 어렵습니다.',
-            '숨쉬기 어렵거나 가슴 통증, 심한 통증이 있습니다.',
-            '피가 많이 나거나 골절, 화상, 경련이 의심됩니다.',
-            '약물을 많이 먹었거나, 자해를 했거나, 자해 수단이 가까이 있습니다.',
-            '화재, 사고, 추락, 물에 빠짐처럼 즉시 구조가 필요합니다.',
-            '내가 판단하기 어렵지만 "지금 병원으로 가야 할 것 같다"는 느낌이 듭니다.',
+            '문자 신고나 119 신고 앱을 사용할 수 있습니다.',
+            '짧게 “위치 + 무슨 일 + 사람 상태”만 적어도 됩니다.',
           ],
         },
         {
-          id: 'firstCall',
-          title: '처음 연결되면',
-          body: [
-            '상황실에서는 먼저 무슨 일이 있었는지, 환자가 어디에 있는지, 환자 상태가 어떤지 확인합니다. 가능하면 "환자가 있습니다", "현재 위치는 어디입니다", "의식·호흡·출혈·통증은 이렇습니다" 순서로 말하면 좋습니다.',
-            '주소를 정확히 몰라도 괜찮습니다. 가까운 건물 이름, 가게 상호, 도로명, 엘리베이터 번호, 전봇대 번호, 고속도로 이정표, 산악 위치 표지처럼 주변에 보이는 정보를 말하세요. 스마트폰 GPS를 켜두는 것도 도움이 됩니다.',
-          ],
-        },
-        {
-          id: 'privacy',
-          title: '비밀·비용·신고',
-          body: [
-            '119 구급차는 위급상황에서 전국 어디서나 무료로 이용할 수 있습니다. 병원 간 이동이나 단순 이동처럼 응급상황이 아닌 경우에는 민간 구급차가 필요할 수 있고, 그때는 비용이 생길 수 있습니다.',
-            '119는 상담 기록을 남기기 위한 번호가 아니라 출동과 응급처치를 위한 번호입니다. 폭력이나 범죄가 함께 있는 상황에서는 112와 연계될 수 있습니다. 이것은 처벌을 먼저 하려는 절차라기보다 현장의 안전을 확보하기 위한 조치입니다.',
-          ],
-        },
-        {
-          id: 'alternatives',
-          title: '전화가 어렵다면',
-          body: [
-            '말하기 어렵거나 소리를 내기 위험한 상황이라면 119 문자 신고, 119 안전신고센터, 119 신고 앱 같은 다른 경로를 사용할 수 있습니다. 문자에는 가능한 짧게 "위치 + 무슨 일 + 환자 상태"를 적으면 됩니다.',
-          ],
-          example: ['서울 중구 ○○빌딩 3층, 사람이 쓰러져 있고 숨을 잘 못 쉽니다.'],
-        },
-        {
-          id: 'after',
-          title: '상담 뒤에는',
-          body: [
-            '119는 현장으로 출동해 상태를 확인하고 응급처치를 하며, 필요하면 병원으로 이송합니다. 병원 선택은 환자의 상태와 가까운 응급의료기관 상황에 따라 정해질 수 있습니다. 내가 원하는 병원을 말할 수는 있지만, 항상 그대로 되지는 않을 수 있습니다.',
-          ],
-        },
-        {
-          id: 'urgent',
-          title: '지금 위험하다면',
-          body: [
-            '이미 자해했거나 약물을 먹었거나 의식·호흡 문제가 있으면 109보다 119가 먼저입니다. 가해자가 가까이 있거나 폭력이 진행 중이라면 112도 함께 필요할 수 있습니다.',
+          title: '연결 뒤에는',
+          list: [
+            '상황에 따라 구급대가 출동하고 응급처치를 할 수 있습니다.',
+            '필요하면 가까운 응급의료기관으로 이송됩니다.',
           ],
         },
       ],
@@ -167,62 +134,36 @@ const GUIDE_ENTRIES: LocalizedGuideEntry[] = [
     },
     en: {
       serviceName: '119',
-      title: 'What should you say first when you call 119?',
-      shortAnswer:
-        'If physical safety is involved, such as consciousness, breathing, bleeding, medication, self-harm means, or severe pain, call 119 even if you are unsure whether it is an emergency.',
-      lead:
-        '119 can feel like a number reserved for only the most obvious emergencies. But in an emergency, spending too long deciding can be risky. If there is a patient, you are hurt, or someone may be hurt right now, call first. You can organize the details during the call.',
+      title: '119 is the first number when physical safety is at risk',
+      summary:
+        'You do not need to be sure it is an emergency. If consciousness, breathing, bleeding, medication, or severe pain is involved, start there.',
+      starterPhrases: [
+        'I am not sure if this is an emergency, but someone collapsed.',
+        'They are having trouble breathing and chest pain.',
+        'They may have taken too much medication.',
+      ],
+      counselorChecks: ['Your location', 'Consciousness, breathing, bleeding, or pain', 'What someone nearby can do now'],
+      concerns: [
+        'A 119 ambulance is free in emergencies.',
+        'If you do not know the exact address, nearby signs or buildings can help.',
+        'If violence or crime is also happening, 112 may be needed too.',
+      ],
+      urgentNote:
+        'If someone is already injured or has consciousness or breathing problems, call 119 before reading more.',
       ctaLabel: 'Open crisis services',
-      sections: [
+      details: [
         {
-          id: 'when',
-          title: 'It is okay to call when',
-          body: [],
-          list: [
-            'Someone is losing consciousness or is hard to wake.',
-            'There is trouble breathing, chest pain, or severe pain.',
-            'There is heavy bleeding, suspected fracture, burn, or seizure.',
-            'Someone took too much medication, has self-harmed, or has self-harm means nearby.',
-            'Fire, accident, fall, drowning, or immediate rescue is involved.',
-            'You cannot judge clearly, but it feels like hospital care is needed now.',
-          ],
-        },
-        {
-          id: 'firstCall',
-          title: 'What they may ask first',
-          body: [
-            'The dispatcher will usually check what happened, where the patient is, and what condition the patient is in. If you can, say: there is a patient, where you are, and what you know about consciousness, breathing, bleeding, pain, or medication.',
-            'You do not need an exact address to start. Nearby building names, shop signs, road names, elevator numbers, utility pole numbers, highway markers, or location signs can help. Turning on smartphone GPS can also help.',
-          ],
-        },
-        {
-          id: 'privacy',
-          title: 'Cost and reporting',
-          body: [
-            'A 119 ambulance is free nationwide in an emergency. Non-emergency transfers, such as moving between hospitals or simple transportation, may require a private ambulance and can cost money.',
-            '119 exists for dispatch and emergency care, not for counseling records. If violence or crime is happening too, 112 may be connected to secure safety at the scene.',
-          ],
-        },
-        {
-          id: 'alternatives',
           title: 'If speaking is hard',
-          body: [
-            'If speaking is difficult or unsafe, you may use text reporting, the 119 Safety Reporting Center, or the 119 app. Keep it short: location, what happened, and the patient condition.',
+          list: [
+            'Text reporting or the 119 app may be available.',
+            'Keep it short: location, what happened, and the person’s condition.',
           ],
-          example: ['3rd floor of ○○ Building, Jung-gu, Seoul. Someone collapsed and cannot breathe well.'],
         },
         {
-          id: 'after',
           title: 'What may happen next',
-          body: [
-            '119 responders can come to the scene, assess the person, provide emergency care, and transport them to a hospital if needed. Hospital choice depends on the patient condition and nearby emergency capacity. You can state a preference, but it may not always be possible.',
-          ],
-        },
-        {
-          id: 'urgent',
-          title: 'If danger is immediate',
-          body: [
-            'If someone has already self-harmed, taken medication, or has consciousness or breathing problems, call 119 before 109. If an abuser is nearby or violence is happening, 112 may also be needed.',
+          list: [
+            'Responders may come to the scene and provide emergency care.',
+            'If needed, the person may be taken to a nearby emergency facility.',
           ],
         },
       ],
@@ -243,64 +184,36 @@ const GUIDE_ENTRIES: LocalizedGuideEntry[] = [
     category: 'depression',
     ko: {
       serviceName: '109',
-      title: '109는 죽고 싶은 마음을 정확히 설명하지 못해도 전화할 수 있습니다',
-      shortAnswer:
-        '"정말 죽을 생각까지는 아닌데 너무 힘들다"는 상태에서도 109에 연락할 수 있습니다. 상담은 말이 정리된 사람만 받는 것이 아닙니다.',
-      lead:
-        '죽고 싶은 마음은 늘 또렷한 계획으로 오지 않습니다. 사라지고 싶다, 잠들고 깨고 싶지 않다, 내가 없어지면 낫겠다는 생각처럼 흐릿하게 오기도 합니다. 109는 그런 순간에 혼자 버티지 않도록 연결하는 24시간 자살예방상담전화입니다.',
+      title: '109는 죽고 싶은지 확신하지 못해도 시작할 수 있어요',
+      summary:
+        '사라지고 싶다, 혼자 있기가 무섭다, 오늘 밤을 넘기기 어렵다는 마음부터 말해도 됩니다.',
+      starterPhrases: [
+        '죽고 싶다는 생각이 들어요.',
+        '혼자 있기가 무서워요.',
+        '어떻게 말해야 할지 모르겠는데 지금 위험한 것 같아요.',
+      ],
+      counselorChecks: ['지금 혼자인지', '다칠 수단이 가까이 있는지', '오늘 밤을 안전하게 넘길 수 있는지'],
+      concerns: [
+        '24시간 무료로 연결할 수 있습니다.',
+        '상담 내용은 기본적으로 비밀을 지키는 방향으로 다룹니다.',
+        '생명·안전 위험이 크면 다른 도움을 연결할 수 있습니다.',
+      ],
+      urgentNote:
+        '이미 다쳤거나 실행할 수단이 바로 가까이 있으면 119가 먼저입니다. 공격받고 있다면 112가 먼저입니다.',
       ctaLabel: '우울·자살예방 상담처 보기',
-      sections: [
+      details: [
         {
-          id: 'when',
-          title: '이럴 때 연락해도 됩니다',
-          body: [],
+          title: '말이 정리되지 않아도',
           list: [
-            '죽고 싶다는 생각이 반복됩니다.',
-            '구체적인 계획은 없지만 사라지고 싶습니다.',
-            '자해 충동이 있거나 수단이 가까이 있습니다.',
-            '주변 사람이 위험해 보여 무엇을 해야 할지 모르겠습니다.',
-            '밤이나 주말에 버티기 어렵습니다.',
-            '이미 다른 상담을 받고 있어도 지금 당장 누군가와 말해야 합니다.',
+            '상담원이 안전 여부부터 차분히 확인할 수 있습니다.',
+            '울거나 말을 멈춰도 괜찮습니다. 지금 있는 상태에서 시작하면 됩니다.',
           ],
         },
         {
-          id: 'firstCall',
-          title: '처음 연결되면',
-          body: [
-            '상담원은 지금 혼자인지, 다칠 수단이 가까이 있는지, 이미 다친 곳은 없는지, 오늘 밤을 안전하게 넘길 수 있는지부터 확인할 수 있습니다. 모든 사정을 처음부터 완벽하게 설명하지 않아도 됩니다.',
-          ],
-          example: [
-            '죽고 싶은 생각이 들어서 전화했어요. 어떻게 말해야 할지 잘 모르겠어요.',
-            '지금 위험한 건지 모르겠는데 혼자 있기가 무서워요.',
-          ],
-        },
-        {
-          id: 'privacy',
-          title: '비밀·비용·신고',
-          body: [
-            '109와 마들랜 상담은 별도 동의 없이 개인정보를 수집하지 않는 것이 원칙입니다. 상담 내용도 기본적으로 비밀이 보장됩니다. 다만 생명이나 안전에 급한 위험이 있다고 판단되는 경우에는 다른 기관에 도움을 요청할 수 있습니다.',
-            '상담 뒤 위험성이 높다고 판단되면, 본인 동의를 받아 주소지 지역의 정신건강복지센터나 자살예방센터로 이어질 수 있습니다. 이것은 "문제가 커졌다"는 뜻이 아니라, 한 번의 통화로 끝나지 않도록 지역에서 이어 받는 절차에 가깝습니다.',
-          ],
-        },
-        {
-          id: 'alternatives',
-          title: '전화가 어렵다면',
-          body: [
-            '말로 꺼내기 어렵다면 마들랜을 통해 카카오톡, 앱, 문자 등 텍스트 기반 상담을 이용할 수 있습니다. 문자로 109에 보내는 방식도 안내되어 있습니다. 말이 잘 나오지 않는 사람에게 텍스트는 충분히 좋은 시작점입니다.',
-          ],
-        },
-        {
-          id: 'after',
-          title: '상담 뒤에는',
-          body: [
-            '상담원과 지금 밤을 넘길 방법, 혼자 있지 않을 방법, 위험한 수단에서 멀어지는 방법을 함께 정리할 수 있습니다. 필요하면 지역 정신건강복지센터, 자살예방센터, 의료기관, 응급출동으로 이어질 수 있습니다.',
-          ],
-        },
-        {
-          id: 'urgent',
-          title: '지금 위험하다면',
-          body: [
-            '이미 다쳤거나 약물을 먹었거나, 지금 바로 실행할 수단이 곁에 있거나, 의식과 호흡에 문제가 있으면 119가 먼저입니다. 누군가에게 공격받고 있거나 안전하지 않은 장소에 있다면 112가 먼저입니다.',
+          title: '연결 뒤에는',
+          list: [
+            '지금 안전하게 버틸 방법을 함께 정리할 수 있습니다.',
+            '필요하면 지역 정신건강복지센터나 자살예방센터로 이어질 수 있습니다.',
           ],
         },
       ],
@@ -314,64 +227,36 @@ const GUIDE_ENTRIES: LocalizedGuideEntry[] = [
     },
     en: {
       serviceName: '109',
-      title: 'You can call 109 even if you cannot explain suicidal thoughts clearly',
-      shortAnswer:
-        'You can contact 109 even if your thought is closer to "I am not sure I want to die, but I cannot keep going." Counseling is not only for people with organized words.',
-      lead:
-        'Suicidal thoughts do not always arrive as a clear plan. They can feel like wanting to disappear, not wanting to wake up, or thinking people would be better off without you. 109 is a 24/7 suicide prevention hotline for those moments.',
+      title: 'You can start with 109 even if you are not sure you are suicidal',
+      summary:
+        'You can begin with wanting to disappear, being afraid to be alone, or not knowing how to get through tonight.',
+      starterPhrases: [
+        'I am having thoughts of wanting to die.',
+        'I am afraid to be alone right now.',
+        'I do not know how to explain this, but I think I may be unsafe.',
+      ],
+      counselorChecks: ['Whether you are alone', 'Whether means to hurt yourself are nearby', 'Whether tonight can be made safer'],
+      concerns: [
+        '109 is available 24/7 and free to contact.',
+        'Counseling is handled confidentially by default.',
+        'If life or safety risk is high, other help may be connected.',
+      ],
+      urgentNote:
+        'If you are already injured or have immediate means nearby, call 119 first. If someone is attacking you, call 112 first.',
       ctaLabel: 'Open depression and suicide prevention services',
-      sections: [
+      details: [
         {
-          id: 'when',
-          title: 'It is okay to call when',
-          body: [],
+          title: 'If your words are not organized',
           list: [
-            'Thoughts of wanting to die keep returning.',
-            'There is no specific plan, but you want to disappear.',
-            'You have self-harm urges or means nearby.',
-            'Someone near you seems at risk and you do not know what to do.',
-            'It is night or the weekend and it feels hard to get through.',
-            'You are already in counseling, but need to talk to someone right now.',
+            'The counselor can start by checking safety.',
+            'It is okay to cry, pause, or say only what you can say now.',
           ],
         },
         {
-          id: 'firstCall',
-          title: 'What they may ask first',
-          body: [
-            'The counselor may first ask whether you are alone, whether there are means to hurt yourself nearby, whether you are already injured, and whether you can get through tonight safely. You do not need to explain everything perfectly.',
-          ],
-          example: [
-            'I am having thoughts of wanting to die. I do not know how to explain it.',
-            'I am not sure if this is dangerous, but I am afraid to be alone.',
-          ],
-        },
-        {
-          id: 'privacy',
-          title: 'Privacy, cost, and reporting',
-          body: [
-            '109 and MaDeulRan state that they do not collect personal information without separate consent. Counseling is confidential by default. If there is urgent risk to life or safety, another agency may be asked to help.',
-            'If the risk is assessed as high, the counselor may connect you, with your consent, to a local mental health welfare center or suicide prevention center. This is a way to continue support locally, not a sign that you did something wrong.',
-          ],
-        },
-        {
-          id: 'alternatives',
-          title: 'If calling is hard',
-          body: [
-            'If speaking is difficult, MaDeulRan offers text-based access through KakaoTalk, app, and text message channels. Text can be a strong first step when words do not come easily.',
-          ],
-        },
-        {
-          id: 'after',
           title: 'What may happen next',
-          body: [
-            'You can work with the counselor on getting through the next hours, not being alone, and moving away from immediate means of harm. If needed, support may continue through a local center, medical care, or emergency dispatch.',
-          ],
-        },
-        {
-          id: 'urgent',
-          title: 'If danger is immediate',
-          body: [
-            'If someone is already injured, has taken medication, has immediate means nearby, or has consciousness or breathing problems, call 119 first. If someone is attacking you or you are not safe where you are, call 112 first.',
+          list: [
+            'You may make a short plan for getting through the immediate moment.',
+            'If needed, you may be connected to local mental health or suicide prevention support.',
           ],
         },
       ],
@@ -389,65 +274,36 @@ const GUIDE_ENTRIES: LocalizedGuideEntry[] = [
     category: 'women',
     ko: {
       serviceName: '여성긴급전화 1366',
-      title: '1366은 신고할 준비가 없어도 먼저 상담할 수 있습니다',
-      shortAnswer:
-        '가정폭력, 성폭력, 교제폭력, 스토킹, 디지털성범죄처럼 느껴지지만 아직 신고할 마음이 없어도 1366에 상담부터 요청할 수 있습니다.',
-      lead:
-        '폭력 상황에서는 "이게 신고할 일인지", "내가 너무 예민한 건 아닌지", "전화했다가 일이 커지는 건 아닌지"가 먼저 떠오를 수 있습니다. 1366은 신고를 강요하기보다 지금 안전한지 확인하고, 필요한 선택지를 함께 정리하는 24시간 상담 창구입니다.',
-      ctaLabel: '여성·폭력 피해 상담처 보기',
-      sections: [
+      title: '1366은 말하면 일이 커질까 걱정되는 단계부터 물어볼 수 있어요',
+      summary:
+        '폭력이 지금 진행 중이 아니어도, 안전·보호·신고·쉼터를 어떻게 해야 할지 상담할 수 있습니다.',
+      starterPhrases: [
+        '신고까지 해야 할지는 모르겠고 먼저 상담만 받고 싶어요.',
+        '상대가 근처에 있어서 안전하게 말할 수 있는지 모르겠어요.',
+        '오늘 밤 어디에 있어야 할지 모르겠어요.',
+      ],
+      counselorChecks: ['지금 안전하게 말할 수 있는지', '상대가 가까이 있는지', '다친 곳이나 머물 곳이 있는지'],
+      concerns: [
+        '24시간 상담이 가능하고 상담만 받아도 됩니다.',
+        '보호시설, 의료, 법률, 수사기관 연결을 함께 정리할 수 있습니다.',
+        '위험이 크면 112나 긴급보호가 먼저 필요할 수 있습니다.',
+      ],
+      urgentNote:
+        '상대가 가까이 있거나 폭력이 지금 일어나고 있으면 112가 먼저입니다. 다쳤다면 119도 필요할 수 있습니다.',
+      ctaLabel: '여성 상담처 보기',
+      details: [
         {
-          id: 'when',
-          title: '이럴 때 연락해도 됩니다',
-          body: [],
-          list: [
-            '맞거나 밀치거나 감금당한 일이 있습니다.',
-            '상대가 휴대폰, 돈, 외출, 인간관계를 통제합니다.',
-            '헤어진 뒤에도 찾아오거나 연락을 반복합니다.',
-            '협박, 감시, 위치추적, 불법촬영, 유포 협박이 있습니다.',
-            '성폭력인지 확신은 없지만 원치 않는 성적 접촉이나 강요가 있었습니다.',
-            '집을 나와야 할지, 증거를 어떻게 해야 할지 모르겠습니다.',
-          ],
-        },
-        {
-          id: 'firstCall',
-          title: '처음 연결되면',
-          body: [
-            '상담원은 지금 안전하게 말할 수 있는지 먼저 확인할 수 있습니다. 이어서 어떤 일이 있었는지, 상대가 가까이 있는지, 다친 곳이 있는지, 오늘 밤 머물 곳이 있는지, 신고나 보호시설 연결을 원하는지 등을 물어볼 수 있습니다.',
-          ],
-          example: [
-            '신고까지는 모르겠고, 제가 겪는 일이 폭력인지 상담받고 싶어요.',
-            '지금 길게 말하기 어려워요. 안전하게 연락할 방법부터 알고 싶어요.',
-          ],
-        },
-        {
-          id: 'privacy',
-          title: '비밀·비용·신고',
-          body: [
-            '상담만 먼저 받을 수 있습니다. 신고 여부는 상황과 위험도에 따라 상담원과 논의할 수 있으며, 사용자가 선택할 수 있는 부분이 있습니다. 다만 지금 생명이나 신체에 급한 위험이 있으면 112 또는 119 연계가 필요할 수 있습니다.',
-            '1366 상담과 초기지원은 비용 없이 이용할 수 있습니다. 긴급피난처, 의료기관, 법률지원, 전문상담소, 디지털성범죄 삭제지원 등으로 이어질 수 있습니다.',
-          ],
-        },
-        {
-          id: 'alternatives',
           title: '전화가 어렵다면',
-          body: [
-            '가해자가 통화기록이나 알림을 볼 수 있다면 다른 사람의 휴대폰, 공중전화, 안전한 장소의 전화가 더 나을 수 있습니다. 전화가 어렵다면 여성폭력 사이버 상담에서 실시간 채팅, 게시판, 카카오톡 상담을 이용할 수 있습니다.',
-            '디지털성범죄 피해에서는 삭제를 서두르고 싶어질 수 있지만, 증거보전과 삭제지원이 함께 중요할 수 있습니다. 혼자 판단하기 어렵다면 먼저 상담으로 순서를 정리하세요.',
+          list: [
+            '문자, 게시판, 이메일 등 다른 상담 경로가 안내될 수 있습니다.',
+            '안전한 기기와 장소에서 연락하는 것이 좋습니다.',
           ],
         },
         {
-          id: 'after',
-          title: '상담 뒤에는',
-          body: [
-            '상황에 따라 긴급피난처, 보호시설, 의료기관, 경찰, 법률구조, 전문상담소, 디지털성범죄 피해 영상물 삭제지원으로 이어질 수 있습니다. 모든 지원이 한 번에 결정되지 않아도 괜찮습니다. 첫 통화에서는 "지금 가장 안전한 다음 한 걸음"을 정하는 것이 중요합니다.',
-          ],
-        },
-        {
-          id: 'urgent',
-          title: '지금 위험하다면',
-          body: [
-            '가해자가 가까이 있거나 폭력이 진행 중이면 1366보다 112가 먼저입니다. 다친 곳이 있거나 응급처치가 필요하면 119도 함께 필요합니다.',
+          title: '연결 뒤에는',
+          list: [
+            '상담원이 신고 여부를 강요하기보다 필요한 지원을 함께 정리합니다.',
+            '긴급피난이나 보호시설이 필요한지 확인할 수 있습니다.',
           ],
         },
       ],
@@ -461,65 +317,36 @@ const GUIDE_ENTRIES: LocalizedGuideEntry[] = [
     },
     en: {
       serviceName: 'Women Emergency Hotline 1366',
-      title: 'You can call 1366 before you are ready to report',
-      shortAnswer:
-        'If something feels like domestic violence, sexual violence, dating violence, stalking, or digital sexual abuse, you can ask 1366 for counseling even if you are not ready to report.',
-      lead:
-        'In violence situations, people often wonder whether it is serious enough, whether they are overreacting, or whether calling will make everything bigger. 1366 is a 24/7 place to check safety and sort through options, not only a place for people ready to report.',
-      ctaLabel: 'Open women and violence support services',
-      sections: [
+      title: '1366 can be a first question before you decide what to do',
+      summary:
+        'Even if violence is not happening this second, you can ask about safety, reporting, shelter, and support options.',
+      starterPhrases: [
+        'I do not know if I want to report. I want counseling first.',
+        'The person is nearby, and I am not sure it is safe to talk.',
+        'I do not know where I can stay tonight.',
+      ],
+      counselorChecks: ['Whether it is safe to talk', 'Whether the other person is nearby', 'Injury, shelter, or immediate safety needs'],
+      concerns: [
+        'You can receive counseling 24/7.',
+        'They can help organize shelter, medical, legal, or reporting options.',
+        'If danger is high, 112 or emergency protection may come first.',
+      ],
+      urgentNote:
+        'If the person is nearby or violence is happening now, call 112 first. If you are injured, 119 may also be needed.',
+      ctaLabel: 'Open women support services',
+      details: [
         {
-          id: 'when',
-          title: 'It is okay to call when',
-          body: [],
-          list: [
-            'You have been hit, pushed, trapped, or confined.',
-            'Someone controls your phone, money, movement, or relationships.',
-            'An ex-partner keeps coming to you or contacting you.',
-            'There are threats, monitoring, location tracking, illegal filming, or threats to share images.',
-            'You are not sure whether it was sexual violence, but there was unwanted sexual contact or pressure.',
-            'You do not know whether to leave home or how to handle evidence.',
-          ],
-        },
-        {
-          id: 'firstCall',
-          title: 'What they may ask first',
-          body: [
-            'The counselor may first check whether it is safe for you to talk. They may ask what happened, whether the other person is nearby, whether you are injured, where you can stay tonight, and whether you want reporting or shelter connection.',
-          ],
-          example: [
-            'I am not sure about reporting yet. I want to ask whether what I am experiencing is violence.',
-            'I cannot talk for long right now. I want to know a safe way to contact you.',
-          ],
-        },
-        {
-          id: 'privacy',
-          title: 'Privacy, cost, and reporting',
-          body: [
-            'You can receive counseling first. Reporting can be discussed depending on the situation and risk level, and there may be choices you can make. If there is urgent danger to life or body, 112 or 119 may need to be connected.',
-            '1366 counseling and initial support are free. Support may connect to emergency shelter, medical care, legal support, specialized counseling centers, or digital sexual abuse takedown support.',
-          ],
-        },
-        {
-          id: 'alternatives',
           title: 'If calling is hard',
-          body: [
-            'If an abuser can see call logs or notifications, a trusted person’s phone, a public phone, or a safer place may be better. If calling is hard, the women’s violence cyber counseling service offers live chat, board counseling, and KakaoTalk counseling.',
-            'For digital sexual abuse, it can feel urgent to delete everything, but evidence preservation and takedown support both matter. If you are unsure, ask a counselor to help decide the order.',
+          list: [
+            'Text, board, email, or other online routes may be available.',
+            'Use a safe device and place when possible.',
           ],
         },
         {
-          id: 'after',
           title: 'What may happen next',
-          body: [
-            'Depending on the situation, support may connect to emergency shelter, protection facilities, medical institutions, police, legal aid, specialized counseling, or image takedown support. The first call can focus on the safest next step.',
-          ],
-        },
-        {
-          id: 'urgent',
-          title: 'If danger is immediate',
-          body: [
-            'If the abuser is nearby or violence is happening now, call 112 before 1366. If you are injured or need emergency care, 119 may also be needed.',
+          list: [
+            'The counselor can help sort options without forcing a report.',
+            'They can check whether emergency shelter or protection is needed.',
           ],
         },
       ],
@@ -537,65 +364,36 @@ const GUIDE_ENTRIES: LocalizedGuideEntry[] = [
     category: 'youth',
     ko: {
       serviceName: '청소년상담 1388',
-      title: '1388은 청소년 본인이 먼저 연락해도 되는 곳입니다',
-      shortAnswer:
-        '부모님이나 학교에 먼저 말하기 어렵다면, 청소년 본인이 1388에 먼저 연락해도 됩니다. 친구관계, 가족, 학교, 진로, 성, 폭력, 가출, 자해 생각까지 무엇부터 말해야 할지 몰라도 괜찮습니다.',
-      lead:
-        '청소년 상담은 꼭 부모님이 예약해줘야 시작되는 것이 아닙니다. 혼자 감당하기 어렵지만 주변 어른에게 바로 말하기 무섭다면, 1388을 첫 연결로 사용할 수 있습니다. 전화가 부담스러우면 문자, 카카오톡, 온라인 상담으로 시작할 수도 있습니다.',
+      title: '1388은 청소년 본인이 먼저 연락해도 괜찮아요',
+      summary:
+        '부모님께 말하기 어렵거나 어디서부터 말해야 할지 모르겠을 때, 지금 힘든 것부터 시작할 수 있습니다.',
+      starterPhrases: [
+        '부모님께 말하기 전에 먼저 상담하고 싶어요.',
+        '학교폭력인지 모르겠는데 계속 무서워요.',
+        '집에 있기 어렵고 어디로 가야 할지 모르겠어요.',
+      ],
+      counselorChecks: ['나이와 지금 있는 곳', '지금 안전한지', '믿을 수 있는 어른이나 머물 곳이 있는지'],
+      concerns: [
+        '전화, 문자, 온라인 상담으로 시작할 수 있습니다.',
+        '부모, 친구, 선생님도 가볍게 문의할 수 있습니다.',
+        '생명·안전 위험이 크면 보호기관이나 긴급기관 연결이 필요할 수 있습니다.',
+      ],
+      urgentNote:
+        '지금 다칠 것 같거나 이미 다쳤다면 119가 먼저입니다. 누군가 붙잡거나 때리고 있다면 112가 먼저입니다.',
       ctaLabel: '청소년 상담처 보기',
-      sections: [
+      details: [
         {
-          id: 'when',
-          title: '이럴 때 연락해도 됩니다',
-          body: [],
+          title: '말하기 전 알아둘 점',
           list: [
-            '부모님이나 선생님에게 말하기 어려운 고민이 있습니다.',
-            '친구관계, 따돌림, 학교폭력, 진로, 성적 문제로 버티기 어렵습니다.',
-            '집에 있기 힘들거나 나가고 싶은 마음이 큽니다.',
-            '자해 생각, 죽고 싶은 생각, 위험한 충동이 있습니다.',
-            '성폭력, 성매매 강요, 협박, 온라인 피해가 걱정됩니다.',
-            '친구가 위험해 보여 어떻게 도와야 할지 모르겠습니다.',
+            '처음부터 자세한 사정을 모두 말하지 않아도 됩니다.',
+            '상담원은 지금 안전한지부터 확인할 수 있습니다.',
           ],
         },
         {
-          id: 'firstCall',
-          title: '처음 연결되면',
-          body: [
-            '상담원은 지금 안전한지, 혼자 있는지, 어디에서 연락하고 있는지, 어떤 일이 있었는지 물어볼 수 있습니다. 이름이나 학교를 처음부터 자세히 말해야만 상담이 시작되는 것은 아닙니다. 다만 위험이 큰 상황에서는 안전을 위해 추가 정보를 확인할 수 있습니다.',
-          ],
-          example: [
-            '부모님한테 말하기 전에 먼저 상담하고 싶어요.',
-            '제가 위험한 상황인지 모르겠는데 집에 있기가 힘들어요.',
-          ],
-        },
-        {
-          id: 'privacy',
-          title: '비밀·비용·신고',
-          body: [
-            '상담 내용은 기본적으로 조심스럽게 다뤄져야 합니다. 다만 생명이나 안전에 큰 위험이 있거나, 즉시 보호가 필요한 상황이라면 상담원이 보호를 위한 연결을 제안하거나 필요한 기관과 연결할 수 있습니다. 이 부분은 "혼내려고 알리는 것"이 아니라 위험을 줄이기 위한 절차입니다.',
-            '1388 상담은 비용 없이 이용할 수 있습니다.',
-          ],
-        },
-        {
-          id: 'alternatives',
-          title: '전화가 어렵다면',
-          body: [
-            '전화가 어렵다면 문자, 카카오톡, 온라인 채팅, 게시판 상담을 이용할 수 있습니다. 말로 설명하기 어렵거나 집에서 통화하기 어려운 경우에는 글로 시작하는 것이 더 편할 수 있습니다.',
-            '부모, 친구, 교사, 보호자가 대신 문의할 수도 있습니다. 다만 이 가이드의 중심은 청소년 본인이 먼저 도움을 요청하는 상황입니다.',
-          ],
-        },
-        {
-          id: 'after',
-          title: '상담 뒤에는',
-          body: [
-            '필요에 따라 가까운 청소년상담복지센터의 대면 상담, 청소년동반자, 쉼터, 의료기관, 학교폭력 대응, 성폭력 피해 지원, 지역 복지서비스로 이어질 수 있습니다. 첫 상담에서 모든 것을 결정하지 않아도 됩니다. 지금 안전한지, 누구와 함께 있을 수 있는지, 다음 연락을 어떻게 이어갈지부터 정리할 수 있습니다.',
-          ],
-        },
-        {
-          id: 'urgent',
-          title: '지금 위험하다면',
-          body: [
-            '지금 다칠 것 같거나 이미 다쳤다면 119가 먼저입니다. 누군가에게 폭력을 당하고 있거나 강제로 붙잡혀 있다면 112가 먼저입니다. 죽고 싶은 생각이 매우 강하고 혼자 있기가 위험하다면 109 또는 119로 바로 연결하세요.',
+          title: '연결 뒤에는',
+          list: [
+            '필요하면 지역 청소년상담복지센터나 보호 지원으로 이어질 수 있습니다.',
+            '학교폭력, 가출, 자해 위험, 가족 갈등을 함께 정리할 수 있습니다.',
           ],
         },
       ],
@@ -609,65 +407,36 @@ const GUIDE_ENTRIES: LocalizedGuideEntry[] = [
     },
     en: {
       serviceName: 'Youth Counseling 1388',
-      title: '1388 is a place young people can contact first',
-      shortAnswer:
-        'If telling your parents or school first feels hard, you can contact 1388 yourself. You do not need to know where to begin with friendship, family, school, career, sexuality, violence, running away, or self-harm thoughts.',
-      lead:
-        'Youth counseling does not have to start with a parent making an appointment. If you cannot handle it alone but feel scared to tell an adult around you, 1388 can be the first connection. If calling feels too much, you can start by text, KakaoTalk, or online counseling.',
-      ctaLabel: 'Open youth services',
-      sections: [
+      title: 'A young person can contact 1388 first',
+      summary:
+        'If telling a parent feels hard or you do not know where to start, you can begin with what feels hard right now.',
+      starterPhrases: [
+        'I want to talk before I tell my parents.',
+        'I am not sure if this is school violence, but I feel scared.',
+        'It is hard to stay at home, and I do not know where to go.',
+      ],
+      counselorChecks: ['Your age and where you are now', 'Whether you are safe now', 'Whether there is a trusted adult or safe place'],
+      concerns: [
+        'You can start by phone, text, or online counseling.',
+        'Parents, friends, and teachers can also ask for guidance.',
+        'If life or safety risk is high, protective or emergency services may be connected.',
+      ],
+      urgentNote:
+        'If you may hurt yourself or are already injured, call 119 first. If someone is holding or hurting you, call 112 first.',
+      ctaLabel: 'Open youth support services',
+      details: [
         {
-          id: 'when',
-          title: 'It is okay to contact them when',
-          body: [],
+          title: 'Before you talk',
           list: [
-            'There is something you cannot tell your parents or teachers yet.',
-            'Friendship, bullying, school violence, career, or grades feel hard to endure.',
-            'It is hard to stay at home or you strongly want to leave.',
-            'You have self-harm thoughts, thoughts of dying, or dangerous urges.',
-            'You are worried about sexual violence, forced sexual exploitation, threats, or online harm.',
-            'A friend seems at risk and you do not know how to help.',
+            'You do not need to explain everything at the beginning.',
+            'The counselor can first check whether you are safe.',
           ],
         },
         {
-          id: 'firstCall',
-          title: 'What they may ask first',
-          body: [
-            'The counselor may ask whether you are safe now, whether you are alone, where you are contacting them from, and what happened. You do not have to share your name or school in detail before counseling begins, though urgent risk may require more safety information.',
-          ],
-          example: [
-            'I want to talk to someone before telling my parents.',
-            'I am not sure if I am in danger, but it is hard to stay at home.',
-          ],
-        },
-        {
-          id: 'privacy',
-          title: 'Privacy, cost, and reporting',
-          body: [
-            'Counseling should be handled carefully. If there is serious risk to life or safety, or immediate protection is needed, the counselor may suggest connection to protective services or relevant agencies. This is about reducing danger, not punishing you.',
-            '1388 counseling is free.',
-          ],
-        },
-        {
-          id: 'alternatives',
-          title: 'If calling is hard',
-          body: [
-            'You can use text, KakaoTalk, online chat, or board counseling. If speaking is difficult or you cannot talk safely at home, writing can be easier.',
-            'Parents, friends, teachers, or guardians can also ask on behalf of a young person. This guide, however, centers the young person contacting 1388 directly.',
-          ],
-        },
-        {
-          id: 'after',
           title: 'What may happen next',
-          body: [
-            'Support may connect to an in-person youth counseling center, youth companion support, shelter, medical care, school violence response, sexual violence support, or local welfare services. The first conversation can focus on safety, who can stay with you, and how to keep contact going.',
-          ],
-        },
-        {
-          id: 'urgent',
-          title: 'If danger is immediate',
-          body: [
-            'If you may hurt yourself now or are already injured, call 119 first. If someone is hurting you or holding you somewhere, call 112 first. If suicidal thoughts are very strong and being alone is unsafe, contact 109 or 119 right away.',
+          list: [
+            'You may be connected to a local youth counseling or protection service.',
+            'School violence, running away, self-harm risk, or family conflict can be sorted together.',
           ],
         },
       ],
@@ -685,64 +454,36 @@ const GUIDE_ENTRIES: LocalizedGuideEntry[] = [
     category: 'queer',
     ko: {
       serviceName: '청소년 성소수자 지원센터 띵동',
-      title: '띵동은 아웃팅 걱정 없이 처음 말을 꺼낼 수 있는 곳입니다',
-      shortAnswer:
-        '성적지향이나 성별정체성을 아직 확신하지 못해도, 가족이나 학교에 알려질까 봐 무서워도, 띵동에 먼저 카카오톡으로 말을 걸 수 있습니다.',
-      lead:
-        '성소수자 청소년에게 상담은 단순히 "고민을 말하는 일"이 아닐 수 있습니다. 내가 말한 내용이 가족, 학교, 친구에게 알려지지는 않을지, 상담자가 내 정체성을 문제로 보지는 않을지 먼저 걱정될 수 있습니다. 띵동은 청소년 성소수자의 정체성 고민, 가족 갈등, 탈가정, 폭력, 주거, 의료, 법률, 정신건강 문제를 함께 다루는 지원기관입니다.',
+      title: '띵동은 아웃팅 걱정부터 말할 수 있는 성소수자 지원센터예요',
+      summary:
+        '정체성, 커밍아웃, 가족 갈등, 차별, 주거·안전 걱정을 판단받지 않고 꺼낼 수 있습니다.',
+      starterPhrases: [
+        '아웃팅될까 봐 무서워서 어디에도 말하지 못했어요.',
+        '커밍아웃 뒤에 집에 있기 어려워졌어요.',
+        '성소수자 친화적인 상담을 찾고 싶어요.',
+      ],
+      counselorChecks: ['어떤 이름이나 호칭이 편한지', '지금 안전한지', '상담·주거·의료·법률 중 무엇이 급한지'],
+      concerns: [
+        '상담은 비밀을 지키는 방향으로 다룹니다.',
+        '청소년 성소수자의 상황을 전제로 이야기할 수 있습니다.',
+        '운영시간 밖 긴급 위험은 109, 112, 119가 먼저일 수 있습니다.',
+      ],
+      urgentNote:
+        '폭력, 감금, 협박이 지금 일어나면 112가 먼저입니다. 자해 위험이나 응급상황이면 109 또는 119가 먼저입니다.',
       ctaLabel: '성소수자 상담처 보기',
-      sections: [
+      details: [
         {
-          id: 'when',
-          title: '이럴 때 연락해도 됩니다',
-          body: [],
+          title: '상담에서 다룰 수 있는 것',
           list: [
-            '내가 성소수자인지 확신은 없지만 혼란스럽습니다.',
-            '커밍아웃, 아웃팅, 가족 갈등이 두렵습니다.',
-            '집에 있기 어렵거나 나갈 곳이 없습니다.',
-            '트랜지션, 의료, 성건강, HIV 검사, 법률 문제가 궁금합니다.',
-            '학교나 일상에서 혐오, 차별, 폭력을 겪었습니다.',
-            '우울, 불안, 트라우마, 자살위기처럼 마음이 위험합니다.',
+            '정체성, 커밍아웃, 가족·학교·관계 문제를 이야기할 수 있습니다.',
+            '필요하면 의료, 법률, 주거, 위기 지원 정보를 함께 찾을 수 있습니다.',
           ],
         },
         {
-          id: 'firstCall',
-          title: '처음 연결되면',
-          body: [
-            '띵동에는 카카오톡으로 먼저 메시지를 보낼 수 있습니다. 상담 신청과 예약을 카카오톡으로 진행할 수 있고, 전화 문의도 가능합니다. 방문 상담, 전화 상담, 화상 상담이 가능하므로 서울에 바로 오기 어렵다고 해서 포기하지 않아도 됩니다.',
-          ],
-          example: [
-            '제가 성소수자인지 잘 모르겠는데, 이 얘기를 할 곳이 없어요.',
-            '집에 있기 힘들고 아웃팅될까 봐 무서워요.',
-          ],
-        },
-        {
-          id: 'privacy',
-          title: '비밀·비용·신고',
-          body: [
-            '띵동 상담은 무료입니다. 상담 내용은 비밀 보장을 원칙으로 하며, 동의 없이 다른 기관에 말하지 않는다고 안내하고 있습니다. 이 비밀보장이 띵동을 찾는 가장 중요한 이유 중 하나가 될 수 있으므로, 페이지에서도 앞쪽에 분명히 보여주는 것이 좋습니다.',
-          ],
-        },
-        {
-          id: 'alternatives',
-          title: '전화가 어렵다면',
-          body: [
-            '카카오톡으로 먼저 시작할 수 있습니다. 전화보다 글이 편하다면 긴 설명을 한 번에 쓰지 않아도 됩니다. "상담하고 싶어요", "지금 말해도 되나요" 정도로 시작해도 됩니다.',
-            '띵동은 화요일부터 토요일 오전 11시부터 오후 9시까지 운영합니다. 일요일, 월요일, 공휴일이나 늦은 밤의 즉시 위기에는 112, 119, 109, 1388 같은 24시간 경로가 먼저 필요할 수 있습니다.',
-          ],
-        },
-        {
-          id: 'after',
-          title: '상담 뒤에는',
-          body: [
-            '상황에 따라 공간 이용, 생활물품, 쉼터 연계 및 주거 지원, 의료상담과 의료기관 동행, 법률상담, 지속적인 심리상담 연계로 이어질 수 있습니다. 상담은 정체성 고민 하나만 다루는 것이 아니라, 지금 삶을 버티는 데 필요한 지원을 함께 찾는 과정이 될 수 있습니다.',
-          ],
-        },
-        {
-          id: 'urgent',
-          title: '지금 위험하다면',
-          body: [
-            '폭력이나 감금, 추적, 협박이 현재 진행 중이면 112가 먼저입니다. 이미 다쳤거나 약물, 자해, 의식·호흡 문제가 있으면 119가 먼저입니다. 죽고 싶은 생각이 강한데 띵동 운영시간이 아니라면 109 또는 1388로 먼저 연결하세요.',
+          title: '말하기 전 알아둘 점',
+          list: [
+            '처음부터 실명이나 모든 정보를 말할 필요는 없습니다.',
+            '연락 가능한 방식과 안전한 시간을 먼저 정해도 됩니다.',
           ],
         },
       ],
@@ -753,64 +494,36 @@ const GUIDE_ENTRIES: LocalizedGuideEntry[] = [
     },
     en: {
       serviceName: 'LGBTIQ Youth Support Center DDing Dong',
-      title: 'DDing Dong is a place to start without fear of being outed',
-      shortAnswer:
-        'Even if you are not sure about your sexual orientation or gender identity, or you are afraid family or school will find out, you can message DDing Dong first through KakaoTalk.',
-      lead:
-        'For queer youth, counseling may not feel like simply sharing a concern. You may first worry whether your family, school, or friends will find out, or whether the counselor will treat your identity as a problem. DDing Dong supports LGBTQ+ youth with identity questions, family conflict, leaving home, violence, housing, medical, legal, and mental health concerns.',
-      ctaLabel: 'Open LGBTQ+ services',
-      sections: [
+      title: 'DDing Dong is a place to start with outing concerns',
+      summary:
+        'You can talk about identity, coming out, family conflict, discrimination, housing, or safety without having to prove your situation.',
+      starterPhrases: [
+        'I am scared of being outed, so I have not told anyone.',
+        'After coming out, it became hard to stay at home.',
+        'I want queer-friendly counseling.',
+      ],
+      counselorChecks: ['What name or words feel comfortable', 'Whether you are safe now', 'Whether counseling, housing, medical, or legal support is urgent'],
+      concerns: [
+        'Counseling is handled confidentially by default.',
+        'You can speak from an LGBTQ+ youth context without explaining everything first.',
+        'Outside service hours, immediate danger may need 109, 112, or 119 first.',
+      ],
+      urgentNote:
+        'If violence, confinement, or threats are happening now, call 112 first. If self-harm or medical danger is immediate, call 109 or 119 first.',
+      ctaLabel: 'Open LGBTQ+ support services',
+      details: [
         {
-          id: 'when',
-          title: 'It is okay to contact them when',
-          body: [],
+          title: 'What can be discussed',
           list: [
-            'You are confused and not sure whether you are LGBTQ+.',
-            'Coming out, outing, or family conflict feels frightening.',
-            'It is hard to stay at home or you have nowhere to go.',
-            'You have questions about transition, medical care, sexual health, HIV testing, or legal issues.',
-            'You experienced hate, discrimination, or violence at school or in daily life.',
-            'Depression, anxiety, trauma, or suicidal crisis makes your mind feel unsafe.',
+            'Identity, coming out, family, school, relationship, and discrimination concerns.',
+            'Medical, legal, housing, or crisis support information can be explored if needed.',
           ],
         },
         {
-          id: 'firstCall',
-          title: 'What happens first',
-          body: [
-            'You can message DDing Dong through KakaoTalk first. Counseling applications and appointments can happen there, and phone inquiries are also possible. In-person, phone, and video counseling may be available, so not being able to come to Seoul right away does not mean you cannot start.',
-          ],
-          example: [
-            'I am not sure if I am LGBTQ+, and I have nowhere to talk about it.',
-            'It is hard to stay at home and I am afraid of being outed.',
-          ],
-        },
-        {
-          id: 'privacy',
-          title: 'Privacy and cost',
-          body: [
-            'DDing Dong counseling is free. The organization states that counseling is confidential by principle and not shared with other institutions without consent. That assurance should be visible early because fear of outing can be the main barrier.',
-          ],
-        },
-        {
-          id: 'alternatives',
-          title: 'If calling is hard',
-          body: [
-            'You can start through KakaoTalk. If writing is easier than calling, you do not have to explain everything at once. A short message like "I want counseling" or "Can I talk now?" can be enough to begin.',
-            'DDing Dong operates Tuesday through Saturday, 11:00 to 21:00. On Sundays, Mondays, holidays, late nights, or immediate crises, 24/7 routes such as 112, 119, 109, or 1388 may be needed first.',
-          ],
-        },
-        {
-          id: 'after',
-          title: 'What may happen next',
-          body: [
-            'Support may include use of DDing Dong’s space, basic supplies, shelter and housing connection, medical counseling and accompaniment, legal counseling, or ongoing psychological counseling referral. Counseling can be about what helps you get through life now, not only about identity.',
-          ],
-        },
-        {
-          id: 'urgent',
-          title: 'If danger is immediate',
-          body: [
-            'If violence, confinement, stalking, or threats are happening now, call 112 first. If someone is injured, has taken medication, self-harmed, or has consciousness or breathing problems, call 119 first. If suicidal thoughts are strong outside DDing Dong hours, contact 109 or 1388 first.',
+          title: 'Before you talk',
+          list: [
+            'You do not need to give your legal name or every detail at the start.',
+            'You can first decide a safe contact method and time.',
           ],
         },
       ],
@@ -825,61 +538,36 @@ const GUIDE_ENTRIES: LocalizedGuideEntry[] = [
     category: 'migrant',
     ko: {
       serviceName: '다누리콜센터 1577-1366',
-      title: '다누리콜센터는 한국어가 어려운 상황의 첫 연결이 될 수 있습니다',
-      shortAnswer:
-        '한국어로 설명하기 어렵거나, 가족·체류·폭력·생활 문제가 섞여 어디에 말해야 할지 모르겠다면 다누리콜센터에 먼저 연락할 수 있습니다.',
-      lead:
-        '이주민과 외국인은 어려움이 하나만 오지 않는 경우가 많습니다. 폭력 피해를 말하려 해도 언어가 막히고, 병원이나 경찰과 통화해야 하는데 통역이 필요하고, 체류자격이나 가족관계가 걱정될 수 있습니다. 다누리콜센터는 13개 언어로 365일 24시간 상담을 제공하는 다문화가족 종합정보 전화센터입니다.',
+      title: '다누리는 한국어가 편하지 않아도 여러 언어로 물어볼 수 있어요',
+      summary:
+        '가족, 체류, 폭력, 생활 문제를 한국어로 설명하기 어렵다면 통역과 상담을 함께 시작할 수 있습니다.',
+      starterPhrases: [
+        '한국어가 어려워서 통역이 필요해요.',
+        '가족 문제를 상담하고 싶은데 어디에 말해야 할지 모르겠어요.',
+        '체류나 생활 정보가 필요해요.',
+      ],
+      counselorChecks: ['필요한 언어', '지금 있는 지역', '가족·체류·폭력·생활 중 어떤 문제인지'],
+      concerns: [
+        '여러 언어로 상담과 통역 지원을 받을 수 있습니다.',
+        '결혼이주민, 이주민, 외국인 가족이 생활 정보를 물어볼 수 있습니다.',
+        '폭력이나 응급상황은 112 또는 119가 먼저일 수 있습니다.',
+      ],
+      urgentNote:
+        '지금 폭력이나 위협이 있으면 112가 먼저입니다. 다쳤거나 응급처치가 필요하면 119가 먼저입니다.',
       ctaLabel: '이주민·외국인 상담처 보기',
-      sections: [
+      details: [
         {
-          id: 'when',
-          title: '이럴 때 연락해도 됩니다',
-          body: [],
+          title: '말하기 전 알아둘 점',
           list: [
-            '한국어로 상담기관에 설명하기 어렵습니다.',
-            '가정폭력, 가족갈등, 통제, 협박이 있습니다.',
-            '경찰, 병원, 주민센터, 상담기관과 통화할 때 통역이 필요합니다.',
-            '체류, 국적, 노동, 취업, 법률, 생활정보가 궁금합니다.',
-            '한국 생활 정보와 지역 서비스를 어디서 물어볼지 모르겠습니다.',
-            '이주여성 폭력피해 긴급지원이나 보호시설 연결이 필요합니다.',
+            '처음에 필요한 언어부터 말하면 됩니다.',
+            '상담 가능 언어와 시간은 바뀔 수 있으니 공식 안내를 확인하는 것이 좋습니다.',
           ],
         },
         {
-          id: 'firstCall',
-          title: '처음 연결되면',
-          body: [
-            '먼저 가능한 언어를 확인하고 해당 언어 상담원 또는 통역으로 연결될 수 있습니다. 이후 어떤 문제인지, 지금 안전한지, 긴급한 폭력 상황인지, 통역이 필요한 기관이 있는지, 생활정보나 법률·의료·체류 상담이 필요한지 확인합니다.',
-          ],
-          example: ['한국어가 어려워요. 제 언어로 상담받고 싶어요.', '병원과 통화해야 하는데 통역이 필요해요.'],
-        },
-        {
-          id: 'privacy',
-          title: '비밀·비용·신고',
-          body: [
-            '다누리는 처벌이나 단속을 위한 창구가 아니라 상담과 지원 연결을 위한 창구로 이해하는 것이 좋습니다. 다만 체류, 법률, 가족폭력 문제는 개인 상황에 따라 결과가 달라질 수 있으므로, 상담을 통해 정확한 기관과 절차를 확인해야 합니다.',
-            '상담은 365일 24시간 운영됩니다. 언어와 지역에 따라 연결 방식이 달라질 수 있습니다.',
-          ],
-        },
-        {
-          id: 'alternatives',
-          title: '전화가 어렵다면',
-          body: [
-            '다누리 포털의 온라인 상담을 이용할 수 있습니다. 주변의 한국어 가능한 사람에게 대신 설명을 부탁하기보다, 가능하면 본인이 편한 언어로 직접 말할 수 있는 통역·상담 경로를 이용하는 것이 더 안전할 수 있습니다. 특히 가정폭력 상황에서는 가족이나 배우자를 통역자로 세우지 않는 것이 좋습니다.',
-          ],
-        },
-        {
-          id: 'after',
-          title: '상담 뒤에는',
-          body: [
-            '상황에 따라 생활정보 안내, 3자 통역, 경찰·병원·상담기관 연결, 긴급피난처, 법률상담, 의료지원, 체류·국적·노동·취업 정보 안내로 이어질 수 있습니다. 다누리는 문제를 한 번에 해결하는 기관이라기보다, 언어와 제도 사이에서 다음 기관으로 이어주는 첫 문 역할을 할 수 있습니다.',
-          ],
-        },
-        {
-          id: 'urgent',
-          title: '지금 위험하다면',
-          body: [
-            '폭력이 지금 진행 중이면 112가 먼저입니다. 응급환자나 부상이 있으면 119가 먼저입니다. 112나 119에서도 통역 연결이 가능할 수 있으므로, 한국어가 완벽하지 않아도 긴급 신고를 미루지 마세요.',
+          title: '연결 뒤에는',
+          list: [
+            '생활 정보, 가족 문제, 폭력 피해, 기관 연결을 함께 정리할 수 있습니다.',
+            '필요하면 다른 공공기관 상담이나 통역으로 이어질 수 있습니다.',
           ],
         },
       ],
@@ -892,61 +580,36 @@ const GUIDE_ENTRIES: LocalizedGuideEntry[] = [
     },
     en: {
       serviceName: 'Danuri Call Center 1577-1366',
-      title: 'Danuri can be the first call when Korean is hard',
-      shortAnswer:
-        'If it is hard to explain in Korean, or family, visa, violence, and daily life problems are mixed together, Danuri can be a first place to contact.',
-      lead:
-        'For migrants and foreigners, problems often overlap. You may need to talk about violence but face a language barrier, need interpretation with a hospital or police, or worry about visa status and family issues. Danuri is a multicultural family information call center offering counseling in 13 languages, 24/7.',
-      ctaLabel: 'Open migrant and foreigner services',
-      sections: [
+      title: 'Danuri can help when Korean is not the easiest language',
+      summary:
+        'If family, stay, violence, or daily-life issues are hard to explain in Korean, multilingual counseling and interpretation can be a starting point.',
+      starterPhrases: [
+        'I need interpretation because Korean is difficult for me.',
+        'I want to talk about a family problem, but I do not know where to ask.',
+        'I need information about stay or daily life in Korea.',
+      ],
+      counselorChecks: ['The language you need', 'Where you are in Korea', 'Whether the issue is family, stay, violence, or daily life'],
+      concerns: [
+        'Multilingual counseling and interpretation may be available.',
+        'Marriage migrants, migrants, and foreign families can ask about daily-life support.',
+        'Violence or medical emergencies may need 112 or 119 first.',
+      ],
+      urgentNote:
+        'If violence or threats are happening now, call 112 first. If someone is injured or needs emergency care, call 119 first.',
+      ctaLabel: 'Open migrant and foreigner support services',
+      details: [
         {
-          id: 'when',
-          title: 'It is okay to contact them when',
-          body: [],
+          title: 'Before you talk',
           list: [
-            'It is hard to explain your situation to an agency in Korean.',
-            'There is domestic violence, family conflict, control, or threats.',
-            'You need interpretation with police, hospitals, local offices, or counseling agencies.',
-            'You have questions about stay, nationality, labor, employment, legal issues, or daily life.',
-            'You do not know where to ask about Korean life or local services.',
-            'You need emergency support or shelter connection for migrant women experiencing violence.',
+            'Start by saying which language you need.',
+            'Available languages and hours can change, so check the official guide when possible.',
           ],
         },
         {
-          id: 'firstCall',
-          title: 'What they may ask first',
-          body: [
-            'They may first check which language you can use and connect you to a counselor or interpreter. Then they may ask what the problem is, whether you are safe, whether violence is urgent, whether another agency needs interpretation, and whether you need daily life, legal, medical, or stay-status information.',
-          ],
-          example: ['Korean is hard for me. I want counseling in my language.', 'I need interpretation for a hospital call.'],
-        },
-        {
-          id: 'privacy',
-          title: 'Privacy, cost, and reporting',
-          body: [
-            'Danuri is best understood as a counseling and support connection point, not a punishment or enforcement line. Immigration, legal, and family violence issues can depend on individual circumstances, so use counseling to confirm the right procedure and agency.',
-            'The service operates 24/7. Connection details can vary by language and region.',
-          ],
-        },
-        {
-          id: 'alternatives',
-          title: 'If calling is hard',
-          body: [
-            'Online counseling is available through the Danuri portal. Rather than relying on a family member or spouse to interpret, it can be safer to use a language route where you can speak directly, especially in domestic violence situations.',
-          ],
-        },
-        {
-          id: 'after',
           title: 'What may happen next',
-          body: [
-            'Support may include daily life information, three-way interpretation, connection with police, hospitals, or counseling agencies, emergency shelter, legal counseling, medical support, and information about stay, nationality, labor, or employment. Danuri can serve as a first door between language barriers and the next agency.',
-          ],
-        },
-        {
-          id: 'urgent',
-          title: 'If danger is immediate',
-          body: [
-            'If violence is happening now, call 112 first. If there is injury or a medical emergency, call 119 first. Interpretation may be available through emergency services, so do not delay because your Korean is not perfect.',
+          list: [
+            'Daily-life information, family issues, violence support, and service connections can be sorted together.',
+            'If needed, you may be connected to another public service or interpretation support.',
           ],
         },
       ],
@@ -963,64 +626,36 @@ const GUIDE_ENTRIES: LocalizedGuideEntry[] = [
     category: 'elder',
     ko: {
       serviceName: '노인학대 신고·상담 1577-1389',
-      title: '노인학대는 확실한 증거가 없어도 먼저 상담할 수 있습니다',
-      shortAnswer:
-        '가족 일이라 조심스럽고 학대인지 확신이 없어도, 노인의 안전과 돌봄이 걱정된다면 1577-1389에 상담할 수 있습니다.',
-      lead:
-        '노인학대는 폭행처럼 눈에 보이는 일만 뜻하지 않습니다. 외출을 막는 것, 식사나 물을 제대로 주지 않는 것, 치료를 방치하는 것, 돈이나 재산을 마음대로 쓰는 것, 모욕과 협박도 상담이 필요한 신호일 수 있습니다. 신고는 처벌을 먼저 떠올리게 하지만, 실제 첫 단계는 안전 확인과 지원 연결입니다.',
+      title: '1389는 학대인지 확신이 없어도 의심을 상담할 수 있어요',
+      summary:
+        '방임, 폭언, 폭력, 경제적 착취, 돌봄 공백이 걱정될 때 먼저 상황을 말해볼 수 있습니다.',
+      starterPhrases: [
+        '학대인지 모르겠지만 계속 걱정되는 상황이 있어요.',
+        '혼자 계신 어르신이 돌봄을 받지 못하는 것 같아요.',
+        '돈이나 통장을 빼앗기는 것 같아 걱정돼요.',
+      ],
+      counselorChecks: ['어르신이 어디에 있는지', '지금 위험이 있는지', '누가 어떤 행동을 하고 있는지'],
+      concerns: [
+        '상담과 신고 모두 가능하며, 의심 단계에서도 물어볼 수 있습니다.',
+        '상황에 따라 노인보호전문기관이 확인과 보호를 진행할 수 있습니다.',
+        '생명·신체 위험이 크면 112 또는 119가 먼저입니다.',
+      ],
+      urgentNote:
+        '지금 폭력이나 생명 위험이 있으면 112 또는 119가 먼저입니다.',
       ctaLabel: '노인 상담처 보기',
-      sections: [
+      details: [
         {
-          id: 'when',
-          title: '이럴 때 연락해도 됩니다',
-          body: [],
+          title: '상담에서 말할 수 있는 것',
           list: [
-            '노인이 맞거나 밀쳐진 것 같습니다.',
-            '식사, 물, 약, 병원 진료가 제대로 제공되지 않습니다.',
-            '가족이나 보호자가 외출, 연락, 만남을 막습니다.',
-            '통장, 연금, 재산을 누군가 마음대로 쓰는 것 같습니다.',
-            '노인이 특정 사람을 두려워하거나 말하기를 꺼립니다.',
-            '이웃, 지인, 관리인, 시설 종사자로서 의심 상황을 보았습니다.',
+            '신체적 폭력뿐 아니라 방임, 정서적 학대, 경제적 착취도 이야기할 수 있습니다.',
+            '가족, 이웃, 돌봄 제공자 등 주변 사람이 상담할 수 있습니다.',
           ],
         },
         {
-          id: 'firstCall',
-          title: '처음 연결되면',
-          body: [
-            '상담원은 학대가 의심되는 노인의 거주지, 현재 안전, 학대 의심 내용, 학대가 반복되는지, 응급성이 있는지 등을 확인할 수 있습니다. 모든 증거를 갖고 있어야만 말할 수 있는 것은 아닙니다. 본인이 직접 겪은 일, 들은 말, 본 장면을 가능한 만큼 설명하면 됩니다.',
-          ],
-          example: [
-            '학대인지 확실하지는 않은데, 어르신이 집 밖에 못 나가고 식사도 제대로 못 하는 것 같아요.',
-            '가족 일이라 조심스럽지만, 안전이 걱정돼서 상담하고 싶어요.',
-          ],
-        },
-        {
-          id: 'privacy',
-          title: '비밀·비용·신고',
-          body: [
-            '누구든지 노인학대를 알게 되면 신고하거나 상담할 수 있습니다. 1577-1389로 연락하면 관할 지역노인보호전문기관으로 연결됩니다. 신고자의 신분 노출이 걱정될 수 있으므로, 처음 통화에서 비밀보장과 연락 방식에 대해 먼저 확인하는 것이 좋습니다.',
-            '전화가 부담스럽다면 나비새김 앱을 통한 신고도 가능합니다.',
-          ],
-        },
-        {
-          id: 'alternatives',
-          title: '전화가 어렵다면',
-          body: [
-            '나비새김 앱을 통해 장소, 기간, 내용, 증거자료 등을 적어 신고할 수 있습니다. 다만 응급 상황에서는 앱보다 112 또는 119가 빠를 수 있습니다.',
-          ],
-        },
-        {
-          id: 'after',
-          title: '상담 뒤에는',
-          body: [
-            '지역노인보호전문기관은 접수된 내용을 바탕으로 응급성과 안전성을 판단하고, 필요하면 현장조사, 상담, 의료기관 치료 의뢰, 법률지원 요청, 노인복지시설 입소 의뢰, 가족과 관련 기관 상담, 재발방지 교육 등을 진행할 수 있습니다. 위험성이 높으면 경찰이나 119와 함께 움직일 수 있습니다.',
-          ],
-        },
-        {
-          id: 'urgent',
-          title: '지금 위험하다면',
-          body: [
-            '지금 폭력이 진행 중이거나 생명이 위험하면 112가 먼저입니다. 다친 곳이 있거나 응급처치가 필요하면 119도 함께 필요합니다.',
+          title: '연결 뒤에는',
+          list: [
+            '필요하면 현장 확인, 보호, 응급조치, 지역 서비스 연결이 이뤄질 수 있습니다.',
+            '어르신의 안전과 의사를 함께 고려합니다.',
           ],
         },
       ],
@@ -1037,64 +672,36 @@ const GUIDE_ENTRIES: LocalizedGuideEntry[] = [
     },
     en: {
       serviceName: 'Elder abuse report and counseling 1577-1389',
-      title: 'You can ask about suspected elder abuse before you have proof',
-      shortAnswer:
-        'Even if it feels sensitive because it is a family matter, and even if you are not sure it is abuse, you can call 1577-1389 when an older person’s safety or care worries you.',
-      lead:
-        'Elder abuse is not only visible assault. Blocking someone from leaving, withholding food, water, medication, or medical care, misusing money or property, insults, and threats can all be signals that counseling is needed. The first step is often safety checking and support connection.',
-      ctaLabel: 'Open older adult services',
-      sections: [
+      title: 'You can ask 1389 even if you are not sure it is abuse',
+      summary:
+        'Neglect, verbal abuse, violence, financial exploitation, or care gaps can be discussed before you know exactly what to call them.',
+      starterPhrases: [
+        'I am not sure this is abuse, but I am worried.',
+        'An older adult seems to be alone without care.',
+        'I am worried someone is taking their money or bankbook.',
+      ],
+      counselorChecks: ['Where the older adult is', 'Whether there is danger now', 'Who is doing what'],
+      concerns: [
+        'You can ask for counseling or make a report, even at the suspicion stage.',
+        'An elder protection agency may check the situation and arrange protection.',
+        'If life or physical safety is at risk, 112 or 119 comes first.',
+      ],
+      urgentNote:
+        'If violence or life-threatening danger is happening now, call 112 or 119 first.',
+      ctaLabel: 'Open older adult support services',
+      details: [
         {
-          id: 'when',
-          title: 'It is okay to contact them when',
-          body: [],
+          title: 'What can be discussed',
           list: [
-            'An older person may have been hit or pushed.',
-            'Meals, water, medication, or medical care are not being provided.',
-            'Family or caregivers block outings, contact, or visits.',
-            'Someone seems to be using bank accounts, pension, or property without consent.',
-            'The older person fears a specific person or hesitates to speak.',
-            'You saw something concerning as a neighbor, acquaintance, manager, or facility worker.',
+            'Neglect, emotional abuse, financial exploitation, and physical violence can all be mentioned.',
+            'Family, neighbors, or care providers can ask for guidance.',
           ],
         },
         {
-          id: 'firstCall',
-          title: 'What they may ask first',
-          body: [
-            'The counselor may ask where the older person lives, whether they are safe now, what abuse is suspected, whether it is recurring, and whether it is urgent. You do not need complete evidence. Share what you saw, heard, or experienced as clearly as you can.',
-          ],
-          example: [
-            'I am not sure if this is abuse, but an older person seems unable to leave home or eat properly.',
-            'It is a family matter, so I am cautious, but I am worried about safety.',
-          ],
-        },
-        {
-          id: 'privacy',
-          title: 'Privacy and reporting',
-          body: [
-            'Anyone who becomes aware of elder abuse can report or consult. Calling 1577-1389 connects to the local elder protection agency. If you worry about being identified, ask about confidentiality and contact methods at the start.',
-            'If calling feels hard, reporting through the Nabisaegim app may be available.',
-          ],
-        },
-        {
-          id: 'alternatives',
-          title: 'If calling is hard',
-          body: [
-            'Through the Nabisaegim app, you can enter location, period, details, and evidence materials. In emergencies, however, 112 or 119 can be faster than an app report.',
-          ],
-        },
-        {
-          id: 'after',
           title: 'What may happen next',
-          body: [
-            'The local elder protection agency assesses urgency and safety, then may conduct on-site investigation, counseling, medical referral, legal support request, welfare facility placement referral, family or agency counseling, and recurrence prevention education. If risk is high, police or 119 may be involved.',
-          ],
-        },
-        {
-          id: 'urgent',
-          title: 'If danger is immediate',
-          body: [
-            'If violence is happening now or life is at risk, call 112 first. If there is injury or emergency care is needed, 119 may also be needed.',
+          list: [
+            'The case may lead to field checks, protection, emergency measures, or local support.',
+            'The older adult’s safety and wishes should be considered together.',
           ],
         },
       ],
@@ -1115,65 +722,36 @@ const GUIDE_ENTRIES: LocalizedGuideEntry[] = [
     category: 'addiction',
     ko: {
       serviceName: '마약 상담 용기한걸음센터 1342',
-      title: '1342는 마약 문제를 신고하기 전에 회복을 상담할 수 있는 곳입니다',
-      shortAnswer:
-        '사용 사실을 말하는 것이 두렵거나 가족이 대신 걱정하는 상황이어도, 1342에서 24시간 무료로 상담을 시작할 수 있습니다.',
-      lead:
-        '마약류 사용이나 오남용 문제는 "말하는 순간 신고되는 것 아닐까" 하는 두려움 때문에 더 깊이 숨게 되기 쉽습니다. 용기한걸음센터 1342는 처벌을 먼저 떠올리게 하는 번호가 아니라, 상담·치료·재활로 이어지는 첫 연결입니다. 당사자뿐 아니라 가족과 지인도 문의할 수 있습니다.',
+      title: '1342는 처벌이 무서운 마음부터 상담으로 꺼낼 수 있어요',
+      summary:
+        '사용, 재사용 걱정, 가족의 약물 문제를 치료와 회복 쪽으로 어떻게 연결할지 먼저 물어볼 수 있습니다.',
+      starterPhrases: [
+        '신고될까 봐 무서운데 상담을 받고 싶어요.',
+        '다시 사용할까 봐 걱정돼요.',
+        '가족이 사용하는 것 같아서 제가 먼저 상담받고 싶어요.',
+      ],
+      counselorChecks: ['어떤 물질인지', '최근 사용 시점과 몸 상태', '혼자인지, 치료나 회복 지원을 원하는지'],
+      concerns: [
+        '24시간 무료 상담으로 시작할 수 있습니다.',
+        '상담 내용과 개인정보는 비밀을 지키는 방향으로 안내됩니다.',
+        '법적 결과를 약속하지는 않지만 치료·재활 경로를 함께 찾을 수 있습니다.',
+      ],
+      urgentNote:
+        '과다복용, 의식·호흡 문제, 심한 불안이나 혼란이 있으면 119가 먼저입니다. 강요나 폭력이 있으면 112가 필요합니다.',
       ctaLabel: '중독 상담처 보기',
-      sections: [
+      details: [
         {
-          id: 'when',
-          title: '이럴 때 연락해도 됩니다',
-          body: [],
+          title: '말하기 전 알아둘 점',
           list: [
-            '마약류를 사용했고 끊고 싶지만 혼자 어렵습니다.',
-            '다시 사용하고 싶은 갈망이 강합니다.',
-            '한 번 사용한 뒤 불안하거나 몸과 마음 상태가 걱정됩니다.',
-            '처방약 오남용이 걱정됩니다.',
-            '가족이나 친구가 사용 중인 것 같아 어떻게 말해야 할지 모르겠습니다.',
-            '치료기관이나 재활기관을 어디서 찾아야 할지 모르겠습니다.',
+            '처음부터 모든 사용 이력을 자세히 말하지 않아도 됩니다.',
+            '본인뿐 아니라 가족이나 지인도 상담을 요청할 수 있습니다.',
           ],
         },
         {
-          id: 'firstCall',
-          title: '처음 연결되면',
-          body: [
-            '상담원은 어떤 물질인지, 사용 빈도와 최근 사용 시점, 몸 상태, 금단이나 갈망, 혼자 있는지, 치료나 재활 의사가 있는지 등을 확인할 수 있습니다. 처음부터 모든 사실을 완벽하게 정리할 필요는 없습니다.',
-          ],
-          example: [
-            '신고될까 봐 무서운데, 마약 문제 상담을 받고 싶어요.',
-            '가족이 사용하는 것 같아요. 제가 먼저 상담받을 수 있나요?',
-          ],
-        },
-        {
-          id: 'privacy',
-          title: '비밀·비용·신고',
-          body: [
-            '1342는 24시간 무료 상담을 제공하며, 상담 내용과 개인정보는 비밀보장을 전제로 안내되고 있습니다. 상담자는 원하면 주거지 기준 가까운 한국마약퇴치운동본부 지부나 재활기관 등으로 연결될 수 있습니다.',
-            '법적 상황은 개인별로 다를 수 있으므로, 가이드는 수사나 처벌 결과를 단정하지 않아야 합니다. 핵심은 "말하면 바로 끝난다"가 아니라 "말해야 치료와 재활 경로를 찾을 수 있다"는 점입니다.',
-          ],
-        },
-        {
-          id: 'alternatives',
-          title: '전화가 어렵다면',
-          body: [
-            '전화가 가장 빠른 경로입니다. 당장 말하기 어렵다면 첫 문장은 짧아도 됩니다.',
-          ],
-          example: ['마약 상담을 받고 싶습니다. 익명으로 가능한지 먼저 알고 싶어요.'],
-        },
-        {
-          id: 'after',
-          title: '상담 뒤에는',
-          body: [
-            '상담 결과에 따라 치료가 필요한 경우 치료보호기관, 재활이 필요한 경우 함께한걸음센터 등으로 연결될 수 있습니다. 중독 상담은 한 번의 결심으로 끝나지 않을 수 있습니다. 다시 사용했거나 끊지 못한 상태여도 연락할 수 있다는 메시지를 분명히 두는 것이 중요합니다.',
-          ],
-        },
-        {
-          id: 'urgent',
-          title: '지금 위험하다면',
-          body: [
-            '약물을 많이 사용했거나 의식, 호흡, 심장박동, 경련, 심한 불안이나 혼란이 있으면 1342보다 119가 먼저입니다. 누군가 약물 사용을 강요하거나 폭력이 함께 있으면 112도 필요합니다.',
+          title: '연결 뒤에는',
+          list: [
+            '치료보호기관, 재활기관, 지역 회복 지원으로 이어질 수 있습니다.',
+            '다시 사용했거나 멈추지 못한 상태여도 다시 상담할 수 있습니다.',
           ],
         },
       ],
@@ -1190,63 +768,36 @@ const GUIDE_ENTRIES: LocalizedGuideEntry[] = [
     },
     en: {
       serviceName: 'Drug counseling 1342 Courage One Step Center',
-      title: '1342 is for recovery counseling before fear shuts the door',
-      shortAnswer:
-        'Even if you are afraid to talk about use, or a family member is worried on someone’s behalf, 1342 offers 24/7 free counseling.',
-      lead:
-        'Drug use or misuse can become more hidden because people fear being reported as soon as they talk. 1342 is presented as a first connection to counseling, treatment, and rehabilitation. The person directly affected, family members, and acquaintances can ask for help.',
+      title: '1342 can start with fear about punishment',
+      summary:
+        'You can ask how drug use, relapse worries, or a family member’s use could connect to treatment and recovery support.',
+      starterPhrases: [
+        'I am afraid this will be reported, but I want counseling.',
+        'I am worried I will use again.',
+        'I think my family member is using, and I want counseling first.',
+      ],
+      counselorChecks: ['What substance is involved', 'Recent use and physical condition', 'Whether you are alone and whether treatment or recovery support is wanted'],
+      concerns: [
+        'You can start with free 24-hour counseling.',
+        'Counseling content and personal information are described as confidential.',
+        'Legal outcomes cannot be promised, but treatment and rehabilitation routes can be explored.',
+      ],
+      urgentNote:
+        'If there is overdose, consciousness or breathing trouble, severe anxiety, or confusion, call 119 first. If coercion or violence is involved, call 112.',
       ctaLabel: 'Open addiction services',
-      sections: [
+      details: [
         {
-          id: 'when',
-          title: 'It is okay to contact them when',
-          body: [],
+          title: 'Before you talk',
           list: [
-            'You used drugs and want to stop, but cannot do it alone.',
-            'Cravings to use again feel strong.',
-            'You feel anxious or physically unwell after using once.',
-            'You are worried about prescription drug misuse.',
-            'A family member or friend may be using and you do not know how to respond.',
-            'You do not know where to find treatment or rehabilitation services.',
+            'You do not need a complete history of use before the first call.',
+            'The person directly affected, family, or acquaintances can ask for help.',
           ],
         },
         {
-          id: 'firstCall',
-          title: 'What they may ask first',
-          body: [
-            'The counselor may ask what substance is involved, how often and how recently it was used, physical condition, withdrawal or cravings, whether you are alone, and whether treatment or rehabilitation is desired. You do not need every fact organized before calling.',
-          ],
-          example: [
-            'I am scared this will be reported, but I want counseling about drug use.',
-            'I think my family member is using. Can I get counseling first?',
-          ],
-        },
-        {
-          id: 'privacy',
-          title: 'Privacy, cost, and reporting',
-          body: [
-            '1342 provides free 24-hour counseling, and public information describes counseling content and personal information as confidential. If the caller wants, they can be connected to a nearby Korea Association Against Drug Abuse branch or rehabilitation service.',
-            'Legal situations differ by person, so the guide should not promise investigation or punishment outcomes. The key message is that talking can open treatment and rehabilitation routes.',
-          ],
-        },
-        {
-          id: 'alternatives',
-          title: 'If calling is hard',
-          body: ['Calling is the fastest route. If it is hard to start, the first sentence can be short.'],
-          example: ['I want drug counseling. I want to ask first whether anonymous counseling is possible.'],
-        },
-        {
-          id: 'after',
           title: 'What may happen next',
-          body: [
-            'Depending on the counseling result, treatment needs may connect to treatment protection institutions, and rehabilitation needs may connect to Together One Step Centers or similar services. Returning after reuse or while still unable to stop should remain clearly allowed.',
-          ],
-        },
-        {
-          id: 'urgent',
-          title: 'If danger is immediate',
-          body: [
-            'If someone used a large amount or has consciousness, breathing, heartbeat, seizure, severe anxiety, or confusion symptoms, call 119 before 1342. If someone is forcing drug use or violence is involved, 112 may also be needed.',
+          list: [
+            'You may be connected to treatment protection, rehabilitation, or local recovery support.',
+            'You can come back even after reuse or while still unable to stop.',
           ],
         },
       ],
@@ -1267,64 +818,36 @@ const GUIDE_ENTRIES: LocalizedGuideEntry[] = [
     category: 'legal',
     ko: {
       serviceName: '스마일센터',
-      title: '스마일센터는 범죄 이후의 마음과 일상을 회복하도록 돕습니다',
-      shortAnswer:
-        '강력범죄 피해 이후 잠을 못 자거나, 계속 떠오르거나, 밖에 나가기 어렵거나, 가족까지 흔들린다면 스마일센터에 무료 지원을 문의할 수 있습니다.',
-      lead:
-        '범죄 피해 이후에는 신고와 수사만으로 회복이 끝나지 않습니다. 몸은 안전해졌어도 마음은 계속 사건 안에 머물 수 있고, 가족도 함께 무너질 수 있습니다. 스마일센터는 강력범죄 피해자와 가족을 대상으로 심리평가, 심리치료, 임시거처, 법률·사회지원 연계를 제공하는 범죄피해 트라우마 통합지원기관입니다.',
+      title: '스마일센터는 신고 뒤에도 남는 마음과 일상 회복을 도와요',
+      summary:
+        '범죄피해 이후 잠을 못 자거나 사건이 계속 떠오르거나 가족까지 흔들릴 때 회복 지원을 물어볼 수 있습니다.',
+      starterPhrases: [
+        '신고는 했는데 그 뒤로 잠을 못 자요.',
+        '사건이 계속 떠올라서 일상이 어렵습니다.',
+        '제가 이용할 수 있는 지원이 있는지 알고 싶어요.',
+      ],
+      counselorChecks: ['어떤 피해가 있었는지', '지금 안전한지', '심리상담·치료·법률·수사 지원 중 무엇이 필요한지'],
+      concerns: [
+        '스마일센터 서비스는 무료로 안내됩니다.',
+        '피해자뿐 아니라 가족도 지원을 문의할 수 있습니다.',
+        '즉시 위험을 막는 기관은 아니므로 현재 위험은 112 또는 119가 먼저입니다.',
+      ],
+      urgentNote:
+        '가해자가 가까이 있거나 다시 해칠 위험이 있으면 112가 먼저입니다. 다쳤거나 응급치료가 필요하면 119가 먼저입니다.',
       ctaLabel: '범죄피해 상담처 보기',
-      sections: [
+      details: [
         {
-          id: 'when',
-          title: '이럴 때 연락해도 됩니다',
-          body: [],
+          title: '상담에서 다룰 수 있는 것',
           list: [
-            '살인, 강도, 폭력, 성폭력, 방화 등 강력범죄 피해를 겪었습니다.',
-            '사건 장면이 계속 떠오르거나 악몽, 불면, 불안이 심합니다.',
-            '일상생활, 출근, 등교, 외출이 어렵습니다.',
-            '가족도 충격을 받아 상담이 필요합니다.',
-            '집에 머무르기 어렵거나 임시거처가 필요합니다.',
-            '법률상담이나 범죄피해자지원센터 같은 다른 지원과의 차이를 알고 싶습니다.',
+            '심리평가, 안정화 상담, 심리치료, 정신건강의학과 연계를 물어볼 수 있습니다.',
+            '임시거처, 법률상담, 사회복지 지원 연결도 함께 확인할 수 있습니다.',
           ],
         },
         {
-          id: 'firstCall',
-          title: '처음 연결되면',
-          body: [
-            '스마일센터는 전화접수와 상담을 24시간 받을 수 있고, 등록면담과 심리치료 등은 평일 오전 9시부터 오후 6시 중심으로 진행됩니다. 전화에서는 어떤 피해가 있었는지, 현재 안전한지, 심리적 어려움이 어느 정도인지, 필요한 지원이 무엇인지, 서류나 의뢰가 필요한지 확인할 수 있습니다.',
-          ],
-          example: [
-            '범죄 피해 이후 잠을 못 자고 계속 떠올라요. 제가 이용할 수 있는지 알고 싶어요.',
-            '신고는 했는데 이후에 어떤 지원을 받을 수 있는지 모르겠어요.',
-          ],
-        },
-        {
-          id: 'privacy',
-          title: '비밀·비용·신고',
-          body: [
-            '스마일센터의 모든 서비스는 무료로 제공됩니다. 심리치료 내용은 비밀보장이 원칙입니다. 다만 법률기관 요청처럼 특별한 경우에는 내담자의 의사를 확인한 뒤 자료를 제공할 수 있고, 자해나 타해 위험 등 특정 상황에서는 예외가 있을 수 있습니다.',
-            '정신건강의학과 진료와 약물치료는 필수가 아닙니다. 증상과 필요에 따라 권유될 수 있으며, 심리치료와 함께 진행될 수 있습니다.',
-          ],
-        },
-        {
-          id: 'alternatives',
-          title: '전화가 어렵다면',
-          body: [
-            '직접 신청이 가능하지만, 경찰서, 검찰청, 범죄피해자지원센터 등을 통해 의뢰될 수도 있습니다. 이미 수사기관이나 피해자지원센터와 연결되어 있다면 "스마일센터 심리지원을 받고 싶다"고 말해도 됩니다.',
-          ],
-        },
-        {
-          id: 'after',
-          title: '상담 뒤에는',
-          body: [
-            '심리평가, 안정화 상담, 심리치료, 정신건강의학과 연계, 임시거처, 법률상담, 사회지원 연계가 진행될 수 있습니다. 범죄피해자지원센터는 치료비, 이사비, 생계비, 학자금 등 경제적 지원을 더 폭넓게 다룰 수 있으므로, 두 기관은 경쟁 관계가 아니라 함께 연결될 수 있는 지원 축으로 설명하는 것이 좋습니다.',
-          ],
-        },
-        {
-          id: 'urgent',
-          title: '지금 위험하다면',
-          body: [
-            '가해자가 가까이 있거나 다시 피해를 당할 위험이 있으면 스마일센터보다 112가 먼저입니다. 다친 곳이 있거나 응급처치가 필요하면 119도 함께 필요합니다. 스마일센터는 즉시 위험이 지나간 뒤 회복 지원으로 다시 연결할 수 있습니다.',
+          title: '연결 뒤에는',
+          list: [
+            '전화 접수 뒤 면담이나 치료 일정으로 이어질 수 있습니다.',
+            '피해자지원센터, 수사기관, 법률 지원과 함께 연결될 수 있습니다.',
           ],
         },
       ],
@@ -1339,64 +862,36 @@ const GUIDE_ENTRIES: LocalizedGuideEntry[] = [
     },
     en: {
       serviceName: 'Smile Center',
-      title: 'Smile Center helps with recovery after crime victimization',
-      shortAnswer:
-        'If after a violent crime you cannot sleep, the event keeps returning, going outside feels hard, or family members are also shaken, you can ask Smile Center about free support.',
-      lead:
-        'After crime victimization, recovery does not end with reporting or investigation. The body may be safe while the mind remains inside the event, and family members can also be affected. Smile Center is an integrated crime-victim trauma support service for victims of serious crimes and their families, offering psychological assessment, therapy, temporary housing, and legal or social support connection.',
+      title: 'Smile Center helps with recovery after reporting is not enough',
+      summary:
+        'After crime victimization, if sleep, flashbacks, daily life, or family stability are affected, you can ask about recovery support.',
+      starterPhrases: [
+        'I reported it, but I cannot sleep afterward.',
+        'The event keeps coming back, and daily life is hard.',
+        'I want to know what support I can use.',
+      ],
+      counselorChecks: ['What harm occurred', 'Whether you are safe now', 'Whether counseling, treatment, legal, or investigation support is needed'],
+      concerns: [
+        'Smile Center services are described as free.',
+        'Victims and family members can ask about support.',
+        'It is not the service that stops immediate danger, so current danger needs 112 or 119 first.',
+      ],
+      urgentNote:
+        'If the offender is nearby or may harm you again, call 112 first. If you are injured or need emergency care, call 119 first.',
       ctaLabel: 'Open crime victim support services',
-      sections: [
+      details: [
         {
-          id: 'when',
-          title: 'It is okay to contact them when',
-          body: [],
+          title: 'What can be discussed',
           list: [
-            'You experienced a serious crime such as homicide, robbery, violence, sexual violence, or arson.',
-            'Scenes from the event keep returning, or nightmares, insomnia, or anxiety are severe.',
-            'Daily life, work, school, or going outside has become difficult.',
-            'Family members are also affected and need counseling.',
-            'It is hard to stay at home or temporary housing is needed.',
-            'You want to understand the difference between Smile Center and other victim support centers.',
+            'Psychological assessment, stabilization counseling, therapy, and psychiatry referral.',
+            'Temporary housing, legal counseling, and social support connection may also be discussed.',
           ],
         },
         {
-          id: 'firstCall',
-          title: 'What they may ask first',
-          body: [
-            'Smile Center can receive phone intake and counseling 24 hours a day, while registration interviews and therapy are mainly on weekdays from 9:00 to 18:00. On the call, they may ask what harm occurred, whether you are safe now, how severe the psychological difficulty is, what support is needed, and whether documents or referral are required.',
-          ],
-          example: [
-            'Since the crime, I cannot sleep and it keeps coming back. I want to know whether I can use this service.',
-            'I reported it, but I do not know what support is available afterward.',
-          ],
-        },
-        {
-          id: 'privacy',
-          title: 'Privacy, cost, and reporting',
-          body: [
-            'All Smile Center services are free. Psychological treatment is confidential by principle. In special situations, such as requests from legal institutions, information may be provided after confirming the client’s wishes, and there may be exceptions for self-harm or harm-to-others risk.',
-            'Psychiatric treatment and medication are not mandatory. They may be recommended depending on symptoms and needs, and can be combined with psychotherapy.',
-          ],
-        },
-        {
-          id: 'alternatives',
-          title: 'If calling is hard',
-          body: [
-            'Direct application is possible, and referral may also come through police, prosecutors, or crime victim support centers. If you are already connected to an investigative agency or victim support center, you can say that you want psychological support through Smile Center.',
-          ],
-        },
-        {
-          id: 'after',
           title: 'What may happen next',
-          body: [
-            'Support may include psychological assessment, stabilization counseling, psychotherapy, psychiatry referral, temporary housing, legal counseling, and social support connection. Crime victim support centers may cover broader economic support such as medical costs, moving costs, living expenses, and school expenses, so the two can work together.',
-          ],
-        },
-        {
-          id: 'urgent',
-          title: 'If danger is immediate',
-          body: [
-            'If the offender is nearby or there is risk of being harmed again, call 112 before Smile Center. If you are injured or need emergency care, 119 may also be needed. Smile Center can be contacted again for recovery support after immediate danger passes.',
+          list: [
+            'Phone intake may lead to an interview or treatment schedule.',
+            'You may be connected with victim support centers, investigation agencies, or legal aid.',
           ],
         },
       ],
