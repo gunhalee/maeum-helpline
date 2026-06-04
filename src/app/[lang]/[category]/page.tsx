@@ -309,34 +309,12 @@ export default async function LocalizedCategoryPage({ params }: Props) {
         className="mx-auto w-full max-w-[860px] px-4 pb-12 pt-6 md:px-6"
       >
         <header className="rounded-2xl border border-stone-200 bg-stone-50 px-5 py-6 shadow-sm md:px-8 md:py-8">
-          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-green-700">
-            {currentLang === 'en'
-              ? 'Korean crisis support directory'
-              : '한국 위기 지원 디렉터리'}
-          </p>
-          <h1 className="mt-3 font-serif text-[clamp(2rem,1.6rem+1.8vw,3rem)] leading-tight text-stone-900">
+          <h1 className="font-serif text-[clamp(2rem,1.6rem+1.8vw,3rem)] leading-tight text-stone-900">
             {heading}
           </h1>
           <p className="mt-4 max-w-3xl text-base leading-8 text-stone-600">
             {description}
           </p>
-          <div className="mt-6 flex flex-wrap gap-2 text-sm text-stone-700">
-            <span className="rounded-full border border-stone-200 bg-white px-4 py-2">
-              {currentLang === 'en'
-                ? `${filtered.length} services listed`
-                : `${filtered.length}개 기관 안내`}
-            </span>
-            <span className="rounded-full border border-stone-200 bg-white px-4 py-2">
-              {currentLang === 'en'
-                ? 'Phone numbers and hours'
-                : '전화번호와 운영시간 확인'}
-            </span>
-            <span className="rounded-full border border-stone-200 bg-white px-4 py-2">
-              {currentLang === 'en'
-                ? 'Support scope and access notes'
-                : '지원 대상과 이용 방법'}
-            </span>
-          </div>
         </header>
         <section className="mt-6 rounded-2xl border border-stone-200 bg-white px-5 py-6 shadow-sm md:px-8">
           <h2 className="text-lg font-semibold text-stone-900">{editorial.heading}</h2>
