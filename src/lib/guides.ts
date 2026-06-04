@@ -54,7 +54,7 @@ const GUIDE_INDEX_COPY: Record<Lang, GuideIndexCopy> = {
     intro:
       '상황을 완벽히 설명하지 않아도 됩니다. 이 가이드는 내가 상담 대상인지 판정하기보다, 지금 말할 수 있는 첫 문장과 연결 뒤 일어날 일을 짧게 보여줍니다.',
     urgentNotice:
-      '지금 다칠 위험이 있거나 이미 다쳤다면 가이드를 읽기보다 112 또는 119가 먼저입니다. 안전해진 뒤 다시 돌아와도 됩니다.',
+      '지금 몸의 안전이 걱정되거나 이미 다쳤다면 112 또는 119가 더 빠른 도움이 될 수 있습니다. 안전해진 뒤 다시 돌아와도 됩니다.',
     focusPoints: ['처음 할 말', '상담원이 확인할 것', '걱정되는 점'],
   },
   en: {
@@ -64,7 +64,7 @@ const GUIDE_INDEX_COPY: Record<Lang, GuideIndexCopy> = {
     intro:
       'You do not need a perfect explanation. These guides are not a test of whether you qualify. They show a first sentence, what may happen next, and the main things people worry about.',
     urgentNotice:
-      'If someone may be hurt right now, or someone has already been hurt, call 112 or 119 before reading further. You can return after immediate danger passes.',
+      'If physical safety is at risk, or someone is already hurt, 112 or 119 may be faster help. You can return after immediate danger passes.',
     focusPoints: ['First words', 'What they may check', 'Common worries'],
   },
 }
@@ -179,15 +179,15 @@ const GUIDE_ENTRIES: LocalizedGuideEntry[] = [
     category: 'depression',
     ko: {
       serviceName: '109',
-      title: '109는 죽고 싶은지 확신하지 못해도 시작할 수 있어요',
+      title: '109는 마음이 위험하다고 느껴질 때 시작할 수 있어요',
       summary:
-        '사라지고 싶다, 혼자 있기가 무섭다, 오늘 밤을 넘기기 어렵다는 마음부터 말해도 됩니다.',
+        '혼자 있기가 무섭거나 오늘 밤을 넘기기 어렵다는 마음부터 말해도 됩니다.',
       starterPhrases: [
-        '죽고 싶다는 생각이 들어요.',
+        '지금 혼자 버티기가 어렵습니다.',
         '혼자 있기가 무서워요.',
-        '어떻게 말해야 할지 모르겠는데 지금 위험한 것 같아요.',
+        '어떻게 말해야 할지 모르겠는데 안전하지 않은 것 같아요.',
       ],
-      counselorChecks: ['지금 혼자인지', '다칠 수단이 가까이 있는지', '오늘 밤을 안전하게 넘길 수 있는지'],
+      counselorChecks: ['지금 혼자인지', '주변을 조금 더 안전하게 만들 수 있는지', '오늘 밤을 더 안전하게 보낼 방법이 있는지'],
       concerns: [
         '24시간 무료로 연결할 수 있습니다.',
         '상담 내용은 기본적으로 비밀을 지키는 방향으로 다룹니다.',
@@ -220,15 +220,15 @@ const GUIDE_ENTRIES: LocalizedGuideEntry[] = [
     },
     en: {
       serviceName: '109',
-      title: 'You can start with 109 even if you are not sure you are suicidal',
+      title: 'You can start with 109 when you feel unsafe with yourself',
       summary:
-        'You can begin with wanting to disappear, being afraid to be alone, or not knowing how to get through tonight.',
+        'You can begin with being afraid to be alone, not knowing how to get through tonight, or feeling unsafe with yourself.',
       starterPhrases: [
-        'I am having thoughts of wanting to die.',
+        'I am having a hard time staying safe with myself.',
         'I am afraid to be alone right now.',
-        'I do not know how to explain this, but I think I may be unsafe.',
+        'I do not know how to explain this, but I do not feel safe.',
       ],
-      counselorChecks: ['Whether you are alone', 'Whether means to hurt yourself are nearby', 'Whether tonight can be made safer'],
+      counselorChecks: ['Whether you are alone', 'Whether anything nearby could make things less safe', 'How tonight can be made safer'],
       concerns: [
         '109 is available 24/7 and free to contact.',
         'Counseling is handled confidentially by default.',
@@ -277,7 +277,7 @@ const GUIDE_ENTRIES: LocalizedGuideEntry[] = [
       concerns: [
         '24시간 상담이 가능하고 상담만 받아도 됩니다.',
         '보호시설, 의료, 법률, 수사기관 연결을 함께 정리할 수 있습니다.',
-        '위험이 크면 112나 긴급보호가 먼저 필요할 수 있습니다.',
+        '신고 여부를 정하기 전에도 필요한 지원을 먼저 정리할 수 있습니다.',
       ],
       ctaLabel: '여성 상담처 보기',
       details: [
@@ -291,7 +291,7 @@ const GUIDE_ENTRIES: LocalizedGuideEntry[] = [
         {
           title: '연결 뒤에는',
           list: [
-            '상담원이 신고 여부를 강요하기보다 필요한 지원을 함께 정리합니다.',
+            '신고 여부를 정하기 전에 필요한 지원을 함께 정리할 수 있습니다.',
             '긴급피난이나 보호시설이 필요한지 확인할 수 있습니다.',
           ],
         },
@@ -318,7 +318,7 @@ const GUIDE_ENTRIES: LocalizedGuideEntry[] = [
       concerns: [
         'You can receive counseling 24/7.',
         'They can help organize shelter, medical, legal, or reporting options.',
-        'If danger is high, 112 or emergency protection may come first.',
+        'You can sort support options before deciding whether to report.',
       ],
       ctaLabel: 'Open women support services',
       details: [
@@ -363,7 +363,7 @@ const GUIDE_ENTRIES: LocalizedGuideEntry[] = [
       concerns: [
         '전화, 문자, 온라인 상담으로 시작할 수 있습니다.',
         '부모, 친구, 선생님도 가볍게 문의할 수 있습니다.',
-        '생명·안전 위험이 크면 보호기관이나 긴급기관 연결이 필요할 수 있습니다.',
+        '보호자에게 말하기 전이라도 먼저 상황을 정리할 수 있습니다.',
       ],
       ctaLabel: '청소년 상담처 보기',
       details: [
@@ -404,7 +404,7 @@ const GUIDE_ENTRIES: LocalizedGuideEntry[] = [
       concerns: [
         'You can start by phone, text, or online counseling.',
         'Parents, friends, and teachers can also ask for guidance.',
-        'If life or safety risk is high, protective or emergency services may be connected.',
+        'You can sort out the situation before deciding how to tell an adult.',
       ],
       ctaLabel: 'Open youth support services',
       details: [
@@ -449,7 +449,7 @@ const GUIDE_ENTRIES: LocalizedGuideEntry[] = [
       concerns: [
         '상담은 비밀을 지키는 방향으로 다룹니다.',
         '청소년 성소수자의 상황을 전제로 이야기할 수 있습니다.',
-        '운영시간 밖 긴급 위험은 109, 112, 119가 먼저일 수 있습니다.',
+        '필요하면 주거, 의료, 법률 등 다른 지원 경로를 함께 찾을 수 있습니다.',
       ],
       ctaLabel: '성소수자 상담처 보기',
       details: [
@@ -487,7 +487,7 @@ const GUIDE_ENTRIES: LocalizedGuideEntry[] = [
       concerns: [
         'Counseling is handled confidentially by default.',
         'You can speak from an LGBTQ+ youth context without explaining everything first.',
-        'Outside service hours, immediate danger may need 109, 112, or 119 first.',
+        'Housing, medical, legal, or other support routes can be explored together.',
       ],
       ctaLabel: 'Open LGBTQ+ support services',
       details: [
@@ -529,7 +529,7 @@ const GUIDE_ENTRIES: LocalizedGuideEntry[] = [
       concerns: [
         '여러 언어로 상담과 통역 지원을 받을 수 있습니다.',
         '결혼이주민, 이주민, 외국인 가족이 생활 정보를 물어볼 수 있습니다.',
-        '폭력이나 응급상황은 112 또는 119가 먼저일 수 있습니다.',
+        '통역이 필요한 상황이라는 말부터 시작해도 됩니다.',
       ],
       ctaLabel: '이주민·외국인 상담처 보기',
       details: [
@@ -569,7 +569,7 @@ const GUIDE_ENTRIES: LocalizedGuideEntry[] = [
       concerns: [
         'Multilingual counseling and interpretation may be available.',
         'Marriage migrants, migrants, and foreign families can ask about daily-life support.',
-        'Violence or medical emergencies may need 112 or 119 first.',
+        'You can start by saying that you need interpretation.',
       ],
       ctaLabel: 'Open migrant and foreigner support services',
       details: [
@@ -613,7 +613,7 @@ const GUIDE_ENTRIES: LocalizedGuideEntry[] = [
       concerns: [
         '상담과 신고 모두 가능하며, 의심 단계에서도 물어볼 수 있습니다.',
         '상황에 따라 노인보호전문기관이 확인과 보호를 진행할 수 있습니다.',
-        '생명·신체 위험이 크면 112 또는 119가 먼저입니다.',
+        '가족이 아니어도 이웃이나 주변 사람이 문의할 수 있습니다.',
       ],
       ctaLabel: '노인 상담처 보기',
       details: [
@@ -657,7 +657,7 @@ const GUIDE_ENTRIES: LocalizedGuideEntry[] = [
       concerns: [
         'You can ask for counseling or make a report, even at the suspicion stage.',
         'An elder protection agency may check the situation and arrange protection.',
-        'If life or physical safety is at risk, 112 or 119 comes first.',
+        'Neighbors or people nearby can ask, not only family members.',
       ],
       ctaLabel: 'Open older adult support services',
       details: [
@@ -787,17 +787,17 @@ const GUIDE_ENTRIES: LocalizedGuideEntry[] = [
       serviceName: '스마일센터',
       title: '스마일센터는 신고 뒤에도 남는 마음과 일상 회복을 도와요',
       summary:
-        '범죄피해 이후 잠을 못 자거나 사건이 계속 떠오르거나 가족까지 흔들릴 때 회복 지원을 물어볼 수 있습니다.',
+        '범죄피해 이후 잠, 마음, 일상, 가족의 안정이 흔들릴 때 회복 지원을 물어볼 수 있습니다.',
       starterPhrases: [
-        '신고는 했는데 그 뒤로 잠을 못 자요.',
-        '사건이 계속 떠올라서 일상이 어렵습니다.',
+        '신고는 했는데 그 뒤로 잠을 잘 못 자요.',
+        '그 뒤로 일상이 어렵습니다.',
         '제가 이용할 수 있는 지원이 있는지 알고 싶어요.',
       ],
-      counselorChecks: ['어떤 피해가 있었는지', '지금 안전한지', '심리상담·치료·법률·수사 지원 중 무엇이 필요한지'],
+      counselorChecks: ['지금 안전한지', '잠·식사·일상에 어려움이 있는지', '심리상담·치료·법률·수사 지원 중 무엇이 필요한지'],
       concerns: [
         '스마일센터 서비스는 무료로 안내됩니다.',
         '피해자뿐 아니라 가족도 지원을 문의할 수 있습니다.',
-        '즉시 위험을 막는 기관은 아니므로 현재 위험은 112 또는 119가 먼저입니다.',
+        '신고 이후의 절차와 별개로 회복 지원을 물어볼 수 있습니다.',
       ],
       ctaLabel: '범죄피해 상담처 보기',
       details: [
@@ -827,19 +827,19 @@ const GUIDE_ENTRIES: LocalizedGuideEntry[] = [
     },
     en: {
       serviceName: 'Smile Center',
-      title: 'Smile Center helps with recovery after reporting is not enough',
+      title: 'Smile Center helps with recovery after a crime report',
       summary:
-        'After crime victimization, if sleep, flashbacks, daily life, or family stability are affected, you can ask about recovery support.',
+        'After crime victimization, if sleep, emotions, daily life, or family stability are affected, you can ask about recovery support.',
       starterPhrases: [
-        'I reported it, but I cannot sleep afterward.',
-        'The event keeps coming back, and daily life is hard.',
+        'I reported it, but I have not been sleeping well.',
+        'Daily life has been hard since then.',
         'I want to know what support I can use.',
       ],
-      counselorChecks: ['What harm occurred', 'Whether you are safe now', 'Whether counseling, treatment, legal, or investigation support is needed'],
+      counselorChecks: ['Whether you are safe now', 'Whether sleep, meals, or daily life are affected', 'Whether counseling, treatment, legal, or investigation support is needed'],
       concerns: [
         'Smile Center services are described as free.',
         'Victims and family members can ask about support.',
-        'It is not the service that stops immediate danger, so current danger needs 112 or 119 first.',
+        'Recovery support can be discussed separately from the reporting process.',
       ],
       ctaLabel: 'Open crime victim support services',
       details: [

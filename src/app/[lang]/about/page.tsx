@@ -92,8 +92,8 @@ export default async function LocalizedAboutPage({ params }: Props) {
           <div className="mt-8 rounded-2xl border border-stone-200 bg-white px-4 py-4">
             <p className="text-sm font-semibold text-stone-900">
               {isEnglish
-                ? 'If there is immediate danger, call first'
-                : '즉각적인 위험이 있으면 먼저 연락하세요'}
+                ? 'If safety is urgent, these numbers can help first'
+                : '지금 안전이 걱정되면 먼저 연결할 수 있어요'}
             </p>
             <div className="mt-3 grid gap-3 sm:grid-cols-3">
               {emergencyNumbers.map((item) => (
@@ -116,7 +116,7 @@ export default async function LocalizedAboutPage({ params }: Props) {
       </section>
 
       <section className="mx-auto w-full max-w-[860px] px-4 pb-14 md:px-6">
-        <div className="grid gap-4 md:grid-cols-3">
+        <div className="grid gap-4 md:grid-cols-2">
           <article className="rounded-2xl border border-stone-200 bg-white p-5 shadow-sm">
             <h2 className="text-lg font-semibold text-stone-900">
               {isEnglish ? 'Who this is for' : '누구를 위한 서비스인가요'}
@@ -139,16 +139,6 @@ export default async function LocalizedAboutPage({ params }: Props) {
             </p>
           </article>
 
-          <article className="rounded-2xl border border-stone-200 bg-white p-5 shadow-sm">
-            <h2 className="text-lg font-semibold text-stone-900">
-              {isEnglish ? 'When to use emergency lines' : '긴급 번호를 먼저 써야 할 때'}
-            </h2>
-            <p className="mt-3 text-sm leading-7 text-stone-600">
-              {isEnglish
-                ? 'If there is immediate danger to life or safety, contact 109, 112, or 119 before browsing general counseling resources.'
-                : '생명이나 안전에 즉각적인 위험이 있다면 일반 상담 목록보다 먼저 109, 112, 119에 연락해야 합니다.'}
-            </p>
-          </article>
         </div>
         <div className="mt-6 rounded-2xl border border-stone-200 bg-white px-5 py-5 shadow-sm md:px-6">
           <h2 className="text-lg font-semibold text-stone-900">

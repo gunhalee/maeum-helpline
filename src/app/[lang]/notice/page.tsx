@@ -27,17 +27,12 @@ const NOTICE_COPY = {
       {
         title: '지금 위험한 상황이라면',
         paragraphs: [
-          '지금 생명이나 신체의 안전이 위험하거나, 폭력·범죄·응급상황이 벌어지고 있다면 이 사이트를 더 살펴보지 말고 바로 연락해 주세요.',
-          '이메일 답변을 기다리기보다 아래 번호에 먼저 연결하는 것이 안전합니다.',
+          '지금 생명이나 신체의 안전이 걱정되거나, 폭력·범죄·응급상황이 벌어지고 있다면 이 사이트보다 아래 번호가 더 빠른 도움이 될 수 있습니다.',
         ],
         bullets: [
           '112 범죄, 폭력, 위협, 스토킹, 신변 위험',
           '119 응급환자, 부상, 화재, 구조, 구급차',
           '109 자살위기 상담',
-        ],
-        notes: [
-          '이메일은 실시간으로 확인되지 않을 수 있습니다.',
-          '긴급한 상황에서는 이메일보다 112, 119, 109가 우선입니다.',
         ],
       },
       {
@@ -55,9 +50,9 @@ const NOTICE_COPY = {
         ],
       },
       {
-        title: '이 사이트가 대신할 수 없는 것',
+        title: '이 사이트의 역할과 한계',
         paragraphs: [
-          'Helpline Korea는 전문 상담기관이 아닌 관계로, 본 사이트와 이메일 답변은 다음을 대신할 수 없습니다.',
+          'Helpline Korea는 안내 사이트이기 때문에, 아래 내용은 해당 전문기관이나 긴급기관에 직접 연결하는 것이 필요합니다.',
         ],
         bullets: [
           '전문 심리상담',
@@ -85,12 +80,6 @@ const NOTICE_COPY = {
         ],
       },
     ],
-    closingTitle: '마지막으로',
-    closingParagraphs: [
-      '이 사이트는 도움을 찾는 길을 조금 더 쉽게 만들기 위한 안내 서비스입니다. 하지만 전문 상담, 진단, 치료, 법률 자문, 긴급 구조를 대신하지는 않습니다.',
-      '지금 당장 위험하다면, 다음 전화로 바로 연락해 주세요.',
-    ],
-    closingEmergency: ['긴급상황 112·119', '자살위기 상담 109'],
   },
   en: {
     title: 'Usage Guide and Disclaimer | Helpline Korea',
@@ -106,17 +95,12 @@ const NOTICE_COPY = {
       {
         title: 'If you are in danger right now',
         paragraphs: [
-          'If your life or physical safety is at risk right now, or if violence, crime, or a medical emergency is happening, do not keep browsing this site. Contact the numbers below immediately.',
-          'Do not wait for an email reply in urgent situations.',
+          'If life or physical safety is at risk, or if violence, crime, or a medical emergency is happening, the numbers below may be faster help than this site.',
         ],
         bullets: [
           '112 Crime, violence, threats, stalking, immediate personal danger',
           '119 Medical emergency, injury, fire, rescue, ambulance',
           '109 Suicide crisis counseling',
-        ],
-        notes: [
-          'Email may not be checked in real time.',
-          'In urgent situations, 112, 119, and 109 should come before email.',
         ],
       },
       {
@@ -134,9 +118,9 @@ const NOTICE_COPY = {
         ],
       },
       {
-        title: 'What this site cannot replace',
+        title: 'Scope and limits of this site',
         paragraphs: [
-          'Because Helpline Korea is not a professional counseling provider, this website and email replies cannot replace the following:',
+          'Helpline Korea is an information guide, so the following need direct support from professional or emergency services:',
         ],
         bullets: [
           'Professional psychological counseling',
@@ -164,12 +148,6 @@ const NOTICE_COPY = {
         ],
       },
     ],
-    closingTitle: 'Finally',
-    closingParagraphs: [
-      'This site is a guidance service to make the path to help a little easier. However, it does not replace professional counseling, diagnosis, treatment, legal advice, or emergency rescue.',
-      'If you are in immediate danger, call the numbers below right away.',
-    ],
-    closingEmergency: ['Emergency 112 · 119', 'Suicide crisis counseling 109'],
   },
 } as const
 
@@ -267,26 +245,6 @@ export default async function LocalizedNoticePage({ params }: Props) {
         ))}
       </div>
 
-      <div className="mt-6 rounded-2xl border border-green-200 bg-green-50 px-5 py-6 shadow-sm md:px-8">
-        <h2 className="text-xl font-semibold text-stone-900">{copy.closingTitle}</h2>
-        <div className="mt-3 space-y-3 text-base leading-8 text-stone-700">
-          {copy.closingParagraphs.map((paragraph) => (
-            <p key={paragraph}>
-              <EmergencyText text={paragraph} />
-            </p>
-          ))}
-        </div>
-        <div className="mt-5 flex flex-wrap gap-2">
-          {copy.closingEmergency.map((item) => (
-            <span
-              key={item}
-              className="rounded-full border border-green-700 bg-white px-4 py-2 text-lg font-semibold text-green-800"
-            >
-              <EmergencyText text={item} />
-            </span>
-          ))}
-        </div>
-      </div>
     </section>
   )
 }

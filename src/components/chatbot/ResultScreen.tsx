@@ -89,8 +89,8 @@ export default function ResultScreen({
   const heading =
     screenType === '2B'
       ? lang === 'en'
-        ? 'Reach out right now'
-        : '지금 바로 연결하세요'
+        ? 'You can reach support now'
+        : '지금 연결할 수 있어요'
       : lang === 'en'
         ? 'Here are the best matches'
         : '맞는 상담을 찾았어요'
@@ -151,17 +151,17 @@ export default function ResultScreen({
       {groups.length === 0 && (
         <div className="rounded-xl border border-stone-200 bg-white p-6 text-center text-base leading-7 text-stone-500">
           {lang === 'en'
-            ? 'We could not find a good match. Please call 109, the Suicide Crisis Helpline.'
-            : '적합한 기관을 찾지 못했습니다. 109(자살 위기 헬프라인)으로 전화해 주세요.'}
+            ? 'We could not find a clear match. You can check the guide page for common support options.'
+            : '적합한 기관을 찾지 못했습니다. 가이드에서 주요 상담처를 다시 확인할 수 있습니다.'}
         </div>
       )}
 
       <div className="mt-2 text-center">
         <Link
-          href={withLang('/crisis', lang)}
+          href={withLang('/guide', lang)}
           className="inline-block text-sm text-stone-900 underline-offset-2 hover:text-stone-600 hover:underline"
         >
-          {lang === 'en' ? 'View all helplines →' : '상담 기관 목록 전체 →'}
+          {lang === 'en' ? 'Open the guide page →' : '가이드에서 보기 →'}
         </Link>
       </div>
     </div>

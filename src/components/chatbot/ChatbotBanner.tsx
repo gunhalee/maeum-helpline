@@ -27,7 +27,9 @@ export default function ChatbotBanner({ lang }: Props) {
     >
       <div className="mx-auto mb-3 flex max-w-[460px] items-center justify-between gap-3">
         <p className="text-left text-sm font-semibold leading-5 text-stone-800">
-          {lang === 'en' ? 'If you are in danger, call now' : '위험하면 지금 바로 전화하세요'}
+          {lang === 'en'
+            ? 'Quick safety contacts'
+            : '안전이 걱정될 때 바로 연결'}
         </p>
         <Link
           href={toggleHref}
