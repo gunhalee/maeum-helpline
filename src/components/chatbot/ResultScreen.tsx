@@ -31,7 +31,7 @@ function orgToCardProps(org: MatchSerializedOrg, lang: Lang) {
 interface Props {
   groups: MatchGroup[]
   orgMap: Record<string, MatchSerializedOrg>
-  screenType: '2A' | '2B' | '2C'
+  screenType: '2A' | '2B'
   onBack: () => void
   lang: Lang
 }
@@ -91,36 +91,19 @@ export default function ResultScreen({
       ? lang === 'en'
         ? 'Reach out right now'
         : '지금 바로 연결하세요'
-      : screenType === '2C'
-        ? lang === 'en'
-          ? 'What you are feeling matters'
-          : '힘드신 거 맞아요'
-        : lang === 'en'
-          ? 'Here are the best matches'
-          : '맞는 상담을 찾았어요'
+      : lang === 'en'
+        ? 'Here are the best matches'
+        : '맞는 상담을 찾았어요'
 
-  const subheading =
-    screenType === '2C'
-      ? lang === 'en'
-        ? 'Please start by contacting one of these services'
-        : '일단 이쪽으로 연락해 보세요'
-      : null
-
-  const showCrisisExpanded = screenType === '2B' || screenType === '2C'
-
-  const isCrisisLabel = (label: string) =>
-    /위기/.test(label) || /crisis|emergency/i.test(label)
+  const showCrisisExpanded = screenType === '2B'
 
   let crisisGroups: MatchGroup[] = []
   let normalGroups: MatchGroup[] = []
 
-  if (!showCrisisExpanded) {
-    normalGroups = groups
-  } else if (screenType === '2B') {
+  if (showCrisisExpanded) {
     crisisGroups = groups
   } else {
-    crisisGroups = groups.filter((g) => isCrisisLabel(g.label))
-    normalGroups = groups.filter((g) => !isCrisisLabel(g.label))
+    normalGroups = groups
   }
 
   return (
@@ -137,9 +120,6 @@ export default function ResultScreen({
         <p className="font-serif text-[clamp(1.45rem,1.2rem+1vw,1.95rem)] font-semibold leading-tight text-stone-800">
           {heading}
         </p>
-        {subheading && (
-          <p className="text-base leading-7 text-stone-600">{subheading}</p>
-        )}
       </div>
 
       {crisisGroups.length > 0 && (

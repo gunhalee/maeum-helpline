@@ -9,8 +9,6 @@ import type { Lang } from '@/lib/i18n'
 
 type Screen = 'selection' | 'result' | 'loading'
 
-const SOLO_BUTTONS = new Set(['해당 없음'])
-
 interface Props {
   lang: Lang
 }
@@ -19,7 +17,7 @@ export default function ChatbotFlow({ lang }: Props) {
   const [screen, setScreen] = useState<Screen>('selection')
   const [groups, setGroups] = useState<MatchGroup[]>([])
   const [orgMap, setOrgMap] = useState<Record<string, MatchSerializedOrg>>({})
-  const [screenType, setScreenType] = useState<'2A' | '2B' | '2C'>('2A')
+  const [screenType, setScreenType] = useState<'2A' | '2B'>('2A')
 
   const runMatch = async (selections: string[], crisis: boolean) => {
     try {
@@ -62,19 +60,9 @@ export default function ChatbotFlow({ lang }: Props) {
       return
     }
 
-    const isSoloSelection =
-      selections.length === 1 && SOLO_BUTTONS.has(selections[0])
-    const isSkipNoneSelection =
-      crisisAnswer === 'skip' &&
-      selections.length === 1 &&
-      selections[0] === '해당 없음'
-
-    const effectiveSelections = isSkipNoneSelection ? ['우울'] : selections
-    const sendCrisis = isSkipNoneSelection ? false : crisisAnswer === 'skip'
-
-    setScreenType(isSoloSelection && crisisAnswer === 'no' ? '2C' : '2A')
+    setScreenType('2A')
     setScreen('loading')
-    await runMatch(effectiveSelections, sendCrisis)
+    await runMatch(selections, crisisAnswer === 'skip')
     setScreen('result')
   }
 

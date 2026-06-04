@@ -66,17 +66,9 @@ const SELECTION_RULES: Record<string, SelectionRule> = {
     categories: ['crisis', 'women', 'youth', 'legal'],
     keywords: ['폭력', '피해', '학대', '성폭력', '스토킹', '범죄', '트라우마'],
   },
-  '직장 문제': {
-    categories: ['depression'],
-    keywords: ['직장', '회사', '상사', '번아웃', '업무스트레스', '직장내괴롭힘'],
-  },
   '술·도박·약물': {
     categories: ['addiction'],
     keywords: ['술', '알코올', '도박', '약물', '중독', '마약'],
-  },
-  '해당 없음': {
-    categories: ['crisis', 'depression'],
-    keywords: ['상담', '위기', '정신건강'],
   },
 }
 
@@ -93,18 +85,6 @@ const AUDIENCE_PENALTY_RULES: AudiencePenaltyRule[] = [
       '학업',
       '고등학생',
       '중학생',
-    ],
-  },
-  {
-    selection: '직장 문제',
-    keywords: [
-      '직장',
-      '회사',
-      '상사',
-      'eap',
-      '번아웃',
-      '업무스트레스',
-      '중소기업',
     ],
   },
   {
@@ -137,7 +117,7 @@ const SYSTEM_INSTRUCTIONS = `당신은 버튼 선택 기반 상담기관 매칭 
 - 최대 12개는 상한일 뿐 목표 개수가 아니다.
 
 입력:
-- selections: 사용자가 누른 버튼 목록. 예: 우울, 여성, 청소년, 성소수자, 이주민·외국인, 폭력·피해, 술·도박·약물, 해당 없음.
+- selections: 사용자가 누른 버튼 목록. 예: 우울, 여성, 청소년, 성소수자, 이주민·외국인, 폭력·피해, 술·도박·약물.
 - crisis=true, selections=[]: 즉시 위기 연결이 필요하다.
 - crisis=true, selections 있음: 위기 가능성은 고려하되, 선택한 문제와 대상도 함께 반영한다.
 
@@ -190,7 +170,6 @@ const SYSTEM_INSTRUCTIONS = `당신은 버튼 선택 기반 상담기관 매칭 
 - 성소수자: 성소수자 직접 상담·지원은 우선 가능, 정보·커뮤니티 성격은 함께 보기다.
 - 청소년: 청소년 상담·보호 기관을 우선한다.
 - 이주민·외국인: 다국어·체류·통역·이주민 상담 기관을 우선한다.
-- 해당 없음: 넓은 초기 상담 기관만 소수 추천한다.
 
 조합 판단:
 - 여러 selection이 있으면 모든 버튼을 각각 채우지 말고, 가장 직접적인 문제 기관을 먼저 고른다.
@@ -374,11 +353,6 @@ function scoreService(service: Service, selections: string[], crisis: boolean): 
 
   if (selections.length === 0 && crisis && service.category.includes('depression')) {
     score += 2
-  }
-
-  if (selections.includes('해당 없음')) {
-    if (service.category.includes('depression')) score += 2
-    if (service.category.includes('crisis')) score += 2
   }
 
   if (service.isFree) score += 1
@@ -597,7 +571,6 @@ async function llmMatch(
     '이주민·외국인',
     '폭력·피해',
     '술·도박·약물',
-    '해당 없음',
   ]
   const missingSelections = knownSelections.filter(
     (selection) => !selections.includes(selection)

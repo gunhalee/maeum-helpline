@@ -18,13 +18,8 @@ const SITUATION_BUTTONS = [
   '이주민·외국인',
   '노인',
   '폭력·피해',
-  '직장 문제',
   '술·도박·약물',
 ] as const
-
-const SOLO_BUTTONS = new Set([
-  '해당 없음',
-])
 
 export default function SelectionScreen({ lang, onSubmit }: Props) {
   const [step, setStep] = useState<'crisis' | 'situation'>('crisis')
@@ -43,19 +38,9 @@ export default function SelectionScreen({ lang, onSubmit }: Props) {
   const toggleSelection = (label: string) => {
     setSelected((prev) => {
       const next = new Set(prev)
-      if (SOLO_BUTTONS.has(label)) {
-        if (next.has(label)) {
-          next.delete(label)
-        } else {
-          next.clear()
-          next.add(label)
-        }
-        return next
-      }
       if (next.has(label)) {
         next.delete(label)
       } else {
-        SOLO_BUTTONS.forEach((b) => next.delete(b))
         next.add(label)
       }
       return next
@@ -63,22 +48,11 @@ export default function SelectionScreen({ lang, onSubmit }: Props) {
   }
 
   const hasSelection = selected.size > 0
-  const hasSoloSelected = [...SOLO_BUTTONS].some((b) => selected.has(b))
-  const hasNormalSelected = [...selected].some((s) => !SOLO_BUTTONS.has(s))
 
   const btnClass = (label: string) => {
     const active = selected.has(label)
-    const isSolo = SOLO_BUTTONS.has(label)
 
     if (active) return 'min-h-[44px] rounded-xl border-[1.5px] px-3.5 py-2.5 text-sm transition-colors border-green-600 bg-green-50 text-green-700'
-
-    if (isSolo && hasNormalSelected) {
-      return 'min-h-[44px] rounded-xl border-[1.5px] px-3.5 py-2.5 text-sm transition-colors border-stone-100 bg-stone-50 text-stone-300 cursor-not-allowed'
-    }
-
-    if (!isSolo && hasSoloSelected) {
-      return 'min-h-[44px] rounded-xl border-[1.5px] px-3.5 py-2.5 text-sm transition-colors border-stone-200 bg-white text-stone-400 hover:border-green-300 hover:bg-green-50 hover:text-stone-700'
-    }
 
     return 'min-h-[44px] rounded-xl border-[1.5px] px-3.5 py-2.5 text-sm transition-colors border-stone-200 bg-white text-stone-700 hover:border-green-300 hover:bg-green-50'
   }
@@ -167,18 +141,6 @@ export default function SelectionScreen({ lang, onSubmit }: Props) {
                   key={label}
                   type="button"
                   onClick={() => toggleSelection(label)}
-                  className={btnClass(label)}
-                >
-                  {translateSelectionLabel(label, lang)}
-                </button>
-              ))}
-
-              {[...SOLO_BUTTONS].map((label) => (
-                <button
-                  key={label}
-                  type="button"
-                  onClick={() => toggleSelection(label)}
-                  disabled={hasNormalSelected}
                   className={btnClass(label)}
                 >
                   {translateSelectionLabel(label, lang)}

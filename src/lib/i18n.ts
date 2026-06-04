@@ -61,9 +61,7 @@ export function translateSelectionLabel(label: string, lang: Lang): string {
     '이주민·외국인': 'Migrants / Foreigners',
     노인: 'Older Adults',
     '폭력·피해': 'Victim Support',
-    '직장 문제': 'Work Issues',
     '술·도박·약물': 'Addictions',
-    '해당 없음': 'None of these',
   }
 
   return map[label] ?? label
