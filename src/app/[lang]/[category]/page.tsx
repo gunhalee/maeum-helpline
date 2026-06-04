@@ -6,6 +6,7 @@ import ServiceGrid from '@/components/ServiceGrid'
 import { CATEGORY_META, CATEGORY_ORDER } from '@/lib/categories'
 import { SITE_NAME } from '@/lib/constants'
 import { getCategoryEditorial } from '@/lib/editorial'
+import { getGuideAnchorForCategory } from '@/lib/guides'
 import {
   getLanguageAlternates,
   getAlternateOpenGraphLocale,
@@ -309,7 +310,11 @@ export default async function LocalizedCategoryPage({ params }: Props) {
           </div>
           <div className="mt-5">
             <Link
-              href={withLang('/guide', currentLang)}
+              href={withLang(
+                `/guide#${getGuideAnchorForCategory(category)}`,
+                currentLang
+              )}
+              scroll={false}
               className="inline-flex min-h-[44px] items-center rounded-full border border-green-700 px-4 py-2 text-sm font-medium text-green-700 transition-colors hover:bg-green-50"
             >
               {currentLang === 'en'

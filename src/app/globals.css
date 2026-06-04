@@ -34,3 +34,32 @@ a {
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
+
+.guide-target-highlight {
+  animation: guide-target-highlight 1.8s ease;
+}
+
+@keyframes guide-target-highlight {
+  0%,
+  100% {
+    box-shadow: 0 1px 2px rgb(0 0 0 / 0.05);
+  }
+
+  18%,
+  65% {
+    box-shadow:
+      0 0 0 3px rgb(21 128 61 / 0.2),
+      0 18px 40px rgb(21 128 61 / 0.14);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .guide-target-highlight {
+    animation: none;
+    box-shadow: 0 0 0 3px rgb(21 128 61 / 0.18);
+  }
+}

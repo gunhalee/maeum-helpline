@@ -1,8 +1,9 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
 import EmergencyText from '@/components/EmergencyText'
+import GuideHashScroller from '@/components/GuideHashScroller'
 import { SITE_NAME } from '@/lib/constants'
-import { getGuidePageCopy, getGuides } from '@/lib/editorial'
+import { getGuidePageCopy, getGuides } from '@/lib/guides'
 import { isLang, type Lang, withLang } from '@/lib/i18n'
 import {
   getAlternateOpenGraphLocale,
@@ -23,18 +24,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const keywords =
     currentLang === 'en'
       ? [
-          'Korean crisis guides',
-          'help-seeking guide Korea',
-          'depression support Korea',
-          'violence safety guide Korea',
-          'addiction support Korea',
+          'Korean helpline guide',
+          'what happens when calling Korean hotlines',
+          'Korea crisis support guide',
+          'Korea counseling confidentiality',
+          'Korea emergency counseling numbers',
         ]
       : [
-          '도움 요청 가이드',
-          '긴급상담 이용 방법',
-          '우울 상담 가이드',
-          '폭력 피해 대응 가이드',
-          '중독 상담 가이드',
+          '상담 전화 가이드',
+          '전화하기 전에 확인',
+          '상담 비밀보장',
+          '상담 비용 안내',
+          '신고 없이 상담',
         ]
 
   return {
@@ -90,7 +91,7 @@ export default async function LocalizedGuidePage({ params }: Props) {
           '@type': 'Article',
           '@id': `${canonicalUrl}#${guide.slug}`,
           headline: guide.title,
-          description: guide.description,
+          description: guide.shortAnswer,
           about: guide.categoryLabel,
         },
       })),
@@ -99,6 +100,7 @@ export default async function LocalizedGuidePage({ params }: Props) {
 
   return (
     <>
+      <GuideHashScroller />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -107,11 +109,11 @@ export default async function LocalizedGuidePage({ params }: Props) {
       />
       <section
         lang={currentLang}
-        className="mx-auto w-full max-w-[860px] px-4 pb-14 pt-6 md:px-6"
+        className="mx-auto w-full max-w-[920px] px-4 pb-16 pt-6 md:px-6"
       >
-        <header className="rounded-2xl border border-stone-200 bg-white px-5 py-6 shadow-sm md:px-8 md:py-8">
+        <header className="border-b border-stone-200 pb-8 pt-2 md:pb-10">
           <p className="text-xs font-semibold uppercase tracking-[0.22em] text-green-700">
-            {currentLang === 'en' ? 'Help-seeking guides' : '도움 요청 가이드'}
+            {currentLang === 'en' ? 'Before you call' : '전화하기 전 확인'}
           </p>
           <h1 className="mt-3 font-serif text-[clamp(2rem,1.6rem+1.8vw,3rem)] leading-tight text-stone-900">
             {copy.title}
@@ -119,11 +121,14 @@ export default async function LocalizedGuidePage({ params }: Props) {
           <p className="mt-4 max-w-3xl text-base leading-8 text-stone-600">
             <EmergencyText text={copy.intro} />
           </p>
+          <p className="mt-4 max-w-3xl border-l-4 border-red-300 bg-red-50 px-4 py-3 text-sm leading-7 text-red-900">
+            <EmergencyText text={copy.urgentNotice} />
+          </p>
           <div className="mt-6 flex flex-wrap gap-2 text-sm text-stone-700">
             {copy.focusPoints.map((item) => (
               <span
                 key={item}
-                className="rounded-full border border-stone-200 bg-stone-50 px-4 py-2"
+                className="rounded-full border border-stone-200 bg-white px-4 py-2"
               >
                 <EmergencyText text={item} />
               </span>
@@ -131,58 +136,96 @@ export default async function LocalizedGuidePage({ params }: Props) {
           </div>
         </header>
 
-        <div className="mt-6 space-y-5">
-          {guides.map((guide) => (
+        <div className="mt-8 space-y-10">
+          {guides.map((guide, index) => (
             <article
               key={guide.slug}
               id={guide.slug}
-              className="rounded-2xl border border-stone-200 bg-white px-5 py-6 shadow-sm md:px-8"
+              tabIndex={-1}
+              className="scroll-mt-28 rounded-lg border border-stone-200 bg-white px-5 py-6 shadow-sm transition-shadow duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-green-700 md:px-8 md:py-7"
             >
-              <div className="flex flex-wrap items-center gap-2 text-sm">
-                <span className="rounded-full bg-green-50 px-3 py-1 font-medium text-green-700">
+              <div className="flex flex-wrap items-center gap-2 text-sm text-stone-600">
+                <span className="font-mono text-xs font-semibold text-green-700">
+                  {String(index + 1).padStart(2, '0')}
+                </span>
+                <span className="rounded-full bg-green-50 px-3 py-1 font-medium text-green-800">
                   {guide.categoryLabel}
                 </span>
                 <span className="rounded-full bg-stone-100 px-3 py-1 text-stone-600">
-                  {currentLang === 'en' ? 'Practical guide' : '실전 가이드'}
+                  {guide.serviceName}
                 </span>
               </div>
               <h2 className="mt-4 text-2xl font-semibold leading-tight text-stone-900">
                 {guide.title}
               </h2>
-              <p className="mt-3 text-base leading-8 text-stone-600">
-                <EmergencyText text={guide.description} />
+              <p className="mt-4 border-l-4 border-green-700 bg-green-50 px-4 py-3 text-base font-medium leading-8 text-green-950">
+                <EmergencyText text={guide.shortAnswer} />
               </p>
-              <div className="mt-5 space-y-4 text-sm leading-7 text-stone-700 md:text-[15px]">
-                {guide.paragraphs.map((paragraph) => (
-                  <p key={paragraph}>
-                    <EmergencyText text={paragraph} />
-                  </p>
+              <p className="mt-5 text-base leading-8 text-stone-700">
+                <EmergencyText text={guide.lead} />
+              </p>
+
+              <div className="mt-6 divide-y divide-stone-200 border-y border-stone-200">
+                {guide.sections.map((section) => (
+                  <section key={section.id} className="py-5">
+                    <h3 className="text-base font-semibold text-stone-950">
+                      {section.title}
+                    </h3>
+                    <div className="mt-3 space-y-3 text-sm leading-7 text-stone-700 md:text-[15px]">
+                      {section.body.map((paragraph) => (
+                        <p key={paragraph}>
+                          <EmergencyText text={paragraph} />
+                        </p>
+                      ))}
+                      {section.list ? (
+                        <ul className="space-y-2">
+                          {section.list.map((item) => (
+                            <li key={item} className="flex gap-3">
+                              <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-green-700" />
+                              <span>
+                                <EmergencyText text={item} />
+                              </span>
+                            </li>
+                          ))}
+                        </ul>
+                      ) : null}
+                      {section.example ? (
+                        <div className="space-y-2 border-l-2 border-stone-300 pl-4 text-stone-600">
+                          {section.example.map((item) => (
+                            <p key={item}>
+                              <EmergencyText text={item} />
+                            </p>
+                          ))}
+                        </div>
+                      ) : null}
+                    </div>
+                  </section>
                 ))}
               </div>
-              <div className="mt-6 rounded-2xl border border-stone-200 bg-stone-50 px-4 py-4">
-                <h3 className="text-sm font-semibold text-stone-900">
-                  {currentLang === 'en' ? 'What to do first' : '먼저 해볼 일'}
-                </h3>
-                <ul className="mt-3 space-y-2 text-sm leading-7 text-stone-700">
-                  {guide.checklist.map((item) => (
-                    <li key={item} className="flex gap-3">
-                      <span className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-green-700" />
-                      <span>
-                        <EmergencyText text={item} />
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div className="mt-6">
+
+              <div className="mt-5 flex flex-wrap items-center justify-between gap-4">
                 <Link
                   href={withLang(`/${guide.category}`, currentLang)}
                   className="inline-flex min-h-[44px] items-center rounded-full border border-green-700 px-4 py-2 text-sm font-medium text-green-700 transition-colors hover:bg-green-50"
                 >
-                  {currentLang === 'en'
-                    ? `Open ${guide.categoryLabel} directory`
-                    : `${guide.categoryLabel} 디렉터리 보기`}
+                  {guide.ctaLabel}
                 </Link>
+                <div className="flex flex-wrap gap-x-3 gap-y-1 text-xs text-stone-500">
+                  <span className="font-medium text-stone-600">
+                    {currentLang === 'en' ? 'Sources' : '출처'}
+                  </span>
+                  {guide.sourceLinks.map((source) => (
+                    <a
+                      key={source.href}
+                      href={source.href}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="underline underline-offset-2 transition-colors hover:text-green-700"
+                    >
+                      {source.label}
+                    </a>
+                  ))}
+                </div>
               </div>
             </article>
           ))}
