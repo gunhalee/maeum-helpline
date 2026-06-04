@@ -227,6 +227,10 @@ function computeServiceStatus(
 ): ServiceStatus {
   const hoursType = service.hoursType?.toLowerCase() ?? ''
   const hoursDetail = service.hoursDetail ?? service.operatingHours ?? ''
+  const now = toKst(referenceTime)
+  const day = now.getDay()
+  const hhmm = now.getHours() * 100 + now.getMinutes()
+  const onWeekday = day >= 1 && day <= 5
 
   if (hoursType === '24h') {
     return { note: translateStatusNote('24시간', lang), isOpen: true }
@@ -234,7 +238,10 @@ function computeServiceStatus(
 
   if (!hoursDetail) {
     if (hoursType === 'weekday') {
-      return { note: translateStatusNote('평일 운영', lang), isOpen: false }
+      return {
+        note: translateStatusNote('평일 운영', lang),
+        isOpen: onWeekday && hhmm >= 900 && hhmm < 1800,
+      }
     }
     return { note: null, isOpen: null }
   }
@@ -243,16 +250,12 @@ function computeServiceStatus(
     return { note: translateStatusNote(hoursDetail, lang), isOpen: true }
   }
 
-  const now = toKst(referenceTime)
-  const day = now.getDay()
-  const hhmm = now.getHours() * 100 + now.getMinutes()
   const range = parseTimeRange(hoursDetail)
 
   if (!range) {
     return { note: hoursDetail, isOpen: null }
   }
 
-  const onWeekday = day >= 1 && day <= 5
   if (hoursType === 'weekday' && !onWeekday) {
     return {
       note: translateStatusNote(hoursDetail || '평일 운영', lang),
