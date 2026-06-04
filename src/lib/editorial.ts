@@ -88,7 +88,7 @@ const CATEGORY_EDITORIAL: Record<Category, Record<Lang, CategoryEditorial>> = {
         '이 페이지는 퀴어 친화를 명시했거나 성소수자 상담 경험이 있는 기관을 모았습니다. 모든 곳이 동일한 수준은 아니므로, 첫 통화에서 "성소수자 관련 상담이 가능한지" 직접 물어보는 것이 시간을 아끼는 방법입니다.',
         '커밍아웃, 가족 갈등, 차별 경험뿐 아니라 우울·불안·트라우마 증상이 심하다면 증상 자체에 대한 전문 치료를 함께 제공하는 기관을 선택하세요.',
       ],
-      highlights: ['퀴어 친화 명시 기관', '첫 통화에서 친화 여부 확인 권장', '정신건강 치료 병행 가능 기관 포함'],
+      highlights: ['퀴어 친화 명시 기관', '첫 통화에서 친화 여부 확인 권장'],
     },
     en: {
       heading: 'Compare queer-affirming counseling services',
@@ -96,7 +96,7 @@ const CATEGORY_EDITORIAL: Record<Category, Record<Lang, CategoryEditorial>> = {
         'This page gathers organizations that have stated queer-affirming practices or have LGBTQ+ counseling experience. Since not all are at the same level, asking on the first call whether they can support your situation saves time.',
         'Beyond coming out, family conflict, and discrimination, if depression, anxiety, or trauma symptoms are severe, choose an organization that also offers clinical treatment for those conditions.',
       ],
-      highlights: ['Queer-affirming services listed', 'Ask about LGBTQ+ experience on first call', 'Includes services with clinical treatment'],
+      highlights: ['Queer-affirming services listed', 'Ask about LGBTQ+ experience on first call'],
     },
   },
   migrant: {

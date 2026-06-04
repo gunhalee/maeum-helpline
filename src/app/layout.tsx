@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Noto_Sans_KR, Noto_Serif_KR } from 'next/font/google'
+import { Noto_Sans_KR } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import { SITE_NAME } from '@/lib/constants'
 import {
@@ -18,12 +18,6 @@ const notoSans = Noto_Sans_KR({
   subsets: ['latin'],
   weight: ['400', '500', '700'],
   variable: '--font-sans',
-})
-
-const notoSerif = Noto_Serif_KR({
-  subsets: ['latin'],
-  weight: ['400', '600'],
-  variable: '--font-serif',
 })
 
 export const metadata: Metadata = {
@@ -108,7 +102,7 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body
-        className={`${notoSans.variable} ${notoSerif.variable} flex min-h-screen flex-col bg-stone-50 font-sans`}
+        className={`${notoSans.variable} flex min-h-screen flex-col bg-stone-50 font-sans`}
       >
         <script
           type="application/ld+json"

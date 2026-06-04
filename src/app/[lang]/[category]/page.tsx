@@ -309,7 +309,7 @@ export default async function LocalizedCategoryPage({ params }: Props) {
         className="mx-auto w-full max-w-[860px] px-4 pb-12 pt-6 md:px-6"
       >
         <header className="rounded-2xl border border-stone-200 bg-stone-50 px-5 py-6 shadow-sm md:px-8 md:py-8">
-          <h1 className="font-serif text-[clamp(2rem,1.6rem+1.8vw,3rem)] leading-tight text-stone-900">
+          <h1 className="text-[clamp(2rem,1.6rem+1.8vw,3rem)] leading-tight text-stone-900">
             {heading}
           </h1>
           <p className="mt-4 max-w-3xl text-base leading-8 text-stone-600">

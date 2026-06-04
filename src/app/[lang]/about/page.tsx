@@ -78,7 +78,7 @@ export default async function LocalizedAboutPage({ params }: Props) {
               ? 'Korean crisis support directory'
               : '한국 위기 지원 디렉터리'}
           </p>
-          <h1 className="mt-3 font-serif text-[clamp(2rem,1.6rem+1.8vw,3rem)] leading-tight text-stone-900">
+          <h1 className="mt-3 text-[clamp(2rem,1.6rem+1.8vw,3rem)] leading-tight text-stone-900">
             {isEnglish
               ? 'Find the right Korean crisis helpline quickly'
               : '상황에 맞는 긴급상담 기관을 빠르게 찾으세요'}

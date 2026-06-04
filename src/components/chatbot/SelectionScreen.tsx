@@ -62,7 +62,7 @@ export default function SelectionScreen({ lang, onSubmit }: Props) {
       {step === 'crisis' ? (
         <>
           <div className="space-y-3 text-center">
-            <p className="font-serif text-[clamp(1.45rem,1.2rem+1vw,1.95rem)] font-semibold leading-tight text-stone-800">
+            <p className="text-[clamp(1.45rem,1.2rem+1vw,1.95rem)] font-semibold leading-tight text-stone-800">
               {lang === 'en' ? 'Welcome.' : '환영합니다.'}
             </p>
             <p className="mx-auto max-w-[32rem] text-base leading-7 text-stone-600">
@@ -108,7 +108,7 @@ export default function SelectionScreen({ lang, onSubmit }: Props) {
       ) : (
         <>
           <div className="space-y-3 text-center">
-            <p className="font-serif text-[clamp(1.45rem,1.2rem+1vw,1.95rem)] font-semibold leading-tight text-stone-800">
+            <p className="text-[clamp(1.45rem,1.2rem+1vw,1.95rem)] font-semibold leading-tight text-stone-800">
               {lang === 'en' ? 'One more question.' : '질문 하나만 더 드릴게요.'}
             </p>
             <p className="mx-auto max-w-[32rem] text-base leading-7 text-stone-600">

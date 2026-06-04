@@ -195,7 +195,7 @@ export default async function LocalizedNoticePage({ params }: Props) {
         <p className="text-xs font-semibold uppercase tracking-[0.22em] text-green-700">
           {copy.eyebrow}
         </p>
-        <h1 className="mt-3 font-serif text-[clamp(2rem,1.6rem+1.8vw,3rem)] leading-tight text-stone-900">
+        <h1 className="mt-3 text-[clamp(2rem,1.6rem+1.8vw,3rem)] leading-tight text-stone-900">
           {copy.heading}
         </h1>
         <p className="mt-4 max-w-3xl text-base leading-8 text-stone-600">

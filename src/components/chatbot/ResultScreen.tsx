@@ -117,7 +117,7 @@ export default function ResultScreen({
       </button>
 
       <div className="space-y-1">
-        <p className="font-serif text-[clamp(1.45rem,1.2rem+1vw,1.95rem)] font-semibold leading-tight text-stone-800">
+        <p className="text-[clamp(1.45rem,1.2rem+1vw,1.95rem)] font-semibold leading-tight text-stone-800">
           {heading}
         </p>
       </div>

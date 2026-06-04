@@ -155,7 +155,7 @@ export default async function LocalizedGuidePage({ params }: Props) {
           <p className="text-xs font-semibold uppercase tracking-[0.22em] text-green-700">
             {currentLang === 'en' ? 'Before you call' : '전화하기 전 확인'}
           </p>
-          <h1 className="mt-3 font-serif text-[clamp(2rem,1.6rem+1.8vw,3rem)] leading-tight text-stone-900">
+          <h1 className="mt-3 text-[clamp(2rem,1.6rem+1.8vw,3rem)] leading-tight text-stone-900">
             {copy.title}
           </h1>
           <p className="mt-4 max-w-3xl text-base leading-8 text-stone-600">
