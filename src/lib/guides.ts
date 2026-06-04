@@ -28,7 +28,6 @@ type GuideEntryCopy = {
   starterPhrases: string[]
   counselorChecks: string[]
   concerns: string[]
-  urgentNote: string
   ctaLabel: string
   details: GuideDetail[]
   sourceLinks: GuideSourceLink[]
@@ -102,8 +101,6 @@ const GUIDE_ENTRIES: LocalizedGuideEntry[] = [
         '정확한 주소를 몰라도 주변 건물, 가게, 도로명으로 시작할 수 있습니다.',
         '폭력이나 범죄가 함께 있으면 112가 같이 필요할 수 있습니다.',
       ],
-      urgentNote:
-        '이미 다쳤거나 의식·호흡 문제가 있으면 이 가이드보다 119 연결이 먼저입니다.',
       ctaLabel: '위기·긴급 상담처 보기',
       details: [
         {
@@ -148,8 +145,6 @@ const GUIDE_ENTRIES: LocalizedGuideEntry[] = [
         'If you do not know the exact address, nearby signs or buildings can help.',
         'If violence or crime is also happening, 112 may be needed too.',
       ],
-      urgentNote:
-        'If someone is already injured or has consciousness or breathing problems, call 119 before reading more.',
       ctaLabel: 'Open crisis services',
       details: [
         {
@@ -198,8 +193,6 @@ const GUIDE_ENTRIES: LocalizedGuideEntry[] = [
         '상담 내용은 기본적으로 비밀을 지키는 방향으로 다룹니다.',
         '생명·안전 위험이 크면 다른 도움을 연결할 수 있습니다.',
       ],
-      urgentNote:
-        '이미 다쳤거나 실행할 수단이 바로 가까이 있으면 119가 먼저입니다. 공격받고 있다면 112가 먼저입니다.',
       ctaLabel: '우울·자살예방 상담처 보기',
       details: [
         {
@@ -241,8 +234,6 @@ const GUIDE_ENTRIES: LocalizedGuideEntry[] = [
         'Counseling is handled confidentially by default.',
         'If life or safety risk is high, other help may be connected.',
       ],
-      urgentNote:
-        'If you are already injured or have immediate means nearby, call 119 first. If someone is attacking you, call 112 first.',
       ctaLabel: 'Open depression and suicide prevention services',
       details: [
         {
@@ -288,8 +279,6 @@ const GUIDE_ENTRIES: LocalizedGuideEntry[] = [
         '보호시설, 의료, 법률, 수사기관 연결을 함께 정리할 수 있습니다.',
         '위험이 크면 112나 긴급보호가 먼저 필요할 수 있습니다.',
       ],
-      urgentNote:
-        '상대가 가까이 있거나 폭력이 지금 일어나고 있으면 112가 먼저입니다. 다쳤다면 119도 필요할 수 있습니다.',
       ctaLabel: '여성 상담처 보기',
       details: [
         {
@@ -331,8 +320,6 @@ const GUIDE_ENTRIES: LocalizedGuideEntry[] = [
         'They can help organize shelter, medical, legal, or reporting options.',
         'If danger is high, 112 or emergency protection may come first.',
       ],
-      urgentNote:
-        'If the person is nearby or violence is happening now, call 112 first. If you are injured, 119 may also be needed.',
       ctaLabel: 'Open women support services',
       details: [
         {
@@ -378,8 +365,6 @@ const GUIDE_ENTRIES: LocalizedGuideEntry[] = [
         '부모, 친구, 선생님도 가볍게 문의할 수 있습니다.',
         '생명·안전 위험이 크면 보호기관이나 긴급기관 연결이 필요할 수 있습니다.',
       ],
-      urgentNote:
-        '지금 다칠 것 같거나 이미 다쳤다면 119가 먼저입니다. 누군가 붙잡거나 때리고 있다면 112가 먼저입니다.',
       ctaLabel: '청소년 상담처 보기',
       details: [
         {
@@ -421,8 +406,6 @@ const GUIDE_ENTRIES: LocalizedGuideEntry[] = [
         'Parents, friends, and teachers can also ask for guidance.',
         'If life or safety risk is high, protective or emergency services may be connected.',
       ],
-      urgentNote:
-        'If you may hurt yourself or are already injured, call 119 first. If someone is holding or hurting you, call 112 first.',
       ctaLabel: 'Open youth support services',
       details: [
         {
@@ -468,8 +451,6 @@ const GUIDE_ENTRIES: LocalizedGuideEntry[] = [
         '청소년 성소수자의 상황을 전제로 이야기할 수 있습니다.',
         '운영시간 밖 긴급 위험은 109, 112, 119가 먼저일 수 있습니다.',
       ],
-      urgentNote:
-        '폭력, 감금, 협박이 지금 일어나면 112가 먼저입니다. 자해 위험이나 응급상황이면 109 또는 119가 먼저입니다.',
       ctaLabel: '성소수자 상담처 보기',
       details: [
         {
@@ -508,8 +489,6 @@ const GUIDE_ENTRIES: LocalizedGuideEntry[] = [
         'You can speak from an LGBTQ+ youth context without explaining everything first.',
         'Outside service hours, immediate danger may need 109, 112, or 119 first.',
       ],
-      urgentNote:
-        'If violence, confinement, or threats are happening now, call 112 first. If self-harm or medical danger is immediate, call 109 or 119 first.',
       ctaLabel: 'Open LGBTQ+ support services',
       details: [
         {
@@ -552,8 +531,6 @@ const GUIDE_ENTRIES: LocalizedGuideEntry[] = [
         '결혼이주민, 이주민, 외국인 가족이 생활 정보를 물어볼 수 있습니다.',
         '폭력이나 응급상황은 112 또는 119가 먼저일 수 있습니다.',
       ],
-      urgentNote:
-        '지금 폭력이나 위협이 있으면 112가 먼저입니다. 다쳤거나 응급처치가 필요하면 119가 먼저입니다.',
       ctaLabel: '이주민·외국인 상담처 보기',
       details: [
         {
@@ -594,8 +571,6 @@ const GUIDE_ENTRIES: LocalizedGuideEntry[] = [
         'Marriage migrants, migrants, and foreign families can ask about daily-life support.',
         'Violence or medical emergencies may need 112 or 119 first.',
       ],
-      urgentNote:
-        'If violence or threats are happening now, call 112 first. If someone is injured or needs emergency care, call 119 first.',
       ctaLabel: 'Open migrant and foreigner support services',
       details: [
         {
@@ -640,8 +615,6 @@ const GUIDE_ENTRIES: LocalizedGuideEntry[] = [
         '상황에 따라 노인보호전문기관이 확인과 보호를 진행할 수 있습니다.',
         '생명·신체 위험이 크면 112 또는 119가 먼저입니다.',
       ],
-      urgentNote:
-        '지금 폭력이나 생명 위험이 있으면 112 또는 119가 먼저입니다.',
       ctaLabel: '노인 상담처 보기',
       details: [
         {
@@ -686,8 +659,6 @@ const GUIDE_ENTRIES: LocalizedGuideEntry[] = [
         'An elder protection agency may check the situation and arrange protection.',
         'If life or physical safety is at risk, 112 or 119 comes first.',
       ],
-      urgentNote:
-        'If violence or life-threatening danger is happening now, call 112 or 119 first.',
       ctaLabel: 'Open older adult support services',
       details: [
         {
@@ -736,8 +707,6 @@ const GUIDE_ENTRIES: LocalizedGuideEntry[] = [
         '상담 내용과 개인정보는 비밀을 지키는 방향으로 안내됩니다.',
         '법적 결과를 약속하지는 않지만 치료·재활 경로를 함께 찾을 수 있습니다.',
       ],
-      urgentNote:
-        '과다복용, 의식·호흡 문제, 심한 불안이나 혼란이 있으면 119가 먼저입니다. 강요나 폭력이 있으면 112가 필요합니다.',
       ctaLabel: '중독 상담처 보기',
       details: [
         {
@@ -782,8 +751,6 @@ const GUIDE_ENTRIES: LocalizedGuideEntry[] = [
         'Counseling content and personal information are described as confidential.',
         'Legal outcomes cannot be promised, but treatment and rehabilitation routes can be explored.',
       ],
-      urgentNote:
-        'If there is overdose, consciousness or breathing trouble, severe anxiety, or confusion, call 119 first. If coercion or violence is involved, call 112.',
       ctaLabel: 'Open addiction services',
       details: [
         {
@@ -832,8 +799,6 @@ const GUIDE_ENTRIES: LocalizedGuideEntry[] = [
         '피해자뿐 아니라 가족도 지원을 문의할 수 있습니다.',
         '즉시 위험을 막는 기관은 아니므로 현재 위험은 112 또는 119가 먼저입니다.',
       ],
-      urgentNote:
-        '가해자가 가까이 있거나 다시 해칠 위험이 있으면 112가 먼저입니다. 다쳤거나 응급치료가 필요하면 119가 먼저입니다.',
       ctaLabel: '범죄피해 상담처 보기',
       details: [
         {
@@ -876,8 +841,6 @@ const GUIDE_ENTRIES: LocalizedGuideEntry[] = [
         'Victims and family members can ask about support.',
         'It is not the service that stops immediate danger, so current danger needs 112 or 119 first.',
       ],
-      urgentNote:
-        'If the offender is nearby or may harm you again, call 112 first. If you are injured or need emergency care, call 119 first.',
       ctaLabel: 'Open crime victim support services',
       details: [
         {

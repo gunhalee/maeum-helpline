@@ -23,7 +23,6 @@ const GUIDE_PAGE_LABELS = {
     starter: '처음엔 이렇게 말해도 돼요',
     checks: '상담원이 먼저 확인할 수 있어요',
     concerns: '걱정되는 점',
-    urgent: '지금 위험하다면',
     details: '더 자세히 알고 싶다면',
     sources: '출처',
   },
@@ -31,7 +30,6 @@ const GUIDE_PAGE_LABELS = {
     starter: 'You can start with this',
     checks: 'A counselor may first check',
     concerns: 'Common worries',
-    urgent: 'If danger is immediate',
     details: 'More details',
     sources: 'Sources',
   },
@@ -250,15 +248,6 @@ export default async function LocalizedGuidePage({ params }: Props) {
                   </ul>
                 </section>
               </div>
-
-              <section className="mt-5 border-l-4 border-green-700 bg-green-50 px-4 py-3">
-                <h3 className="text-sm font-semibold text-green-950">
-                  {labels.urgent}
-                </h3>
-                <p className="mt-1 text-sm leading-6 text-green-950">
-                  <EmergencyText text={guide.urgentNote} />
-                </p>
-              </section>
 
               <details className="mt-5 rounded-lg border border-stone-200 bg-white px-4 py-3">
                 <summary className="cursor-pointer text-sm font-semibold text-stone-800 marker:text-green-700">
