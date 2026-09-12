@@ -8,7 +8,7 @@ import { SITE_NAME } from '@/lib/constants'
 import { getCategoryEditorial } from '@/lib/editorial'
 import { getGuideAnchorForCategory } from '@/lib/guides'
 import {
-  SEO_CONTENT_UPDATED_AT,
+  getContentUpdatedAt,
   getLanguageAlternates,
   getAlternateOpenGraphLocale,
   getCategorySeoCopy,
@@ -240,7 +240,7 @@ export default async function LocalizedCategoryPage({ params }: Props) {
     description,
     url: canonicalUrl,
     inLanguage: currentLang === 'en' ? 'en' : 'ko-KR',
-    dateModified: SEO_CONTENT_UPDATED_AT,
+    dateModified: getContentUpdatedAt(`/${category}`),
     keywords: keywords.join(', '),
     about: primaryServices.map((name) => ({
       '@type': 'Thing',

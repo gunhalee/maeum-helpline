@@ -41,6 +41,16 @@ export const NAVER_SITE_VERIFICATION =
 export const SEO_CONTENT_UPDATED_AT = '2026-06-04T00:00:00+09:00'
 export const SEO_CONTENT_UPDATED_DATE = new Date(SEO_CONTENT_UPDATED_AT)
 
+const CONTENT_UPDATED_AT_BY_PATH: Record<string, string> = {
+  '/depression': '2026-09-13T00:00:00+09:00',
+  '/women': '2026-09-13T00:00:00+09:00',
+  '/migrant': '2026-09-13T00:00:00+09:00',
+}
+
+export function getContentUpdatedAt(path: string): string {
+  return CONTENT_UPDATED_AT_BY_PATH[path] ?? SEO_CONTENT_UPDATED_AT
+}
+
 export const SEO_INDEXED_PATHS = [
   '/',
   '/about',
@@ -195,13 +205,15 @@ const CATEGORY_COPY = {
       title: `우울·불안 상담전화와 무료 심리상담 | ${SITE_NAME}`,
       heading: '우울 상담 기관',
       description:
-        '우울감, 불안, 번아웃으로 상담이 필요할 때 이용할 정신건강복지센터, 심리상담 바우처, 저비용 상담 기관을 비교합니다.',
+        '우울감, 불안, 번아웃으로 상담이 필요할 때 이용할 정신건강복지센터와 정신건강 심리상담 바우처사업의 지원 내용, 신청 요건, 본인부담금을 확인하세요.',
       keywords: [
         '우울증 상담',
         '불안 상담',
         '무료 심리상담',
         '정신건강복지센터',
         '심리상담 바우처',
+        '정신건강 심리상담 바우처사업',
+        '전국민 마음투자 지원사업',
         '번아웃 상담',
       ],
       searchIntents: [
@@ -209,13 +221,13 @@ const CATEGORY_COPY = {
         '정신건강복지센터와 심리상담 바우처 차이',
         '진단 없이 상담을 시작할 수 있는지',
       ],
-      primaryServices: ['정신건강복지센터', '심리상담 바우처'],
+      primaryServices: ['정신건강복지센터', '정신건강 심리상담 바우처사업'],
     },
     en: {
       title: `Depression and Anxiety Counseling | ${SITE_NAME}`,
       heading: 'Depression Helplines',
       description:
-        'Compare Korean counseling options for depression, anxiety, burnout, community mental health centers, and low-cost psychological support.',
+        'Compare community mental health centers and Korea’s Mental Health Psychological Counseling Voucher Program, including 8-session support, eligibility documents, and copayments.',
       keywords: [
         'depression counseling Korea',
         'free mental health support Korea',
@@ -227,7 +239,7 @@ const CATEGORY_COPY = {
         'how to contact a mental health center in Korea',
         'low-cost therapy options in Korea',
       ],
-      primaryServices: ['Community mental health centers', 'Counseling vouchers'],
+      primaryServices: ['Community mental health centers', 'Mental Health Psychological Counseling Voucher Program'],
     },
   },
   women: {

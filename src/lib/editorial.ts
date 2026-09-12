@@ -31,18 +31,20 @@ const CATEGORY_EDITORIAL: Record<Category, Record<Lang, CategoryEditorial>> = {
     ko: {
       heading: '무료·저비용 심리상담 기관 비교',
       paragraphs: [
-        '정신건강복지센터(무료), 심리상담 바우처(8회, 소득 무관), 근로자지원프로그램(직장인, 7회) 등 비용과 접근 방식이 다른 경로를 한 페이지에서 비교할 수 있습니다.',
-        '대부분의 기관은 진단서나 의뢰서 없이 전화 한 통으로 초기 상담을 시작할 수 있습니다. "이 정도로 상담받아도 되나" 싶을 때가 연결하기 가장 쉬운 시점입니다.',
+        '정신건강복지센터의 초기 상담, 정신건강 심리상담 바우처사업(구 전국민 마음투자 지원사업), 근로자지원프로그램 등 비용과 이용 조건이 다른 경로를 비교할 수 있습니다.',
+        '정신건강 심리상담 바우처사업은 대상 요건에 해당하면 전문 심리상담 8회를 지원합니다. 나이·소득에 따른 신청 제한은 없지만, 의뢰서·소견서·건강검진 결과 등 대상별 증빙서류가 필요하고 소득 등에 따라 본인부담금이 달라집니다.',
+        '초기 상담 문의와 바우처 신청은 절차가 다릅니다. 필요한 서류와 비용은 공식 사업 안내에서 확인하고, 어디서 시작할지 모르겠다면 정신건강복지센터에 먼저 문의할 수 있습니다.',
       ],
-      highlights: ['정신건강복지센터 — 무료', '바우처 — 8회, 소득 무관', '진단서 없이 시작 가능'],
+      highlights: ['정신건강복지센터 — 초기 상담', '바우처 — 8회, 대상 증빙 필요', '본인부담금 확인'],
     },
     en: {
       heading: 'Compare free and low-cost counseling options',
       paragraphs: [
-        'This page compares routes with different costs and access methods: community mental health centers (free), counseling vouchers (8 sessions, no income limit), and employee assistance programs (7 sessions for workers).',
-        'Most services can be started with a single phone call and no diagnosis or referral. If you are wondering whether your situation is "bad enough," that is usually the easiest moment to connect.',
+        'Compare initial consultations at community mental health centers, the Mental Health Psychological Counseling Voucher Program (formerly the National Mind Investment Support Program), and employee assistance programs. Costs and eligibility differ.',
+        'The voucher program provides 8 professional counseling sessions for eligible applicants. There is no age or income cutoff, but supporting documents such as a referral, medical opinion, or health screening result are required for the relevant eligibility category. Copayments vary by income and other qualifying circumstances.',
+        'An initial inquiry and a voucher application have different requirements. Check the official program guidance for documents and costs. If you are unsure where to start, contact a community mental health center.',
       ],
-      highlights: ['Mental health centers — free', 'Voucher — 8 sessions, no income limit', 'No diagnosis needed to start'],
+      highlights: ['Mental health centers — initial consultation', 'Voucher — 8 sessions, eligibility documents required', 'Check copayments'],
     },
   },
   women: {
@@ -51,6 +53,7 @@ const CATEGORY_EDITORIAL: Record<Category, Record<Lang, CategoryEditorial>> = {
       paragraphs: [
         '반복되는 폭력이나 통제가 있지만 지금 당장 급박한 상황은 아니라면, 통화가 안전한 시간에 1366으로 시작할 수 있습니다. 신고 없이 상담만 먼저 받는 것도 가능합니다.',
         '이 페이지는 가정폭력, 성폭력, 스토킹, 데이트폭력 상황에서 연결할 수 있는 기관을 모아 둔 목록입니다. "폭력"이라는 단어가 맞는지 확신이 없어도, 몸의 안전이 걱정되거나 상대가 무섭다면 상담을 시작할 수 있습니다.',
+        '디지털성범죄 피해 상담·삭제지원은 중앙디지털성범죄피해자지원센터(02-735-8994)로 문의할 수 있습니다. 직통전화는 평일 08:00~22:00, 주말·공휴일 09:00~18:00에 운영하며, 24시간 피해 상담은 여성긴급전화 1366에서 받을 수 있습니다.',
       ],
       highlights: ['1366 — 24시간', '신고 없이 상담만 가능', '쉼터·법률·의료 연계'],
     },
@@ -59,6 +62,7 @@ const CATEGORY_EDITORIAL: Record<Category, Record<Lang, CategoryEditorial>> = {
       paragraphs: [
         'If the violence is ongoing but not happening right now, call 1366 when it is safe to talk. Counseling without filing a report is available.',
         'This page lists organizations for domestic violence, sexual violence, stalking, and dating abuse. You do not need to be certain the word "violence" applies. If your safety is at risk or you feel afraid, you can start with counseling.',
+        'For digital sexual abuse counseling and takedown support, contact the National Center for Digital Sexual Crime Response at 02-735-8994. Its direct line operates 08:00–22:00 on weekdays and 09:00–18:00 on weekends and public holidays, Korea time. For round-the-clock victim counseling, call Women Emergency Hotline 1366.',
       ],
       highlights: ['1366 — 24/7', 'Counseling without report OK', 'Shelter, legal, and medical referrals'],
     },
@@ -103,7 +107,7 @@ const CATEGORY_EDITORIAL: Record<Category, Record<Lang, CategoryEditorial>> = {
     ko: {
       heading: '가능한 언어부터 확인하세요',
       paragraphs: [
-        '다누리콜센터(1577-1366)는 13개 언어를 지원하고, 외국인력상담센터(1644-0644)는 이주노동 상담에 특화되어 있습니다. 긴급 상황이면 119가 더 빠른 도움이 될 수 있습니다. 통역 연결이 가능하며, 긴급 구조는 법적으로 체류 자격과 무관하게 제공됩니다.',
+        '다누리콜센터(1577-1366)는 13개 언어를 지원하고, 외국인력상담센터(1577-0071)는 이주노동 상담에 특화되어 있으며 상담시간은 매일 09:00~18:00입니다. 긴급 상황이면 119가 더 빠른 도움이 될 수 있습니다. 통역 연결이 가능하며, 긴급 구조는 법적으로 체류 자격과 무관하게 제공됩니다.',
         '이 페이지는 다국어 상담 여부, 이주민 전용 핫라인, 상황별(노동, 가정폭력, 유학) 적합 기관을 비교할 수 있게 구성했습니다.',
       ],
       highlights: ['다누리 1577-1366 — 13개 언어', '119·112 — 체류 자격 무관', '노동·가정폭력·유학 상황별 안내'],
@@ -111,7 +115,7 @@ const CATEGORY_EDITORIAL: Record<Category, Record<Lang, CategoryEditorial>> = {
     en: {
       heading: 'Start by checking which language is available',
       paragraphs: [
-        'Danuri Call Center (1577-1366) offers 13 languages. Foreign Workers Center (1644-0644) specializes in migrant labor. In an emergency, call 119 — interpreter support is available, and emergency services are legally provided regardless of visa status.',
+        'Danuri Call Center (1577-1366) offers 13 languages. The Counseling Center for Foreign Workers (1577-0071) specializes in migrant labor and operates daily from 09:00 to 18:00, Korea time. In an emergency, call 119 — interpreter support is available, and emergency services are legally provided regardless of visa status.',
         'This page compares multilingual availability, migrant-specific hotlines, and services matched to your situation: labor issues, domestic violence, or student isolation.',
       ],
       highlights: ['Danuri 1577-1366 — 13 languages', '119 and 112 — regardless of visa', 'By situation: labor, violence, students'],
