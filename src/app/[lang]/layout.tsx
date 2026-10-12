@@ -23,9 +23,7 @@ export default async function LangLayout({ children, params }: Props) {
 
   return (
     <>
-      <div className="sticky top-0 z-50">
-        <ChatbotBanner lang={lang} />
-      </div>
+      <ChatbotBanner lang={lang} />
       <NavBar lang={lang} />
       <main className="flex flex-1 flex-col">{children}</main>
       <footer className="border-t border-stone-200 bg-white/70 py-6">

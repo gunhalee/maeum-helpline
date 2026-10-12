@@ -21,15 +21,15 @@ export default function ServiceHours({ note, lang }: Props) {
       {rows.length > 0 && (
         <dl className="space-y-2">
           {rows.map((row, index) => (
-            <div key={index} className="grid grid-cols-[minmax(0,1fr)_auto] items-baseline gap-x-3 gap-y-0.5">
+            <div key={index} className="space-y-0.5">
               <dt className="text-stone-600">{row.label}</dt>
-              <dd className="text-right font-medium text-stone-800">
+              <dd className="font-medium text-stone-800">
                 {row.periods.map((period, periodIndex) => (
                   <div key={periodIndex}><TimeText text={period} /></div>
                 ))}
               </dd>
               {row.detail && (
-                <dd className="col-span-2 text-xs text-stone-500">
+                <dd className="text-xs text-stone-500">
                   {row.label} <TimeText text={row.detail} />
                 </dd>
               )}

@@ -1,59 +1,59 @@
 'use client'
 
-import Link from 'next/link'
-import { usePathname } from 'next/navigation'
-import { getPathWithoutLang, type Lang, withLang } from '@/lib/i18n'
+import { useEffect, useRef } from 'react'
+import type { Lang } from '@/lib/i18n'
 
 const EMERGENCY_ITEMS = [
-  { id: 1, koLabel: '자살위기 상담', enLabel: 'Crisis support', phone: '109' },
-  { id: 98, koLabel: '응급 신고', enLabel: 'Medical emergency', phone: '119' },
-  { id: 99, koLabel: '경찰 신고', enLabel: 'Police', phone: '112' },
+  { phone: '109', koLabel: '위기 상담', enLabel: 'Crisis', koFull: '자살위기 상담', enFull: 'Suicide crisis counseling' },
+  { phone: '119', koLabel: '구급', enLabel: 'Rescue', koFull: '응급 구조·구급', enFull: 'Emergency rescue and ambulance' },
+  { phone: '112', koLabel: '경찰', enLabel: 'Police', koFull: '경찰 신고', enFull: 'Police emergency' },
 ] as const
 
-interface Props {
-  lang: Lang
-}
+export default function ChatbotBanner({ lang }: { lang: Lang }) {
+  const headerRef = useRef<HTMLElement>(null)
 
-export default function ChatbotBanner({ lang }: Props) {
-  const pathname = usePathname()
-  const nextLang = lang === 'en' ? 'ko' : 'en'
-  const toggleHref = withLang(getPathWithoutLang(pathname), nextLang)
+  useEffect(() => {
+    const header = headerRef.current
+    if (!header) return
+
+    const updateHeight = () => {
+      const height = header.getBoundingClientRect().height
+      const sticky = window.innerHeight > 500 && height <= window.innerHeight * 0.3
+      header.dataset.sticky = String(sticky)
+      document.documentElement.style.setProperty('--sticky-header-height', `${sticky ? height : 0}px`)
+    }
+
+    updateHeight()
+    const observer = new ResizeObserver(updateHeight)
+    observer.observe(header)
+    window.addEventListener('resize', updateHeight)
+    return () => {
+      observer.disconnect()
+      window.removeEventListener('resize', updateHeight)
+      document.documentElement.style.removeProperty('--sticky-header-height')
+    }
+  }, [])
 
   return (
-    <div
+    <header
+      ref={headerRef}
       role="banner"
+      className="emergency-header border-b border-green-100 bg-green-50 px-[12px] py-[8px]"
       aria-label={lang === 'en' ? 'Emergency contacts' : '긴급 연락처'}
-      className="bg-green-50 px-4 py-3 text-center"
     >
-      <div className="mx-auto mb-3 flex max-w-[460px] items-center justify-between gap-3">
-        <p className="text-left text-sm font-semibold leading-5 text-stone-800">
-          {lang === 'en'
-            ? 'Emergency contacts'
-            : '안전이 걱정될 때 바로 연결'}
-        </p>
-        <Link
-          href={toggleHref}
-          replace
-          className="inline-flex min-h-[36px] shrink-0 items-center rounded-full border border-green-700 px-3 text-xs font-semibold tracking-[0.08em] text-green-800 transition-colors hover:bg-white"
-          aria-label={lang === 'en' ? 'Switch to Korean' : 'Switch to English'}
-        >
-          {lang === 'en' ? 'KO' : 'EN'}
-        </Link>
-      </div>
-      <div className="mx-auto grid max-w-[460px] grid-cols-3 gap-2 min-[380px]:gap-3">
+      <div className="mx-auto grid max-w-[460px] grid-cols-3 gap-[8px]">
         {EMERGENCY_ITEMS.map((item) => (
           <a
-            key={item.id}
+            key={item.phone}
             href={`tel:${item.phone}`}
-            className="inline-flex min-h-[58px] w-full flex-col items-center justify-center rounded-xl border border-green-700 bg-white px-2 py-2 text-green-700 transition-colors hover:bg-green-50 active:bg-green-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700"
+            aria-label={`${lang === 'en' ? item.enFull : item.koFull} ${item.phone}`}
+            className="flex min-h-[48px] min-w-0 flex-col items-center justify-center rounded-lg border border-green-700 bg-white px-[6px] py-[6px] text-center text-green-800 transition-colors hover:bg-green-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700"
           >
-            <span className="text-lg font-bold leading-tight">{item.phone}</span>{' '}
-            <span className="text-xs font-medium leading-tight">
-              {lang === 'en' ? item.enLabel : item.koLabel}
-            </span>
+            <span className="whitespace-nowrap text-lg font-bold leading-tight">{item.phone}</span>
+            <span className="text-xs font-medium leading-snug">{lang === 'en' ? item.enLabel : item.koLabel}</span>
           </a>
         ))}
       </div>
-    </div>
+    </header>
   )
 }

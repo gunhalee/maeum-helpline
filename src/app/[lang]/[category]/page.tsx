@@ -307,52 +307,53 @@ export default async function LocalizedCategoryPage({ params }: Props) {
       />
       <section
         lang={currentLang}
-        className="mx-auto w-full max-w-[860px] px-4 pb-12 pt-6 md:px-6"
+        className="mx-auto w-full max-w-[860px] px-3 pb-12 pt-5 sm:px-4 md:px-6"
       >
-        <header className="rounded-2xl border border-stone-200 bg-stone-50 px-5 py-6 shadow-sm md:px-8 md:py-8">
-          <h1 className="text-[clamp(2rem,1.6rem+1.8vw,3rem)] leading-tight text-stone-900">
-            {heading}
+        <header>
+          <h1 className="text-2xl font-bold leading-snug text-stone-900 md:text-3xl">
+            {editorial.title ?? heading}
           </h1>
-          <p className="mt-4 max-w-3xl text-base leading-8 text-stone-600">
-            {description}
-          </p>
-        </header>
-        <section className="mt-6 rounded-2xl border border-stone-200 bg-white px-5 py-6 shadow-sm md:px-8">
-          <h2 className="text-lg font-semibold text-stone-900">{editorial.heading}</h2>
-          <div className="mt-4 space-y-4 text-sm leading-7 text-stone-700 md:text-[15px]">
-            {editorial.paragraphs.map((paragraph) => (
+          <div className="mt-3 space-y-2 text-base leading-relaxed text-stone-700">
+            {editorial.summary.map((paragraph) => (
               <p key={paragraph}>
                 <EmergencyText text={paragraph} />
               </p>
             ))}
           </div>
-          <ul className="mt-5 space-y-2 border-l-2 border-green-200 pl-4 text-sm leading-6 text-stone-700">
-            {editorial.highlights.map((item) => (
-              <li key={item}>
-                <EmergencyText text={item} />
-              </li>
-            ))}
-          </ul>
-          <div className="mt-5">
-            <Link
-              href={withLang(
-                `/guide#${getGuideAnchorForCategory(category)}`,
-                currentLang
-              )}
-              scroll={false}
-              className="inline-flex min-h-[44px] items-center rounded-xl border border-green-700 px-4 py-2 text-sm font-medium text-green-700 transition-colors hover:bg-green-50"
-            >
-              {currentLang === 'en'
-                ? 'Read guides to asking for help'
-                : '도움 요청 가이드 보기'}
-            </Link>
-          </div>
-        </section>
+        </header>
         <ServiceGrid
           services={filtered}
           groupByCategory={false}
           lang={currentLang}
         />
+        <div className="mt-6 border-t border-stone-200 pt-4">
+          {editorial.paragraphs.length > 0 ? (
+            <details className="rounded-xl border border-stone-200 bg-stone-50">
+              <summary className="cursor-pointer px-3 py-4 text-base font-semibold leading-relaxed text-stone-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700 sm:px-4">
+                {editorial.detailsHeading}
+              </summary>
+              <div className="space-y-3 px-3 pb-4 text-base leading-relaxed text-stone-700 sm:px-4">
+                {editorial.paragraphs.map((paragraph) => (
+                  <p key={paragraph}>
+                    <EmergencyText text={paragraph} />
+                  </p>
+                ))}
+              </div>
+            </details>
+          ) : null}
+          <Link
+            href={withLang(
+              `/guide#${getGuideAnchorForCategory(category)}`,
+              currentLang
+            )}
+            scroll={false}
+            className="mt-3 inline-flex min-h-11 items-center rounded-lg py-2 text-base font-medium text-green-800 underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700"
+          >
+            {currentLang === 'en'
+              ? 'Help with contacting a service'
+              : '연락하기 전 도움 요청 가이드'}
+          </Link>
+        </div>
       </section>
     </>
   )

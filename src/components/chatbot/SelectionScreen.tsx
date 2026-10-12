@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { translateSelectionLabel, type Lang } from '@/lib/i18n'
 
 export type CrisisAnswer = 'yes' | 'no' | 'skip'
@@ -25,6 +25,20 @@ export default function SelectionScreen({ lang, onSubmit }: Props) {
   const [step, setStep] = useState<'crisis' | 'situation'>('crisis')
   const [crisisAnswer, setCrisisAnswer] = useState<CrisisAnswer>('no')
   const [selected, setSelected] = useState<Set<string>>(new Set())
+  const headingRef = useRef<HTMLHeadingElement>(null)
+  const previousStep = useRef(step)
+
+  useEffect(() => {
+    if (previousStep.current === step) return
+    previousStep.current = step
+
+    const frame = requestAnimationFrame(() => {
+      headingRef.current?.focus({ preventScroll: true })
+      headingRef.current?.scrollIntoView({ block: 'start', behavior: 'instant' })
+    })
+
+    return () => cancelAnimationFrame(frame)
+  }, [step])
 
   const handleCrisisAnswer = (answer: CrisisAnswer) => {
     setCrisisAnswer(answer)
@@ -52,34 +66,21 @@ export default function SelectionScreen({ lang, onSubmit }: Props) {
   const btnClass = (label: string) => {
     const active = selected.has(label)
 
-    if (active) return 'min-h-[44px] rounded-xl border-[1.5px] px-3.5 py-2.5 text-sm transition-colors border-green-600 bg-green-50 text-green-700'
+    if (active) return 'min-h-[44px] min-w-0 break-words rounded-xl border-[1.5px] px-3.5 py-2.5 text-sm leading-6 transition-colors border-green-600 bg-green-50 text-green-700'
 
-    return 'min-h-[44px] rounded-xl border-[1.5px] px-3.5 py-2.5 text-sm transition-colors border-stone-200 bg-white text-stone-700 hover:border-green-300 hover:bg-green-50'
+    return 'min-h-[44px] min-w-0 break-words rounded-xl border-[1.5px] px-3.5 py-2.5 text-sm leading-6 transition-colors border-stone-200 bg-white text-stone-700 hover:border-green-300 hover:bg-green-50'
   }
 
   return (
     <div className="flex flex-col gap-6">
       {step === 'crisis' ? (
         <>
-          <div className="space-y-3 text-center">
-            <p className="text-[clamp(1.45rem,1.2rem+1vw,1.95rem)] font-semibold leading-tight text-stone-800">
-              {lang === 'en' ? 'Welcome.' : '환영합니다.'}
-            </p>
-            <p className="mx-auto max-w-[32rem] text-base leading-7 text-stone-600">
-              {lang === 'en' ? 'Answer two short questions.' : '두 질문에 답해 주세요.'}
-              <br className="sm:hidden" />{' '}
-              {lang === 'en'
-                ? 'Find support for your situation.'
-                : '상황에 맞는 긴급상담 기관을 안내합니다.'}
-            </p>
-          </div>
-
-          <div className="p-4 text-center">
-            <p className="mb-4 text-base font-medium leading-7 text-stone-800">
+          <div className="space-y-5 text-center">
+            <h2 ref={headingRef} data-flow-heading tabIndex={-1} className="scroll-target text-xl font-semibold leading-relaxed text-stone-800 focus:outline-none">
               {lang === 'en'
                 ? 'Are you worried that you cannot keep yourself safe right now?'
                 : '지금 혼자 버티기 어렵거나 스스로를 해칠까 걱정되나요?'}
-            </p>
+            </h2>
             <div className="flex flex-wrap gap-2">
               <button
                 type="button"
@@ -99,7 +100,7 @@ export default function SelectionScreen({ lang, onSubmit }: Props) {
             <button
               type="button"
               onClick={() => handleCrisisAnswer('skip')}
-              className="mt-4 inline-flex min-h-[44px] items-center justify-center rounded-full px-4 text-sm text-stone-700 underline-offset-2 hover:bg-stone-100 hover:text-stone-900 hover:underline"
+              className="inline-flex min-h-[44px] items-center justify-center rounded-full px-4 text-sm text-stone-700 underline-offset-2 hover:bg-stone-100 hover:text-stone-900 hover:underline"
             >
               {lang === 'en' ? 'Skip this question' : '답변하지 않기'}
             </button>
@@ -108,9 +109,9 @@ export default function SelectionScreen({ lang, onSubmit }: Props) {
       ) : (
         <>
           <div className="space-y-3 text-center">
-            <p className="text-[clamp(1.45rem,1.2rem+1vw,1.95rem)] font-semibold leading-tight text-stone-800">
-              {lang === 'en' ? 'One more question.' : '질문 하나만 더 드릴게요.'}
-            </p>
+            <h2 ref={headingRef} data-flow-heading tabIndex={-1} className="scroll-target text-xl font-semibold leading-relaxed text-stone-800 focus:outline-none">
+              {lang === 'en' ? 'What kind of support do you need?' : '어떤 도움이 필요한가요?'}
+            </h2>
             <p className="mx-auto max-w-[32rem] text-base leading-7 text-stone-600">
               {lang === 'en'
                 ? 'Select all options that apply to you.'
@@ -130,12 +131,13 @@ export default function SelectionScreen({ lang, onSubmit }: Props) {
               {lang === 'en' ? '← Back' : '← 이전으로'}
             </button>
 
-            <div className="grid grid-cols-1 gap-2 min-[420px]:grid-cols-2">
+            <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,max(11rem,calc((100%_-_0.5rem)/2))),1fr))] gap-2">
               {SITUATION_BUTTONS.map((label) => (
                 <button
                   key={label}
                   type="button"
                   onClick={() => toggleSelection(label)}
+                  aria-pressed={selected.has(label)}
                   className={btnClass(label)}
                 >
                   {translateSelectionLabel(label, lang)}

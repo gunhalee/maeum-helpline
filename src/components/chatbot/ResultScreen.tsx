@@ -56,12 +56,11 @@ function GroupSection({
   return (
     <section>
       <div className="px-1 pb-3">
-        <p
+        <h3
           className="text-base font-semibold text-stone-800"
         >
           {group.label}
-        </p>
-        <p className="mt-1 text-sm leading-6 text-stone-500">{group.preview}</p>
+        </h3>
       </div>
 
       <div className="space-y-3">
@@ -69,6 +68,7 @@ function GroupSection({
           <ResultCard
             key={org.id}
             {...orgToCardProps(org, lang)}
+            headingLevel={4}
             note={ref.note}
             isOpen={ref.is_open}
             lang={lang}
@@ -108,18 +108,17 @@ export default function ResultScreen({
 
   return (
     <div className="flex flex-col gap-4">
-      <button
-        type="button"
-        onClick={onBack}
-        className="flex min-h-[44px] items-center gap-1 self-start text-base text-stone-500 transition-colors hover:text-stone-700"
-      >
-        {lang === 'en' ? '← Start over' : '← 다시 선택'}
-      </button>
-
-      <div className="space-y-1">
-        <p className="text-[clamp(1.45rem,1.2rem+1vw,1.95rem)] font-semibold leading-tight text-stone-800">
+      <div className="space-y-2">
+        <h2 data-flow-heading tabIndex={-1} className="scroll-target text-xl font-semibold leading-relaxed text-stone-800 focus:outline-none">
           {heading}
-        </p>
+        </h2>
+        <button
+          type="button"
+          onClick={onBack}
+          className="flex min-h-[44px] items-center gap-1 text-base text-stone-500 transition-colors hover:text-stone-700"
+        >
+          {lang === 'en' ? '← Start over' : '← 다시 선택'}
+        </button>
       </div>
 
       {crisisGroups.length > 0 && (

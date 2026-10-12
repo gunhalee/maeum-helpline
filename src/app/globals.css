@@ -15,7 +15,7 @@ html {
 }
 
 body {
-  overflow-x: hidden;
+  overflow-x: clip;
   word-break: keep-all;
   overflow-wrap: break-word;
   line-height: 1.65;
@@ -68,6 +68,31 @@ body {
 .scrollbar-hide {
   -ms-overflow-style: none;
   scrollbar-width: none;
+}
+
+.emergency-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.emergency-header[data-sticky='false'] {
+  position: static;
+}
+
+.scroll-target {
+  scroll-margin-top: calc(var(--sticky-header-height, 0px) + 1rem);
+}
+
+.category-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: #a8a29e transparent;
+}
+
+@media (max-height: 500px) {
+  .emergency-header {
+    position: static;
+  }
 }
 
 .scrollbar-hide::-webkit-scrollbar {

@@ -7,7 +7,6 @@ type GuideIndexCopy = {
   description: string
   intro: string
   urgentNotice: string
-  focusPoints: string[]
 }
 
 type GuideSourceLink = {
@@ -55,17 +54,15 @@ const GUIDE_INDEX_COPY: Record<Lang, GuideIndexCopy> = {
       '상황을 완벽히 설명하지 않아도 됩니다. 처음에 할 말과 연락한 뒤 진행되는 일을 안내합니다.',
     urgentNotice:
       '지금 위험하거나 다쳤다면 112, 119가 가장 빠른 도움입니다.',
-    focusPoints: ['처음 할 말', '상담원이 확인할 것', '걱정되는 점'],
   },
   en: {
     title: 'Check only what you need before you call',
     description:
       'Read what you can say first and what a counselor may ask. Check costs, privacy, reports, and follow-up support.',
     intro:
-      'You do not need to explain everything perfectly. These guides do not test whether you qualify for support. They show what you can say first, what may happen next, and answers to common worries.',
+      'You do not need to explain everything perfectly. These guides show what you can say first and what may happen after you call.',
     urgentNotice:
-      'If physical safety is at risk or someone is hurt, 112 or 119 may help faster. You can return after the immediate danger passes.',
-    focusPoints: ['First words', 'What they may check', 'Common worries'],
+      'If you are in danger or someone is hurt, contact 112 or 119 first.',
   },
 }
 
@@ -540,7 +537,6 @@ const GUIDE_ENTRIES: LocalizedGuideEntry[] = [
         {
           title: '말하기 전 알아둘 점',
           list: [
-            '처음에 필요한 언어부터 말하면 됩니다.',
             '상담 언어와 시간은 바뀔 수 있습니다. 공식 안내를 확인하세요.',
           ],
         },
@@ -573,14 +569,13 @@ const GUIDE_ENTRIES: LocalizedGuideEntry[] = [
       concerns: [
         'The main line operates 24/7. It supports 15 languages, including Korean, English, and Chinese.',
         'Marriage migrants, migrants, and foreign families can ask about daily-life support.',
-        'You can start by saying that you need interpretation.',
+        'You can start by saying which language you need.',
       ],
       ctaLabel: 'View migrant support',
       details: [
         {
           title: 'Before you talk',
           list: [
-            'Start by saying which language you need.',
             'Available languages and hours can change. When possible, check the official guide.',
           ],
         },
@@ -822,11 +817,11 @@ const GUIDE_ENTRIES: LocalizedGuideEntry[] = [
         },
       ],
       sourceLinks: [
+        { label: '스마일센터 이용안내', href: 'https://resmile.or.kr/pages/?p=9' },
         {
           label: '법무부 스마일센터 피해자지원 제도',
           href: 'https://www.moj.go.kr/cvs/2723/subview.do',
         },
-        { label: '스마일센터 이용안내', href: 'https://resmile.or.kr/pages/?p=9' },
         { label: '스마일센터 FAQ', href: 'https://resmile.or.kr/pages/?b=B_1_6&p=11' },
       ],
     },
@@ -865,11 +860,11 @@ const GUIDE_ENTRIES: LocalizedGuideEntry[] = [
         },
       ],
       sourceLinks: [
+        { label: 'Smile Center user guide', href: 'https://resmile.or.kr/pages/?p=9' },
         {
           label: 'Ministry of Justice Smile Center support',
           href: 'https://www.moj.go.kr/cvs/2723/subview.do',
         },
-        { label: 'Smile Center user guide', href: 'https://resmile.or.kr/pages/?p=9' },
         { label: 'Smile Center FAQ', href: 'https://resmile.or.kr/pages/?b=B_1_6&p=11' },
       ],
     },
