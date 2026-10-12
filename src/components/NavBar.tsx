@@ -18,7 +18,7 @@ export default function NavBar({ lang }: Props) {
   const pathname = usePathname()
   const currentPath = getPathWithoutLang(pathname)
   const tabBaseClass =
-    'flex min-h-[44px] items-center gap-1.5 whitespace-nowrap rounded-full px-3.5 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-600'
+    'flex min-h-[44px] shrink-0 items-center gap-1.5 whitespace-nowrap rounded-full px-3.5 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-600'
   const links = [
     {
       href: withLang('/', lang),
@@ -46,19 +46,21 @@ export default function NavBar({ lang }: Props) {
       className="border-b border-stone-200 bg-white"
       aria-label={lang === 'en' ? 'Category navigation' : '카테고리 네비게이션'}
     >
-      <div className="scrollbar-hide mx-auto flex max-w-5xl flex-nowrap justify-start gap-1 overflow-x-auto px-4 py-2 md:justify-center">
-        {links.map((link) => (
-          <Link
-            key={link.href}
-            href={link.href}
-            className={`${tabBaseClass} ${
-              link.isActive ? 'bg-green-700 text-white' : link.inactiveClass
-            }`}
-            aria-current={link.isActive ? 'page' : undefined}
-          >
-            <span>{link.label}</span>
-          </Link>
-        ))}
+      <div className="scrollbar-hide mx-auto max-w-5xl overflow-x-auto">
+        <div className="flex w-max min-w-full flex-nowrap justify-center gap-1 px-4 py-2">
+          {links.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className={`${tabBaseClass} ${
+                link.isActive ? 'bg-green-700 text-white' : link.inactiveClass
+              }`}
+              aria-current={link.isActive ? 'page' : undefined}
+            >
+              <span>{link.label}</span>
+            </Link>
+          ))}
+        </div>
       </div>
     </nav>
   )
