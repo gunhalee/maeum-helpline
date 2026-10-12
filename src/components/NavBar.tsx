@@ -52,7 +52,7 @@ export default function NavBar({ lang }: { lang: Lang }) {
         <Link
           href={withLang(currentPath, lang === 'en' ? 'ko' : 'en')}
           replace
-          className="inline-flex min-h-[44px] min-w-[44px] shrink-0 items-center justify-center px-[6px] text-xs font-semibold text-stone-700 underline underline-offset-4 hover:text-stone-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700"
+          className="inline-flex min-h-[44px] min-w-[44px] shrink-0 items-center justify-center rounded-lg border border-stone-300 px-[6px] text-xs font-semibold text-stone-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700"
           aria-label={lang === 'en' ? 'Switch to Korean' : 'Switch to English'}
         >
           {lang === 'en' ? 'KO' : 'EN'}
@@ -65,7 +65,7 @@ export default function NavBar({ lang }: { lang: Lang }) {
                   key={link.path}
                   href={withLang(link.path, lang)}
                   aria-current={currentPath === link.path ? 'page' : undefined}
-                  className={`flex min-h-[44px] max-w-[calc(100vw-100px)] shrink-0 items-center justify-center border-b-2 px-[14px] py-[8px] text-center text-sm font-medium leading-snug transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-600 ${currentPath === link.path ? 'border-green-700 text-green-800' : 'border-transparent text-stone-600 hover:text-stone-900'}`}
+                  className={`flex min-h-[44px] max-w-[calc(100vw-100px)] shrink-0 items-center justify-center rounded-full px-[14px] py-[8px] text-center text-sm font-medium leading-snug transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-600 ${currentPath === link.path ? 'bg-green-700 text-white' : 'text-stone-600 hover:bg-stone-100 hover:text-stone-900'}`}
                 >
                   {link.label}
                 </Link>

@@ -174,13 +174,13 @@ export default async function LocalizedGuidePage({ params }: Props) {
             <h2 id="guide-contents-title" className="text-base font-semibold text-stone-900">
               {labels.contents}
             </h2>
-            <ul className="mt-2 flex flex-wrap gap-x-6">
+            <ul className="mt-3 flex flex-wrap gap-2">
               {guides.map((guide) => (
                 <li key={guide.slug} className="max-w-full">
                   <a
                     href={`#${guide.slug}`}
                     data-guide-anchor
-                    className="inline-flex min-h-[44px] items-center py-2 text-sm font-medium text-green-800 underline underline-offset-4 hover:text-green-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700"
+                    className="inline-flex min-h-[44px] items-center rounded-md border border-stone-200 bg-white px-3 py-2 text-sm font-medium text-green-800 underline-offset-4 hover:bg-green-50 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700"
                   >
                     {guide.categoryLabel}
                   </a>
@@ -210,7 +210,7 @@ export default async function LocalizedGuidePage({ params }: Props) {
               </p>
               <Link
                 href={withLang(`/${guide.category}`, currentLang)}
-                className="mt-3 inline-flex min-h-[44px] max-w-full items-center py-2 text-sm font-medium text-green-800 underline underline-offset-4 hover:text-green-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700"
+                className="mt-4 inline-flex min-h-[44px] max-w-full items-center rounded-md border border-green-700 px-3 py-2 text-sm font-medium text-green-700 transition-colors hover:bg-green-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700"
               >
                 {guide.ctaLabel}
               </Link>

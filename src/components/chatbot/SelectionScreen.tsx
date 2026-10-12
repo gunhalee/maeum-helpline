@@ -66,9 +66,9 @@ export default function SelectionScreen({ lang, onSubmit }: Props) {
   const btnClass = (label: string) => {
     const active = selected.has(label)
 
-    if (active) return 'min-h-[44px] min-w-0 break-words rounded-md border px-3.5 py-2.5 text-sm leading-6 transition-colors border-green-700 bg-green-50 text-green-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700 focus-visible:ring-offset-2'
+    if (active) return 'min-h-[44px] min-w-0 break-words rounded-xl border-[1.5px] px-3.5 py-2.5 text-sm leading-6 transition-colors border-green-600 bg-green-50 text-green-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700 focus-visible:ring-offset-2'
 
-    return 'min-h-[44px] min-w-0 break-words rounded-md border px-3.5 py-2.5 text-sm leading-6 transition-colors border-stone-300 text-stone-700 hover:border-green-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700 focus-visible:ring-offset-2'
+    return 'min-h-[44px] min-w-0 break-words rounded-xl border-[1.5px] px-3.5 py-2.5 text-sm leading-6 transition-colors border-stone-200 bg-white text-stone-700 hover:border-green-300 hover:bg-green-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700 focus-visible:ring-offset-2'
   }
 
   return (
@@ -85,14 +85,14 @@ export default function SelectionScreen({ lang, onSubmit }: Props) {
               <button
                 type="button"
                 onClick={() => handleCrisisAnswer('no')}
-                className="min-h-[50px] flex-1 rounded-md border border-stone-300 px-4 py-3.5 text-center text-base text-stone-700 transition-colors hover:border-green-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700 focus-visible:ring-offset-2"
+                className="min-h-[50px] flex-1 rounded-xl border-[1.5px] border-stone-200 bg-white px-4 py-3.5 text-center text-base text-stone-700 transition-colors hover:border-green-300 hover:bg-green-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700 focus-visible:ring-offset-2"
               >
                 {lang === 'en' ? 'No' : '아니오'}
               </button>
               <button
                 type="button"
                 onClick={() => handleCrisisAnswer('yes')}
-                className="min-h-[50px] flex-1 rounded-md border border-green-700 px-4 py-3.5 text-center text-base font-semibold text-green-800 transition-colors hover:bg-green-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700 focus-visible:ring-offset-2"
+                className="min-h-[50px] flex-1 rounded-xl border-[1.5px] border-green-600 bg-green-50 px-4 py-3.5 text-center text-base font-semibold text-green-800 transition-colors hover:bg-green-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700 focus-visible:ring-offset-2"
               >
                 {lang === 'en' ? 'Yes' : '네'}
               </button>
@@ -100,7 +100,7 @@ export default function SelectionScreen({ lang, onSubmit }: Props) {
             <button
               type="button"
               onClick={() => handleCrisisAnswer('skip')}
-              className="inline-flex min-h-[44px] items-center justify-center px-4 text-sm text-stone-700 underline underline-offset-4 hover:text-stone-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700"
+              className="inline-flex min-h-[44px] items-center justify-center rounded-full px-4 text-sm text-stone-700 underline-offset-2 hover:bg-stone-100 hover:text-stone-900 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700"
             >
               {lang === 'en' ? 'Skip this question' : '답변하지 않기'}
             </button>
@@ -150,7 +150,7 @@ export default function SelectionScreen({ lang, onSubmit }: Props) {
             type="button"
             onClick={() => onSubmit([...selected], crisisAnswer)}
             disabled={!hasSelection}
-            className={`w-full rounded-md px-4 py-4 text-base font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700 focus-visible:ring-offset-2 ${
+            className={`w-full rounded-xl px-4 py-4 text-base font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700 focus-visible:ring-offset-2 ${
               hasSelection
                 ? 'bg-green-700 text-white hover:bg-green-800 active:bg-green-900'
                 : 'cursor-not-allowed border border-stone-200 bg-stone-100 text-stone-400'

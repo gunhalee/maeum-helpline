@@ -72,7 +72,7 @@ export default async function LocalizedAboutPage({ params }: Props) {
       >
         <Link
           href={withLang('/', currentLang)}
-          className="inline-flex min-h-11 max-w-full items-center justify-center rounded-md bg-green-800 px-5 py-3 text-base font-semibold leading-relaxed text-white transition-colors hover:bg-green-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700 focus-visible:ring-offset-2"
+          className="inline-flex min-h-11 max-w-full items-center justify-center rounded-xl bg-green-800 px-5 py-3 text-base font-semibold leading-relaxed text-white transition-colors hover:bg-green-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700 focus-visible:ring-offset-2"
         >
           {isEnglish ? 'Find support' : '상담처 찾기'}
         </Link>
