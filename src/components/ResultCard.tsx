@@ -1,3 +1,6 @@
+import ServiceHours from '@/components/ServiceHours'
+import TimeText from '@/components/TimeText'
+
 interface Props {
   name: string
   phone: string
@@ -29,7 +32,16 @@ export default function ResultCard({
 }: Props) {
   const isTel = (p: string) => /^[0-9-]+$/.test(p.replace(/\s+/g, ''))
 
-  const badgeText = note ?? (is24h ? (lang === 'en' ? '24/7' : '24시간') : null)
+  const badgeText = is24h
+    ? lang === 'en' ? '24/7' : '24시간'
+    : isOpen === true
+      ? lang === 'en' ? 'Open now' : '운영 중'
+      : isOpen === false
+        ? lang === 'en' ? 'Outside hours' : '운영시간 외'
+        : null
+  const hoursNote = is24h && /^(?:365일\s*)?24시간$|^24\/7$/.test(note?.trim() ?? '')
+    ? null
+    : note
   const badgeColor =
     is24h || isOpen === true
       ? 'bg-green-100 text-green-800'
@@ -74,8 +86,30 @@ export default function ResultCard({
   const metaLine =
     metaParts.length > 0 ? metaParts.join(' \u00b7 ') : null
 
+  const content = (
+    <>
+      <h3 className="break-words text-lg font-semibold leading-snug text-stone-900 [word-break:normal]">{name}</h3>
+      {(metaLine || badgeText) && (
+        <div className="mt-2 flex flex-wrap items-center gap-2">
+          {badgeText && (
+            <span className={`inline-flex whitespace-nowrap rounded-full px-2.5 py-1 text-xs font-medium ${badgeColor}`}>
+              {badgeText}
+            </span>
+          )}
+          {metaLine && <span className="text-sm leading-6 text-stone-500">{metaLine}</span>}
+        </div>
+      )}
+      {hoursNote && <ServiceHours note={hoursNote} lang={lang} />}
+      {description && (
+        <p className="mt-4 text-[15px] leading-7 text-stone-600">
+          <TimeText text={description} />
+        </p>
+      )}
+    </>
+  )
+
   return (
-    <article className="flex h-full flex-col rounded-2xl border border-stone-200 bg-white p-5">
+    <article className="flex min-w-0 flex-col rounded-2xl border border-stone-200 bg-white p-5">
       {primaryHref ? (
         <a
           href={primaryHref}
@@ -84,60 +118,14 @@ export default function ResultCard({
           aria-label={primaryAriaLabel}
           className="block rounded-lg transition-colors hover:bg-stone-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-600"
         >
-          <div className="flex min-w-0 flex-wrap items-center gap-x-2 gap-y-1.5">
-            <h3 className="min-w-0 break-words text-lg font-semibold leading-snug text-stone-900">
-              {name}
-            </h3>
-            {metaLine && (
-              <span className="min-w-0 text-sm leading-6 text-stone-500">
-                {metaLine}
-              </span>
-            )}
-            {badgeText && (
-              <span
-                className={`max-w-full whitespace-normal break-words rounded-full px-3 py-1.5 text-xs font-medium sm:text-sm ${badgeColor}`}
-              >
-                {badgeText}
-              </span>
-            )}
-          </div>
-
-          {description && (
-            <p className="mt-4 line-clamp-4 text-[15px] leading-7 text-stone-600 sm:line-clamp-4">
-              {description}
-            </p>
-          )}
+          {content}
         </a>
       ) : (
-        <>
-          <div className="flex min-w-0 flex-wrap items-center gap-x-2 gap-y-1.5">
-            <h3 className="min-w-0 break-words text-lg font-semibold leading-snug text-stone-900">
-              {name}
-            </h3>
-            {metaLine && (
-              <span className="min-w-0 text-sm leading-6 text-stone-500">
-                {metaLine}
-              </span>
-            )}
-            {badgeText && (
-              <span
-                className={`max-w-full whitespace-normal break-words rounded-full px-3 py-1.5 text-xs font-medium sm:text-sm ${badgeColor}`}
-              >
-                {badgeText}
-              </span>
-            )}
-          </div>
-
-          {description && (
-            <p className="mt-4 line-clamp-4 text-[15px] leading-7 text-stone-600 sm:line-clamp-4">
-              {description}
-            </p>
-          )}
-        </>
+        content
       )}
 
       {hasFooter && (
-        <div className="mt-5 flex flex-wrap items-center justify-end gap-4 border-t border-stone-100 pt-4 sm:mt-auto">
+        <div className="mt-5 flex flex-wrap items-center justify-end gap-4 border-t border-stone-100 pt-3">
           {url && (
             <a
               href={url}

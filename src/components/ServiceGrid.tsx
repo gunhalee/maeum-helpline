@@ -60,7 +60,7 @@ export default function ServiceGrid({
 
   if (!groupByCategory) {
     return (
-      <section className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
+      <section className="mt-6 grid grid-cols-[repeat(auto-fit,minmax(min(100%,340px),1fr))] items-start gap-4">
         {orderedServices.map((service) => (
           <ResultCard key={service.id} {...serviceToCardProps(service, lang)} />
         ))}
@@ -84,7 +84,7 @@ export default function ServiceGrid({
             <h2 className="mb-3 text-xl font-semibold text-stone-800">
               {translateCategoryLabel(meta.label, lang)}
             </h2>
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+            <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,340px),1fr))] items-start gap-4">
               {items.map((service) => (
                 <ResultCard key={service.id} {...serviceToCardProps(service, lang)} />
               ))}

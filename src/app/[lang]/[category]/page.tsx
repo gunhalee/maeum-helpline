@@ -326,16 +326,13 @@ export default async function LocalizedCategoryPage({ params }: Props) {
               </p>
             ))}
           </div>
-          <div className="mt-5 flex flex-wrap gap-2 text-sm text-stone-700">
+          <ul className="mt-5 space-y-2 border-l-2 border-green-200 pl-4 text-sm leading-6 text-stone-700">
             {editorial.highlights.map((item) => (
-              <span
-                key={item}
-                className="rounded-full border border-stone-200 bg-stone-50 px-4 py-2"
-              >
+              <li key={item}>
                 <EmergencyText text={item} />
-              </span>
+              </li>
             ))}
-          </div>
+          </ul>
           <div className="mt-5">
             <Link
               href={withLang(
@@ -343,7 +340,7 @@ export default async function LocalizedCategoryPage({ params }: Props) {
                 currentLang
               )}
               scroll={false}
-              className="inline-flex min-h-[44px] items-center rounded-full border border-green-700 px-4 py-2 text-sm font-medium text-green-700 transition-colors hover:bg-green-50"
+              className="inline-flex min-h-[44px] items-center rounded-xl border border-green-700 px-4 py-2 text-sm font-medium text-green-700 transition-colors hover:bg-green-50"
             >
               {currentLang === 'en'
                 ? 'Read help-seeking guides'

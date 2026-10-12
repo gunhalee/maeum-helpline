@@ -1,3 +1,5 @@
+import TimeText from '@/components/TimeText'
+
 interface Props {
   text: string
   linkClassName?: string
@@ -26,7 +28,7 @@ export default function EmergencyText({ text, linkClassName }: Props) {
           )
         }
 
-        return part
+        return <TimeText key={index} text={part} />
       })}
     </>
   )

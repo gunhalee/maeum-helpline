@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "test:hours": "node --test tests/service-hours.test.mjs",
+    "test:hours": "node --test tests/service-hours*.test.mjs",
     "seo:check": "node scripts/check-seo.mjs"
   },
   "dependencies": {

@@ -184,13 +184,13 @@ export default async function LocalizedGuidePage({ params }: Props) {
               tabIndex={-1}
               className="scroll-mt-28 rounded-lg border border-stone-200 bg-white px-5 py-6 shadow-sm transition-shadow duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-green-700 md:px-8 md:py-7"
             >
-              <div className="flex flex-wrap items-center gap-2 text-sm text-stone-600">
-                <span className="rounded-full bg-green-50 px-3 py-1 font-medium text-green-800">
+              <div className="space-y-2 text-sm text-stone-600">
+                <span className="inline-flex rounded-full bg-green-50 px-3 py-1 font-medium text-green-800">
                   {guide.categoryLabel}
                 </span>
-                <span className="rounded-full bg-stone-100 px-3 py-1 text-stone-600">
+                <p className="font-medium leading-6 text-stone-600">
                   {guide.serviceName}
-                </span>
+                </p>
               </div>
               <h2 className="mt-4 text-2xl font-semibold leading-tight text-stone-900">
                 {guide.title}
@@ -291,7 +291,7 @@ export default async function LocalizedGuidePage({ params }: Props) {
               <div className="mt-5 flex flex-wrap items-center justify-between gap-4">
                 <Link
                   href={withLang(`/${guide.category}`, currentLang)}
-                  className="inline-flex min-h-[44px] items-center rounded-full border border-green-700 px-4 py-2 text-sm font-medium text-green-700 transition-colors hover:bg-green-50"
+                  className="inline-flex min-h-[44px] items-center rounded-xl border border-green-700 px-4 py-2 text-sm font-medium text-green-700 transition-colors hover:bg-green-50"
                 >
                   {guide.ctaLabel}
                 </Link>

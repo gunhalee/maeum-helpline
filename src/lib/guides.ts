@@ -144,7 +144,7 @@ const GUIDE_ENTRIES: LocalizedGuideEntry[] = [
         'If you do not know the exact address, nearby signs or buildings can help.',
         'If violence or crime is also happening, 112 may be needed too.',
       ],
-      ctaLabel: 'Open crisis services',
+      ctaLabel: 'View crisis support',
       details: [
         {
           title: 'If speaking is hard',
@@ -232,7 +232,7 @@ const GUIDE_ENTRIES: LocalizedGuideEntry[] = [
         'Counseling is handled confidentially by default.',
         'If life or safety risk is high, other help may be connected.',
       ],
-      ctaLabel: 'Open depression and suicide prevention services',
+      ctaLabel: 'View depression support',
       details: [
         {
           title: 'If your words are not organized',
@@ -318,7 +318,7 @@ const GUIDE_ENTRIES: LocalizedGuideEntry[] = [
         'They can help organize shelter, medical, legal, or reporting options.',
         'You can sort support options before deciding whether to report.',
       ],
-      ctaLabel: 'Open women support services',
+      ctaLabel: 'View support for women',
       details: [
         {
           title: 'If calling is hard',
@@ -404,7 +404,7 @@ const GUIDE_ENTRIES: LocalizedGuideEntry[] = [
         'Parents, friends, and teachers can also ask for guidance.',
         'You can sort out the situation before deciding how to tell an adult.',
       ],
-      ctaLabel: 'Open youth support services',
+      ctaLabel: 'View youth support',
       details: [
         {
           title: 'Before you talk',
@@ -489,7 +489,7 @@ const GUIDE_ENTRIES: LocalizedGuideEntry[] = [
         'You can speak from an LGBTQ+ youth context without explaining everything first.',
         'Housing, medical, legal, or other support routes can be explored together.',
       ],
-      ctaLabel: 'Open LGBTQ+ support services',
+      ctaLabel: 'View LGBTQ+ support',
       details: [
         {
           title: 'What can be discussed',
@@ -573,7 +573,7 @@ const GUIDE_ENTRIES: LocalizedGuideEntry[] = [
         'Marriage migrants, migrants, and foreign families can ask about daily-life support.',
         'You can start by saying that you need interpretation.',
       ],
-      ctaLabel: 'Open migrant and foreigner support services',
+      ctaLabel: 'View migrant support',
       details: [
         {
           title: 'Before you talk',
@@ -661,7 +661,7 @@ const GUIDE_ENTRIES: LocalizedGuideEntry[] = [
         'An elder protection agency may check the situation and arrange protection.',
         'Neighbors or people nearby can ask, not only family members.',
       ],
-      ctaLabel: 'Open older adult support services',
+      ctaLabel: 'View older adult support',
       details: [
         {
           title: 'What can be discussed',
@@ -753,7 +753,7 @@ const GUIDE_ENTRIES: LocalizedGuideEntry[] = [
         'Counseling content and personal information are described as confidential.',
         'Legal outcomes cannot be promised, but treatment and rehabilitation routes can be explored.',
       ],
-      ctaLabel: 'Open addiction services',
+      ctaLabel: 'View addiction support',
       details: [
         {
           title: 'Before you talk',
@@ -844,7 +844,7 @@ const GUIDE_ENTRIES: LocalizedGuideEntry[] = [
         'The service is for victims of violent crime and their families.',
         'Recovery support can be discussed separately from the reporting process.',
       ],
-      ctaLabel: 'Open crime victim support services',
+      ctaLabel: 'View victim support',
       details: [
         {
           title: 'What can be discussed',
