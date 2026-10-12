@@ -99,6 +99,7 @@ export function translateStatusNote(note: string | null | undefined, lang: Lang)
     '평일 10:00~13:00, 14:00~17:00': 'Weekdays 10:00–13:00, 14:00–17:00 KST',
     '평일 08:00~22:00, 주말·공휴일 09:00~18:00': 'Weekdays 08:00–22:00; weekends and public holidays 09:00–18:00 KST',
     '평일 10:00~19:00': 'Weekdays 10:00–19:00 KST',
+    '평일 11:00~18:00': 'Weekdays 11:00–18:00 KST',
     '평일 09:00~20:00 (점심시간 12:00~13:00), 토요일 09:00~13:00, 일요일·공휴일 휴무': 'Weekdays 09:00–20:00 (break 12:00–13:00), Sat 09:00–13:00 KST; closed Sun and public holidays',
     '평일 09:00~18:00, 주말·공휴일 휴무': 'Weekdays 09:00–18:00 KST; closed weekends and public holidays',
     '제공기관별 상담시간 상이': 'Counseling hours vary by provider',
