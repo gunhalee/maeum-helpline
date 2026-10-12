@@ -328,18 +328,18 @@ export default async function LocalizedCategoryPage({ params }: Props) {
         />
         <div className="mt-6 border-t border-stone-200 pt-4">
           {editorial.paragraphs.length > 0 ? (
-            <details className="rounded-xl border border-stone-200 bg-stone-50">
-              <summary className="cursor-pointer px-3 py-4 text-base font-semibold leading-relaxed text-stone-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700 sm:px-4">
+            <section>
+              <h2 className="text-base font-semibold leading-relaxed text-stone-900">
                 {editorial.detailsHeading}
-              </summary>
-              <div className="space-y-3 px-3 pb-4 text-base leading-relaxed text-stone-700 sm:px-4">
+              </h2>
+              <div className="mt-3 space-y-3 text-base leading-relaxed text-stone-700">
                 {editorial.paragraphs.map((paragraph) => (
                   <p key={paragraph}>
                     <EmergencyText text={paragraph} />
                   </p>
                 ))}
               </div>
-            </details>
+            </section>
           ) : null}
           <Link
             href={withLang(

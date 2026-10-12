@@ -23,21 +23,19 @@ const GUIDE_PAGE_LABELS = {
     contents: '상황별 목차',
     backToContents: '목차로 돌아가기',
     starter: '처음엔 이렇게 말해도 돼요',
-    morePhrases: '다른 예문 보기',
     checks: '상담원이 먼저 확인할 수 있는 내용',
     concerns: '걱정되는 점',
     details: '자세히 보기',
-    sources: '추가 출처 보기',
+    sources: '출처',
   },
   en: {
     contents: 'Find a guide',
     backToContents: 'Back to contents',
     starter: 'You can start with this',
-    morePhrases: 'Other ways to start',
     checks: 'A counselor may first check',
     concerns: 'Common worries',
     details: 'More details',
-    sources: 'More sources',
+    sources: 'Sources',
   },
 } as const satisfies Record<Lang, Record<string, string>>
 
@@ -221,21 +219,11 @@ export default async function LocalizedGuidePage({ params }: Props) {
                 <h3 className="text-sm font-semibold text-green-950">
                   {labels.starter}
                 </h3>
-                <p className="mt-2 text-sm leading-6 text-stone-800">
-                  “<EmergencyText text={guide.starterPhrases[0]} />”
-                </p>
-                {guide.starterPhrases.length > 1 ? (
-                  <details className="mt-2">
-                    <summary className="cursor-pointer py-2 text-sm font-medium text-green-800 marker:text-green-700">
-                      {labels.morePhrases}
-                    </summary>
-                    <div className="mt-1 space-y-3 text-sm leading-6 text-stone-800">
-                      {guide.starterPhrases.slice(1).map((phrase) => (
-                        <p key={phrase}>“<EmergencyText text={phrase} />”</p>
-                      ))}
-                    </div>
-                  </details>
-                ) : null}
+                <div className="mt-2 space-y-3 text-sm leading-6 text-stone-800">
+                  {guide.starterPhrases.map((phrase) => (
+                    <p key={phrase}>“<EmergencyText text={phrase} />”</p>
+                  ))}
+                </div>
               </section>
 
               <section className="mt-5">
@@ -254,11 +242,11 @@ export default async function LocalizedGuidePage({ params }: Props) {
                 </ul>
               </section>
 
-              <details open={guide.slug === 'guide-119'} className="mt-5 border-t border-stone-200 pt-1">
-                <summary className="cursor-pointer py-3 text-sm font-semibold text-stone-800 marker:text-green-700">
+              <section className="mt-5">
+                <h3 className="text-sm font-semibold text-stone-950">
                   {labels.checks}
-                </summary>
-                <ul className="space-y-2 pb-3 text-sm leading-6 text-stone-700">
+                </h3>
+                <ul className="mt-3 space-y-2 text-sm leading-6 text-stone-700">
                   {guide.counselorChecks.map((item) => (
                     <li key={item} className="flex gap-2">
                       <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-green-700" />
@@ -266,9 +254,9 @@ export default async function LocalizedGuidePage({ params }: Props) {
                     </li>
                   ))}
                 </ul>
-              </details>
+              </section>
 
-              <details className="border-t border-stone-200">
+              <details className="mt-5 border-t border-stone-200">
                 <summary className="cursor-pointer py-3 text-sm font-semibold text-stone-800 marker:text-green-700">
                   {labels.details}
                 </summary>
@@ -308,23 +296,11 @@ export default async function LocalizedGuidePage({ params }: Props) {
               </details>
 
               <div className="border-t border-stone-200 pt-3 text-sm text-stone-600">
-                {guide.sourceLinks[0] ? (
-                  <a
-                    href={guide.sourceLinks[0].href}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-block py-2 underline underline-offset-4 hover:text-green-700"
-                  >
-                    {guide.sourceLinks[0].label}
-                  </a>
-                ) : null}
-                {guide.sourceLinks.length > 1 ? (
-                  <details>
-                    <summary className="cursor-pointer py-2 marker:text-green-700">
-                      {labels.sources}
-                    </summary>
-                    <ul className="space-y-1 pb-2">
-                      {guide.sourceLinks.slice(1).map((source) => (
+                {guide.sourceLinks.length > 0 ? (
+                  <section>
+                    <h3 className="font-semibold">{labels.sources}</h3>
+                    <ul className="mt-1">
+                      {guide.sourceLinks.map((source) => (
                         <li key={source.href}>
                           <a
                             href={source.href}
@@ -337,7 +313,7 @@ export default async function LocalizedGuidePage({ params }: Props) {
                         </li>
                       ))}
                     </ul>
-                  </details>
+                  </section>
                 ) : null}
                 <a
                   href="#guide-contents"
