@@ -197,7 +197,7 @@ export default async function LocalizedNoticePage({ params }: Props) {
               <ul className="mt-3 space-y-2 text-base leading-relaxed text-stone-700">
                 {section.bullets.map((item) => (
                   <li key={item} className="flex gap-3">
-                    <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-green-700" />
+                    <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-stone-400" />
                     <span>
                       <EmergencyText text={item} />
                     </span>

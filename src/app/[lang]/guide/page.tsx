@@ -162,25 +162,25 @@ export default async function LocalizedGuidePage({ params }: Props) {
           <p className="mt-4 max-w-3xl text-base leading-8 text-stone-600">
             <EmergencyText text={copy.intro} />
           </p>
-          <p className="mt-4 max-w-3xl border-l-4 border-green-700 bg-green-50 px-[12px] py-3 text-sm leading-7 text-green-950">
+          <p className="mt-4 max-w-3xl text-sm leading-7 text-stone-700">
             <EmergencyText text={copy.urgentNotice} />
           </p>
           <nav
             id="guide-contents"
             tabIndex={-1}
             aria-labelledby="guide-contents-title"
-            className="scroll-target mt-6 rounded-md focus:outline-none focus-visible:ring-2 focus-visible:ring-green-700"
+            className="scroll-target mt-6 focus:outline-none focus-visible:ring-2 focus-visible:ring-green-700"
           >
             <h2 id="guide-contents-title" className="text-base font-semibold text-stone-900">
               {labels.contents}
             </h2>
-            <ul className="mt-3 flex flex-wrap gap-2">
+            <ul className="mt-2 flex flex-wrap gap-x-6">
               {guides.map((guide) => (
                 <li key={guide.slug} className="max-w-full">
                   <a
                     href={`#${guide.slug}`}
                     data-guide-anchor
-                    className="inline-flex min-h-[44px] items-center rounded-md border border-stone-200 bg-white px-3 py-2 text-sm font-medium text-green-800 underline-offset-4 hover:bg-green-50 hover:underline"
+                    className="inline-flex min-h-[44px] items-center py-2 text-sm font-medium text-green-800 underline underline-offset-4 hover:text-green-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700"
                   >
                     {guide.categoryLabel}
                   </a>
@@ -190,16 +190,16 @@ export default async function LocalizedGuidePage({ params }: Props) {
           </nav>
         </header>
 
-        <div className="mt-8 space-y-10">
+        <div className="divide-y divide-stone-200">
           {guides.map((guide) => (
             <article
               key={guide.slug}
               id={guide.slug}
               tabIndex={-1}
               aria-labelledby={`${guide.slug}-title`}
-              className="scroll-target rounded-lg border border-stone-200 bg-white px-[12px] py-5 shadow-sm transition-shadow duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-green-700 sm:px-6 md:py-7"
+              className="scroll-target py-8 focus:outline-none focus-visible:ring-2 focus-visible:ring-green-700"
             >
-              <p className="text-sm font-medium leading-6 text-green-800">
+              <p className="text-sm font-medium leading-6 text-stone-600">
                 <EmergencyText text={guide.serviceName} />
               </p>
               <h2 id={`${guide.slug}-title`} className="mt-2 text-2xl font-semibold leading-tight text-stone-900">
@@ -210,13 +210,13 @@ export default async function LocalizedGuidePage({ params }: Props) {
               </p>
               <Link
                 href={withLang(`/${guide.category}`, currentLang)}
-                className="mt-4 inline-flex min-h-[44px] max-w-full items-center rounded-md border border-green-700 px-3 py-2 text-sm font-medium text-green-700 transition-colors hover:bg-green-50"
+                className="mt-3 inline-flex min-h-[44px] max-w-full items-center py-2 text-sm font-medium text-green-800 underline underline-offset-4 hover:text-green-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700"
               >
                 {guide.ctaLabel}
               </Link>
 
-              <section className="mt-5 rounded-md bg-green-50 px-[12px] py-3">
-                <h3 className="text-sm font-semibold text-green-950">
+              <section className="mt-5">
+                <h3 className="text-sm font-semibold text-stone-950">
                   {labels.starter}
                 </h3>
                 <div className="mt-2 space-y-3 text-sm leading-6 text-stone-800">
@@ -233,7 +233,7 @@ export default async function LocalizedGuidePage({ params }: Props) {
                 <ul className="mt-3 space-y-2 text-sm leading-6 text-stone-700">
                   {guide.concerns.map((item) => (
                     <li key={item} className="flex gap-2">
-                      <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-green-700" />
+                      <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-stone-400" />
                       <span>
                         <EmergencyText text={item} />
                       </span>
@@ -249,7 +249,7 @@ export default async function LocalizedGuidePage({ params }: Props) {
                 <ul className="mt-3 space-y-2 text-sm leading-6 text-stone-700">
                   {guide.counselorChecks.map((item) => (
                     <li key={item} className="flex gap-2">
-                      <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-green-700" />
+                      <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-stone-400" />
                       <span><EmergencyText text={item} /></span>
                     </li>
                   ))}
@@ -282,7 +282,7 @@ export default async function LocalizedGuidePage({ params }: Props) {
                         <ul className="mt-2 space-y-2 text-sm leading-6 text-stone-700">
                           {detail.list.map((item) => (
                             <li key={item} className="flex gap-2">
-                              <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-green-700" />
+                              <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-stone-400" />
                               <span>
                                 <EmergencyText text={item} />
                               </span>

@@ -26,7 +26,7 @@ export default async function LangLayout({ children, params }: Props) {
       <ChatbotBanner lang={lang} />
       <NavBar lang={lang} />
       <main className="flex flex-1 flex-col">{children}</main>
-      <footer className="border-t border-stone-200 bg-white/70 py-6">
+      <footer className="border-t border-stone-200 py-6">
         <div className="mx-auto max-w-5xl px-4 text-center text-sm leading-7 text-stone-500">
           <FooterNote lang={lang} />
         </div>

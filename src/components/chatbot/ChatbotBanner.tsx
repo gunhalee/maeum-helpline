@@ -38,7 +38,7 @@ export default function ChatbotBanner({ lang }: { lang: Lang }) {
     <header
       ref={headerRef}
       role="banner"
-      className="emergency-header border-b border-green-100 bg-green-50 px-[12px] py-[8px]"
+      className="emergency-header border-b border-stone-200 bg-white px-[12px] py-[8px]"
       aria-label={lang === 'en' ? 'Emergency contacts' : '긴급 연락처'}
     >
       <div className="mx-auto grid max-w-[460px] grid-cols-3 gap-[8px]">
@@ -47,9 +47,9 @@ export default function ChatbotBanner({ lang }: { lang: Lang }) {
             key={item.phone}
             href={`tel:${item.phone}`}
             aria-label={`${lang === 'en' ? item.enFull : item.koFull} ${item.phone}`}
-            className="flex min-h-[48px] min-w-0 flex-col items-center justify-center rounded-lg border border-green-700 bg-white px-[6px] py-[6px] text-center text-green-800 transition-colors hover:bg-green-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700"
+            className="flex min-h-[48px] min-w-0 flex-col items-center justify-center px-[6px] py-[6px] text-center text-green-800 hover:text-green-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700"
           >
-            <span className="whitespace-nowrap text-lg font-bold leading-tight">{item.phone}</span>
+            <span className="whitespace-nowrap text-lg font-bold leading-tight underline underline-offset-4">{item.phone}</span>
             <span className="text-xs font-medium leading-snug">{lang === 'en' ? item.enLabel : item.koLabel}</span>
           </a>
         ))}

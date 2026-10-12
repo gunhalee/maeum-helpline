@@ -55,7 +55,7 @@ function GroupSection({
 
   return (
     <section>
-      <div className="px-1 pb-3">
+      <div className="pb-1">
         <h3
           className="text-base font-semibold text-stone-800"
         >
@@ -63,7 +63,7 @@ function GroupSection({
         </h3>
       </div>
 
-      <div className="space-y-3">
+      <div className="divide-y divide-stone-200">
         {resolvedOrgs.map(({ org, ref }) => (
           <ResultCard
             key={org.id}
@@ -148,7 +148,7 @@ export default function ResultScreen({
       )}
 
       {groups.length === 0 && (
-        <div className="rounded-xl border border-stone-200 bg-white p-6 text-center text-base leading-7 text-stone-500">
+        <div className="py-6 text-center text-base leading-7 text-stone-600">
           {lang === 'en'
             ? 'We could not find a suitable service. You can check the guide for common support options.'
             : '적합한 기관을 찾지 못했습니다. 가이드에서 주요 상담처를 다시 확인할 수 있습니다.'}

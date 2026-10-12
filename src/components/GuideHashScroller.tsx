@@ -2,22 +2,9 @@
 
 import { useEffect } from 'react'
 
-const HIGHLIGHT_CLASS = 'guide-target-highlight'
-
 export default function GuideHashScroller() {
   useEffect(() => {
     let scrollFrame = 0
-    let highlightFrame = 0
-    let highlightTimer = 0
-    let highlightedTarget: HTMLElement | null = null
-
-    function clearHighlight() {
-      window.cancelAnimationFrame(scrollFrame)
-      window.cancelAnimationFrame(highlightFrame)
-      window.clearTimeout(highlightTimer)
-      highlightedTarget?.classList.remove(HIGHLIGHT_CLASS)
-      highlightedTarget = null
-    }
 
     function scrollToCurrentHash() {
       const rawHash = window.location.hash
@@ -33,16 +20,11 @@ export default function GuideHashScroller() {
       const target = document.getElementById(id)
       if (!(target instanceof HTMLElement) || !target.classList.contains('scroll-target')) return
 
-      clearHighlight()
+      window.cancelAnimationFrame(scrollFrame)
       scrollFrame = window.requestAnimationFrame(() => {
         const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
         target.scrollIntoView({ behavior: reduceMotion ? 'instant' : 'smooth', block: 'start' })
         target.focus({ preventScroll: true })
-        highlightedTarget = target
-        highlightFrame = window.requestAnimationFrame(() => {
-          target.classList.add(HIGHLIGHT_CLASS)
-        })
-        highlightTimer = window.setTimeout(clearHighlight, 1800)
       })
     }
 
@@ -61,7 +43,7 @@ export default function GuideHashScroller() {
     document.addEventListener('click', handleSameHashClick)
 
     return () => {
-      clearHighlight()
+      window.cancelAnimationFrame(scrollFrame)
       window.removeEventListener('hashchange', scrollToCurrentHash)
       document.removeEventListener('click', handleSameHashClick)
     }

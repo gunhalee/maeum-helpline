@@ -51,7 +51,7 @@ export default function ServiceGrid({
 
   if (services.length === 0) {
     return (
-      <div className="mt-8 rounded-xl border border-stone-200 bg-white p-6 text-center text-stone-600">
+      <div className="mt-8 py-6 text-center text-stone-600">
         <p>
           {lang === 'en'
             ? 'No services are listed yet. You can use the guide to find support.'
@@ -73,7 +73,7 @@ export default function ServiceGrid({
         <h2 id="services-heading" className="mb-3 text-lg font-semibold leading-relaxed text-stone-900">
           {lang === 'en' ? `Support services (${services.length})` : `상담·지원기관 ${services.length}곳`}
         </h2>
-        <div className="grid grid-cols-1 items-start gap-4">
+        <div className="divide-y divide-stone-200">
           {orderedServices.map((service) => (
             <ResultCard key={service.id} {...serviceToCardProps(service, lang)} />
           ))}
@@ -98,7 +98,7 @@ export default function ServiceGrid({
             <h2 className="mb-3 text-xl font-semibold text-stone-800">
               {translateCategoryLabel(meta.label, lang)} ({items.length})
             </h2>
-            <div className="grid grid-cols-1 items-start gap-4">
+            <div className="divide-y divide-stone-200">
               {items.map((service) => (
                 <ResultCard key={service.id} {...serviceToCardProps(service, lang)} />
               ))}

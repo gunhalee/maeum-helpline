@@ -102,7 +102,7 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body
-        className={`${notoSans.variable} flex min-h-screen flex-col bg-stone-50 font-sans`}
+        className={`${notoSans.variable} flex min-h-screen flex-col bg-white font-sans`}
       >
         <script
           type="application/ld+json"
