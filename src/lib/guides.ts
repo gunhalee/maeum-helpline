@@ -463,6 +463,8 @@ const GUIDE_ENTRIES: LocalizedGuideEntry[] = [
           list: [
             '처음부터 실명이나 모든 정보를 말할 필요는 없습니다.',
             '안전한 연락 방식과 시간을 먼저 정해도 됩니다.',
+            '운영시간은 화~토 11:00~21:00이며 일요일·월요일·공휴일은 쉽니다.',
+            '정규 상담은 공식 상담 안내의 카카오톡 채널로 신청한 뒤 일정을 조율합니다.',
           ],
         },
       ],
@@ -501,6 +503,8 @@ const GUIDE_ENTRIES: LocalizedGuideEntry[] = [
           list: [
             'You do not need to give your legal name or every detail at the start.',
             'You can first decide a safe contact method and time.',
+            'Opening hours are Tue–Sat 11:00–21:00 Korea time, excluding public holidays. Closed on Sundays and Mondays.',
+            'Regular counseling requires an application through the KakaoTalk channel on the official counseling page, followed by scheduling.',
           ],
         },
       ],
@@ -525,7 +529,7 @@ const GUIDE_ENTRIES: LocalizedGuideEntry[] = [
       ],
       counselorChecks: ['필요한 언어', '지금 있는 지역', '가족·체류·폭력·생활 중 어떤 문제인지'],
       concerns: [
-        '여러 언어로 상담받을 수 있습니다.',
+        '대표번호는 365일 24시간 운영하며 한국어·영어·중국어 등 15개 언어를 지원합니다.',
         '다문화가족과 이주민이 생활 정보를 물어봐도 됩니다.',
         '필요한 언어부터 말해도 됩니다.',
       ],
@@ -565,7 +569,7 @@ const GUIDE_ENTRIES: LocalizedGuideEntry[] = [
       ],
       counselorChecks: ['The language you need', 'Where you are in Korea', 'Whether the issue is family, stay, violence, or daily life'],
       concerns: [
-        'Multilingual counseling and interpretation may be available.',
+        'The main line operates 24/7 and supports 15 languages, including Korean, English and Chinese.',
         'Marriage migrants, migrants, and foreign families can ask about daily-life support.',
         'You can start by saying that you need interpretation.',
       ],
@@ -794,7 +798,7 @@ const GUIDE_ENTRIES: LocalizedGuideEntry[] = [
       counselorChecks: ['지금 안전한지', '잠·식사·일상이 어떤지', '상담·치료·법률·수사 지원 중 필요한 것'],
       concerns: [
         '스마일센터 서비스는 무료입니다.',
-        '피해자와 가족도 문의할 수 있습니다.',
+        '강력범죄 피해자와 가족이 이용할 수 있습니다.',
         '신고 절차와 별개로 회복 지원을 물어봐도 됩니다.',
       ],
       ctaLabel: '범죄피해 상담처 보기',
@@ -809,7 +813,8 @@ const GUIDE_ENTRIES: LocalizedGuideEntry[] = [
         {
           title: '연결 뒤에는',
           list: [
-            '전화 접수 뒤 면담이나 치료 일정으로 이어질 수 있습니다.',
+            '대표번호 1551-1275로 24시간 전화접수·상담을 받을 수 있습니다.',
+            '등록면담·심리치료는 평일 09:00~18:00에 진행합니다.',
             '피해자지원센터, 수사기관, 법률 지원과 연결될 수 있습니다.',
           ],
         },
@@ -836,7 +841,7 @@ const GUIDE_ENTRIES: LocalizedGuideEntry[] = [
       counselorChecks: ['Whether you are safe now', 'Whether sleep, meals, or daily life are affected', 'Whether counseling, treatment, legal, or investigation support is needed'],
       concerns: [
         'Smile Center services are described as free.',
-        'Victims and family members can ask about support.',
+        'The service is for victims of violent crime and their families.',
         'Recovery support can be discussed separately from the reporting process.',
       ],
       ctaLabel: 'Open crime victim support services',
@@ -851,7 +856,8 @@ const GUIDE_ENTRIES: LocalizedGuideEntry[] = [
         {
           title: 'What may happen next',
           list: [
-            'Phone intake may lead to an interview or treatment schedule.',
+            'Call the main number, 1551-1275, for 24/7 telephone intake and counseling.',
+            'Registration interviews and psychological treatment run on weekdays from 09:00 to 18:00 Korea time.',
             'You may be connected with victim support centers, investigation agencies, or legal aid.',
           ],
         },

@@ -1,0 +1,1142 @@
+{
+  "checkedAt": "2026-10-13",
+  "scope": "기존 활성 35개 전수 점검 및 확인 가능한 정보 갱신. 마음이음 중복 1개 통합 후 활성 34개.",
+  "status": "applied",
+  "remainingUncertainties": [
+    "띵동 공식 페이지의 상담전화 번호 표기 차이",
+    "행성인 공식 페이지의 상담시간 표기 차이",
+    "생명의전화 중앙 홈페이지의 점검 환경 TLS 오류",
+    "개별 지역센터·예약 상담 일정 및 임시 휴무는 이용 시 확인 필요"
+  ],
+  "entries": [
+    {
+      "pageId": "3751f6c7-527d-815c-b342-d47b29824f58",
+      "name": "스마일센터",
+      "sources": [
+        "https://resmile.or.kr/pages/?p=9"
+      ],
+      "verificationScope": "기관명·주요 이용대상·대표 상담 경로·공개 운영시간 확인. 임시 휴무 및 실제 통화 연결 여부는 확인 범위에 포함되지 않음.",
+      "notes": [],
+      "before": {
+        "operating_hours": "",
+        "hours_detail": "",
+        "hours_type": "custom",
+        "phone": "02-333-1295",
+        "description": "범죄피해 이후 트라우마 회복, 심리상담, 법률·수사 지원 연계를 받을 수 있는 피해자 지원기관입니다.",
+        "seo_summary": "스마일센터는 범죄피해 이후 트라우마, 불안, 우울, 일상 회복이 필요한 피해자와 가족에게 심리상담과 치료·법률·수사 지원 연계를 제공하는 범죄피해 지원기관입니다.",
+        "last_verified": null
+      },
+      "after": {
+        "operating_hours": "365일 24시간",
+        "hours_detail": "365일 24시간",
+        "hours_type": "24h",
+        "phone": "1551-1275",
+        "description": "강력범죄 피해자와 가족의 심리상담·치료와 일상 회복을 무료로 지원합니다. 대표번호 1551-1275의 전화접수·상담은 24시간, 등록면담·심리치료는 평일 09:00~18:00입니다.",
+        "seo_summary": "스마일센터는 강력범죄 피해자 및 가족을 위한 무료 심리회복 지원기관입니다. 대표번호 1551-1275로 24시간 전화접수·상담이 가능하며, 등록면담·심리치료는 평일 09:00~18:00에 진행합니다.",
+        "last_verified": "2026-10-13"
+      },
+      "appliedAt": "2026-10-12T15:18:28.286Z",
+      "readbackVerified": true
+    },
+    {
+      "pageId": "3751f6c7-527d-81a5-84d8-facac6051fa0",
+      "name": "대한법률구조공단",
+      "sources": [
+        "https://www.klac.or.kr/legalstruct/telephoneConsultation.do"
+      ],
+      "verificationScope": "기관명·주요 이용대상·대표 상담 경로·공개 운영시간 확인. 임시 휴무 및 실제 통화 연결 여부는 확인 범위에 포함되지 않음.",
+      "notes": [],
+      "before": {
+        "operating_hours": "",
+        "hours_detail": "",
+        "hours_type": "custom",
+        "url": "https://www.klac.or.kr/",
+        "description": "취약계층과 법률 도움이 필요할 때 무료 법률상담, 소송구조 등 지원 가능성을 확인할 수 있습니다.",
+        "last_verified": null
+      },
+      "after": {
+        "operating_hours": "평일 09:00~11:50, 13:00~17:50",
+        "hours_detail": "평일 09:00~11:50, 13:00~17:50",
+        "hours_type": "weekday",
+        "url": "https://www.klac.or.kr/legalstruct/telephoneConsultation.do",
+        "description": "132에서 간단한 법률문제를 무료로 상담합니다(통화료는 발신자 부담). 복잡한 사건은 방문상담을 예약하고, 소송구조는 대상 요건과 비용을 별도로 확인해야 합니다.",
+        "last_verified": "2026-10-13"
+      },
+      "appliedAt": "2026-10-12T15:18:29.022Z",
+      "readbackVerified": true
+    },
+    {
+      "pageId": "3751f6c7-527d-81e2-9f85-d1c179dbee61",
+      "name": "국가인권위원회 인권상담",
+      "sources": [
+        "https://case.humanrights.go.kr/rprsnt/rprsntGuide.do"
+      ],
+      "verificationScope": "기관명·주요 이용대상·대표 상담 경로·공개 운영시간 확인. 임시 휴무 및 실제 통화 연결 여부는 확인 범위에 포함되지 않음.",
+      "notes": [],
+      "before": {
+        "operating_hours": "",
+        "hours_detail": "",
+        "hours_type": "custom",
+        "description": "차별, 인권침해, 공공기관·시설 관련 권리 침해를 상담하고 진정 절차를 안내합니다.",
+        "contact_method": [
+          "phone"
+        ],
+        "last_verified": null
+      },
+      "after": {
+        "operating_hours": "평일 09:00~18:00",
+        "hours_detail": "평일 09:00~18:00",
+        "hours_type": "weekday",
+        "description": "차별·인권침해 상담과 진정 절차를 안내합니다. 전화상담은 평일 09:00~18:00이며, 인권e에서 온라인 진정을 접수할 수 있습니다.",
+        "contact_method": [
+          "phone",
+          "online",
+          "in-person"
+        ],
+        "last_verified": "2026-10-13"
+      },
+      "appliedAt": "2026-10-12T15:18:30.013Z",
+      "readbackVerified": true
+    },
+    {
+      "pageId": "3751f6c7-527d-818c-aa9e-c75eef61a05a",
+      "name": "학교폭력 신고 117",
+      "sources": [
+        "https://theyouthacademy.police.go.kr/main/Content.do?cid=policy12",
+        "https://www.police.go.kr/user/bbs/BD_selectBbs.do?q_bbsCode=1006&q_bbscttSn=1B000002113944400"
+      ],
+      "verificationScope": "기관명·주요 이용대상·대표 상담 경로·공개 운영시간 확인. 임시 휴무 및 실제 통화 연결 여부는 확인 범위에 포함되지 않음.",
+      "notes": [
+        "공식 근거가 확인되지 않은 카카오톡 상담 태그를 제거함."
+      ],
+      "before": {
+        "operating_hours": "",
+        "hours_detail": "",
+        "hours_type": "24h",
+        "url": null,
+        "contact_method": [
+          "kakao",
+          "phone",
+          "text"
+        ],
+        "description": "학교폭력, 따돌림, 사이버폭력 피해나 목격 상황을 신고할 수 있는 학교폭력 전용 번호입니다.",
+        "last_verified": null
+      },
+      "after": {
+        "operating_hours": "365일 24시간",
+        "hours_detail": "365일 24시간",
+        "hours_type": "24h",
+        "url": "https://theyouthacademy.police.go.kr/main/Content.do?cid=policy12",
+        "contact_method": [
+          "phone",
+          "text"
+        ],
+        "description": "학교폭력·따돌림·사이버폭력 피해나 목격 상황을 24시간 신고·상담할 수 있습니다. 전화는 117, 문자 신고는 #0117을 이용합니다.",
+        "last_verified": "2026-10-13"
+      },
+      "appliedAt": "2026-10-12T15:18:30.807Z",
+      "readbackVerified": true
+    },
+    {
+      "pageId": "3751f6c7-527d-813b-84ab-ce702f3dae3e",
+      "name": "노인학대 신고 1389",
+      "sources": [
+        "https://www.noinboho1389.or.kr/child/sub/about/report.php",
+        "https://www.seoul1389.or.kr/sub02/sub04.php"
+      ],
+      "verificationScope": "기관명·주요 이용대상·대표 상담 경로·공개 운영시간 확인. 임시 휴무 및 실제 통화 연결 여부는 확인 범위에 포함되지 않음.",
+      "notes": [],
+      "before": {
+        "operating_hours": "",
+        "hours_detail": "",
+        "hours_type": "24h",
+        "name": "노인학대 신고 1389",
+        "url": "https://www.noinboho1389.or.kr/",
+        "seo_summary": "노인학대 신고 1389는 노인 학대, 방임, 폭력, 경제적 착취가 의심될 때 신고·상담하고 노인보호전문기관의 현장 확인과 보호 지원으로 연결하는 번호입니다.",
+        "last_verified": null
+      },
+      "after": {
+        "operating_hours": "365일 24시간",
+        "hours_detail": "365일 24시간",
+        "hours_type": "24h",
+        "name": "노인학대 신고 1577-1389",
+        "url": "https://www.noinboho1389.or.kr/child/sub/about/report.php",
+        "seo_summary": "노인학대 신고·상담전화 1577-1389는 학대, 방임, 폭력, 경제적 착취가 의심될 때 24시간 신고·상담하고 노인보호전문기관의 보호 지원으로 연결하는 번호입니다.",
+        "last_verified": "2026-10-13"
+      },
+      "appliedAt": "2026-10-12T15:18:32.056Z",
+      "readbackVerified": true
+    },
+    {
+      "pageId": "3751f6c7-527d-8183-acc9-f66a7e37d64a",
+      "name": "치매상담콜센터",
+      "sources": [
+        "https://www.nid.or.kr/support/callcenter_use.aspx",
+        "https://gonggam.korea.kr/gonggamWeb/publication/pdf/2026_K_ladder_of_hope.pdf"
+      ],
+      "verificationScope": "기관명·주요 이용대상·대표 상담 경로·공개 운영시간 확인. 임시 휴무 및 실제 통화 연결 여부는 확인 범위에 포함되지 않음.",
+      "notes": [],
+      "before": {
+        "operating_hours": "",
+        "hours_detail": "매일 07:00-22:00",
+        "hours_type": "custom",
+        "url": "https://www.nid.or.kr/",
+        "age_group": [
+          "노인",
+          "가족"
+        ],
+        "description": "치매 예방, 진단·치료 정보, 돌봄 방법과 환자 가족의 심리적 어려움을 상담합니다.",
+        "last_verified": null
+      },
+      "after": {
+        "operating_hours": "매일 07:00~22:00",
+        "hours_detail": "매일 07:00~22:00",
+        "hours_type": "custom",
+        "url": "https://www.nid.or.kr/support/callcenter_use.aspx",
+        "age_group": [
+          "전체",
+          "가족"
+        ],
+        "description": "치매환자·가족뿐 아니라 치매가 궁금한 누구나 예방, 치료 정보, 돌봄 방법을 상담할 수 있습니다. 1899-9988은 매일 07:00~22:00에 운영합니다.",
+        "last_verified": "2026-10-13"
+      },
+      "appliedAt": "2026-10-12T15:18:32.867Z",
+      "readbackVerified": true
+    },
+    {
+      "pageId": "3751f6c7-527d-8145-a4fb-fe63a5639de9",
+      "name": "정신건강 심리상담 바우처사업",
+      "sources": [
+        "https://www.mohw.go.kr/menu.es?mid=a10706040800"
+      ],
+      "verificationScope": "기관명·주요 이용대상·대표 상담 경로·공개 운영시간 확인. 임시 휴무 및 실제 통화 연결 여부는 확인 범위에 포함되지 않음.",
+      "notes": [
+        "대상 요건·증빙서류·8회 지원·본인부담 안내를 재확인. 기존 안내 유지."
+      ],
+      "before": {
+        "operating_hours": "제공기관별 상담시간 상이",
+        "hours_detail": "제공기관별 상담시간 상이",
+        "hours_type": "custom",
+        "last_verified": "2026-09-13"
+      },
+      "after": {
+        "operating_hours": "제공기관별 상담시간 상이",
+        "hours_detail": "제공기관별 상담시간 상이",
+        "hours_type": "custom",
+        "last_verified": "2026-10-13"
+      },
+      "appliedAt": "2026-10-12T15:18:33.641Z",
+      "readbackVerified": true
+    },
+    {
+      "pageId": "3751f6c7-527d-81c2-a1dc-d2347b94ede7",
+      "name": "중독관리통합지원센터",
+      "sources": [
+        "https://www.mohw.go.kr/menu.es?mid=a10706040400"
+      ],
+      "verificationScope": "기관명·주요 이용대상·대표 상담 경로·공개 운영시간 확인. 임시 휴무 및 실제 통화 연결 여부는 확인 범위에 포함되지 않음.",
+      "notes": [
+        "지역센터 목록과 사업 안내 확인. 전국 공통 전화번호·시간을 임의로 지정하지 않음."
+      ],
+      "before": {
+        "operating_hours": "",
+        "hours_detail": "",
+        "hours_type": "weekday",
+        "url": "https://www.mohw.go.kr/menu.es?mid=a10706040400",
+        "last_verified": null
+      },
+      "after": {
+        "operating_hours": "지역 센터별 상담시간 확인",
+        "hours_detail": "지역 센터별 상담시간 확인",
+        "hours_type": "custom",
+        "url": "https://www.mohw.go.kr/menu.es?mid=a10706040400",
+        "last_verified": "2026-10-13"
+      },
+      "appliedAt": "2026-10-12T15:18:34.867Z",
+      "readbackVerified": true
+    },
+    {
+      "pageId": "3751f6c7-527d-818c-8873-cc7e3cb5b038",
+      "name": "심리상담포털",
+      "sources": [
+        "https://www.mindinfo.kr/new/index.asp"
+      ],
+      "verificationScope": "기관명·주요 이용대상·대표 상담 경로·공개 운영시간 확인. 임시 휴무 및 실제 통화 연결 여부는 확인 범위에 포함되지 않음.",
+      "notes": [],
+      "before": {
+        "operating_hours": "",
+        "hours_detail": "",
+        "hours_type": "custom",
+        "url": "https://www.mindinfo.kr/",
+        "description": "한국상담심리학회가 운영하는 심리상담센터 검색 포털로 지역과 상담기관 정보를 찾아볼 수 있습니다.",
+        "last_verified": null
+      },
+      "after": {
+        "operating_hours": "정보 검색 서비스 · 상담시간은 기관별 확인",
+        "hours_detail": "정보 검색 서비스 · 상담시간은 기관별 확인",
+        "hours_type": "custom",
+        "url": "https://www.mindinfo.kr/new/index.asp",
+        "description": "한국상담심리학회가 운영하는 상담심리사·심리상담센터 검색 포털입니다. 실제 상담의 비용·시간·예약 방법은 선택한 상담기관에 확인해 주세요.",
+        "last_verified": "2026-10-13"
+      },
+      "appliedAt": "2026-10-12T15:18:35.825Z",
+      "readbackVerified": true
+    },
+    {
+      "pageId": "3751f6c7-527d-8171-9978-d614ca62e38f",
+      "name": "정신건강복지센터",
+      "sources": [
+        "https://www.mentalhealth.go.kr/portal/disease/diseaseDetail.do?dissId=26",
+        "https://news.seoul.go.kr/welfare/archives/561837",
+        "https://www.129.go.kr/109"
+      ],
+      "verificationScope": "기관명·주요 이용대상·대표 상담 경로·공개 운영시간 확인. 임시 휴무 및 실제 통화 연결 여부는 확인 범위에 포함되지 않음.",
+      "notes": [
+        "서울시 마음이음의 상담 안내를 기존 전국 1577-0199 항목에 통합. 자살예방상담 109와 지역센터 방문상담은 구분."
+      ],
+      "before": {
+        "operating_hours": "",
+        "hours_detail": "",
+        "hours_type": "weekday",
+        "name": "정신건강복지센터",
+        "url": "https://www.mentalhealth.go.kr/",
+        "description": "우울, 불안, 자살위험, 정신건강 문제를 지역 기반으로 상담하고 치료·복지 지원으로 연결합니다.",
+        "seo_summary": "정신건강복지센터는 우울, 불안, 자살위험, 정신건강 문제를 지역 기반으로 상담하고 필요한 치료, 복지, 위기개입 지원으로 연결하는 공공 정신건강 기관입니다.",
+        "search_intent": [
+          "정신건강복지센터",
+          "우울 상담",
+          "불안 상담",
+          "무료 정신건강 상담",
+          "지역 정신건강"
+        ],
+        "situation_keywords": [
+          "불안",
+          "사례관리",
+          "심리상담",
+          "우울",
+          "정신건강",
+          "정신질환",
+          "조현병",
+          "지역상담"
+        ],
+        "last_verified": null
+      },
+      "after": {
+        "operating_hours": "365일 24시간",
+        "hours_detail": "365일 24시간",
+        "hours_type": "24h",
+        "name": "정신건강 위기상담·정신건강복지센터",
+        "url": "https://www.mentalhealth.go.kr/portal/disease/diseaseDetail.do?dissId=26",
+        "description": "1577-0199에서 24시간 정신건강 위기상담과 지역 지원 연계를 안내합니다. 서울시 마음이음상담도 같은 번호를 사용합니다. 지역센터 방문상담·일반 업무시간은 센터별로 확인해 주세요.",
+        "seo_summary": "1577-0199 정신건강 위기상담전화는 365일 24시간 운영하며 지역 정신건강복지센터 등으로 연계합니다. 서울시 마음이음상담 안내를 포함하며, 지역센터 방문상담 시간은 별도로 확인해야 합니다.",
+        "search_intent": [
+          "정신건강복지센터",
+          "우울 상담",
+          "불안 상담",
+          "무료 정신건강 상담",
+          "지역 정신건강",
+          "마음이음",
+          "서울 정신건강 위기상담"
+        ],
+        "situation_keywords": [
+          "불안",
+          "사례관리",
+          "심리상담",
+          "우울",
+          "정신건강",
+          "정신질환",
+          "조현병",
+          "지역상담",
+          "마음이음"
+        ],
+        "last_verified": "2026-10-13"
+      },
+      "appliedAt": "2026-10-12T15:18:37.285Z",
+      "readbackVerified": true
+    },
+    {
+      "pageId": "3751f6c7-527d-816f-817c-c860c0d0ca83",
+      "name": "생명의전화(민간)",
+      "sources": [
+        "https://www.129.go.kr/109"
+      ],
+      "verificationScope": "기관명·주요 이용대상·대표 상담 경로·공개 운영시간 확인. 임시 휴무 및 실제 통화 연결 여부는 확인 범위에 포함되지 않음.",
+      "notes": [
+        "중앙 홈페이지는 점검 환경에서 TLS 오류. 보건복지부의 현재 109 유관기관 안내에서 1588-9191의 24시간 상담을 교차 확인. 홈페이지 주소는 유지."
+      ],
+      "before": {
+        "operating_hours": "",
+        "hours_detail": "",
+        "hours_type": "24h",
+        "last_verified": null
+      },
+      "after": {
+        "operating_hours": "365일 24시간",
+        "hours_detail": "365일 24시간",
+        "hours_type": "24h",
+        "last_verified": "2026-10-13"
+      },
+      "appliedAt": "2026-10-12T15:18:38.041Z",
+      "readbackVerified": true
+    },
+    {
+      "pageId": "3751f6c7-527d-81e7-9576-c9574b25303a",
+      "name": "도박 중독 헬프라인",
+      "sources": [
+        "https://www.kcgp.or.kr/portal/bbs/B0000030/view.do?menuNo=200020&nttId=40230&pageIndex=2&searchCnd=1&searchWrd="
+      ],
+      "verificationScope": "기관명·주요 이용대상·대표 상담 경로·공개 운영시간 확인. 임시 휴무 및 실제 통화 연결 여부는 확인 범위에 포함되지 않음.",
+      "notes": [
+        "2023년 변경 공지와 현재 공식 홈페이지 공통 하단 시간표가 일치함."
+      ],
+      "before": {
+        "operating_hours": "",
+        "hours_detail": "",
+        "hours_type": "24h",
+        "description": "도박 문제, 빚, 가족도박, 재발 걱정에 대해 상담하고 치유·회복 지원센터로 연결합니다.",
+        "last_verified": null
+      },
+      "after": {
+        "operating_hours": "매일 09:00~22:00",
+        "hours_detail": "매일 09:00~22:00",
+        "hours_type": "custom",
+        "description": "도박 문제와 가족의 어려움을 1336에서 상담하고 치유·회복 지원으로 연결합니다. 직접 상담은 매일 09:00~22:00이며, 야간에는 다음 날 09:00 이후 콜백을 예약할 수 있습니다.",
+        "last_verified": "2026-10-13"
+      },
+      "appliedAt": "2026-10-12T15:18:38.981Z",
+      "readbackVerified": true
+    },
+    {
+      "pageId": "3751f6c7-527d-8195-9a80-c2f09ef0c5c2",
+      "name": "외국인종합안내센터",
+      "sources": [
+        "https://immigration.go.kr/moj/196/subview.do",
+        "https://www.immigration.go.kr/moj/132/subview..do"
+      ],
+      "verificationScope": "기관명·주요 이용대상·대표 상담 경로·공개 운영시간 확인. 임시 휴무 및 실제 통화 연결 여부는 확인 범위에 포함되지 않음.",
+      "notes": [],
+      "before": {
+        "operating_hours": "",
+        "hours_detail": "",
+        "hours_type": "24h",
+        "url": "https://www.immigration.go.kr",
+        "description": "외국인의 출입국, 비자, 체류, 생활 안내와 통역 지원을 상담하는 종합 안내 창구입니다.",
+        "last_verified": null
+      },
+      "after": {
+        "operating_hours": "평일 09:00~22:00, 공휴일 휴무",
+        "hours_detail": "평일 09:00~22:00, 공휴일 휴무",
+        "hours_type": "weekday",
+        "url": "https://immigration.go.kr/moj/196/subview.do",
+        "description": "1345에서 출입국·비자·체류·생활 안내와 3자 통역을 제공합니다. 평일 09:00~22:00에 운영하며 공휴일은 쉽니다. 주간 20개 언어, 18:00 이후에는 한국어·영어·중국어로 상담합니다.",
+        "last_verified": "2026-10-13"
+      },
+      "appliedAt": "2026-10-12T15:18:41.304Z",
+      "readbackVerified": true
+    },
+    {
+      "pageId": "3751f6c7-527d-81f7-97d1-c7cb30a1a28e",
+      "name": "청소년 성소수자 지원센터 띵동",
+      "sources": [
+        "https://www.ddingdong.kr/counsel"
+      ],
+      "verificationScope": "기관명·주요 이용대상·대표 상담 경로·공개 운영시간 확인. 임시 휴무 및 실제 통화 연결 여부는 확인 범위에 포함되지 않음.",
+      "notes": [
+        "전화번호는 같은 공식 페이지에 02-924-1227과 02-924-1224(내선 1번)가 함께 있어 신규 입력 보류. 공식 상담 안내로 연결."
+      ],
+      "before": {
+        "operating_hours": "",
+        "hours_detail": "",
+        "hours_type": "weekday",
+        "url": "https://www.ddingdong.kr",
+        "description": "청소년 성소수자의 아웃팅 걱정, 가족갈등, 커밍아웃, 주거 위기 상담과 긴급지원을 연결합니다.",
+        "contact_method": [
+          "in-person",
+          "phone"
+        ],
+        "last_verified": null
+      },
+      "after": {
+        "operating_hours": "화요일~토요일 11:00~21:00, 일요일·월요일·공휴일 휴무",
+        "hours_detail": "화요일~토요일 11:00~21:00, 일요일·월요일·공휴일 휴무",
+        "hours_type": "custom",
+        "url": "https://www.ddingdong.kr/counsel",
+        "description": "청소년 성소수자의 정체성·관계·주거 위기 상담과 지원을 제공합니다. 화~토 11:00~21:00(공휴일 휴무)에 운영하며, 정규 상담은 공식 안내의 카카오톡 채널로 신청한 뒤 일정을 조율합니다.",
+        "contact_method": [
+          "kakao",
+          "phone",
+          "in-person",
+          "video"
+        ],
+        "last_verified": "2026-10-13"
+      },
+      "appliedAt": "2026-10-12T15:18:42.012Z",
+      "readbackVerified": true
+    },
+    {
+      "pageId": "3751f6c7-527d-816d-a192-c0a531545e6c",
+      "name": "독거노인종합지원센터",
+      "sources": [
+        "https://www.1661-2129.or.kr/"
+      ],
+      "verificationScope": "기관명·주요 이용대상·대표 상담 경로·공개 운영시간 확인. 임시 휴무 및 실제 통화 연결 여부는 확인 범위에 포함되지 않음.",
+      "notes": [
+        "대표 행정 전화번호를 24시간 돌봄상담 번호로 추가하지 않음."
+      ],
+      "before": {
+        "operating_hours": "",
+        "hours_detail": "",
+        "hours_type": "custom",
+        "description": "독거노인의 고립, 돌봄 공백, 응급안전안심서비스 등 노인 돌봄 지원 정보를 안내합니다.",
+        "last_verified": null
+      },
+      "after": {
+        "operating_hours": "돌봄서비스 이용·신청은 지역 수행기관에 확인",
+        "hours_detail": "돌봄서비스 이용·신청은 지역 수행기관에 확인",
+        "hours_type": "custom",
+        "description": "노인맞춤돌봄서비스 등 취약노인 돌봄 지원 정보와 지역 수행기관을 안내합니다. 서비스 신청과 이용시간은 거주지 행정복지센터·수행기관에 확인해 주세요.",
+        "last_verified": "2026-10-13"
+      },
+      "appliedAt": "2026-10-12T15:18:42.869Z",
+      "readbackVerified": true
+    },
+    {
+      "pageId": "3751f6c7-527d-81c9-a628-faf66f7f5a65",
+      "name": "청소년 위기상담 1388",
+      "sources": [
+        "https://www.1388.go.kr/occ/YTOSP_SC_OCC_01",
+        "https://www.kyci.or.kr/userSite/notice01_1.asp",
+        "https://kyci.or.kr/userSite/sub02_1_cont.asp"
+      ],
+      "verificationScope": "기관명·주요 이용대상·대표 상담 경로·공개 운영시간 확인. 임시 휴무 및 실제 통화 연결 여부는 확인 범위에 포함되지 않음.",
+      "notes": [],
+      "before": {
+        "operating_hours": "",
+        "hours_detail": "",
+        "hours_type": "24h",
+        "description": "청소년이 학교폭력, 가출, 자해, 가족갈등, 학업 스트레스를 상담할 수 있는 24시간 상담전화입니다.",
+        "last_verified": null
+      },
+      "after": {
+        "operating_hours": "365일 24시간",
+        "hours_detail": "365일 24시간",
+        "hours_type": "24h",
+        "description": "청소년의 학교폭력·가출·자해 위험·가족갈등·학업 고민을 365일 24시간 상담합니다. 청소년뿐 아니라 보호자도 상담과 지역 지원 연계를 문의할 수 있습니다.",
+        "last_verified": "2026-10-13"
+      },
+      "appliedAt": "2026-10-12T15:18:43.626Z",
+      "readbackVerified": true
+    },
+    {
+      "pageId": "3751f6c7-527d-813b-853d-d5a831b976e8",
+      "name": "자살위기상담 109",
+      "sources": [
+        "https://www.129.go.kr/109"
+      ],
+      "verificationScope": "기관명·주요 이용대상·대표 상담 경로·공개 운영시간 확인. 임시 휴무 및 실제 통화 연결 여부는 확인 범위에 포함되지 않음.",
+      "notes": [],
+      "before": {
+        "operating_hours": "",
+        "hours_detail": "",
+        "hours_type": "24h",
+        "last_verified": null
+      },
+      "after": {
+        "operating_hours": "365일 24시간",
+        "hours_detail": "365일 24시간",
+        "hours_type": "24h",
+        "last_verified": "2026-10-13"
+      },
+      "appliedAt": "2026-10-12T15:18:44.350Z",
+      "readbackVerified": true
+    },
+    {
+      "pageId": "3751f6c7-527d-8173-b739-f90acc628e4c",
+      "name": "보건복지 콜센터",
+      "sources": [
+        "https://www.129.go.kr/counsel/counsel01.do"
+      ],
+      "verificationScope": "기관명·주요 이용대상·대표 상담 경로·공개 운영시간 확인. 임시 휴무 및 실제 통화 연결 여부는 확인 범위에 포함되지 않음.",
+      "notes": [],
+      "before": {
+        "operating_hours": "",
+        "hours_detail": "",
+        "hours_type": "24h",
+        "name": "보건복지 콜센터",
+        "url": "https://www.129.go.kr",
+        "description": "긴급복지, 노인·아동학대, 정신건강, 복지서비스 문의를 상담하고 관련 공공기관으로 안내합니다.",
+        "seo_summary": "보건복지 콜센터는 긴급복지, 정신건강, 노인·아동학대, 돌봄과 복지서비스 문의를 상담하고 필요한 공공 지원기관으로 안내하는 대표 복지 상담전화입니다.",
+        "last_verified": null
+      },
+      "after": {
+        "operating_hours": "일반상담 평일 09:00~18:00 · 긴급지원상담 24시간",
+        "hours_detail": "일반상담 평일 09:00~18:00 · 긴급지원상담 24시간",
+        "hours_type": "custom",
+        "name": "보건복지상담센터 129",
+        "url": "https://www.129.go.kr/counsel/counsel01.do",
+        "description": "일반 복지·보건 상담은 평일 09:00~18:00입니다. 긴급복지지원·복지사각지대·노인 및 아동학대·정신건강 상담은 24시간 이용할 수 있습니다.",
+        "seo_summary": "보건복지상담센터 129는 일반상담을 평일 09:00~18:00에, 긴급복지지원·복지사각지대·노인 및 아동학대·정신건강 상담을 24시간 제공합니다.",
+        "last_verified": "2026-10-13"
+      },
+      "appliedAt": "2026-10-12T15:18:45.060Z",
+      "readbackVerified": true
+    },
+    {
+      "pageId": "3751f6c7-527d-81e7-af81-ca2a5b848b68",
+      "name": "구급 신고 119",
+      "sources": [
+        "https://www.119.go.kr/",
+        "https://www.nfa.go.kr/nfa/news/pressrelease/press/?cntId=2467&mode=view&pageIdx=3&searchCondition=all"
+      ],
+      "verificationScope": "기관명·주요 이용대상·대표 상담 경로·공개 운영시간 확인. 임시 휴무 및 실제 통화 연결 여부는 확인 범위에 포함되지 않음.",
+      "notes": [],
+      "before": {
+        "operating_hours": "",
+        "hours_detail": "",
+        "hours_type": "24h",
+        "last_verified": null
+      },
+      "after": {
+        "operating_hours": "365일 24시간",
+        "hours_detail": "365일 24시간",
+        "hours_type": "24h",
+        "last_verified": "2026-10-13"
+      },
+      "appliedAt": "2026-10-12T15:18:45.920Z",
+      "readbackVerified": true
+    },
+    {
+      "pageId": "3751f6c7-527d-8150-9748-ffaf2f81689c",
+      "name": "여성긴급전화 1366",
+      "sources": [
+        "https://www.mogef.go.kr/sp/hrp/sp_hrp_f002.do"
+      ],
+      "verificationScope": "기관명·주요 이용대상·대표 상담 경로·공개 운영시간 확인. 임시 휴무 및 실제 통화 연결 여부는 확인 범위에 포함되지 않음.",
+      "notes": [],
+      "before": {
+        "operating_hours": "",
+        "hours_detail": "",
+        "hours_type": "24h",
+        "last_verified": null
+      },
+      "after": {
+        "operating_hours": "365일 24시간",
+        "hours_detail": "365일 24시간",
+        "hours_type": "24h",
+        "last_verified": "2026-10-13"
+      },
+      "appliedAt": "2026-10-12T15:18:46.797Z",
+      "readbackVerified": true
+    },
+    {
+      "pageId": "3751f6c7-527d-8102-9c44-c20af5bebc77",
+      "name": "퀴어건강 정보센터",
+      "sources": [
+        "https://queerhealth.kr/"
+      ],
+      "verificationScope": "기관명·주요 이용대상·대표 상담 경로·공개 운영시간 확인. 임시 휴무 및 실제 통화 연결 여부는 확인 범위에 포함되지 않음.",
+      "notes": [
+        "공공기관 또는 직접 상담센터로 오인되지 않도록 이름과 운영 성격을 바로잡음. 수록된 개별 병원까지 검증한 것은 아님."
+      ],
+      "before": {
+        "operating_hours": "",
+        "hours_detail": "",
+        "hours_type": "custom",
+        "name": "퀴어건강 정보센터",
+        "description": "성소수자 친화 병원, 정신건강의학과, 상담센터 정보를 찾아볼 수 있는 건강 정보 경로입니다.",
+        "seo_summary": "퀴어건강 정보센터는 성소수자가 진료나 상담을 찾을 때 성소수자 친화 병원, 정신건강의학과, 상담센터 정보를 확인할 수 있는 정보 제공 경로입니다.",
+        "source_type": "nonprofit",
+        "source_priority": "nonprofit-medium",
+        "last_verified": null
+      },
+      "after": {
+        "operating_hours": "정보 검색 서비스 · 기관별 최신 안내 확인",
+        "hours_detail": "정보 검색 서비스 · 기관별 최신 안내 확인",
+        "hours_type": "custom",
+        "name": "퀴어건강 정보 모음",
+        "description": "개인이 공개 자료를 모아 제공하는 성소수자 병원·상담센터 정보 사이트입니다. 직접 상담기관은 아니며, 수록 기관의 운영 여부·상담시간·비용은 각 기관에 확인해 주세요.",
+        "seo_summary": "queerhealth.kr은 성소수자 관련 병원·상담센터와 건강 자료를 모은 개인 운영 정보 사이트입니다. 직접 상담을 제공하는 기관이 아니며 수록 정보의 최신성은 해당 기관에 확인해야 합니다.",
+        "source_type": "private",
+        "source_priority": "private-medium",
+        "last_verified": "2026-10-13"
+      },
+      "appliedAt": "2026-10-12T15:18:47.561Z",
+      "readbackVerified": true
+    },
+    {
+      "pageId": "3751f6c7-527d-814d-b060-e2a36980c710",
+      "name": "마약 상담 용기한걸음센터",
+      "sources": [
+        "https://nodrugzone.mfds.go.kr/home/kor/M928548033/consultation/index.do"
+      ],
+      "verificationScope": "기관명·주요 이용대상·대표 상담 경로·공개 운영시간 확인. 임시 휴무 및 실제 통화 연결 여부는 확인 범위에 포함되지 않음.",
+      "notes": [
+        "전화 1342의 24시간 운영을 확인. 문자·채팅 24시간 확대는 하반기 예정이라는 문구만 있어 시행 완료로 단정하지 않음."
+      ],
+      "before": {
+        "operating_hours": "",
+        "hours_detail": "24시간",
+        "hours_type": "24h",
+        "age_group": [
+          "성인",
+          "가족"
+        ],
+        "last_verified": null
+      },
+      "after": {
+        "operating_hours": "365일 24시간",
+        "hours_detail": "365일 24시간",
+        "hours_type": "24h",
+        "age_group": [
+          "전체",
+          "가족"
+        ],
+        "last_verified": "2026-10-13"
+      },
+      "appliedAt": "2026-10-12T15:18:48.804Z",
+      "readbackVerified": true
+    },
+    {
+      "pageId": "3751f6c7-527d-81a9-9ef4-db9896d0c3f3",
+      "name": "한국레즈비언상담소",
+      "sources": [
+        "https://lsangdam.org/info/"
+      ],
+      "verificationScope": "기관명·주요 이용대상·대표 상담 경로·공개 운영시간 확인. 임시 휴무 및 실제 통화 연결 여부는 확인 범위에 포함되지 않음.",
+      "notes": [],
+      "before": {
+        "operating_hours": "",
+        "hours_detail": "",
+        "hours_type": "custom",
+        "url": "https://lsangdam.org/",
+        "description": "레즈비언·여성 성소수자의 성정체성, 커밍아웃, 관계, 차별과 인권 침해 고민을 상담합니다.",
+        "contact_method": [
+          "online"
+        ],
+        "exclusion_description": "즉각적인 신변위협이나 폭력 상황은 112 또는 긴급 지원기관 연결이 우선입니다.",
+        "last_verified": null
+      },
+      "after": {
+        "operating_hours": "신청서 접수 후 상담 일정 조율",
+        "hours_detail": "신청서 접수 후 상담 일정 조율",
+        "hours_type": "custom",
+        "url": "https://lsangdam.org/info/",
+        "description": "성소수자 정체성·차별·인권침해 고민을 상담합니다. 개인 상담은 신청서 접수 후 일정을 조율하며 대면·화상으로 진행합니다. 접수 상황에 따라 수개월 대기할 수 있습니다.",
+        "contact_method": [
+          "online",
+          "in-person",
+          "video"
+        ],
+        "exclusion_description": "5회기 이상의 장기 심리상담이나 자살위기 상담은 전문기관 이용이 권장됩니다. 즉각적인 위험에는 109·119·112를 이용해 주세요.",
+        "last_verified": "2026-10-13"
+      },
+      "appliedAt": "2026-10-12T15:18:49.993Z",
+      "readbackVerified": true
+    },
+    {
+      "pageId": "3751f6c7-527d-818a-b78e-df6110913c4a",
+      "name": "행성인 인권상담",
+      "sources": [
+        "https://lgbtpride.or.kr/xe/sub43"
+      ],
+      "verificationScope": "기관명·주요 이용대상·대표 상담 경로·공개 운영시간 확인. 임시 휴무 및 실제 통화 연결 여부는 확인 범위에 포함되지 않음.",
+      "notes": [
+        "본문은 평일 11~18시, 하단 배너는 월·수·금 13~20시로 충돌. 단일 운영시간을 확정하지 않음. 전화번호는 상담 본문에서 확인."
+      ],
+      "before": {
+        "operating_hours": "",
+        "hours_detail": "",
+        "hours_type": "custom",
+        "url": "https://lgbtpride.or.kr",
+        "phone": "",
+        "description": "성소수자 차별, 아웃팅, 가족·직장 내 인권침해를 익명으로 이야기할 수 있는 상담 경로입니다.",
+        "contact_method": [
+          "online"
+        ],
+        "exclusion_description": "현재 폭력, 협박, 주거지 침입 등 긴급 위험이 있으면 112가 우선입니다.",
+        "last_verified": null
+      },
+      "after": {
+        "operating_hours": "공식 시간표가 서로 달라 사전 확인 필요",
+        "hours_detail": "공식 시간표가 서로 달라 사전 확인 필요",
+        "hours_type": "custom",
+        "url": "https://lgbtpride.or.kr/xe/sub43",
+        "phone": "02-715-9984",
+        "description": "성소수자라는 이유로 겪는 차별·인권침해를 상담합니다. 전화·이메일로 문의할 수 있고 방문상담은 예약이 필요합니다. 공식 페이지의 상담시간 안내가 서로 달라 연락 전 확인해 주세요.",
+        "contact_method": [
+          "phone",
+          "online",
+          "in-person"
+        ],
+        "exclusion_description": "심리치료·트라우마 치료·자살위기 상담은 행성인의 인권상담 범위에 포함되지 않아 관련 전문기관 이용이 필요합니다.",
+        "last_verified": "2026-10-13"
+      },
+      "appliedAt": "2026-10-12T15:18:50.755Z",
+      "readbackVerified": true
+    },
+    {
+      "pageId": "3751f6c7-527d-816a-9d2b-f724dac69c99",
+      "name": "한국여성의전화(민간)",
+      "sources": [
+        "https://hotline.or.kr/information"
+      ],
+      "verificationScope": "기관명·주요 이용대상·대표 상담 경로·공개 운영시간 확인. 임시 휴무 및 실제 통화 연결 여부는 확인 범위에 포함되지 않음.",
+      "notes": [
+        "13:00~14:00 상담 중단 시간을 반영."
+      ],
+      "before": {
+        "operating_hours": "",
+        "hours_detail": "평일 10:00~17:00",
+        "hours_type": "weekday",
+        "last_verified": null
+      },
+      "after": {
+        "operating_hours": "평일 10:00~13:00, 14:00~17:00",
+        "hours_detail": "평일 10:00~13:00, 14:00~17:00",
+        "hours_type": "weekday",
+        "last_verified": "2026-10-13"
+      },
+      "appliedAt": "2026-10-12T15:18:51.481Z",
+      "readbackVerified": true
+    },
+    {
+      "pageId": "3751f6c7-527d-819f-9a93-e6a26913adb4",
+      "name": "외국인력상담센터",
+      "sources": [
+        "https://eps.hrdkorea.or.kr/e9/user/intro/intro.do?method=workerCounseling"
+      ],
+      "verificationScope": "기관명·주요 이용대상·대표 상담 경로·공개 운영시간 확인. 임시 휴무 및 실제 통화 연결 여부는 확인 범위에 포함되지 않음.",
+      "notes": [],
+      "before": {
+        "operating_hours": "매일 09:00~18:00",
+        "hours_detail": "매일 09:00~18:00",
+        "hours_type": "custom",
+        "last_verified": "2026-09-13"
+      },
+      "after": {
+        "operating_hours": "매일 09:00~18:00",
+        "hours_detail": "매일 09:00~18:00",
+        "hours_type": "custom",
+        "last_verified": "2026-10-13"
+      },
+      "appliedAt": "2026-10-12T15:18:52.335Z",
+      "readbackVerified": true
+    },
+    {
+      "pageId": "3751f6c7-527d-8183-9d14-c5d5401e9cb2",
+      "name": "중앙디지털성범죄피해자지원센터",
+      "sources": [
+        "https://d4u.stop.or.kr/ko/main",
+        "https://d4u.stop.or.kr/ko/support/content/guide"
+      ],
+      "verificationScope": "기관명·주요 이용대상·대표 상담 경로·공개 운영시간 확인. 임시 휴무 및 실제 통화 연결 여부는 확인 범위에 포함되지 않음.",
+      "notes": [
+        "직통 02-735-8994 시간과 24시간 1366을 구분한 기존 안내 재확인."
+      ],
+      "before": {
+        "operating_hours": "평일 08:00~22:00, 주말·공휴일 09:00~18:00",
+        "hours_detail": "평일 08:00~22:00, 주말·공휴일 09:00~18:00",
+        "hours_type": "custom",
+        "url": "https://d4u.stop.or.kr",
+        "last_verified": "2026-09-13"
+      },
+      "after": {
+        "operating_hours": "평일 08:00~22:00, 주말·공휴일 09:00~18:00",
+        "hours_detail": "평일 08:00~22:00, 주말·공휴일 09:00~18:00",
+        "hours_type": "custom",
+        "url": "https://d4u.stop.or.kr/ko/main",
+        "last_verified": "2026-10-13"
+      },
+      "appliedAt": "2026-10-12T15:18:53.137Z",
+      "readbackVerified": true
+    },
+    {
+      "pageId": "3751f6c7-527d-81af-997c-fea086402426",
+      "name": "한국게이인권운동단체 친구사이",
+      "sources": [
+        "https://chingusai.net/xe/counseling"
+      ],
+      "verificationScope": "기관명·주요 이용대상·대표 상담 경로·공개 운영시간 확인. 임시 휴무 및 실제 통화 연결 여부는 확인 범위에 포함되지 않음.",
+      "notes": [],
+      "before": {
+        "operating_hours": "",
+        "hours_detail": "",
+        "hours_type": "custom",
+        "url": "https://chingusai.net/",
+        "phone": "",
+        "description": "게이·남성 성소수자의 성정체성, 커밍아웃, 관계, 차별과 인권 침해 고민을 상담합니다.",
+        "contact_method": [
+          "online"
+        ],
+        "seo_summary": "한국게이인권운동단체 친구사이는 게이·남성 성소수자의 성정체성, 커밍아웃, 관계, 차별, 인권 침해 고민을 이야기할 수 있는 성소수자 지원 단체입니다.",
+        "last_verified": null
+      },
+      "after": {
+        "operating_hours": "평일 10:00~19:00",
+        "hours_detail": "평일 10:00~19:00",
+        "hours_type": "weekday",
+        "url": "https://chingusai.net/xe/counseling",
+        "phone": "02-745-7942",
+        "description": "성소수자·HIV 감염인의 차별과 인권침해를 온라인·전화·대면으로 상담합니다. 전화상담은 월~금 10:00~19:00, 대면상담은 이메일이나 전화로 미리 예약해 주세요.",
+        "contact_method": [
+          "phone",
+          "online",
+          "in-person"
+        ],
+        "seo_summary": "친구사이는 성소수자·HIV 감염인의 차별과 인권침해 상담을 제공합니다. 전화 02-745-7942는 월~금 10:00~19:00에 운영하며, 대면상담은 사전 예약이 필요합니다.",
+        "last_verified": "2026-10-13"
+      },
+      "appliedAt": "2026-10-12T15:18:54.052Z",
+      "readbackVerified": true
+    },
+    {
+      "pageId": "3751f6c7-527d-813d-a53d-ea240f95ff3e",
+      "name": "푸른나무 학교폭력상담(민간)",
+      "sources": [
+        "https://www.btf.or.kr/business/bus01.asp?pageNum=3&scrID=0000000108&ssubNum=1&subNum=1"
+      ],
+      "verificationScope": "기관명·주요 이용대상·대표 상담 경로·공개 운영시간 확인. 임시 휴무 및 실제 통화 연결 여부는 확인 범위에 포함되지 않음.",
+      "notes": [],
+      "before": {
+        "operating_hours": "",
+        "hours_detail": "평일 9:00~20:00, 토요일 9:00~13:00",
+        "hours_type": "custom",
+        "url": "https://btf.or.kr/",
+        "last_verified": null
+      },
+      "after": {
+        "operating_hours": "평일 09:00~20:00 (점심시간 12:00~13:00), 토요일 09:00~13:00, 일요일·공휴일 휴무",
+        "hours_detail": "평일 09:00~20:00 (점심시간 12:00~13:00), 토요일 09:00~13:00, 일요일·공휴일 휴무",
+        "hours_type": "custom",
+        "url": "https://www.btf.or.kr/business/bus01.asp?pageNum=3&scrID=0000000108&ssubNum=1&subNum=1",
+        "last_verified": "2026-10-13"
+      },
+      "appliedAt": "2026-10-12T15:18:54.910Z",
+      "readbackVerified": true
+    },
+    {
+      "pageId": "3751f6c7-527d-8158-8ae0-eb02ed7b5102",
+      "name": "경찰 신고 112",
+      "sources": [
+        "https://112.go.kr/",
+        "https://ecrm.police.go.kr/minwon/main"
+      ],
+      "verificationScope": "기관명·주요 이용대상·대표 상담 경로·공개 운영시간 확인. 임시 휴무 및 실제 통화 연결 여부는 확인 범위에 포함되지 않음.",
+      "notes": [],
+      "before": {
+        "operating_hours": "",
+        "hours_detail": "24시간",
+        "hours_type": "24h",
+        "last_verified": null
+      },
+      "after": {
+        "operating_hours": "365일 24시간",
+        "hours_detail": "365일 24시간",
+        "hours_type": "24h",
+        "last_verified": "2026-10-13"
+      },
+      "appliedAt": "2026-10-12T15:18:55.667Z",
+      "readbackVerified": true
+    },
+    {
+      "pageId": "3751f6c7-527d-8161-bf33-ed859d0d6958",
+      "name": "청소년근로권익센터(민간)",
+      "sources": [
+        "https://www.youthlabor.co.kr/company/aboutus"
+      ],
+      "verificationScope": "기관명·주요 이용대상·대표 상담 경로·공개 운영시간 확인. 임시 휴무 및 실제 통화 연결 여부는 확인 범위에 포함되지 않음.",
+      "notes": [
+        "공식 안내의 주관·운영기관과 한국공인노무사회 운영을 확인하여 단순 민간 기관명 표기를 정리."
+      ],
+      "before": {
+        "operating_hours": "",
+        "hours_detail": "평일 9:00~18:00",
+        "hours_type": "weekday",
+        "name": "청소년근로권익센터(민간)",
+        "url": "https://www.youthlabor.co.kr/",
+        "description": "청소년 아르바이트 임금체불, 부당대우, 근로계약 문제를 상담하고 권리구제 방법을 안내합니다.",
+        "seo_summary": "청소년근로권익센터는 청소년 아르바이트 임금체불, 부당대우, 근로계약 문제처럼 일하는 청소년의 노동권 침해 상황을 상담하는 지원 경로입니다.",
+        "age_group": [
+          "청소년"
+        ],
+        "search_intent": [
+          "청소년 알바 임금체불",
+          "청소년 노동상담",
+          "아르바이트 부당대우",
+          "근로계약 상담"
+        ],
+        "situation_keywords": [
+          "청소년"
+        ],
+        "source_type": "nonprofit",
+        "source_priority": "nonprofit-medium",
+        "last_verified": null
+      },
+      "after": {
+        "operating_hours": "평일 09:00~18:00, 주말·공휴일 휴무",
+        "hours_detail": "평일 09:00~18:00, 주말·공휴일 휴무",
+        "hours_type": "weekday",
+        "name": "청소년·청년근로권익센터",
+        "url": "https://www.youthlabor.co.kr/company/aboutus",
+        "description": "만 15~34세 청소년·청년의 임금체불·부당대우·근로계약 문제를 무료로 상담하고 권리구제를 지원합니다. 상담전화는 1644-3119이며 평일 09:00~18:00에 운영합니다.",
+        "seo_summary": "청소년·청년근로권익센터는 만 15~34세 청소년·청년에게 무료 노동상담·권리구제와 근로권익 교육을 제공합니다. 1644-3119에서 평일 09:00~18:00에 상담합니다.",
+        "age_group": [
+          "청소년",
+          "성인"
+        ],
+        "search_intent": [
+          "청소년 알바 임금체불",
+          "청년 노동상담",
+          "청소년 노동상담",
+          "아르바이트 부당대우",
+          "근로계약 상담"
+        ],
+        "situation_keywords": [
+          "청소년",
+          "청년",
+          "임금체불",
+          "아르바이트",
+          "부당대우"
+        ],
+        "source_type": "public",
+        "source_priority": "public-high",
+        "last_verified": "2026-10-13"
+      },
+      "appliedAt": "2026-10-12T15:18:56.474Z",
+      "readbackVerified": true
+    },
+    {
+      "pageId": "3751f6c7-527d-8151-970e-f4610422d7e7",
+      "name": "Wee 센터(교육청)",
+      "sources": [
+        "https://www.wee.go.kr/board?menuKey=30ewIQVBkr&bbsId=BOARD00009",
+        "https://www.wee.go.kr/mps"
+      ],
+      "verificationScope": "기관명·주요 이용대상·대표 상담 경로·공개 운영시간 확인. 임시 휴무 및 실제 통화 연결 여부는 확인 범위에 포함되지 않음.",
+      "notes": [],
+      "before": {
+        "operating_hours": "",
+        "hours_detail": "",
+        "hours_type": "custom",
+        "url": "https://www.wee.go.kr/",
+        "description": "학교생활, 학교폭력, 학업중단, 정서 어려움을 교육청·학교 기반 상담과 지역 지원으로 연결합니다.",
+        "last_verified": null
+      },
+      "after": {
+        "operating_hours": "지역 Wee 센터별 상담시간·예약 확인",
+        "hours_detail": "지역 Wee 센터별 상담시간·예약 확인",
+        "hours_type": "custom",
+        "url": "https://www.wee.go.kr/mps",
+        "description": "교육(지원)청의 Wee 센터에서 학생의 학교생활·정서적 어려움을 상담하고 지역 자원과 연계합니다. 소속 학교 상담실이나 가까운 Wee 센터에 상담시간과 예약 방법을 확인해 주세요.",
+        "last_verified": "2026-10-13"
+      },
+      "appliedAt": "2026-10-12T15:18:57.232Z",
+      "readbackVerified": true
+    },
+    {
+      "pageId": "3751f6c7-527d-81bd-bc50-cbfe3d946d07",
+      "name": "위기임산부 상담전화",
+      "sources": [
+        "https://www.ncrc.or.kr/ncrc1308.do"
+      ],
+      "verificationScope": "기관명·주요 이용대상·대표 상담 경로·공개 운영시간 확인. 임시 휴무 및 실제 통화 연결 여부는 확인 범위에 포함되지 않음.",
+      "notes": [],
+      "before": {
+        "operating_hours": "",
+        "hours_detail": "24시간",
+        "hours_type": "24h",
+        "description": "갑작스러운 임신·출산·양육 곤란, 보호출산 고민을 24시간 상담하고 필요한 지원 정보를 안내합니다.",
+        "last_verified": null
+      },
+      "after": {
+        "operating_hours": "365일 24시간",
+        "hours_detail": "365일 24시간",
+        "hours_type": "24h",
+        "description": "임신 중이거나 분만 후 6개월 미만으로 출산·양육에 어려움이 있는 위기임산부가 1308에서 24시간 상담받을 수 있습니다. 임신·출산·양육 지원과 보호출산 정보를 안내합니다.",
+        "last_verified": "2026-10-13"
+      },
+      "appliedAt": "2026-10-12T15:18:57.987Z",
+      "readbackVerified": true
+    },
+    {
+      "pageId": "3751f6c7-527d-81c7-9cf8-e838548a7aa7",
+      "name": "다누리콜센터 - 이주여성 긴급상담",
+      "sources": [
+        "https://www.liveinkorea.kr/web/lay1/S1T40C44/contents.do"
+      ],
+      "verificationScope": "기관명·주요 이용대상·대표 상담 경로·공개 운영시간 확인. 임시 휴무 및 실제 통화 연결 여부는 확인 범위에 포함되지 않음.",
+      "notes": [],
+      "before": {
+        "operating_hours": "",
+        "hours_detail": "24시간",
+        "hours_type": "24h",
+        "description": "이주여성·다문화가족의 폭력피해, 가족갈등, 생활문제를 24시간 다국어로 상담합니다.",
+        "languages": [
+          "ko",
+          "다국어"
+        ],
+        "seo_summary": "다누리콜센터는 이주여성, 다문화가족, 결혼이주민이 폭력피해나 가족·생활 문제를 겪을 때 24시간 다국어 상담과 통역 연결을 제공하는 공공 상담전화입니다.",
+        "last_verified": null
+      },
+      "after": {
+        "operating_hours": "365일 24시간",
+        "hours_detail": "365일 24시간",
+        "hours_type": "24h",
+        "description": "이주여성·다문화가족의 폭력피해·가족·생활 문제를 365일 24시간 상담합니다. 한국어·영어·중국어 등 15개 언어를 지원하며 생활통역·3자 통화와 보호기관 연계를 제공합니다.",
+        "languages": [
+          "ko",
+          "en",
+          "다국어"
+        ],
+        "seo_summary": "다누리콜센터 1577-1366은 이주여성·다문화가족을 위해 한국어, 영어, 중국어 등 15개 언어로 365일 24시간 상담과 생활통역·3자 통화, 폭력피해 긴급지원을 제공합니다.",
+        "last_verified": "2026-10-13"
+      },
+      "appliedAt": "2026-10-12T15:18:59.185Z",
+      "readbackVerified": true
+    },
+    {
+      "pageId": "3751f6c7-527d-8126-91db-c3ac3fb509c5",
+      "name": "마음이음 지원사업",
+      "sources": [
+        "https://news.seoul.go.kr/welfare/archives/561837",
+        "https://www.seoul.go.kr/news/news_employ.do?nttNo=457780"
+      ],
+      "verificationScope": "기관명·주요 이용대상·대표 상담 경로·공개 운영시간 확인. 임시 휴무 및 실제 통화 연결 여부는 확인 범위에 포함되지 않음.",
+      "notes": [
+        "1577-0199 레코드로 서울 마음이음 안내 통합. 행정 문의번호가 상담번호로 노출되지 않게 중복 레코드 비활성화. 삭제하지 않으며 사업 폐지를 의미하지 않음."
+      ],
+      "before": {
+        "is_active": true,
+        "last_verified": null
+      },
+      "after": {
+        "is_active": false,
+        "last_verified": "2026-10-13"
+      },
+      "appliedAt": "2026-10-12T15:18:59.961Z",
+      "readbackVerified": true
+    }
+  ],
+  "appliedAt": "2026-10-12T15:18:59.962Z",
+  "validation": {
+    "activeRecordsAfter": 34,
+    "activeRecordsWithHours": 34,
+    "activeRecordsWithLastVerified": 34,
+    "allMutationsReadBack": true,
+    "hoursRegressionTests": 18,
+    "productionPagesBuilt": 36,
+    "mobileCategoryPagesChecked": 18,
+    "mobileRecommendationFlowsChecked": 8,
+    "mobileViewports": [
+      320,
+      390
+    ],
+    "browserRuntimeErrors": 0,
+    "matchingMode": "로컬 검증에서는 ANTHROPIC_API_KEY를 비워 실제 Notion 데이터를 사용하는 규칙 기반 fallback 경로를 확인. 유료 LLM 호출은 수행하지 않음.",
+    "cache": "SDK 원본 응답 no-store, 페이지와 API의 공통 서비스 캐시 300초, 카테고리 ISR 300초. 새 빌드의 34개 기관 노출을 확인.",
+    "limitations": [
+      "공휴일 달력 미연결: 공휴일 여부에 따라 달라지는 현재 운영 상태는 미확인으로 표시",
+      "실제 통화 연결, 일시 휴무, 기관별 예약 가능 여부는 검증하지 않음"
+    ]
+  }
+}

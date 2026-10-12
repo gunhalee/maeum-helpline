@@ -1,12 +1,16 @@
 import 'server-only'
 
 import { Client } from '@notionhq/client'
+import { unstable_cache } from 'next/cache'
 import { CATEGORY_ORDER } from '@/lib/categories'
+import { isServiceAlwaysOpen } from '@/lib/service-hours'
 import type { Category, Service } from '@/lib/types'
 
 const notion = new Client({
   auth: process.env.NOTION_API_KEY,
   notionVersion: '2022-06-28',
+  // Cache mapped services below, not the SDK's raw HTTP response as well.
+  fetch: (url, init) => fetch(url, { ...init, cache: 'no-store' }),
 })
 
 const DATABASE_ID = process.env.NOTION_DATABASE_ID ?? ''
@@ -91,32 +95,13 @@ function getPropertyMultiValues(property: unknown): string[] {
   return text ? splitPipeList(text) : []
 }
 
-function normalizeHoursType(rawHoursType: string, operatingHours: string, tags: string[]): string | undefined {
+function normalizeHoursType(rawHoursType: string, operatingHours: string, hoursDetail: string, tags: string[]): string | undefined {
   const normalizedHoursType = rawHoursType.trim().toLowerCase()
-  const normalizedOperating = operatingHours.replace(/\s+/g, '').toLowerCase()
-  const normalizedTags = tags.map((tag) => tag.replace(/\s+/g, '').toLowerCase())
-
-  if (
-    normalizedHoursType === '24h' ||
-    normalizedHoursType === '24시간' ||
-    normalizedTags.some((tag) => tag.includes('24시간') || tag.includes('24h')) ||
-    normalizedOperating.includes('24시간') ||
-    normalizedOperating.includes('24h')
-  ) {
-    return '24h'
-  }
-
-  if (
-    normalizedHoursType === 'weekday' ||
-    normalizedHoursType === 'weekdays' ||
-    normalizedOperating.includes('평일') ||
-    normalizedOperating.includes('weekday')
-  ) {
-    return 'weekday'
-  }
-
-  if (normalizedHoursType) return rawHoursType
-  if (operatingHours) return 'custom'
+  if (isServiceAlwaysOpen({ hoursType: normalizedHoursType, operatingHours, hoursDetail, tags })) return '24h'
+  // Keep compound schedules intact instead of inferring 24h from a mention of another hotline.
+  if (hoursDetail || operatingHours) return normalizedHoursType === 'weekday' || normalizedHoursType === 'weekdays' ? 'weekday' : 'custom'
+  if (normalizedHoursType === 'weekdays') return 'weekday'
+  if (normalizedHoursType) return normalizedHoursType
   return undefined
 }
 
@@ -186,7 +171,7 @@ function mapNotionToService(page: any): Service | null {
   const contactMethods = getPropertyMultiValues(properties['contact_method'])
   const region = getPropertyText(properties['region']) || undefined
   const rawHoursType = getPropertyText(properties['hours_type'])
-  const hoursType = normalizeHoursType(rawHoursType, operatingHours, tags)
+  const hoursType = normalizeHoursType(rawHoursType, operatingHours, hoursDetail, tags)
   const situationKeywords = getPropertyMultiValues(
     properties['situation_keywords']
   )
@@ -231,7 +216,7 @@ function mapNotionToService(page: any): Service | null {
   }
 }
 
-export async function getServices(): Promise<Service[]> {
+async function fetchServices(): Promise<Service[]> {
   if (!hasConfiguredNotionEnv()) {
     console.error('Notion environment variables are missing or invalid.')
     return []
@@ -272,3 +257,11 @@ export async function getServices(): Promise<Service[]> {
     return []
   }
 }
+
+// Pages and recommendations share one bounded cache. The version separates it
+// from responses stored before the hours normalization and content refresh.
+export const getServices = unstable_cache(
+  fetchServices,
+  ['helpline-services-v2', DATABASE_ID],
+  { revalidate: 300 }
+)

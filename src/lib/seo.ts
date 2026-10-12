@@ -42,9 +42,17 @@ export const SEO_CONTENT_UPDATED_AT = '2026-06-04T00:00:00+09:00'
 export const SEO_CONTENT_UPDATED_DATE = new Date(SEO_CONTENT_UPDATED_AT)
 
 const CONTENT_UPDATED_AT_BY_PATH: Record<string, string> = {
-  '/depression': '2026-09-13T00:00:00+09:00',
-  '/women': '2026-09-13T00:00:00+09:00',
-  '/migrant': '2026-09-13T00:00:00+09:00',
+  '/': '2026-10-13T00:00:00+09:00',
+  '/guide': '2026-10-13T00:00:00+09:00',
+  '/crisis': '2026-10-13T00:00:00+09:00',
+  '/depression': '2026-10-13T00:00:00+09:00',
+  '/women': '2026-10-13T00:00:00+09:00',
+  '/youth': '2026-10-13T00:00:00+09:00',
+  '/queer': '2026-10-13T00:00:00+09:00',
+  '/migrant': '2026-10-13T00:00:00+09:00',
+  '/addiction': '2026-10-13T00:00:00+09:00',
+  '/elder': '2026-10-13T00:00:00+09:00',
+  '/legal': '2026-10-13T00:00:00+09:00',
 }
 
 export function getContentUpdatedAt(path: string): string {

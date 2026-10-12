@@ -1,7 +1,8 @@
 import { CATEGORY_META, CATEGORY_ORDER } from '@/lib/categories'
 import ResultCard from '@/components/ResultCard'
 import type { Service } from '@/lib/types'
-import { translateCategoryLabel, type Lang } from '@/lib/i18n'
+import { translateCategoryLabel, translateStatusNote, type Lang } from '@/lib/i18n'
+import { isServiceAlwaysOpen } from '@/lib/service-hours'
 
 interface Props {
   services: Service[]
@@ -9,32 +10,9 @@ interface Props {
   lang?: Lang
 }
 
-function normalizeText(value: string): string {
-  return value.replace(/\s+/g, '').toLowerCase()
-}
-
-function isAlwaysOpen(service: Service): boolean {
-  const operatingHours = normalizeText(service.operatingHours ?? '')
-  const hasTag = service.tags.some((tag) => {
-    const normalizedTag = normalizeText(tag)
-    return (
-      normalizedTag.includes('24시간') ||
-      normalizedTag.includes('24h') ||
-      normalizedTag.includes('상시운영')
-    )
-  })
-
-  return (
-    hasTag ||
-    operatingHours.includes('24시간') ||
-    operatingHours.includes('24h') ||
-    operatingHours.includes('상시운영')
-  )
-}
-
 function getPriority(service: Service): number {
   if (service.isEmergency) return 0
-  if (isAlwaysOpen(service)) return 1
+  if (isServiceAlwaysOpen(service)) return 1
   return 2
 }
 
@@ -49,7 +27,7 @@ function sortByPriority(services: Service[]): Service[] {
 }
 
 function serviceToCardProps(service: Service, lang: Lang) {
-  const is24h = isAlwaysOpen(service)
+  const is24h = isServiceAlwaysOpen(service)
 
   return {
     name: service.name,
@@ -57,6 +35,7 @@ function serviceToCardProps(service: Service, lang: Lang) {
     url: service.url,
     description: service.description,
     is24h,
+    note: translateStatusNote(is24h ? '24시간' : service.hoursDetail || service.operatingHours || '운영시간 확인 필요', lang),
     metaParts: [],
     lang,
   }

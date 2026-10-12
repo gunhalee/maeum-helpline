@@ -17,6 +17,7 @@ import {
   SITE_URL,
 } from '@/lib/seo'
 import { getServices } from '@/lib/notion'
+import { isServiceAlwaysOpen } from '@/lib/service-hours'
 import {
   isLang,
   SUPPORTED_LANGS,
@@ -61,7 +62,7 @@ function getAvailableLanguages(service: Service): string[] | undefined {
 }
 
 function getHoursAvailable(service: Service) {
-  if (service.hoursType !== '24h') {
+  if (!isServiceAlwaysOpen(service)) {
     return undefined
   }
 
@@ -135,7 +136,7 @@ function buildOrganizationSchema(
   }
 }
 
-export const revalidate = 3600
+export const revalidate = 300
 
 export async function generateStaticParams() {
   return SUPPORTED_LANGS.flatMap((lang) =>

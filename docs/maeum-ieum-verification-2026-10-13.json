@@ -1,0 +1,46 @@
+{
+  "checkedAt": "2026-10-13",
+  "scope": "시간 판정 코드 정비 후 마음이음 지원사업의 사업명·대상·상담 접수처 확인. 이후 전체 최신화 요청에 따라 추천안 적용 결과를 기록함.",
+  "record": {
+    "pageId": "3751f6c7-527d-8126-91db-c3ac3fb509c5",
+    "name": "마음이음 지원사업",
+    "description": "서울시민의 우울, 불안, 스트레스에 대해 무료 심리상담을 지원하고 상담기관으로 연계합니다.",
+    "phone": "02-2133-7547",
+    "url": "https://seoulspc.or.kr/",
+    "hours_type": "weekday",
+    "hours_detail": ""
+  },
+  "verifiedFacts": [
+    {
+      "fact": "서울시의 2026-04-27 수정된 정신건강 위기상담 안내에는 서울시민 누구나 이용할 수 있는 1577-0199의 365일 24시간 운영과 마음이음상담 서비스 흐름도가 함께 기재돼 있음.",
+      "source": "https://news.seoul.go.kr/welfare/archives/561837"
+    },
+    {
+      "fact": "현재 등록된 02-2133-7547은 2026년 서울시자살예방센터 채용 공고에서 서울시 정신건강과 문의번호로 기재되어 있음. 상담 접수번호라는 근거는 확인되지 않음.",
+      "source": "https://www.seoul.go.kr/news/news_employ.do?nttNo=457780"
+    },
+    {
+      "fact": "서울시자살예방센터 자체 안내도 마음이음상담전화와 1577-0199의 관계를 확인해 줌. 이 자료는 2023년 자료이므로 운영 지속 여부는 2026년 서울시 안내와 함께 판단함.",
+      "source": "https://seoulspc.or.kr/notice/?mod=document&uid=20"
+    }
+  ],
+  "assessment": "현재 레코드는 서울시의 정신건강 위기상담 안내와 행정 문의번호를 혼합한 것으로 판단됨. 서울시민 일반에게 별도의 무료 심리상담 회차를 지원하는 '마음이음 지원사업'이라는 설명은 검토한 현재 공식 자료에서 확인되지 않았음. 사업 폐지나 부존재를 단정하는 결론은 아님.",
+  "recommendation": {
+    "preferredAction": "같은 1577-0199를 사용 중인 기존 정신건강 상담 항목에 서울 지역 안내로 통합하고 중복 추천을 피함. 지역센터 방문상담과 24시간 전화상담은 구분.",
+    "existingRelatedPageId": "3751f6c7-527d-8171-9978-d614ca62e38f",
+    "ifKeptSeparate": {
+      "name": "서울시 마음이음 정신건강 위기상담",
+      "phone": "1577-0199",
+      "description": "정신건강 상담이 필요한 서울시민을 위한 24시간 전화상담 안내입니다.",
+      "url": "https://news.seoul.go.kr/welfare/archives/561837",
+      "hours_type": "24h",
+      "operating_hours": "365일 24시간",
+      "hours_detail": "365일 24시간",
+      "region": "서울",
+      "note": "무료 상담 회차·바우처 지원을 의미하는 문구는 공식 근거가 확인될 때만 기재."
+    },
+    "applied": true,
+    "appliedAt": "2026-10-12T15:18:59.962Z",
+    "appliedAction": "기존 1577-0199 항목에 서울 마음이음 안내를 추가하고 중복 항목은 is_active=false로 변경. 변경 전후는 content-refresh-2026-10-13.json에 기록."
+  }
+}

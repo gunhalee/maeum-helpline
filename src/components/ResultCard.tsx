@@ -31,9 +31,11 @@ export default function ResultCard({
 
   const badgeText = note ?? (is24h ? (lang === 'en' ? '24/7' : '24시간') : null)
   const badgeColor =
-    is24h || isOpen !== false
+    is24h || isOpen === true
       ? 'bg-green-100 text-green-800'
-      : 'bg-amber-100 text-amber-700'
+      : isOpen === false
+        ? 'bg-amber-100 text-amber-700'
+        : 'bg-stone-100 text-stone-600'
 
   const hasPhoneNumber = phone && isTel(phone)
 
@@ -93,7 +95,7 @@ export default function ResultCard({
             )}
             {badgeText && (
               <span
-                className={`shrink-0 whitespace-nowrap rounded-full px-3 py-1.5 text-xs font-medium sm:text-sm ${badgeColor}`}
+                className={`max-w-full whitespace-normal break-words rounded-full px-3 py-1.5 text-xs font-medium sm:text-sm ${badgeColor}`}
               >
                 {badgeText}
               </span>
@@ -119,7 +121,7 @@ export default function ResultCard({
             )}
             {badgeText && (
               <span
-                className={`shrink-0 whitespace-nowrap rounded-full px-3 py-1.5 text-xs font-medium sm:text-sm ${badgeColor}`}
+                className={`max-w-full whitespace-normal break-words rounded-full px-3 py-1.5 text-xs font-medium sm:text-sm ${badgeColor}`}
               >
                 {badgeText}
               </span>

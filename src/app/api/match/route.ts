@@ -1,6 +1,6 @@
 import Anthropic from '@anthropic-ai/sdk'
-import { unstable_cache } from 'next/cache'
 import { getServices } from '@/lib/notion'
+import { getServiceHoursStatus, isServiceAlwaysOpen } from '@/lib/service-hours'
 import type { Service, Category } from '@/lib/types'
 import type {
   MatchResult,
@@ -25,17 +25,6 @@ type AudiencePenaltyRule = {
   keywords: string[]
   categories?: Category[]
 }
-
-type ServiceStatus = {
-  note: string | null
-  isOpen: boolean | null
-}
-
-const getCachedServices = unstable_cache(
-  async () => getServices(),
-  ['helpline-services'],
-  { revalidate: 300 }
-)
 
 const SELECTION_RULES: Record<string, SelectionRule> = {
   우울: {
@@ -205,70 +194,6 @@ function parseReferenceTime(currentTime: string | undefined): Date {
   return new Date()
 }
 
-function toKst(referenceTime: Date): Date {
-  return new Date(
-    referenceTime.toLocaleString('en-US', { timeZone: 'Asia/Seoul' })
-  )
-}
-
-function parseTimeRange(detail: string): { start: number; end: number } | null {
-  const match = detail.match(/(\d{1,2}):(\d{2})\s*-\s*(\d{1,2}):(\d{2})/)
-  if (!match) return null
-
-  const start = parseInt(match[1], 10) * 100 + parseInt(match[2], 10)
-  const end = parseInt(match[3], 10) * 100 + parseInt(match[4], 10)
-  return { start, end }
-}
-
-function computeServiceStatus(
-  service: Service,
-  referenceTime: Date,
-  lang: Lang
-): ServiceStatus {
-  const hoursType = service.hoursType?.toLowerCase() ?? ''
-  const hoursDetail = service.hoursDetail ?? service.operatingHours ?? ''
-  const now = toKst(referenceTime)
-  const day = now.getDay()
-  const hhmm = now.getHours() * 100 + now.getMinutes()
-  const onWeekday = day >= 1 && day <= 5
-
-  if (hoursType === '24h') {
-    return { note: translateStatusNote('24시간', lang), isOpen: true }
-  }
-
-  if (!hoursDetail) {
-    if (hoursType === 'weekday') {
-      return {
-        note: translateStatusNote('평일 운영', lang),
-        isOpen: onWeekday && hhmm >= 900 && hhmm < 1800,
-      }
-    }
-    return { note: null, isOpen: null }
-  }
-
-  if (/상시|always/i.test(hoursDetail)) {
-    return { note: translateStatusNote(hoursDetail, lang), isOpen: true }
-  }
-
-  const range = parseTimeRange(hoursDetail)
-
-  if (!range) {
-    return { note: hoursDetail, isOpen: null }
-  }
-
-  if (hoursType === 'weekday' && !onWeekday) {
-    return {
-      note: translateStatusNote(hoursDetail || '평일 운영', lang),
-      isOpen: false,
-    }
-  }
-
-  return {
-    note: translateStatusNote(hoursDetail, lang),
-    isOpen: hhmm >= range.start && hhmm < range.end,
-  }
-}
-
 function buildPreview(orgs: OrgRef[], serviceMap: Record<string, Service>, lang: Lang): string {
   const names = orgs
     .map((org) => serviceMap[org.id]?.name)
@@ -299,16 +224,16 @@ function serializeService(service: Service): MatchSerializedOrg {
           : type === 'online' || type === 'chat' || type === 'kakao'
             ? service.url || null
             : null,
-      is_24h: service.hoursType === '24h',
+      is_24h: type === 'phone' && isServiceAlwaysOpen(service),
     })),
   }
 }
 
 function buildOrgRef(service: Service, referenceTime: Date, lang: Lang): OrgRef {
-  const status = computeServiceStatus(service, referenceTime, lang)
+  const status = getServiceHoursStatus(service, referenceTime)
   return {
     id: service.id,
-    note: status.note,
+    note: translateStatusNote(status.note, lang),
     is_open: status.isOpen,
   }
 }
@@ -359,7 +284,7 @@ function scoreService(service: Service, selections: string[], crisis: boolean): 
   }
 
   if (service.isFree) score += 1
-  if (service.hoursType === '24h') score += 1
+  if (isServiceAlwaysOpen(service)) score += 1
 
   const hasGeneralDepressionSelection =
     selections.length === 1 && selections[0] === '우울'
@@ -396,8 +321,8 @@ function prefilterServices(services: Service[], selections: string[], crisis: bo
     const emergencyServices = services
       .filter((service) => service.isActive && service.isEmergency)
       .sort((a, b) => {
-        if (a.hoursType === '24h' && b.hoursType !== '24h') return -1
-        if (a.hoursType !== '24h' && b.hoursType === '24h') return 1
+        const hoursPriority = Number(isServiceAlwaysOpen(b)) - Number(isServiceAlwaysOpen(a))
+        if (hoursPriority) return hoursPriority
         return a.name.localeCompare(b.name, 'ko')
       })
 
@@ -692,7 +617,7 @@ export async function POST(request: Request) {
 
   let allServices: Service[]
   try {
-    allServices = await getCachedServices()
+    allServices = await getServices()
   } catch (error) {
     console.error('Failed to fetch services:', error)
     return errorResponse('org_fetch_failed', 503)

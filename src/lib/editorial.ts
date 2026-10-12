@@ -107,18 +107,18 @@ const CATEGORY_EDITORIAL: Record<Category, Record<Lang, CategoryEditorial>> = {
     ko: {
       heading: '가능한 언어부터 확인하세요',
       paragraphs: [
-        '다누리콜센터(1577-1366)는 13개 언어를 지원하고, 외국인력상담센터(1577-0071)는 이주노동 상담에 특화되어 있으며 상담시간은 매일 09:00~18:00입니다. 긴급 상황이면 119가 더 빠른 도움이 될 수 있습니다. 통역 연결이 가능하며, 긴급 구조는 법적으로 체류 자격과 무관하게 제공됩니다.',
+        '다누리콜센터(1577-1366)는 15개 언어를 지원합니다. 외국인력상담센터(1577-0071)는 매일 09:00~18:00에 고용·체류 상담을 제공합니다. 출입국·비자 문의는 1345로 평일 09:00~22:00(공휴일 제외)에 연락할 수 있으며, 18:00 이후에는 한국어·영어·중국어로 상담합니다. 즉각적인 신체 위험이나 범죄 피해는 119·112에 신고하세요.',
         '이 페이지는 다국어 상담 여부, 이주민 전용 핫라인, 상황별(노동, 가정폭력, 유학) 적합 기관을 비교할 수 있게 구성했습니다.',
       ],
-      highlights: ['다누리 1577-1366 — 13개 언어', '119·112 — 체류 자격 무관', '노동·가정폭력·유학 상황별 안내'],
+      highlights: ['다누리 1577-1366 — 15개 언어', '1345 — 평일 09:00~22:00', '노동·가정폭력·유학 상황별 안내'],
     },
     en: {
       heading: 'Start by checking which language is available',
       paragraphs: [
-        'Danuri Call Center (1577-1366) offers 13 languages. The Counseling Center for Foreign Workers (1577-0071) specializes in migrant labor and operates daily from 09:00 to 18:00, Korea time. In an emergency, call 119 — interpreter support is available, and emergency services are legally provided regardless of visa status.',
+        'Danuri Call Center (1577-1366) offers 15 languages. The Counseling Center for Foreign Workers (1577-0071) provides employment and stay advice daily from 09:00 to 18:00. For immigration and visa questions, call 1345 on weekdays from 09:00 to 22:00, excluding public holidays; after 18:00, service is in Korean, English and Chinese. All times are Korea time. For immediate physical danger or a crime in progress, call 119 or 112.',
         'This page compares multilingual availability, migrant-specific hotlines, and services matched to your situation: labor issues, domestic violence, or student isolation.',
       ],
-      highlights: ['Danuri 1577-1366 — 13 languages', '119 and 112 — regardless of visa', 'By situation: labor, violence, students'],
+      highlights: ['Danuri 1577-1366 — 15 languages', '1345 — weekdays 09:00–22:00 KST', 'By situation: labor, violence, students'],
     },
   },
   addiction: {
