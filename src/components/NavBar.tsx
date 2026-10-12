@@ -22,7 +22,7 @@ export default function NavBar({ lang }: Props) {
   const links = [
     {
       href: withLang('/', lang),
-      label: lang === 'en' ? 'Chat' : '챗',
+      label: lang === 'en' ? 'Find support' : '상담처 찾기',
       isActive: currentPath === '/',
       inactiveClass:
         'bg-stone-100 text-stone-500 hover:bg-stone-200 hover:text-stone-700',
@@ -44,7 +44,7 @@ export default function NavBar({ lang }: Props) {
   return (
     <nav
       className="border-b border-stone-200 bg-white"
-      aria-label={lang === 'en' ? 'Category navigation' : '카테고리 네비게이션'}
+      aria-label={lang === 'en' ? 'Category navigation' : '상담 주제 메뉴'}
     >
       <div className="scrollbar-hide mx-auto max-w-5xl overflow-x-auto">
         <div className="flex w-max min-w-full flex-nowrap justify-center gap-1 px-4 py-2">

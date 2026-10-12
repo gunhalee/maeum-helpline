@@ -343,7 +343,7 @@ export default async function LocalizedCategoryPage({ params }: Props) {
               className="inline-flex min-h-[44px] items-center rounded-xl border border-green-700 px-4 py-2 text-sm font-medium text-green-700 transition-colors hover:bg-green-50"
             >
               {currentLang === 'en'
-                ? 'Read help-seeking guides'
+                ? 'Read guides to asking for help'
                 : '도움 요청 가이드 보기'}
             </Link>
           </div>

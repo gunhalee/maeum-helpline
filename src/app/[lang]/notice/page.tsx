@@ -17,17 +17,17 @@ const NOTICE_COPY = {
   ko: {
     title: '사용 안내 및 면책 고지 | 긴급상담 헬프라인',
     description:
-      '긴급상담 헬프라인의 이용 범위, 긴급 상황 연락처, 전문 상담·의료·법률 자문을 대체하지 않는다는 면책 고지를 확인하세요.',
+      '이 사이트의 이용 범위와 긴급 연락처를 확인하세요. 이 사이트는 전문 상담, 의료, 법률 자문을 대신하지 않습니다. 자세한 내용은 면책 고지에서 확인하세요.',
     eyebrow: '사용 안내 및 면책 고지',
     heading: '이 사이트는 이렇게 도와드려요',
     intro:
-      '여기까지 찾아오느라 많이 힘드셨을 수 있습니다. Helpline Korea는 한국에서 도움을 받을 수 있는 상담전화, 긴급 신고 번호, 공공 지원기관을 쉽게 찾을 수 있도록 만든 안내 사이트입니다.',
+      '여기까지 찾아오느라 많이 힘드셨을 수 있습니다. Helpline Korea는 한국의 상담전화와 긴급 신고 번호를 안내합니다. 도움을 받을 수 있는 공공 지원기관도 안내합니다.',
     subIntro: '상황에 맞는 기관을 찾는 데 이 사이트가 작은 도움이 되기를 바랍니다.',
     sections: [
       {
         title: '지금 위험한 상황이라면',
         paragraphs: [
-          '지금 생명이나 신체의 안전이 걱정되거나, 폭력·범죄·응급상황이 벌어지고 있다면 이 사이트보다 아래 번호가 더 빠른 도움이 될 수 있습니다.',
+          '지금 생명이나 몸의 안전이 걱정되나요? 폭력, 범죄 또는 응급상황이 벌어지고 있나요? 이런 경우에는 아래 번호가 이 사이트보다 더 빠른 도움이 될 수 있습니다.',
         ],
         bullets: [
           '112 범죄, 폭력, 위협, 스토킹, 신변 위험',
@@ -39,20 +39,20 @@ const NOTICE_COPY = {
         title: '이 사이트가 도울 수 있는 것',
         paragraphs: ['Helpline Korea는 다음과 같은 도움을 드릴 수 있습니다.'],
         bullets: [
-          '상황에 맞는 상담기관이나 지원기관을 찾는 일',
-          '어떤 번호에 먼저 연락하면 좋을지 정리하는 일',
-          '기관에 연락하기 전에 물어볼 내용을 생각해 보는 일',
-          '상담전화, 운영시간, 지원 대상 같은 정보를 확인하는 일',
-          '잘못된 번호나 끊어진 링크를 고치는 일',
+          '상황에 맞는 상담기관이나 지원기관 찾기',
+          '먼저 연락할 번호 정리하기',
+          '기관에 연락하기 전에 물어볼 내용 정리하기',
+          '상담전화, 운영시간, 지원 대상 확인하기',
+          '잘못된 번호나 연결되지 않는 링크 고치기',
         ],
         notes: [
-          '비긴급 상황에서 이메일로 문의해 주시면, 가능한 범위에서 일반적인 정보 안내를 드릴 수 있습니다.',
+          '긴급하지 않은 문의는 이메일로 보내셔도 됩니다. 가능한 범위에서 일반적인 정보를 안내해 드릴 수 있습니다.',
         ],
       },
       {
         title: '이 사이트의 역할과 한계',
         paragraphs: [
-          'Helpline Korea는 안내 사이트이기 때문에, 아래 내용은 해당 전문기관이나 긴급기관에 직접 연결하는 것이 필요합니다.',
+          'Helpline Korea는 정보를 안내하는 사이트입니다. 아래 서비스는 해당 전문기관이나 긴급기관에 직접 요청해야 합니다.',
         ],
         bullets: [
           '전문 심리상담',
@@ -68,15 +68,15 @@ const NOTICE_COPY = {
         title: '이메일로 문의할 때',
         paragraphs: [
           '이메일 문의는 바로 답장이 오지 않을 수 있습니다.',
-          '또한 문의 내용에 민감한 이야기가 포함될 수 있으니, 안전한 기기와 환경에서 작성해 주세요.',
+          '문의에 민감한 내용이 포함될 수 있습니다. 안전한 기기와 장소에서 이메일을 작성해 주세요.',
         ],
       },
       {
-        title: '정보는 계속 확인하고 고치고 있습니다',
+        title: '정보를 확인하고 수정합니다',
         paragraphs: [
-          'Helpline Korea는 공식 기관 자료와 공개된 안내를 바탕으로 정보를 정리하려고 노력합니다.',
-          '다만 기관의 전화번호, 운영시간, 지원 내용은 바뀔 수 있습니다. 중요한 결정을 하기 전에는 해당 기관의 공식 홈페이지나 전화로 최신 정보를 한 번 더 확인해 주세요.',
-          '잘못된 정보, 바뀐 번호, 끊어진 링크를 발견하셨다면 알려주세요. 확인 후 수정하겠습니다.',
+          'Helpline Korea는 공식 기관 자료와 공개 안내를 바탕으로 정보를 정리하려고 노력합니다.',
+          '기관의 전화번호, 운영시간, 지원 내용은 바뀔 수 있습니다. 중요한 결정을 하기 전에 해당 기관의 공식 홈페이지나 전화로 최신 정보를 확인해 주세요.',
+          '잘못된 정보, 바뀐 번호, 연결되지 않는 링크를 발견하면 알려주세요. 확인한 뒤 수정하겠습니다.',
         ],
       },
     ],
@@ -84,18 +84,18 @@ const NOTICE_COPY = {
   en: {
     title: 'Usage Guide and Disclaimer | Helpline Korea',
     description:
-      'Read the usage guide, emergency contact notice, and disclaimer explaining that Helpline Korea does not replace professional counseling, medical care, legal advice, or emergency rescue.',
+      'Read the usage guide, emergency contacts, and disclaimer. Helpline Korea does not replace professional counseling, medical care, legal advice, or emergency rescue.',
     eyebrow: 'Usage Guide & Disclaimer',
     heading: 'How this website may help',
     intro:
-      'It may have taken a lot of strength to get here. Helpline Korea is a guidance website designed to help you quickly find counseling hotlines, emergency numbers, and public support resources in Korea.',
+      'It may have taken a lot of strength to get here. Helpline Korea helps you find counseling helplines, emergency numbers, and public support services in Korea.',
     subIntro:
-      'We hope this site can be a small but practical help in finding support that fits you.',
+      'We hope this site helps you find support for your needs.',
     sections: [
       {
         title: 'If you are in danger right now',
         paragraphs: [
-          'If life or physical safety is at risk, or if violence, crime, or a medical emergency is happening, the numbers below may be faster help than this site.',
+          'Is someone\'s life or physical safety at risk? Is violence, a crime, or a medical emergency happening now? In these situations, the numbers below may help faster than this site.',
         ],
         bullets: [
           '112 Crime, violence, threats, stalking, immediate personal danger',
@@ -107,20 +107,20 @@ const NOTICE_COPY = {
         title: 'What this site can help with',
         paragraphs: ['Helpline Korea can help with the following:'],
         bullets: [
-          'Finding counseling or support organizations relevant to your situation',
-          'Organizing which number to call first',
-          'Thinking through what to ask before contacting an organization',
-          'Checking hotline numbers, service hours, and eligibility information',
-          'Fixing incorrect numbers or broken links',
+          'Find counseling or support organizations for your situation',
+          'Choose which number to call first',
+          'Prepare questions before you contact an organization',
+          'Check helpline numbers, hours, and eligibility requirements',
+          'Correct wrong numbers or links that do not work',
         ],
         notes: [
-          'If you contact us by email in a non-emergency situation, we may provide general guidance within scope.',
+          'For questions that are not urgent, you can email us. We may provide general information within the scope of this site.',
         ],
       },
       {
         title: 'Scope and limits of this site',
         paragraphs: [
-          'Helpline Korea is an information guide, so the following need direct support from professional or emergency services:',
+          'Helpline Korea provides information. For the services below, contact a professional service or an emergency service directly.',
         ],
         bullets: [
           'Professional psychological counseling',
@@ -133,18 +133,18 @@ const NOTICE_COPY = {
         ],
       },
       {
-        title: 'When contacting by email',
+        title: 'When you email us',
         paragraphs: [
-          'Email inquiries may not receive an immediate reply.',
-          'Your message may include sensitive details, so please write from a safe device and environment.',
+          'You may not receive an immediate reply to your email.',
+          'Your message may include sensitive details. Please use a safe device and place to write your email.',
         ],
       },
       {
-        title: 'We continuously review and correct information',
+        title: 'We review and correct information',
         paragraphs: [
-          'Helpline Korea tries to organize information based on official sources and publicly available guidance.',
-          'However, phone numbers, service hours, and support details can change. Before making important decisions, please confirm the latest information through the organization’s official website or phone line.',
-          'If you find incorrect information, changed numbers, or broken links, please let us know. We will review and update it.',
+          'Helpline Korea tries to use official sources and public guidance to prepare this information.',
+          'Phone numbers, hours, and support details can change. Before an important decision, confirm the latest information on the organization\'s official website or by phone.',
+          'If you find wrong information, changed numbers, or links that do not work, please tell us. We will check and correct the information.',
         ],
       },
     ],

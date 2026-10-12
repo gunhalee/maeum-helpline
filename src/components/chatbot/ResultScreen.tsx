@@ -89,11 +89,11 @@ export default function ResultScreen({
   const heading =
     screenType === '2B'
       ? lang === 'en'
-        ? 'You can reach support now'
-        : '지금 연결할 수 있어요'
+        ? 'Support you can contact now'
+        : '지금 연락할 수 있는 기관입니다'
       : lang === 'en'
-        ? 'Here are the best matches'
-        : '맞는 상담을 찾았어요'
+        ? 'Support for your situation'
+        : '상황에 맞는 상담기관입니다'
 
   const showCrisisExpanded = screenType === '2B'
 
@@ -151,7 +151,7 @@ export default function ResultScreen({
       {groups.length === 0 && (
         <div className="rounded-xl border border-stone-200 bg-white p-6 text-center text-base leading-7 text-stone-500">
           {lang === 'en'
-            ? 'We could not find a clear match. You can check the guide page for common support options.'
+            ? 'We could not find a suitable service. You can check the guide for common support options.'
             : '적합한 기관을 찾지 못했습니다. 가이드에서 주요 상담처를 다시 확인할 수 있습니다.'}
         </div>
       )}
@@ -161,7 +161,7 @@ export default function ResultScreen({
           href={withLang('/guide', lang)}
           className="inline-block text-sm text-stone-900 underline-offset-2 hover:text-stone-600 hover:underline"
         >
-          {lang === 'en' ? 'Open the guide page →' : '가이드에서 보기 →'}
+          {lang === 'en' ? 'Open the guide →' : '가이드에서 보기 →'}
         </Link>
       </div>
     </div>

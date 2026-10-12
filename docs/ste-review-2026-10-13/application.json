@@ -1,0 +1,32 @@
+{
+  "date": "2026-10-13",
+  "status": "applied-and-locally-verified",
+  "baselineCommit": "9f1ca4e32e0185da308bd4deaa9ae220d394e43a",
+  "proposalCount": 347,
+  "sourceOrRenderedCopyCoverage": true,
+  "adjustments": {
+    "T205": {
+      "text": "필요하면 노인보호전문기관이 상황을 확인합니다. 상황에 따라 보호, 응급조치, 지역 지원으로 연결합니다.",
+      "reason": "문장을 나눈 뒤에도 보호·응급조치·지역 지원이 상황에 따른다는 조건을 명시했습니다."
+    }
+  },
+  "notion": {
+    "services": 34,
+    "fields": 68,
+    "readbackVerified": true,
+    "numericTokensPreserved": true
+  },
+  "checks": [
+    "TypeScript",
+    "ESLint",
+    "production build",
+    "25 service-hours tests",
+    "26-page SEO checks",
+    "26-page mobile layout and real recommendation API flows"
+  ],
+  "notes": [
+    "고정 추천 분류값은 유지하고 표시 문구만 변환했습니다.",
+    "빈 목록에 언어별 가이드 링크를 추가했습니다.",
+    "한국어는 STE 문장 원칙을 적용했으며 영어 사전 전수 대조에 따른 적합 인증은 아닙니다."
+  ]
+}

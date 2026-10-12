@@ -61,19 +61,19 @@ export function translateSelectionLabel(label: string, lang: Lang): string {
     '이주민·외국인': 'Migrants / Foreigners',
     노인: 'Older Adults',
     '폭력·피해': 'Victim Support',
-    '술·도박·약물': 'Addictions',
+    '술·도박·약물': 'Addiction',
   }
 
   return map[label] ?? label
 }
 
 export function translateGroupLabel(label: string, lang: Lang): string {
-  if (lang === 'ko') return label
+  if (lang === 'ko') return label === '우선 연결' ? '먼저 연락할 기관' : label
 
   const map: Record<string, string> = {
     '위기·긴급': 'Crisis / Emergency',
-    '우선 연결': 'Recommended First',
-    '함께 보기': 'Also Consider',
+    '우선 연결': 'Contact these services first',
+    '함께 보기': 'Other support to consider',
   }
 
   return map[label] ?? label
@@ -81,13 +81,20 @@ export function translateGroupLabel(label: string, lang: Lang): string {
 
 export function translateStatusNote(note: string | null | undefined, lang: Lang): string | null {
   if (!note) return null
-  if (lang === 'ko') return note
+  if (lang === 'ko') {
+    const koreanCopy: Record<string, string> = {
+      '제공기관별 상담시간 상이': '상담시간은 제공기관마다 다름',
+      '정보 검색 서비스 · 상담시간은 기관별 확인': '정보 검색 서비스 · 상담시간은 각 기관에 확인',
+      '공식 시간표가 서로 달라 사전 확인 필요': '공식 시간표가 서로 다릅니다. 연락하기 전에 시간을 확인하세요.',
+    }
+    return koreanCopy[note.trim()] ?? note
+  }
 
   const normalized = note.trim()
   const exactMap: Record<string, string> = {
     '24시간': '24/7',
     '평일 운영': 'Weekdays only',
-    '운영시간 확인 필요': 'Check opening hours',
+    '운영시간 확인 필요': 'Check contact hours',
     '평일 09:00~11:50, 13:00~17:50': 'Weekdays 09:00–11:50, 13:00–17:50 KST',
     '평일 09:00~18:00': 'Weekdays 09:00–18:00 KST',
     '매일 07:00~22:00': 'Daily 07:00–22:00 KST',
@@ -103,12 +110,14 @@ export function translateStatusNote(note: string | null | undefined, lang: Lang)
     '평일 09:00~20:00 (점심시간 12:00~13:00), 토요일 09:00~13:00, 일요일·공휴일 휴무': 'Weekdays 09:00–20:00 (break 12:00–13:00), Sat 09:00–13:00 KST; closed Sun and public holidays',
     '평일 09:00~18:00, 주말·공휴일 휴무': 'Weekdays 09:00–18:00 KST; closed weekends and public holidays',
     '제공기관별 상담시간 상이': 'Counseling hours vary by provider',
+    '상담시간은 제공기관마다 다름': 'Counseling hours vary by provider',
     '지역 센터별 상담시간 확인': 'Check counseling hours with your local center',
-    '정보 검색 서비스 · 상담시간은 기관별 확인': 'Directory; check counseling hours with each provider',
+    '정보 검색 서비스 · 상담시간은 기관별 확인': 'Information directory. Check counseling hours with each provider.',
+    '정보 검색 서비스 · 상담시간은 각 기관에 확인': 'Information directory. Check counseling hours with each provider.',
     '돌봄서비스 이용·신청은 지역 수행기관에 확인': 'Contact your local provider for care services and applications',
-    '정보 검색 서비스 · 기관별 최신 안내 확인': 'Information directory; check current details with each provider',
-    '신청서 접수 후 상담 일정 조율': 'Counseling by appointment after application',
-    '공식 시간표가 서로 달라 사전 확인 필요': 'Official schedules differ; confirm hours before contacting',
+    '정보 검색 서비스 · 기관별 최신 안내 확인': 'Information directory. Check current details with each provider.',
+    '신청서 접수 후 상담 일정 조율': 'Apply first, then arrange a counseling time',
+    '공식 시간표가 서로 달라 사전 확인 필요': 'Official schedules differ. Before you contact the service, confirm the hours.',
     '지역 Wee 센터별 상담시간·예약 확인': 'Check hours and appointments with your local Wee Center',
     상시운영: 'Always available',
     상시: 'Always available',

@@ -1,0 +1,48 @@
+{
+  "date": "2026-10-13",
+  "base": "http://127.0.0.1:3001",
+  "routes": [
+    "/ko",
+    "/ko/about",
+    "/ko/notice",
+    "/ko/guide",
+    "/ko/crisis",
+    "/ko/depression",
+    "/ko/women",
+    "/ko/youth",
+    "/ko/queer",
+    "/ko/migrant",
+    "/ko/addiction",
+    "/ko/elder",
+    "/ko/legal",
+    "/en",
+    "/en/about",
+    "/en/notice",
+    "/en/guide",
+    "/en/crisis",
+    "/en/depression",
+    "/en/women",
+    "/en/youth",
+    "/en/queer",
+    "/en/migrant",
+    "/en/addiction",
+    "/en/elder",
+    "/en/legal"
+  ],
+  "mobileWidth": 360,
+  "additionalWidths": [
+    320,
+    1280
+  ],
+  "checks": [
+    "26 routes contain updated content",
+    "service cards present",
+    "mobile menu tabs scroll without overlaps",
+    "no horizontal page overflow",
+    "Haengseongin hours and DDing Dong phone preserved",
+    "digital support weekday/weekend hours preserved",
+    "Korean and English real crisis and depression recommendation flows",
+    "empty result guide navigation",
+    "no browser JavaScript errors"
+  ]
+}

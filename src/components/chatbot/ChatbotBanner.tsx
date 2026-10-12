@@ -5,9 +5,9 @@ import { usePathname } from 'next/navigation'
 import { getPathWithoutLang, type Lang, withLang } from '@/lib/i18n'
 
 const EMERGENCY_ITEMS = [
-  { id: 1, koLabel: '자살위기', enLabel: 'Crisis', phone: '109' },
-  { id: 98, koLabel: '응급', enLabel: 'EMS', phone: '119' },
-  { id: 99, koLabel: '경찰', enLabel: 'Police', phone: '112' },
+  { id: 1, koLabel: '자살위기 상담', enLabel: 'Crisis support', phone: '109' },
+  { id: 98, koLabel: '응급 신고', enLabel: 'Medical emergency', phone: '119' },
+  { id: 99, koLabel: '경찰 신고', enLabel: 'Police', phone: '112' },
 ] as const
 
 interface Props {
@@ -28,7 +28,7 @@ export default function ChatbotBanner({ lang }: Props) {
       <div className="mx-auto mb-3 flex max-w-[460px] items-center justify-between gap-3">
         <p className="text-left text-sm font-semibold leading-5 text-stone-800">
           {lang === 'en'
-            ? 'Quick safety contacts'
+            ? 'Emergency contacts'
             : '안전이 걱정될 때 바로 연결'}
         </p>
         <Link
@@ -47,7 +47,7 @@ export default function ChatbotBanner({ lang }: Props) {
             href={`tel:${item.phone}`}
             className="inline-flex min-h-[58px] w-full flex-col items-center justify-center rounded-xl border border-green-700 bg-white px-2 py-2 text-green-700 transition-colors hover:bg-green-50 active:bg-green-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700"
           >
-            <span className="text-lg font-bold leading-tight">{item.phone}</span>
+            <span className="text-lg font-bold leading-tight">{item.phone}</span>{' '}
             <span className="text-xs font-medium leading-tight">
               {lang === 'en' ? item.enLabel : item.koLabel}
             </span>

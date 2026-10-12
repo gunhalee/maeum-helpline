@@ -262,6 +262,6 @@ async function fetchServices(): Promise<Service[]> {
 // from responses stored before the hours normalization and content refresh.
 export const getServices = unstable_cache(
   fetchServices,
-  ['helpline-services-v2', DATABASE_ID],
+  ['helpline-services-v3', DATABASE_ID],
   { revalidate: 300 }
 )

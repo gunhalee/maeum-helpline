@@ -79,7 +79,7 @@ export default function Image() {
               maxWidth: '92%',
             }}
           >
-            Korean crisis helpline directory
+            Crisis support services in Korea
           </div>
           <div
             style={{
@@ -90,8 +90,7 @@ export default function Image() {
               maxWidth: '82%',
             }}
           >
-            Compare trusted support numbers for crisis, depression, violence,
-            youth, addiction, migrants, and older adults.
+            Compare trusted support numbers for crisis, depression, violence, youth, and addiction. You can also find support for migrants and older adults.
           </div>
         </div>
 

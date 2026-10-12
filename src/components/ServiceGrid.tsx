@@ -1,7 +1,8 @@
+import Link from 'next/link'
 import { CATEGORY_META, CATEGORY_ORDER } from '@/lib/categories'
 import ResultCard from '@/components/ResultCard'
 import type { Service } from '@/lib/types'
-import { translateCategoryLabel, translateStatusNote, type Lang } from '@/lib/i18n'
+import { translateCategoryLabel, translateStatusNote, withLang, type Lang } from '@/lib/i18n'
 import { isServiceAlwaysOpen } from '@/lib/service-hours'
 
 interface Props {
@@ -50,11 +51,19 @@ export default function ServiceGrid({
 
   if (services.length === 0) {
     return (
-      <p className="mt-8 rounded-xl border border-stone-200 bg-white p-6 text-center text-stone-500">
-        {lang === 'en'
-          ? 'No services have been added yet. Please add records to the Notion database.'
-          : '등록된 서비스가 아직 없습니다. Notion 데이터베이스에 항목을 추가해 주세요.'}
-      </p>
+      <div className="mt-8 rounded-xl border border-stone-200 bg-white p-6 text-center text-stone-600">
+        <p>
+          {lang === 'en'
+            ? 'No services are listed yet. You can use the guide to find support.'
+            : '아직 등록된 상담기관이 없습니다. 가이드에서 상담처를 확인할 수 있습니다.'}
+        </p>
+        <Link
+          href={withLang('/guide', lang)}
+          className="mt-3 inline-flex min-h-[44px] items-center rounded-lg px-3 font-medium text-green-800 underline underline-offset-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700"
+        >
+          {lang === 'en' ? 'Open the guide →' : '가이드에서 보기 →'}
+        </Link>
+      </div>
     )
   }
 

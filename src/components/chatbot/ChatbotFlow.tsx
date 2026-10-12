@@ -82,7 +82,7 @@ export default function ChatbotFlow({ lang }: Props) {
         <div className="flex flex-col items-center gap-4 py-14">
           <div className="h-9 w-9 animate-spin rounded-full border-2 border-stone-300 border-t-green-700" />
           <p className="text-base leading-7 text-stone-500">
-            {lang === 'en' ? 'Finding the best match...' : '맞는 상담처를 찾고 있어요.'}
+            {lang === 'en' ? 'Finding support for you...' : '맞는 상담처를 찾고 있어요.'}
           </p>
         </div>
       )}

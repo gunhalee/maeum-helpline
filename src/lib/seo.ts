@@ -117,7 +117,7 @@ const HOME_COPY = {
   ko: {
     title: `${SITE_NAME} | 한국 상담전화·지원기관 안내`,
     description:
-      '109 자살예방상담, 1366 여성긴급전화, 1388 청소년상담 등 한국의 위기상담 전화와 공공 지원기관을 상황별로 정리한 안내 서비스입니다.',
+      '상황별로 한국의 위기상담 전화와 공공 지원기관을 안내합니다. 109 자살예방상담, 1366 여성긴급전화, 1388 청소년상담 등을 확인할 수 있습니다.',
     keywords: [
       '긴급상담 헬프라인',
       '상담전화 안내',
@@ -129,7 +129,7 @@ const HOME_COPY = {
   en: {
     title: 'Helpline Korea | Korean Counseling and Crisis Support Directory',
     description:
-      'Find Korean crisis hotlines and public support services by situation, including 109, 1366, 1388, migrant support, addiction counseling, and crime victim support.',
+      'Find crisis helplines and public support services in Korea. Compare 109, 1366, 1388, migrant support, addiction counseling, and crime victim support.',
     keywords: [
       'Helpline Korea',
       'Korean counseling directory',
@@ -141,9 +141,9 @@ const HOME_COPY = {
 
 const CHAT_COPY = {
   ko: {
-    title: `상담처 매칭 챗 | ${SITE_NAME}`,
+    title: `상담처 찾기 | ${SITE_NAME}`,
     description:
-      '몇 가지 선택만으로 위기·우울·폭력피해·청소년·성소수자·이주민·중독·범죄피해 상황에 맞는 상담처와 함께 볼 기관을 찾아보세요.',
+      '상황에 맞는 항목을 선택해 주세요. 위기, 우울, 폭력피해, 청소년, 성소수자, 이주민, 중독, 범죄피해 상담처를 안내합니다. 함께 확인할 기관도 안내합니다.',
     keywords: [
       '상담처 매칭',
       '상담전화 찾기',
@@ -153,9 +153,9 @@ const CHAT_COPY = {
     ],
   },
   en: {
-    title: `Helpline Matcher | ${SITE_NAME}`,
+    title: `Find Support | ${SITE_NAME}`,
     description:
-      'Answer short button-based questions and find Korean helplines that fit your urgency, situation, and support needs.',
+      'Answer short questions with the buttons. Find helplines in Korea for your situation, urgency, and support needs.',
     keywords: [
       'Korean helpline matcher',
       'find a helpline in Korea',
@@ -171,7 +171,7 @@ const CATEGORY_COPY = {
       title: `위기·긴급 상담전화 109·119 | ${SITE_NAME}`,
       heading: '위기·긴급 상담 기관',
       description:
-        '자살생각, 자해 위험, 생명이나 신체 안전이 걱정될 때 먼저 연결할 109, 119, 112 및 24시간 위기상담 기관을 정리했습니다.',
+        '자살생각이나 자해 위험이 있나요? 생명이나 몸의 안전이 걱정되나요? 먼저 연락할 109, 119, 112와 24시간 위기상담 기관을 안내합니다.',
       keywords: [
         '위기상담 전화',
         '109 자살예방상담',
@@ -192,7 +192,7 @@ const CATEGORY_COPY = {
       title: `Crisis Hotlines 109 and 119 | ${SITE_NAME}`,
       heading: 'Crisis Helplines',
       description:
-        'Find Korean crisis numbers for suicidal thoughts, self-harm risk, or immediate danger, including 109, 119, 112, and 24/7 support lines.',
+        'Find crisis numbers in Korea for suicidal thoughts, self-harm risk, or immediate danger. These include 109, 119, 112, and 24/7 support lines.',
       keywords: [
         'crisis hotline Korea',
         '109 hotline Korea',
@@ -213,7 +213,7 @@ const CATEGORY_COPY = {
       title: `우울·불안 상담전화와 무료 심리상담 | ${SITE_NAME}`,
       heading: '우울 상담 기관',
       description:
-        '우울감, 불안, 번아웃으로 상담이 필요할 때 이용할 정신건강복지센터와 정신건강 심리상담 바우처사업의 지원 내용, 신청 요건, 본인부담금을 확인하세요.',
+        '우울감, 불안, 번아웃으로 상담이 필요한가요? 정신건강복지센터와 정신건강 심리상담 바우처사업의 지원 내용을 확인하세요. 신청 요건과 본인부담금도 확인하세요.',
       keywords: [
         '우울증 상담',
         '불안 상담',
@@ -235,7 +235,7 @@ const CATEGORY_COPY = {
       title: `Depression and Anxiety Counseling | ${SITE_NAME}`,
       heading: 'Depression Helplines',
       description:
-        'Compare community mental health centers and Korea’s Mental Health Psychological Counseling Voucher Program, including 8-session support, eligibility documents, and copayments.',
+        'Compare community mental health centers and Korea\'s Mental Health Psychological Counseling Voucher Program. Check the 8-session support, eligibility documents, and copayments.',
       keywords: [
         'depression counseling Korea',
         'free mental health support Korea',
@@ -255,7 +255,7 @@ const CATEGORY_COPY = {
       title: `여성긴급전화 1366·폭력피해 상담 | ${SITE_NAME}`,
       heading: '여성 상담 기관',
       description:
-        '가정폭력, 성폭력, 스토킹, 교제폭력 상황에서 1366과 여성폭력 피해 지원기관의 전화번호, 운영시간, 지원 내용을 확인하세요.',
+        '가정폭력, 성폭력, 스토킹, 교제폭력 상황에서 연락할 기관을 안내합니다. 1366과 여성폭력 피해 지원기관의 전화번호, 운영시간, 지원 내용을 확인하세요.',
       keywords: [
         '여성긴급전화 1366',
         '가정폭력 상담',
@@ -273,9 +273,9 @@ const CATEGORY_COPY = {
     },
     en: {
       title: `Women Support Hotline 1366 | ${SITE_NAME}`,
-      heading: 'Women Helplines',
+      heading: 'Helplines for Women',
       description:
-        'Find Korean support lines for domestic violence, sexual violence, stalking, and dating violence, including the 1366 women support hotline.',
+        'Find support in Korea for domestic violence, sexual violence, stalking, and dating violence. Services include the 1366 hotline for women.',
       keywords: [
         'women support hotline Korea',
         '1366 Korea',
@@ -296,7 +296,7 @@ const CATEGORY_COPY = {
       title: `청소년상담 1388·학교폭력 도움 | ${SITE_NAME}`,
       heading: '청소년 상담 기관',
       description:
-        '청소년 본인이 전화할 수 있는 1388, 학교폭력·가출·자해 위험·학업 스트레스 관련 상담과 지역 지원기관을 정리했습니다.',
+        '청소년 본인이 전화할 수 있는 1388과 지역 지원기관을 안내합니다. 학교폭력, 가출, 자해 위험, 학업 스트레스 상담을 확인할 수 있습니다.',
       keywords: [
         '청소년상담 1388',
         '청소년 상담전화',
@@ -316,7 +316,7 @@ const CATEGORY_COPY = {
       title: `Youth Helpline 1388 and Teen Support | ${SITE_NAME}`,
       heading: 'Youth Helplines',
       description:
-        'Find Korean support for teens and young people, including 1388, school violence counseling, runaway youth support, self-harm risk, and academic stress.',
+        'Find support in Korea for teens and young people. Services include 1388 and help with school violence, running away, self-harm risk, and school stress.',
       keywords: [
         'youth helpline Korea',
         '1388 Korea',
@@ -337,7 +337,7 @@ const CATEGORY_COPY = {
       title: `성소수자 상담·띵동 등 퀴어 지원 | ${SITE_NAME}`,
       heading: '성소수자 상담 기관',
       description:
-        '아웃팅 걱정, 커밍아웃, 차별, 정신건강 고민을 안전하게 이야기할 수 있는 성소수자 친화 상담기관과 지원단체를 안내합니다.',
+        '성소수자 친화 상담기관과 지원단체를 안내합니다. 아웃팅 걱정, 커밍아웃, 차별, 정신건강 고민을 안전하게 이야기할 수 있습니다.',
       keywords: [
         '성소수자 상담',
         '퀴어 상담',
@@ -358,7 +358,7 @@ const CATEGORY_COPY = {
       title: `LGBTQ+ Counseling and Queer Support | ${SITE_NAME}`,
       heading: 'LGBTQ+ Helplines',
       description:
-        'Find queer-friendly counseling and support in Korea for outing concerns, coming out, discrimination, transgender support, and mental health needs.',
+        'Find LGBTQ+ friendly counseling and support in Korea. Ask about outing concerns, coming out, discrimination, transgender support, and mental health needs.',
       keywords: [
         'LGBTQ counseling Korea',
         'queer support Korea',
@@ -379,7 +379,7 @@ const CATEGORY_COPY = {
       title: `이주민·외국인 상담전화와 다누리콜센터 | ${SITE_NAME}`,
       heading: '이주민·외국인 상담 기관',
       description:
-        '한국에 거주하는 이주민, 외국인, 결혼이주민, 이주노동자가 이용할 수 있는 다국어 상담전화와 공공 지원기관을 모았습니다.',
+        '한국에 사는 이주민, 외국인, 결혼이주민, 이주노동자를 위한 안내입니다. 이용할 수 있는 다국어 상담전화와 공공 지원기관을 확인할 수 있습니다.',
       keywords: [
         '이주민 상담전화',
         '외국인 상담전화',
@@ -398,7 +398,7 @@ const CATEGORY_COPY = {
     },
     en: {
       title: `Foreigner and Migrant Helplines | ${SITE_NAME}`,
-      heading: 'Migrants / Foreigners Helplines',
+      heading: 'Helplines for Migrants and Foreigners',
       description:
         'Find multilingual counseling and support numbers for foreigners, migrant workers, marriage migrants, and multicultural families living in Korea.',
       keywords: [
@@ -421,7 +421,7 @@ const CATEGORY_COPY = {
       title: `중독 상담전화·마약 용기한걸음센터 | ${SITE_NAME}`,
       heading: '중독 상담 기관',
       description:
-        '도박, 알코올, 게임, 인터넷, 약물·마약 문제로 상담이 필요할 때 연락할 중독 상담기관과 회복 지원 경로를 비교합니다.',
+        '도박, 알코올, 게임, 인터넷, 약물·마약 문제를 상담하는 기관을 비교할 수 있습니다. 회복 지원을 받는 방법도 비교할 수 있습니다.',
       keywords: [
         '중독 상담전화',
         '마약 상담',
@@ -460,10 +460,10 @@ const CATEGORY_COPY = {
   },
   elder: {
     ko: {
-      title: `노인 상담전화·노인학대 신고 1389 | ${SITE_NAME}`,
+      title: `노인 상담전화·노인학대 신고 1577-1389 | ${SITE_NAME}`,
       heading: '노인 상담 기관',
       description:
-        '노인학대 신고, 독거노인 돌봄, 고립·우울, 치매 가족상담이 필요할 때 연결할 노인보호전문기관과 공공 지원전화를 안내합니다.',
+        '노인보호전문기관과 공공 지원전화를 안내합니다. 노인학대 신고, 독거노인 돌봄, 고립·우울 상담, 치매 가족상담이 필요할 때 연락할 수 있습니다.',
       keywords: [
         '노인 상담전화',
         '노인학대 신고',
@@ -481,9 +481,9 @@ const CATEGORY_COPY = {
     },
     en: {
       title: `Older Adult Support and Elder Abuse Reporting | ${SITE_NAME}`,
-      heading: 'Older Adults Helplines',
+      heading: 'Helplines for Older Adults',
       description:
-        'Find Korean support numbers for elder abuse reporting, older adult counseling, isolation, dementia family support, and public care services.',
+        'Find support numbers in Korea for elder abuse reports, older adult counseling, and isolation. You can also find dementia family support and public care services.',
       keywords: [
         'older adult support Korea',
         'elder abuse reporting Korea',
@@ -504,7 +504,7 @@ const CATEGORY_COPY = {
       title: `범죄피해 지원·스마일센터 상담 | ${SITE_NAME}`,
       heading: '범죄피해 지원 기관',
       description:
-        '범죄 피해 이후 스마일센터, 법률구조, 피해자 지원기관을 통해 심리상담, 치료비, 법률상담, 수사·재판 동행 정보를 확인하세요.',
+        '범죄 피해 이후에는 스마일센터, 법률구조 기관, 피해자 지원기관에 문의할 수 있습니다. 심리상담, 치료비, 법률상담 정보를 확인하세요. 수사·재판 동행 정보도 확인하세요.',
       keywords: [
         '범죄피해 지원',
         '스마일센터',
@@ -525,7 +525,7 @@ const CATEGORY_COPY = {
       title: `Crime Victim and Legal Support Services | ${SITE_NAME}`,
       heading: 'Crime / Legal Support',
       description:
-        'Find Korean support after crime victimization, including Smile Center counseling, legal aid, medical or living expense support, and investigation or court accompaniment.',
+        'Find support in Korea after a crime. Check Smile Center counseling, legal aid, and help with medical or living expenses. You can also find help to attend investigation or court procedures.',
       keywords: [
         'crime victim support Korea',
         'Smile Center Korea',

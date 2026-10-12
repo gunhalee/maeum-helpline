@@ -21,9 +21,9 @@ interface Props {
 const GUIDE_PAGE_LABELS = {
   ko: {
     starter: '처음엔 이렇게 말해도 돼요',
-    checks: '상담원이 먼저 확인할 수 있어요',
+    checks: '상담원이 먼저 확인할 수 있는 내용',
     concerns: '걱정되는 점',
-    details: '더 자세히 알고 싶다면',
+    details: '자세히 보기',
     sources: '출처',
   },
   en: {

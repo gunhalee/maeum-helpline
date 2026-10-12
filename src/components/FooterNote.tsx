@@ -10,7 +10,7 @@ export default function FooterNote({ lang }: Props) {
     <>
       <p className="mt-1">
         {lang === 'en'
-          ? 'Helpline Korea provides information about counseling agencies and public support resources.'
+          ? 'Helpline Korea provides information about counseling services and public support services.'
           : 'Helpline Korea는 상담기관과 공공 지원 정보를 안내합니다.'}
       </p>
       <p className="mt-1">
@@ -18,12 +18,12 @@ export default function FooterNote({ lang }: Props) {
           href={withLang('/notice', lang)}
           className="text-stone-700 underline-offset-2 transition-colors hover:text-green-700 hover:underline"
         >
-          {lang === 'en' ? 'Usage guide & disclaimer' : '사용 안내 및 면책 고지'}
+          {lang === 'en' ? 'Usage guide and disclaimer' : '사용 안내 및 면책 고지'}
         </Link>
-        <span className="mx-2 text-stone-400">·</span>
+        {' '}<span className="mx-2 text-stone-400">·</span>{' '}
         {lang === 'en'
-          ? 'Report errors or contact us: helpline@gmail.com'
-          : '오류 신고 · 문의하기 helpline@gmail.com'}
+          ? 'Report an error or contact us: helpline@gmail.com'
+          : '오류 신고 및 문의: helpline@gmail.com'}
       </p>
     </>
   )

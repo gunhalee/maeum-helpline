@@ -51,7 +51,7 @@ export default function ResultCard({
 
   const hasPhoneNumber = phone && isTel(phone)
 
-  let linkLabel = lang === 'en' ? 'Website' : '사이트'
+  let linkLabel = lang === 'en' ? 'Open website' : '사이트 보기'
   if (!hasPhoneNumber && url) {
     try {
       linkLabel = new URL(url).hostname.replace(/^www\./, '')
@@ -149,7 +149,7 @@ export default function ResultCard({
                 phoneOutsideHours ? phoneLinkMutedClass : footerLinkClass
               }
             >
-              {lang === 'en' ? 'Call' : '전화'} &rarr;
+              {lang === 'en' ? 'Call' : '전화하기'} &rarr;
             </a>
           )}
         </div>

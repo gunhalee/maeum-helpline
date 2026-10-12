@@ -1,0 +1,22 @@
+{
+  "date": "2026-10-13",
+  "viewportChecks": [
+    1440,
+    360
+  ],
+  "passed": [
+    "initial counts",
+    "ID search",
+    "retained empathy example",
+    "all status",
+    "English language",
+    "route filter",
+    "meaning review filter",
+    "empty results",
+    "pagination",
+    "mobile horizontal overflow",
+    "no JavaScript errors"
+  ],
+  "browser": "Microsoft Edge (Playwright)",
+  "siteCodeChanged": false
+}

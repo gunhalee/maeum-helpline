@@ -75,24 +75,24 @@ export default async function LocalizedAboutPage({ params }: Props) {
         <header className="rounded-2xl border border-stone-200 bg-stone-50 px-5 py-6 shadow-sm md:px-8 md:py-8">
           <p className="text-xs font-semibold uppercase tracking-[0.22em] text-green-700">
             {isEnglish
-              ? 'Korean crisis support directory'
-              : '한국 위기 지원 디렉터리'}
+              ? 'Crisis support services in Korea'
+              : '한국의 위기 지원기관 안내'}
           </p>
           <h1 className="mt-3 text-[clamp(2rem,1.6rem+1.8vw,3rem)] leading-tight text-stone-900">
             {isEnglish
-              ? 'Find the right Korean crisis helpline quickly'
+              ? 'Find crisis support in Korea'
               : '상황에 맞는 긴급상담 기관을 빠르게 찾으세요'}
           </h1>
           <p className="mt-4 max-w-3xl text-base leading-8 text-stone-600">
             {isEnglish
-              ? 'Compare Korean helplines by topic, urgency, and hours. You can start with the chat screen or jump directly to crisis, youth, women, addiction, migrant, and older-adult support pages.'
-              : '주제별, 긴급도별, 운영시간별로 한국 상담 기관을 비교해 보세요. 챗 화면에서 바로 시작하거나, 위기·청소년·여성·중독·이주민·노인 지원 페이지로 이동할 수 있습니다.'}
+              ? 'Compare helplines in Korea by topic, urgency, and hours. Start with Find support. You can also open the crisis, youth, women, addiction, migrant, or older adult support pages.'
+              : '상담 주제, 긴급도, 운영시간을 비교해 보세요. 상담처 찾기 화면에서 시작할 수 있습니다. 위기·청소년·여성·중독·이주민·노인 지원 페이지로 바로 이동할 수도 있습니다.'}
           </p>
 
           <div className="mt-8 rounded-2xl border border-stone-200 bg-white px-4 py-4">
             <p className="text-sm font-semibold text-stone-900">
               {isEnglish
-                ? 'If safety is urgent, these numbers can help first'
+                ? 'If you are in danger, these numbers can help first'
                 : '지금 안전이 걱정되면 먼저 연결할 수 있어요'}
             </p>
             <div className="mt-3 grid gap-3 sm:grid-cols-3">
@@ -123,8 +123,8 @@ export default async function LocalizedAboutPage({ params }: Props) {
             </h2>
             <p className="mt-3 text-sm leading-7 text-stone-600">
               {isEnglish
-                ? 'People facing suicide risk, depression, violence, youth distress, addiction, migrant support needs, or urgent emotional crises in Korea.'
-                : '자살 위기, 우울, 폭력 피해, 청소년 위기, 중독, 이주민 지원, 급한 정서 위기를 겪는 분들을 위한 안내입니다.'}
+                ? 'This site helps people in Korea who need support with suicide risk, depression, violence, youth distress, or addiction. It also helps people who need migrant support or urgent emotional support.'
+                : '자살 위기, 우울, 폭력 피해, 청소년 위기, 중독으로 도움이 필요한 분들을 안내합니다. 이주민 지원이나 긴급한 정서적 도움이 필요한 분들도 이용할 수 있습니다.'}
             </p>
           </article>
 
@@ -134,20 +134,20 @@ export default async function LocalizedAboutPage({ params }: Props) {
             </h2>
             <p className="mt-3 text-sm leading-7 text-stone-600">
               {isEnglish
-                ? 'Each page helps you compare phone numbers, hours, multilingual availability, and the kind of support each organization provides.'
-                : '각 페이지에서 전화번호, 운영시간, 다국어 지원 여부, 기관별 지원 내용을 한눈에 비교할 수 있습니다.'}
+                ? 'Each page shows phone numbers, hours, and available languages. You can also compare the support that each organization provides.'
+                : '각 페이지에서 전화번호와 운영시간을 비교할 수 있습니다. 지원 언어와 기관별 지원 내용도 확인할 수 있습니다.'}
             </p>
           </article>
 
         </div>
         <div className="mt-6 rounded-2xl border border-stone-200 bg-white px-5 py-5 shadow-sm md:px-6">
           <h2 className="text-lg font-semibold text-stone-900">
-            {isEnglish ? 'Need practical next-step guides?' : '조금 더 구체적인 도움 요청 가이드가 필요하신가요?'}
+            {isEnglish ? 'Need help with your next step?' : '도움을 요청하는 방법이 궁금한가요?'}
           </h2>
           <p className="mt-3 text-sm leading-7 text-stone-600">
             {isEnglish
-              ? 'Open the guide section for practical help on suicide warning signs, depression, violence safety planning, youth support, addiction, migrant support, and older-adult care.'
-              : '자살 위험 신호, 우울 상담 시작, 폭력 피해 대응, 청소년 지원, 중독, 이주민 지원, 노년기 돌봄까지 다룹니다. 상황별로 먼저 할 일을 쉽게 확인할 수 있도록 정리했습니다.'}
+              ? 'Open the guides for help with suicide warning signs, depression, violence safety planning, or youth support. The guides also cover addiction, migrant support, and care for older adults.'
+              : '가이드에서 상황별로 먼저 할 일을 확인하세요. 자살 위험 신호, 우울 상담, 폭력 피해 대응, 청소년 지원을 다룹니다. 중독, 이주민 지원, 노년기 돌봄도 다룹니다.'}
           </p>
           <div className="mt-5">
             <Link

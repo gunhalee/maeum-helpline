@@ -66,18 +66,18 @@ export default function SelectionScreen({ lang, onSubmit }: Props) {
               {lang === 'en' ? 'Welcome.' : '환영합니다.'}
             </p>
             <p className="mx-auto max-w-[32rem] text-base leading-7 text-stone-600">
-              {lang === 'en' ? 'Answer two short questions' : '두 질문에 답하여'}
+              {lang === 'en' ? 'Answer two short questions.' : '두 질문에 답해 주세요.'}
               <br className="sm:hidden" />{' '}
               {lang === 'en'
-                ? 'to find support.'
-                : '긴급상담 기관들을 안내받으세요.'}
+                ? 'Find support for your situation.'
+                : '상황에 맞는 긴급상담 기관을 안내합니다.'}
             </p>
           </div>
 
           <div className="p-4 text-center">
             <p className="mb-4 text-base font-medium leading-7 text-stone-800">
               {lang === 'en'
-                ? 'Are you worried you might not be safe with yourself right now?'
+                ? 'Are you worried that you cannot keep yourself safe right now?'
                 : '지금 혼자 버티기 어렵거나 스스로를 해칠까 걱정되나요?'}
             </p>
             <div className="flex flex-wrap gap-2">
@@ -113,7 +113,7 @@ export default function SelectionScreen({ lang, onSubmit }: Props) {
             </p>
             <p className="mx-auto max-w-[32rem] text-base leading-7 text-stone-600">
               {lang === 'en'
-                ? 'Select options that apply to you.'
+                ? 'Select all options that apply to you.'
                 : '해당되는 버튼을 모두 선택해 주세요.'}
             </p>
           </div>
