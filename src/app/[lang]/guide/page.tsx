@@ -203,7 +203,7 @@ export default async function LocalizedGuidePage({ params }: Props) {
                 <h3 className="text-sm font-semibold text-green-950">
                   {labels.starter}
                 </h3>
-                <div className="mt-3 grid gap-2 md:grid-cols-3">
+                <div className="mt-3 grid grid-cols-1 gap-2">
                   {guide.starterPhrases.map((phrase) => (
                     <p
                       key={phrase}
@@ -215,7 +215,7 @@ export default async function LocalizedGuidePage({ params }: Props) {
                 </div>
               </section>
 
-              <div className="mt-5 grid gap-4 md:grid-cols-2">
+              <div className="mt-5 grid grid-cols-1 gap-4">
                 <section className="rounded-lg border border-stone-200 bg-stone-50 px-4 py-4">
                   <h3 className="text-sm font-semibold text-stone-950">
                     {labels.checks}

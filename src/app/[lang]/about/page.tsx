@@ -116,7 +116,7 @@ export default async function LocalizedAboutPage({ params }: Props) {
       </section>
 
       <section className="mx-auto w-full max-w-[860px] px-4 pb-14 md:px-6">
-        <div className="grid gap-4 md:grid-cols-2">
+        <div className="grid grid-cols-1 gap-4">
           <article className="rounded-2xl border border-stone-200 bg-white p-5 shadow-sm">
             <h2 className="text-lg font-semibold text-stone-900">
               {isEnglish ? 'Who this is for' : '누구를 위한 서비스인가요'}
