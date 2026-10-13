@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
+import { Fragment, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { CATEGORY_META, CATEGORY_ORDER } from '@/lib/categories'
@@ -9,14 +9,31 @@ import { getPathWithoutLang, translateCategoryLabel, type Lang, withLang } from 
 export default function NavBar({ lang }: { lang: Lang }) {
   const pathname = usePathname()
   const currentPath = getPathWithoutLang(pathname)
+  const navRef = useRef<HTMLElement>(null)
   const scrollerRef = useRef<HTMLDivElement>(null)
   const edgeRef = useRef<HTMLDivElement>(null)
   const links = [
     { path: '/', label: lang === 'en' ? 'Find support' : '상담처 찾기' },
     ...CATEGORY_ORDER.map(category => ({ path: `/${category}`, label: translateCategoryLabel(CATEGORY_META[category].label, lang) })),
-    { path: '/guide', label: lang === 'en' ? 'Help guide' : '도움 요청 가이드' },
+    { path: '/guide', label: lang === 'en' ? 'Guide' : '가이드' },
     { path: '/about', label: lang === 'en' ? 'About' : '소개' },
   ]
+
+  useEffect(() => {
+    const nav = navRef.current
+    if (!nav) return
+
+    const updateHeight = () => {
+      document.documentElement.style.setProperty('--sticky-nav-height', `${nav.getBoundingClientRect().height}px`)
+    }
+    updateHeight()
+    const observer = new ResizeObserver(updateHeight)
+    observer.observe(nav)
+    return () => {
+      observer.disconnect()
+      document.documentElement.style.removeProperty('--sticky-nav-height')
+    }
+  }, [])
 
   useEffect(() => {
     const scroller = scrollerRef.current
@@ -47,7 +64,7 @@ export default function NavBar({ lang }: { lang: Lang }) {
   }, [pathname])
 
   return (
-    <nav className="border-b border-stone-200 bg-white" aria-label={lang === 'en' ? 'Category navigation' : '상담 주제 메뉴'}>
+    <nav ref={navRef} className="sticky top-0 z-50 border-b border-stone-200 bg-white" aria-label={lang === 'en' ? 'Category navigation' : '상담 주제 메뉴'}>
       <div className="mx-auto flex max-w-5xl items-center gap-[8px] px-[8px]">
         <Link
           href={withLang(currentPath, lang === 'en' ? 'ko' : 'en')}
@@ -61,14 +78,16 @@ export default function NavBar({ lang }: { lang: Lang }) {
           <div ref={scrollerRef} data-nav-scroll className="category-scroll overflow-x-auto">
             <div className="flex w-max min-w-full gap-[4px] px-[8px] py-[8px]">
               {links.map(link => (
-                <Link
-                  key={link.path}
-                  href={withLang(link.path, lang)}
-                  aria-current={currentPath === link.path ? 'page' : undefined}
-                  className={`flex min-h-[44px] max-w-[calc(100vw-100px)] shrink-0 items-center justify-center rounded-full px-[14px] py-[8px] text-center text-sm font-medium leading-snug transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-600 ${currentPath === link.path ? 'bg-green-700 text-white' : 'text-stone-600 hover:bg-stone-100 hover:text-stone-900'}`}
-                >
-                  {link.label}
-                </Link>
+                <Fragment key={link.path}>
+                  {link.path === '/guide' && <span aria-hidden="true" className="mx-[6px] h-[20px] w-px shrink-0 self-center bg-stone-300" />}
+                  <Link
+                    href={withLang(link.path, lang)}
+                    aria-current={currentPath === link.path ? 'page' : undefined}
+                    className={`flex min-h-[44px] max-w-[calc(100vw-100px)] shrink-0 items-center justify-center rounded-full px-[14px] py-[8px] text-center text-sm font-medium leading-snug transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-600 ${currentPath === link.path ? 'bg-green-700 text-white' : 'text-stone-600 hover:bg-stone-100 hover:text-stone-900'}`}
+                  >
+                    {link.label}
+                  </Link>
+                </Fragment>
               ))}
             </div>
           </div>

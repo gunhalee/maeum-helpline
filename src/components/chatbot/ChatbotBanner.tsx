@@ -1,6 +1,3 @@
-'use client'
-
-import { useEffect, useRef } from 'react'
 import type { Lang } from '@/lib/i18n'
 
 const EMERGENCY_ITEMS = [
@@ -10,35 +7,10 @@ const EMERGENCY_ITEMS = [
 ] as const
 
 export default function ChatbotBanner({ lang }: { lang: Lang }) {
-  const headerRef = useRef<HTMLElement>(null)
-
-  useEffect(() => {
-    const header = headerRef.current
-    if (!header) return
-
-    const updateHeight = () => {
-      const height = header.getBoundingClientRect().height
-      const sticky = window.innerHeight > 500 && height <= window.innerHeight * 0.3
-      header.dataset.sticky = String(sticky)
-      document.documentElement.style.setProperty('--sticky-header-height', `${sticky ? height : 0}px`)
-    }
-
-    updateHeight()
-    const observer = new ResizeObserver(updateHeight)
-    observer.observe(header)
-    window.addEventListener('resize', updateHeight)
-    return () => {
-      observer.disconnect()
-      window.removeEventListener('resize', updateHeight)
-      document.documentElement.style.removeProperty('--sticky-header-height')
-    }
-  }, [])
-
   return (
     <header
-      ref={headerRef}
       role="banner"
-      className="emergency-header border-b border-stone-200 bg-white px-[12px] py-[8px]"
+      className="border-b border-stone-200 bg-white px-[12px] py-[8px]"
       aria-label={lang === 'en' ? 'Emergency contacts' : '긴급 연락처'}
     >
       <div className="mx-auto grid max-w-[460px] grid-cols-3 gap-[8px]">
