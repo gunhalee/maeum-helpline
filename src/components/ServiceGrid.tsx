@@ -69,11 +69,11 @@ export default function ServiceGrid({
 
   if (!groupByCategory) {
     return (
-      <section id="services" aria-labelledby="services-heading" className="scroll-target mt-6">
-        <h2 id="services-heading" className="mb-3 text-lg font-semibold leading-relaxed text-stone-900">
+      <section id="services" aria-labelledby="services-heading" className="scroll-target mt-8">
+        <h2 id="services-heading" className="mb-4 text-sm font-medium leading-relaxed text-stone-600">
           {lang === 'en' ? `Support services (${services.length})` : `상담·지원기관 ${services.length}곳`}
         </h2>
-        <div className="divide-y divide-stone-200">
+        <div className="grid grid-cols-1 gap-5">
           {orderedServices.map((service) => (
             <ResultCard key={service.id} {...serviceToCardProps(service, lang)} />
           ))}
@@ -95,10 +95,10 @@ export default function ServiceGrid({
         const meta = CATEGORY_META[category]
         return (
           <section key={category}>
-            <h2 className="mb-3 text-xl font-semibold text-stone-800">
+            <h2 className="mb-4 text-base font-medium text-stone-700">
               {translateCategoryLabel(meta.label, lang)} ({items.length})
             </h2>
-            <div className="divide-y divide-stone-200">
+            <div className="grid grid-cols-1 gap-5">
               {items.map((service) => (
                 <ResultCard key={service.id} {...serviceToCardProps(service, lang)} />
               ))}

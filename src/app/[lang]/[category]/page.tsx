@@ -307,13 +307,13 @@ export default async function LocalizedCategoryPage({ params }: Props) {
       />
       <section
         lang={currentLang}
-        className="mx-auto w-full max-w-[860px] px-3 pb-12 pt-5 sm:px-4 md:px-6"
+        className="mx-auto w-full max-w-[860px] px-3 pb-12 pt-7 sm:px-4 md:px-6 md:pt-9"
       >
         <header>
-          <h1 className="text-2xl font-bold leading-snug text-stone-900 md:text-3xl">
+          <h1 className="text-2xl font-bold leading-snug tracking-[-0.035em] text-stone-900 md:text-3xl">
             {editorial.title ?? heading}
           </h1>
-          <div className="mt-3 space-y-2 text-base leading-relaxed text-stone-700">
+          <div className="mt-4 space-y-2 text-base leading-[1.8] text-stone-600">
             {editorial.summary.map((paragraph) => (
               <p key={paragraph}>
                 <EmergencyText text={paragraph} />

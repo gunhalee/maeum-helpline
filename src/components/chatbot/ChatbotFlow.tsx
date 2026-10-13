@@ -88,7 +88,12 @@ export default function ChatbotFlow({ lang }: Props) {
   }
 
   return (
-    <div ref={flowRef} className="mx-auto w-full max-w-[460px] px-4 pb-8 pt-6 md:max-w-[620px] md:px-6 md:pt-8 lg:max-w-[700px]">
+    <div
+      ref={flowRef}
+      className={`mx-auto w-full pb-8 pt-6 md:pt-8 ${screen === 'result'
+        ? 'max-w-[860px] px-3 sm:px-4 md:px-6'
+        : 'max-w-[460px] px-4 md:max-w-[620px] md:px-6 lg:max-w-[700px]'}`}
+    >
       {screen === 'selection' && (
         <SelectionScreen lang={lang} onSubmit={handleSubmit} />
       )}

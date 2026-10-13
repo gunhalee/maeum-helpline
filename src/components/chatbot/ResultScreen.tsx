@@ -55,15 +55,15 @@ function GroupSection({
 
   return (
     <section>
-      <div className="pb-1">
+      <div className="pb-3">
         <h3
-          className="text-base font-semibold text-stone-800"
+          className="text-sm font-medium text-stone-600"
         >
           {group.label}
         </h3>
       </div>
 
-      <div className="divide-y divide-stone-200">
+      <div className="grid grid-cols-1 gap-5">
         {resolvedOrgs.map(({ org, ref }) => (
           <ResultCard
             key={org.id}
@@ -122,7 +122,7 @@ export default function ResultScreen({
       </div>
 
       {crisisGroups.length > 0 && (
-        <div className="space-y-3">
+        <div className="space-y-6">
           {crisisGroups.map((group, i) => (
             <GroupSection
               key={`crisis-${i}`}
@@ -135,7 +135,7 @@ export default function ResultScreen({
       )}
 
       {normalGroups.length > 0 && (
-        <div className="space-y-3">
+        <div className="space-y-6">
           {normalGroups.map((group, i) => (
             <GroupSection
               key={`normal-${i}`}

@@ -14,22 +14,22 @@ export default function ServiceHours({ note, lang }: Props) {
     : lang === 'en' ? 'Before contacting' : '이용 안내'
 
   return (
-    <div className="mt-4 text-sm leading-6">
-      <p className="mb-1.5 text-xs font-medium text-stone-500">
+    <div className="mt-4 text-sm leading-relaxed">
+      <p className="mb-2 text-xs font-medium text-stone-500">
         {label}{timeZone ? ` (${timeZone})` : ''}
       </p>
       {rows.length > 0 && (
-        <dl className="space-y-2">
+        <dl className="space-y-1.5">
           {rows.map((row, index) => (
-            <div key={index} className="space-y-0.5">
-              <dt className="text-stone-600">{row.label}</dt>
-              <dd className="font-medium text-stone-800">
+            <div key={index} className="flex flex-wrap items-baseline gap-x-4 gap-y-0.5">
+              <dt className="basis-[7rem] text-stone-600">{row.label}</dt>
+              <dd className="min-w-0 font-medium tabular-nums text-stone-700">
                 {row.periods.map((period, periodIndex) => (
                   <div key={periodIndex}><TimeText text={period} /></div>
                 ))}
               </dd>
               {row.detail && (
-                <dd className="text-xs text-stone-500">
+                <dd className="basis-full text-xs text-stone-500">
                   {row.label} <TimeText text={row.detail} />
                 </dd>
               )}
