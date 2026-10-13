@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
-import EmergencyText from '@/components/EmergencyText'
+import StructuredInfo from '@/components/StructuredInfo'
 import ServiceGrid from '@/components/ServiceGrid'
 import { CATEGORY_META, CATEGORY_ORDER } from '@/lib/categories'
 import { SITE_NAME } from '@/lib/constants'
@@ -313,12 +313,8 @@ export default async function LocalizedCategoryPage({ params }: Props) {
           <h1 className="text-2xl font-bold leading-snug tracking-[-0.035em] text-stone-900 md:text-3xl">
             {editorial.title ?? heading}
           </h1>
-          <div className="mt-4 space-y-2 text-base leading-[1.8] text-stone-600">
-            {editorial.summary.map((paragraph) => (
-              <p key={paragraph}>
-                <EmergencyText text={paragraph} />
-              </p>
-            ))}
+          <div className="mt-5">
+            <StructuredInfo items={editorial.summary} emergencyLinks wideLabels />
           </div>
         </header>
         <ServiceGrid
@@ -332,12 +328,8 @@ export default async function LocalizedCategoryPage({ params }: Props) {
               <h2 className="text-base font-semibold leading-relaxed text-stone-900">
                 {editorial.detailsHeading}
               </h2>
-              <div className="mt-3 space-y-3 text-base leading-relaxed text-stone-700">
-                {editorial.paragraphs.map((paragraph) => (
-                  <p key={paragraph}>
-                    <EmergencyText text={paragraph} />
-                  </p>
-                ))}
+              <div className="mt-4">
+                <StructuredInfo items={editorial.paragraphs} emergencyLinks wideLabels />
               </div>
             </section>
           ) : null}

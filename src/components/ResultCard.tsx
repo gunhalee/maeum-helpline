@@ -1,5 +1,5 @@
 import ServiceHours from '@/components/ServiceHours'
-import TimeText from '@/components/TimeText'
+import ServiceDescription from '@/components/ServiceDescription'
 
 interface Props {
   name: string
@@ -39,7 +39,7 @@ export default function ResultCard({ name, phone, url, description, is24h = fals
           </div>
         )}
       </div>
-      {description && <p className="mt-3 text-sm leading-[1.8] text-stone-600"><TimeText text={description} /></p>}
+      {description && <ServiceDescription description={description} lang={lang} />}
       {(hasPhoneNumber || url) && (
         <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2 border-t border-stone-100 pt-4">
           {hasPhoneNumber && (
