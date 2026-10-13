@@ -191,9 +191,11 @@ function mapNotionToService(page: any): Service | null {
   return {
     id: typedPage.id ?? '',
     name,
+    nameEn: getPropertyText(properties['name_en']) || undefined,
     phone: getPropertyText(properties['phone']),
     category: categories,
     description: getPropertyText(properties['description']),
+    descriptionEn: getPropertyText(properties['description_en']) || undefined,
     tags,
     isEmergency: getPropertyCheckbox(properties['is_emergency']) ?? false,
     isActive,
@@ -204,6 +206,7 @@ function mapNotionToService(page: any): Service | null {
     region,
     hoursType,
     hoursDetail: hoursDetail || undefined,
+    hoursDetailEn: getPropertyText(properties['hours_detail_en']) || undefined,
     situationKeywords,
     languages,
     ageGroups,
@@ -259,9 +262,9 @@ async function fetchServices(): Promise<Service[]> {
 }
 
 // Pages and recommendations share one bounded cache. The version separates it
-// from responses stored before the hours normalization and content refresh.
+// from responses stored before the English translation columns were added.
 export const getServices = unstable_cache(
   fetchServices,
-  ['helpline-services-v3', DATABASE_ID],
+  ['helpline-services-v4', DATABASE_ID],
   { revalidate: 300 }
 )

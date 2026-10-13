@@ -18,6 +18,8 @@ import {
 } from '@/lib/seo'
 import { getServices } from '@/lib/notion'
 import { isServiceAlwaysOpen } from '@/lib/service-hours'
+import { getEnglishContactPoints } from '@/lib/service-language-support'
+import { getServiceCopy } from '@/lib/service-copy'
 import {
   isLang,
   SUPPORTED_LANGS,
@@ -84,6 +86,7 @@ function buildOrganizationSchema(
   lang: Lang
 ) {
   const organizationId = `${categoryUrl}#org-${service.id || index + 1}`
+  const copy = getServiceCopy(service, lang)
   const availableLanguage = getAvailableLanguages(service) ?? ['Korean']
   const hoursAvailable = getHoursAvailable(service)
   const areaServed = service.region || 'KR'
@@ -112,8 +115,8 @@ function buildOrganizationSchema(
   return {
     '@type': 'Organization',
     '@id': organizationId,
-    name: service.name,
-    description: service.seoDescription || service.description || undefined,
+    name: copy.name,
+    description: (lang === 'en' ? copy.description : service.seoDescription || service.description) || undefined,
     url: service.url || undefined,
     telephone: service.phone || undefined,
     areaServed,
@@ -122,7 +125,14 @@ function buildOrganizationSchema(
     dateModified: service.lastVerified,
     additionalProperty:
       additionalProperty.length > 0 ? additionalProperty : undefined,
-    contactPoint: [
+    contactPoint: lang === 'en' ? getEnglishContactPoints(service.id, {
+      '@type': 'ContactPoint',
+      contactType,
+      telephone: service.phone || undefined,
+      url: service.url || undefined,
+      areaServed,
+      hoursAvailable,
+    }) : [
       {
         '@type': 'ContactPoint',
         contactType,
@@ -290,19 +300,19 @@ export default async function LocalizedCategoryPage({ params }: Props) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(breadcrumbJsonLd),
+          __html: JSON.stringify(breadcrumbJsonLd).replace(/</g, '\\u003c'),
         }}
       />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(collectionPageJsonLd),
+          __html: JSON.stringify(collectionPageJsonLd).replace(/</g, '\\u003c'),
         }}
       />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(organizationGraphJsonLd),
+          __html: JSON.stringify(organizationGraphJsonLd).replace(/</g, '\\u003c'),
         }}
       />
       <section

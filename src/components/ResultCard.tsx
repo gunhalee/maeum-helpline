@@ -1,5 +1,7 @@
 import ServiceHours from '@/components/ServiceHours'
 import ServiceDescription from '@/components/ServiceDescription'
+import ServiceLanguages from '@/components/ServiceLanguages'
+import type { ServiceLanguageDisplay } from '@/lib/service-language-types'
 
 interface Props {
   name: string
@@ -12,9 +14,10 @@ interface Props {
   isOpen?: boolean | null
   lang?: 'ko' | 'en'
   headingLevel?: 3 | 4
+  languageSupport?: ServiceLanguageDisplay
 }
 
-export default function ResultCard({ name, phone, url, description, is24h = false, metaParts = [], note, isOpen, lang = 'ko', headingLevel = 3 }: Props) {
+export default function ResultCard({ name, phone, url, description, is24h = false, metaParts = [], note, isOpen, lang = 'ko', headingLevel = 3, languageSupport }: Props) {
   const Heading = headingLevel === 4 ? 'h4' : 'h3'
   const hasPhoneNumber = Boolean(phone && /^[0-9-]+$/.test(phone.replace(/\s+/g, '')))
   const phoneOutsideHours = !is24h && isOpen === false
@@ -40,6 +43,7 @@ export default function ResultCard({ name, phone, url, description, is24h = fals
         )}
       </div>
       {description && <ServiceDescription description={description} lang={lang} />}
+      {lang === 'en' && <ServiceLanguages support={languageSupport} />}
       {(hasPhoneNumber || url) && (
         <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2 border-t border-stone-100 pt-4">
           {hasPhoneNumber && (

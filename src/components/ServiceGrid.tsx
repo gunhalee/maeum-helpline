@@ -4,6 +4,8 @@ import ResultCard from '@/components/ResultCard'
 import type { Service } from '@/lib/types'
 import { translateCategoryLabel, translateStatusNote, withLang, type Lang } from '@/lib/i18n'
 import { isServiceAlwaysOpen } from '@/lib/service-hours'
+import { getServiceLanguageDisplay } from '@/lib/service-language-support'
+import { getServiceCopy } from '@/lib/service-copy'
 
 interface Props {
   services: Service[]
@@ -29,15 +31,17 @@ function sortByPriority(services: Service[]): Service[] {
 
 function serviceToCardProps(service: Service, lang: Lang) {
   const is24h = isServiceAlwaysOpen(service)
+  const copy = getServiceCopy(service, lang)
 
   return {
-    name: service.name,
+    name: copy.name,
     phone: service.phone,
     url: service.url,
-    description: service.description,
+    description: copy.description,
     is24h,
-    note: translateStatusNote(is24h ? '24시간' : service.hoursDetail || service.operatingHours || '운영시간 확인 필요', lang),
+    note: translateStatusNote(is24h ? '24시간' : copy.hoursDetail || '운영시간 확인 필요', lang),
     metaParts: [],
+    ...(lang === 'en' ? { languageSupport: getServiceLanguageDisplay(service.id) } : {}),
     lang,
   }
 }

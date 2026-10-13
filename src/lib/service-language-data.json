@@ -1,0 +1,678 @@
+{
+  "reviewedAt": "2026-10-13",
+  "researchFile": "docs/language-support-audit-2026-10-13.json",
+  "services": {
+    "3751f6c7-527d-8158-8ae0-eb02ed7b5102": {
+      "name": "경찰 신고 112",
+      "status": "multilingual",
+      "languages": [
+        "Korean",
+        "English",
+        "Chinese"
+      ],
+      "languageListComplete": false,
+      "delivery": "interpretation",
+      "sources": [
+        "https://www.evaluation.go.kr/upload2/atch/eval/20260608092112148.pdf",
+        "https://www.police.go.kr/user/bbs/BD_selectBbs.do?q_bbsCode=1002&q_bbscttSn=20240318135339434",
+        "https://liveinkorea.kr/web/lay1/S1T40C44/contents.do",
+        "https://archive.bbbkorea.org/ko/volunteer.php"
+      ],
+      "sourceUrl": "https://www.evaluation.go.kr/upload2/atch/eval/20260608092112148.pdf",
+      "routes": [
+        {
+          "channel": "phone",
+          "languages": [
+            "Korean"
+          ],
+          "useServiceHours": true
+        },
+        {
+          "channel": "phone",
+          "languages": [
+            "English",
+            "Chinese"
+          ],
+          "description": "Support is provided through an interpreter.",
+          "hours": {
+            "days": [
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday",
+              "Saturday",
+              "Sunday"
+            ],
+            "opens": "00:00",
+            "closes": "23:59"
+          }
+        }
+      ],
+      "qualifier": "Support is provided through an interpreter.",
+      "multilingualBasis": "자체 영어·중국어 통역 외에 다누리·1345·한국관광공사·BBB 통역 연계를 공식 보고서에서 확인. 5개 초과 분류는 연계기관 서비스 범위를 함께 고려한 판단이다.",
+      "partnerLanguageSets": [
+        "danuri",
+        "immigration1345",
+        "bbb"
+      ]
+    },
+    "3751f6c7-527d-81e7-af81-ca2a5b848b68": {
+      "name": "구급 신고 119",
+      "status": "multilingual",
+      "languages": [
+        "Korean",
+        "English"
+      ],
+      "languageListComplete": false,
+      "delivery": "interpretation",
+      "sources": [
+        "https://www.investkorea.org/ik-kr/bbs/i-267/list.do?searchCl1=10",
+        "https://archive.bbbkorea.org/ko/volunteer.php",
+        "https://english.visitkorea.or.kr/svc/contents/contentsView.do?menuSn=177&page=4&sContsTtl=&sort=regDt&vcontsId=248145"
+      ],
+      "sourceUrl": "https://www.investkorea.org/ik-kr/bbs/i-267/list.do?searchCl1=10",
+      "routes": [
+        {
+          "channel": "phone",
+          "languages": [
+            "Korean"
+          ],
+          "useServiceHours": true
+        },
+        {
+          "channel": "phone",
+          "languages": [
+            "English"
+          ],
+          "description": "Support is provided through an interpreter."
+        }
+      ],
+      "qualifier": "Support is provided through an interpreter.",
+      "multilingualBasis": "KOTRA 공식 생활 FAQ에서 119의 3자 통역과 BBB 다국어 서비스를 안내한다. 5개 초과 분류는 통역 연계의 범위를 기준으로 한다.",
+      "partnerLanguageSets": [
+        "bbb"
+      ]
+    },
+    "3751f6c7-527d-816f-817c-c860c0d0ca83": {
+      "name": "생명의전화(민간)",
+      "status": "unconfirmed",
+      "languages": [],
+      "languageListComplete": false,
+      "delivery": "unconfirmed",
+      "sources": [
+        "https://www.lifeline.or.kr/business/phone.php",
+        "https://www.lifeline.or.kr/business/interview_consult.php"
+      ]
+    },
+    "3751f6c7-527d-813b-853d-d5a831b976e8": {
+      "name": "자살위기상담 109",
+      "status": "unconfirmed",
+      "languages": [],
+      "languageListComplete": false,
+      "delivery": "unconfirmed",
+      "sources": [
+        "https://www.129.go.kr/109",
+        "https://www.kfsp.or.kr/home/kor/contents.do?menuPos=42"
+      ]
+    },
+    "3751f6c7-527d-8171-9978-d614ca62e38f": {
+      "name": "정신건강 위기상담·정신건강복지센터",
+      "status": "unconfirmed",
+      "languages": [],
+      "languageListComplete": false,
+      "delivery": "unconfirmed",
+      "sources": [
+        "https://www.mentalhealth.go.kr/portal/disease/diseaseDetail.do?dissId=26",
+        "https://blutouch.net/"
+      ]
+    },
+    "3751f6c7-527d-8173-b739-f90acc628e4c": {
+      "name": "보건복지상담센터 129",
+      "status": "unconfirmed",
+      "languages": [],
+      "languageListComplete": false,
+      "delivery": "unconfirmed",
+      "sources": [
+        "https://www.129.go.kr/counsel/counsel01.do"
+      ]
+    },
+    "3751f6c7-527d-818c-8873-cc7e3cb5b038": {
+      "name": "심리상담포털",
+      "status": "unconfirmed",
+      "languages": [],
+      "languageListComplete": false,
+      "delivery": "unconfirmed",
+      "sources": [
+        "https://www.mindinfo.kr/new/index.asp"
+      ]
+    },
+    "3751f6c7-527d-8145-a4fb-fe63a5639de9": {
+      "name": "정신건강 심리상담 바우처사업",
+      "status": "unconfirmed",
+      "languages": [],
+      "languageListComplete": false,
+      "delivery": "unconfirmed",
+      "sources": [
+        "https://www.mohw.go.kr/menu.es?mid=a10706040800"
+      ]
+    },
+    "3751f6c7-527d-8150-9748-ffaf2f81689c": {
+      "name": "여성긴급전화 1366",
+      "status": "listed_languages",
+      "languages": [
+        "Korean"
+      ],
+      "languageListComplete": false,
+      "delivery": "korean_phone_with_referral",
+      "sources": [
+        "https://liveinkorea.kr/download.do?uuid=202103171443000020.pdf",
+        "https://liveinkorea.kr/web/lay1/S1T40C44/contents.do"
+      ],
+      "sourceUrl": "https://liveinkorea.kr/web/lay1/S1T40C44/contents.do",
+      "routes": [
+        {
+          "channel": "phone",
+          "languages": [
+            "Korean"
+          ],
+          "useServiceHours": true
+        }
+      ],
+      "referral": {
+        "text": "For support in other languages, call Danuri at",
+        "phone": "1577-1366"
+      },
+      "classificationBasis": "사용자의 영어 지원 이관 확인과 공식 자료의 한국어 1366 / 외국어 1577-1366 구분"
+    },
+    "3751f6c7-527d-81bd-bc50-cbfe3d946d07": {
+      "name": "위기임산부 상담전화",
+      "status": "unconfirmed",
+      "languages": [],
+      "languageListComplete": false,
+      "delivery": "unconfirmed",
+      "sources": [
+        "https://www.ncrc.or.kr/ncrc1308.do",
+        "https://www.ncrc.or.kr/ncrc/cm/cntnts/cntntsView.do?cntntsId=1473&mi=1524"
+      ]
+    },
+    "3751f6c7-527d-8183-9d14-c5d5401e9cb2": {
+      "name": "중앙디지털성범죄피해자지원센터",
+      "status": "unconfirmed",
+      "languages": [],
+      "languageListComplete": false,
+      "delivery": "unconfirmed",
+      "sources": [
+        "https://d4u.stop.or.kr/ko/support/content/guide"
+      ]
+    },
+    "3751f6c7-527d-816a-9d2b-f724dac69c99": {
+      "name": "한국여성의전화(민간)",
+      "status": "unconfirmed",
+      "languages": [],
+      "languageListComplete": false,
+      "delivery": "unconfirmed",
+      "sources": [
+        "https://hotline.or.kr/information"
+      ]
+    },
+    "3751f6c7-527d-81c9-a628-faf66f7f5a65": {
+      "name": "청소년 위기상담 1388",
+      "status": "listed_languages",
+      "languages": [
+        "Korean",
+        "English",
+        "Japanese"
+      ],
+      "languageListComplete": false,
+      "delivery": "related_program",
+      "sources": [
+        "https://www.1388.go.kr/occ/YTOSP_SC_OCC_01",
+        "https://www.kyci.or.kr/userSite/sub02_10_international.asp"
+      ],
+      "sourceUrl": "https://www.kyci.or.kr/userSite/sub02_10_international.asp",
+      "routes": [
+        {
+          "channel": "phone",
+          "languages": [
+            "Korean"
+          ],
+          "useServiceHours": true
+        },
+        {
+          "channel": "related-service",
+          "languages": [
+            "English",
+            "Japanese"
+          ],
+          "url": "https://www.kyci.or.kr/userSite/sub02_10_international.asp",
+          "description": "English and Japanese: separate counseling service; hours may differ."
+        }
+      ],
+      "qualifier": "English and Japanese: separate counseling service; hours may differ.",
+      "classificationBasis": "2026-10-13 사용자가 1388을 영어·일본어 지원으로 분류하도록 명시적으로 요청했다."
+    },
+    "3751f6c7-527d-818c-aa9e-c75eef61a05a": {
+      "name": "학교폭력 신고 117",
+      "status": "unconfirmed",
+      "languages": [],
+      "languageListComplete": false,
+      "delivery": "unconfirmed",
+      "sources": [
+        "https://www.gwpolice.go.kr/gw/sub05/sub05_02_06.jsp",
+        "https://www.cbe.go.kr/upload/dept-21/na/bbs_1661/2026/03/9CA0E6C1-EBB5-5E10-9586-5F16C1E16D8A.pdf"
+      ]
+    },
+    "3751f6c7-527d-81f7-97d1-c7cb30a1a28e": {
+      "name": "청소년 성소수자 지원센터 띵동",
+      "status": "unconfirmed",
+      "languages": [],
+      "languageListComplete": false,
+      "delivery": "unconfirmed",
+      "sources": [
+        "https://ddingdong.kr/counsel"
+      ]
+    },
+    "3751f6c7-527d-8161-bf33-ed859d0d6958": {
+      "name": "청소년·청년근로권익센터",
+      "status": "unconfirmed",
+      "languages": [],
+      "languageListComplete": false,
+      "delivery": "unconfirmed",
+      "sources": [
+        "https://www.youthlabor.co.kr/company/aboutus"
+      ]
+    },
+    "3751f6c7-527d-813d-a53d-ea240f95ff3e": {
+      "name": "푸른나무 학교폭력상담(민간)",
+      "status": "unconfirmed",
+      "languages": [],
+      "languageListComplete": false,
+      "delivery": "unconfirmed",
+      "sources": [
+        "https://www.btf.or.kr/business/bus01.asp?pageNum=3&scrID=0000000108&ssubNum=1&subNum=1",
+        "https://www.btf.or.kr/business/bus01_02.asp?pageNum=3&scrID=0000000108&ssubNum=1&subNum=1"
+      ]
+    },
+    "3751f6c7-527d-8151-970e-f4610422d7e7": {
+      "name": "Wee 센터(교육청)",
+      "status": "unconfirmed",
+      "languages": [],
+      "languageListComplete": false,
+      "delivery": "unconfirmed",
+      "sources": [
+        "https://www.wee.go.kr/mps"
+      ]
+    },
+    "3751f6c7-527d-8102-9c44-c20af5bebc77": {
+      "name": "퀴어건강 정보 모음",
+      "status": "unconfirmed",
+      "languages": [],
+      "languageListComplete": false,
+      "delivery": "unconfirmed",
+      "sources": [
+        "https://queerhealth.kr/"
+      ]
+    },
+    "3751f6c7-527d-81af-997c-fea086402426": {
+      "name": "한국게이인권운동단체 친구사이",
+      "status": "unconfirmed",
+      "languages": [],
+      "languageListComplete": false,
+      "delivery": "unconfirmed",
+      "sources": [
+        "https://chingusai.net/xe/counseling",
+        "https://chingusai.net/xe/counseling/170292",
+        "https://chingusai.net/xe/online"
+      ]
+    },
+    "3751f6c7-527d-81a9-9ef4-db9896d0c3f3": {
+      "name": "한국레즈비언상담소",
+      "status": "unconfirmed",
+      "languages": [],
+      "languageListComplete": false,
+      "delivery": "unconfirmed",
+      "sources": [
+        "https://lsangdam.org/info/"
+      ]
+    },
+    "3751f6c7-527d-818a-b78e-df6110913c4a": {
+      "name": "행성인 인권상담",
+      "status": "unconfirmed",
+      "languages": [],
+      "languageListComplete": false,
+      "delivery": "unconfirmed",
+      "sources": [
+        "https://lgbtpride.or.kr/xe/sub43"
+      ]
+    },
+    "3751f6c7-527d-81c7-9cf8-e838548a7aa7": {
+      "name": "다누리콜센터 - 이주여성 긴급상담",
+      "status": "multilingual",
+      "languages": [
+        "Korean",
+        "English",
+        "Chinese",
+        "Vietnamese",
+        "Tagalog",
+        "Khmer",
+        "Mongolian",
+        "Russian",
+        "Japanese",
+        "Thai",
+        "Lao",
+        "Uzbek",
+        "Nepali",
+        "Arabic",
+        "Indonesian"
+      ],
+      "languageListComplete": true,
+      "delivery": "direct_counseling",
+      "sources": [
+        "https://liveinkorea.kr/web/lay1/S1T40C44/contents.do",
+        "https://www.kihf.or.kr/web/lay1/bbs/S1T838C97/A/3/view.do?article_seq=1115936"
+      ],
+      "sourceUrl": "https://liveinkorea.kr/web/lay1/S1T40C44/contents.do",
+      "routes": [
+        {
+          "channel": "phone",
+          "languages": [
+            "Korean",
+            "English",
+            "Chinese",
+            "Vietnamese",
+            "Tagalog",
+            "Khmer",
+            "Mongolian",
+            "Russian",
+            "Japanese",
+            "Thai",
+            "Lao",
+            "Uzbek",
+            "Nepali",
+            "Arabic",
+            "Indonesian"
+          ],
+          "hours": {
+            "days": [
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday",
+              "Saturday",
+              "Sunday"
+            ],
+            "opens": "00:00",
+            "closes": "23:59"
+          }
+        }
+      ],
+      "officialLanguageCount": 15
+    },
+    "3751f6c7-527d-819f-9a93-e6a26913adb4": {
+      "name": "외국인력상담센터",
+      "status": "multilingual",
+      "languages": [
+        "Korean",
+        "Chinese",
+        "Vietnamese",
+        "Tagalog",
+        "English",
+        "Thai",
+        "Indonesian",
+        "Sinhala",
+        "Mongolian",
+        "Uzbek",
+        "Khmer",
+        "Bengali",
+        "Urdu",
+        "Nepali",
+        "Burmese",
+        "Kyrgyz",
+        "East Timorese",
+        "Lao"
+      ],
+      "languageListComplete": false,
+      "delivery": "direct_counseling",
+      "sources": [
+        "https://eps.hrdkorea.or.kr/e9/user/intro/intro.do?method=workerCounseling",
+        "https://www.hrdkorea.or.kr/1/3/3/4"
+      ],
+      "sourceUrl": "https://eps.hrdkorea.or.kr/e9/user/intro/intro.do?method=workerCounseling",
+      "routes": [
+        {
+          "channel": "phone",
+          "languages": [
+            "Korean",
+            "Chinese",
+            "Vietnamese",
+            "Tagalog",
+            "English",
+            "Thai",
+            "Indonesian",
+            "Sinhala",
+            "Mongolian",
+            "Uzbek",
+            "Khmer",
+            "Bengali",
+            "Urdu",
+            "Nepali",
+            "Burmese",
+            "Kyrgyz",
+            "East Timorese",
+            "Lao"
+          ]
+        }
+      ],
+      "officialLanguageCount": 18
+    },
+    "3751f6c7-527d-8195-9a80-c2f09ef0c5c2": {
+      "name": "외국인종합안내센터",
+      "status": "multilingual",
+      "languages": [
+        "Korean",
+        "Chinese",
+        "English",
+        "Vietnamese",
+        "Thai",
+        "Japanese",
+        "Mongolian",
+        "Indonesian / Malay",
+        "French",
+        "Bengali",
+        "Urdu",
+        "Russian",
+        "Nepali",
+        "Khmer",
+        "Burmese",
+        "German",
+        "Spanish",
+        "Tagalog",
+        "Arabic",
+        "Sinhala"
+      ],
+      "languageListComplete": true,
+      "delivery": "direct_counseling",
+      "sources": [
+        "https://www.moj.go.kr/moj/196/subview.do",
+        "https://www.kdca.go.kr/KDCAtemp/5289/subview.do",
+        "https://www.immigration.go.kr/immigration_eng/1862/subview.do"
+      ],
+      "sourceUrl": "https://www.moj.go.kr/moj/196/subview.do",
+      "routes": [
+        {
+          "channel": "phone",
+          "languages": [
+            "Korean",
+            "Chinese",
+            "English",
+            "Vietnamese",
+            "Thai",
+            "Japanese",
+            "Mongolian",
+            "Indonesian / Malay",
+            "French",
+            "Bengali",
+            "Urdu",
+            "Russian",
+            "Nepali",
+            "Khmer",
+            "Burmese",
+            "German",
+            "Spanish",
+            "Tagalog",
+            "Arabic",
+            "Sinhala"
+          ],
+          "hours": {
+            "days": [
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday"
+            ],
+            "opens": "09:00",
+            "closes": "18:00"
+          }
+        },
+        {
+          "channel": "phone",
+          "languages": [
+            "Korean",
+            "English",
+            "Chinese"
+          ],
+          "hours": {
+            "days": [
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday"
+            ],
+            "opens": "18:00",
+            "closes": "22:00"
+          }
+        }
+      ],
+      "qualifier": "After 6 pm (KST), support is available in Korean, English and Chinese.",
+      "officialLanguageCount": 20
+    },
+    "3751f6c7-527d-814d-b060-e2a36980c710": {
+      "name": "마약 상담 용기한걸음센터",
+      "status": "unconfirmed",
+      "languages": [],
+      "languageListComplete": false,
+      "delivery": "unconfirmed",
+      "sources": [
+        "https://nodrugzone.mfds.go.kr/home/kor/M928548033/consultation/index.do"
+      ]
+    },
+    "3751f6c7-527d-81e7-9576-c9574b25303a": {
+      "name": "도박 중독 헬프라인",
+      "status": "unconfirmed",
+      "languages": [],
+      "languageListComplete": false,
+      "delivery": "unconfirmed",
+      "sources": [
+        "https://www.kcgp.or.kr/portal/main/contents.do?menuNo=200062",
+        "https://www.kcgp.or.kr/portal/onlnCnslt/phoneCnslt/info.do?menuNo=200063"
+      ]
+    },
+    "3751f6c7-527d-81c2-a1dc-d2347b94ede7": {
+      "name": "중독관리통합지원센터",
+      "status": "unconfirmed",
+      "languages": [],
+      "languageListComplete": false,
+      "delivery": "unconfirmed",
+      "sources": [
+        "https://www.mohw.go.kr/menu.es?mid=a10706040400"
+      ]
+    },
+    "3751f6c7-527d-813b-84ab-ce702f3dae3e": {
+      "name": "노인학대 신고 1577-1389",
+      "status": "unconfirmed",
+      "languages": [],
+      "languageListComplete": false,
+      "delivery": "unconfirmed",
+      "sources": [
+        "https://www.seoul1389.or.kr/sub02/sub04.php",
+        "https://www.noinboho.or.kr"
+      ]
+    },
+    "3751f6c7-527d-816d-a192-c0a531545e6c": {
+      "name": "독거노인종합지원센터",
+      "status": "unconfirmed",
+      "languages": [],
+      "languageListComplete": false,
+      "delivery": "unconfirmed",
+      "sources": [
+        "https://www.1661-2129.or.kr/"
+      ]
+    },
+    "3751f6c7-527d-8183-acc9-f66a7e37d64a": {
+      "name": "치매상담콜센터",
+      "status": "unconfirmed",
+      "languages": [],
+      "languageListComplete": false,
+      "delivery": "unconfirmed",
+      "sources": [
+        "https://www.nid.or.kr/support/callcenter_use.aspx"
+      ]
+    },
+    "3751f6c7-527d-815c-b342-d47b29824f58": {
+      "name": "스마일센터",
+      "status": "unconfirmed",
+      "languages": [],
+      "languageListComplete": false,
+      "delivery": "unconfirmed",
+      "sources": [
+        "https://resmile.or.kr/pages/?p=9"
+      ]
+    },
+    "3751f6c7-527d-81e2-9f85-d1c179dbee61": {
+      "name": "국가인권위원회 인권상담",
+      "status": "listed_languages",
+      "languages": [
+        "Korean",
+        "English"
+      ],
+      "languageListComplete": false,
+      "delivery": "mixed_phone_and_written",
+      "sources": [
+        "https://www.humanrights.go.kr/eng/contents/view?contentsNo=143&menuLevel=3&menuNo=140"
+      ],
+      "sourceUrl": "https://www.humanrights.go.kr/eng/contents/view?contentsNo=143&menuLevel=3&menuNo=140",
+      "routes": [
+        {
+          "channel": "phone",
+          "languages": [
+            "Korean"
+          ],
+          "useServiceHours": true
+        },
+        {
+          "channel": "written",
+          "languages": [
+            "English"
+          ],
+          "url": "https://www.humanrights.go.kr/eng/contents/view?contentsNo=143&menuLevel=3&menuNo=140",
+          "description": "English support is available by email or post."
+        }
+      ],
+      "qualifier": "English support is available by email or post."
+    },
+    "3751f6c7-527d-81a5-84d8-facac6051fa0": {
+      "name": "대한법률구조공단",
+      "status": "unconfirmed",
+      "languages": [],
+      "languageListComplete": false,
+      "delivery": "unconfirmed",
+      "sources": [
+        "https://www.klac.or.kr/legalstruct/telephoneConsultation.do"
+      ]
+    }
+  }
+}

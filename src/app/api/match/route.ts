@@ -1,6 +1,8 @@
 import Anthropic from '@anthropic-ai/sdk'
 import { getServices } from '@/lib/notion'
 import { getServiceHoursStatus, isServiceAlwaysOpen } from '@/lib/service-hours'
+import { getServiceLanguageDisplay } from '@/lib/service-language-support'
+import { getServiceCopy } from '@/lib/service-copy'
 import type { Service, Category } from '@/lib/types'
 import type {
   MatchResult,
@@ -196,14 +198,15 @@ function parseReferenceTime(currentTime: string | undefined): Date {
 
 function buildPreview(orgs: OrgRef[], serviceMap: Record<string, Service>, lang: Lang): string {
   const names = orgs
-    .map((org) => serviceMap[org.id]?.name)
+    .map((org) => serviceMap[org.id] ? getServiceCopy(serviceMap[org.id], lang).name : undefined)
     .filter((name): name is string => Boolean(name))
 
   if (names.length <= 2) return names.join(', ')
   return translatePreview(`${names.slice(0, 2).join(', ')} 외 ${names.length - 2}곳`, lang)
 }
 
-function serializeService(service: Service): MatchSerializedOrg {
+function serializeService(service: Service, lang: Lang): MatchSerializedOrg {
+  const copy = getServiceCopy(service, lang)
   const contactMethods =
     service.contactMethods.length > 0
       ? service.contactMethods
@@ -211,11 +214,12 @@ function serializeService(service: Service): MatchSerializedOrg {
 
   return {
     id: service.id,
-    name: service.name,
+    name: copy.name,
     phone: service.phone || null,
     url: service.url || null,
-    description: service.description || null,
+    description: copy.description || null,
     languages: service.languages,
+    ...(lang === 'en' ? { languageSupport: getServiceLanguageDisplay(service.id) } : {}),
     contacts: contactMethods.map((type) => ({
       type,
       contact_info:
@@ -231,9 +235,10 @@ function serializeService(service: Service): MatchSerializedOrg {
 
 function buildOrgRef(service: Service, referenceTime: Date, lang: Lang): OrgRef {
   const status = getServiceHoursStatus(service, referenceTime)
+  const copy = getServiceCopy(service, lang)
   return {
     id: service.id,
-    note: translateStatusNote(status.note, lang),
+    note: translateStatusNote(isServiceAlwaysOpen(service) ? status.note : copy.hoursDetail || status.note, lang),
     is_open: status.isOpen,
   }
 }
@@ -656,7 +661,7 @@ export async function POST(request: Request) {
   const orgData: Record<string, MatchSerializedOrg> = {}
   for (const id of usedIds) {
     const service = serviceMap[id]
-    if (service) orgData[id] = serializeService(service)
+    if (service) orgData[id] = serializeService(service, lang)
   }
 
   return Response.json({ ...deduped, orgData })

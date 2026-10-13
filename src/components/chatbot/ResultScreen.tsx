@@ -14,7 +14,7 @@ function orgToCardProps(org: MatchSerializedOrg, lang: Lang) {
 
   const languages = org.languages
   const hasNonKorean = languages.some((l) => l !== '한국어' && l !== 'ko')
-  const languageLabel = hasNonKorean ? (lang === 'en' ? 'Multilingual' : '다국어') : null
+  const languageLabel = lang === 'ko' && hasNonKorean ? '다국어' : null
 
   const metaParts = [languageLabel].filter(Boolean) as string[]
 
@@ -25,6 +25,7 @@ function orgToCardProps(org: MatchSerializedOrg, lang: Lang) {
     description: org.description ?? undefined,
     is24h,
     metaParts,
+    languageSupport: org.languageSupport,
   }
 }
 

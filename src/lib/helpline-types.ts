@@ -1,3 +1,5 @@
+import type { ServiceLanguageDisplay } from './service-language-types'
+
 export interface OrgRef {
   id: string
   note: string | null
@@ -21,6 +23,7 @@ export interface MatchSerializedOrg {
   url: string | null
   description: string | null
   languages: string[]
+  languageSupport?: ServiceLanguageDisplay
   contacts: {
     type: string
     contact_info: string | null

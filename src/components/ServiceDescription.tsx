@@ -1,6 +1,6 @@
 import StructuredInfo from '@/components/StructuredInfo'
 import TimeText from '@/components/TimeText'
-import { getDescriptionDetails, translateInformationLabel } from '@/lib/description-format'
+import { getDescriptionDetails, parseEnglishDescription, translateInformationLabel } from '@/lib/description-format'
 import { SERVICE_DESCRIPTION_LAYOUTS } from '@/lib/service-description-layouts'
 import type { Lang } from '@/lib/i18n'
 
@@ -10,12 +10,14 @@ interface Props {
 }
 
 export default function ServiceDescription({ description, lang }: Props) {
-  const details = getDescriptionDetails(description, SERVICE_DESCRIPTION_LAYOUTS)
+  const details = lang === 'en'
+    ? parseEnglishDescription(description) ?? getDescriptionDetails(description, SERVICE_DESCRIPTION_LAYOUTS)
+    : getDescriptionDetails(description, SERVICE_DESCRIPTION_LAYOUTS)
 
   return (
     <div className="mt-4">
       {details ? (
-        <StructuredInfo items={details.map(({ label, text }) => ({
+        <StructuredInfo wideLabels={lang === 'en'} items={details.filter(({ label }) => lang !== 'en' || (label !== '언어' && label !== 'Languages')).map(({ label, text }) => ({
           label: translateInformationLabel(label, lang),
           text,
         }))} />

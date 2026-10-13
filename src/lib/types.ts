@@ -12,9 +12,11 @@ export type Category =
 export interface Service {
   id: string
   name: string
+  nameEn?: string
   phone: string
   category: Category[]
   description: string
+  descriptionEn?: string
   tags: string[]
   isEmergency: boolean
   isActive: boolean
@@ -25,6 +27,7 @@ export interface Service {
   region?: string
   hoursType?: string
   hoursDetail?: string
+  hoursDetailEn?: string
   situationKeywords: string[]
   languages: string[]
   ageGroups: string[]

@@ -1,0 +1,743 @@
+{
+  "checkedAt": "2026-10-13",
+  "status": "research_and_card_copy",
+  "siteContentChanged": false,
+  "scope": "영어 지원 근거가 있는 기관과 1388의 다른 지원 언어 조사, 34개 카드 표시 문구 준비",
+  "previousAudit": "english-support-audit-2026-10-13.json",
+  "displayRules": {
+    "countIncludesKorean": true,
+    "upToFive": "확인된 언어를 열거하고 ' 지원'을 붙임",
+    "moreThanFive": "다개국어 지원",
+    "unconfirmed": "확인되지 않음",
+    "koreanOnly": "한국어만 지원",
+    "koreanOnlyCondition": "한국어만 제공한다는 명시적인 현행 근거가 있을 때만 사용. 한국어 상담 확인 또는 영어 지원 미확인만으로 추정하지 않음",
+    "scopeQualifiers": "통역·서면·별도 상담·다른 번호 안내 등 실제 이용 경로를 바꾸는 조건은 같은 줄에 짧게 병기",
+    "unknownList": "languages가 비어 있으면 지원 언어가 없다는 뜻이 아니라 이번 조사에서 표시할 언어 범위를 확정하지 못했다는 뜻",
+    "requestedWording": "사용자가 지정한 '다개국어 지원' 표기를 사용"
+  },
+  "counts": {
+    "multilingual": 5,
+    "unconfirmed": 26,
+    "listed_languages": 3
+  },
+  "sharedPartnerLanguageSets": {
+    "danuri": {
+      "languages": [
+        "한국어",
+        "영어",
+        "중국어",
+        "베트남어",
+        "타갈로그어",
+        "크메르어",
+        "몽골어",
+        "러시아어",
+        "일본어",
+        "태국어",
+        "라오어",
+        "우즈베크어",
+        "네팔어",
+        "아랍어",
+        "인도네시아어"
+      ],
+      "source": "https://liveinkorea.kr/web/lay1/S1T40C44/contents.do"
+    },
+    "immigration1345": {
+      "languages": [
+        "한국어",
+        "중국어",
+        "영어",
+        "베트남어",
+        "태국어",
+        "일본어",
+        "몽골어",
+        "인도네시아어/말레이어",
+        "프랑스어",
+        "벵골어",
+        "우르두어",
+        "러시아어",
+        "네팔어",
+        "크메르어",
+        "미얀마어",
+        "독일어",
+        "스페인어",
+        "타갈로그어",
+        "아랍어",
+        "싱할라어"
+      ],
+      "source": "https://www.kdca.go.kr/KDCAtemp/5289/subview.do"
+    },
+    "bbb": {
+      "languages": [
+        "영어",
+        "일본어",
+        "중국어",
+        "프랑스어",
+        "스페인어",
+        "이탈리아어",
+        "러시아어",
+        "독일어",
+        "포르투갈어",
+        "아랍어",
+        "폴란드어",
+        "튀르키예어",
+        "스웨덴어",
+        "태국어",
+        "베트남어",
+        "인도네시아어",
+        "몽골어",
+        "힌디어",
+        "말레이어",
+        "스와힐리어"
+      ],
+      "source": "https://archive.bbbkorea.org/ko/volunteer.php",
+      "limits": "BBB의 20개 외국어 통역 목록이며 한국어는 매개 언어이다. 이를 그대로 전국 112·119의 자체 상시 지원언어 수로 환산하지 않는다."
+    }
+  },
+  "entries": [
+    {
+      "name": "경찰 신고 112",
+      "phone": "112",
+      "status": "multilingual",
+      "languages": [
+        "한국어",
+        "영어",
+        "중국어"
+      ],
+      "languageListComplete": false,
+      "thresholdEvidence": "자체 영어·중국어 통역 외에 다누리·1345·한국관광공사·BBB 통역 연계를 공식 보고서에서 확인. 5개 초과 분류는 연계기관 서비스 범위를 함께 고려한 판단이다.",
+      "delivery": "interpretation",
+      "cardQualifier": "통역 연결",
+      "sources": [
+        "https://www.evaluation.go.kr/upload2/atch/eval/20260608092112148.pdf",
+        "https://www.police.go.kr/user/bbs/BD_selectBbs.do?q_bbsCode=1002&q_bbscttSn=20240318135339434",
+        "https://liveinkorea.kr/web/lay1/S1T40C44/contents.do",
+        "https://archive.bbbkorea.org/ko/volunteer.php"
+      ],
+      "partnerLanguageSets": [
+        "danuri",
+        "immigration1345",
+        "bbb"
+      ],
+      "limits": "자체 통역과 외부 연계를 구분한다. 연계기관 언어의 합집합을 112 자체의 고정 지원언어 수로 표시하지 않는다.",
+      "cardLabel": "다개국어 지원",
+      "cardLine": "다개국어 지원 · 통역 연결"
+    },
+    {
+      "name": "구급 신고 119",
+      "phone": "119",
+      "status": "multilingual",
+      "languages": [
+        "한국어",
+        "영어"
+      ],
+      "languageListComplete": false,
+      "thresholdEvidence": "KOTRA 공식 생활 FAQ에서 119의 3자 통역과 BBB 다국어 서비스를 안내한다. 5개 초과 분류는 통역 연계의 범위를 기준으로 한다.",
+      "delivery": "interpretation",
+      "cardQualifier": "통역 연결",
+      "sources": [
+        "https://www.investkorea.org/ik-kr/bbs/i-267/list.do?searchCl1=10",
+        "https://archive.bbbkorea.org/ko/volunteer.php",
+        "https://english.visitkorea.or.kr/svc/contents/contentsView.do?menuSn=177&page=4&sContsTtl=&sort=regDt&vcontsId=248145"
+      ],
+      "partnerLanguageSets": [
+        "bbb"
+      ],
+      "limits": "전국 119 자체 상담원이 특정 20개 언어를 모두 상시 제공한다고 주장하지 않는다. 지역·연계기관에 따른 차이가 있어 전국 공통의 전체 언어목록은 미확정이다.",
+      "cardLabel": "다개국어 지원",
+      "cardLine": "다개국어 지원 · 통역 연결"
+    },
+    {
+      "name": "생명의전화(민간)",
+      "phone": "1588-9191",
+      "status": "unconfirmed",
+      "languages": [],
+      "languageListComplete": false,
+      "delivery": "unconfirmed",
+      "cardQualifier": null,
+      "sources": [
+        "https://www.lifeline.or.kr/business/phone.php",
+        "https://www.lifeline.or.kr/business/interview_consult.php"
+      ],
+      "limits": "중앙 공식 전화상담 안내는 열람했다. 각 지역센터·상담사까지 영어 불가로 단정할 수 없다.",
+      "cardLabel": "확인되지 않음",
+      "cardLine": "확인되지 않음"
+    },
+    {
+      "name": "자살위기상담 109",
+      "phone": "109",
+      "status": "unconfirmed",
+      "languages": [],
+      "languageListComplete": false,
+      "delivery": "unconfirmed",
+      "cardQualifier": null,
+      "sources": [
+        "https://www.129.go.kr/109",
+        "https://www.kfsp.or.kr/home/kor/contents.do?menuPos=42"
+      ],
+      "limits": "2015년 메르스 상담전화 109 자료는 현행 자살예방 109의 언어 지원 근거에서 제외했다.",
+      "cardLabel": "확인되지 않음",
+      "cardLine": "확인되지 않음"
+    },
+    {
+      "name": "정신건강 위기상담·정신건강복지센터",
+      "phone": "1577-0199",
+      "status": "unconfirmed",
+      "languages": [],
+      "languageListComplete": false,
+      "delivery": "unconfirmed",
+      "cardQualifier": null,
+      "sources": [
+        "https://www.mentalhealth.go.kr/portal/disease/diseaseDetail.do?dissId=26",
+        "https://blutouch.net/"
+      ],
+      "limits": "2022년 이태원 참사 관련 한시 외국어 상담은 현재 전국 대표전화의 영어 지원 근거에서 제외했다. 지역센터의 별도 서비스는 개별 확인이 필요하다.",
+      "cardLabel": "확인되지 않음",
+      "cardLine": "확인되지 않음"
+    },
+    {
+      "name": "보건복지상담센터 129",
+      "phone": "129",
+      "status": "unconfirmed",
+      "languages": [],
+      "languageListComplete": false,
+      "delivery": "unconfirmed",
+      "cardQualifier": null,
+      "sources": [
+        "https://www.129.go.kr/counsel/counsel01.do"
+      ],
+      "limits": "일반상담·긴급지원상담 운영시간과 언어 지원 여부는 별개이다.",
+      "cardLabel": "확인되지 않음",
+      "cardLine": "확인되지 않음"
+    },
+    {
+      "name": "심리상담포털",
+      "phone": null,
+      "status": "unconfirmed",
+      "languages": [],
+      "languageListComplete": false,
+      "delivery": "unconfirmed",
+      "cardQualifier": null,
+      "sources": [
+        "https://www.mindinfo.kr/new/index.asp"
+      ],
+      "limits": "포털 전체를 영어 상담 제공기관으로 표시할 수 없다.",
+      "cardLabel": "확인되지 않음",
+      "cardLine": "확인되지 않음"
+    },
+    {
+      "name": "정신건강 심리상담 바우처사업",
+      "phone": null,
+      "status": "unconfirmed",
+      "languages": [],
+      "languageListComplete": false,
+      "delivery": "unconfirmed",
+      "cardQualifier": null,
+      "sources": [
+        "https://www.mohw.go.kr/menu.es?mid=a10706040800"
+      ],
+      "limits": "제공기관의 언어와 이용자의 사업 자격을 각각 확인해야 한다.",
+      "cardLabel": "확인되지 않음",
+      "cardLine": "확인되지 않음"
+    },
+    {
+      "name": "여성긴급전화 1366",
+      "phone": "1366",
+      "status": "listed_languages",
+      "languages": [
+        "한국어"
+      ],
+      "languageListComplete": false,
+      "delivery": "korean_phone_with_referral",
+      "cardQualifier": "외국어 상담 1577-1366",
+      "sources": [
+        "https://liveinkorea.kr/download.do?uuid=202103171443000020.pdf",
+        "https://liveinkorea.kr/web/lay1/S1T40C44/contents.do"
+      ],
+      "classificationBasis": "사용자의 영어 지원 이관 확인과 공식 자료의 한국어 1366 / 외국어 1577-1366 구분",
+      "limits": "직통 한국어 상담과 다른 번호의 외국어 상담을 구분한다. 외부 통역 연결 가능성까지 배제하는 현행 '한국어만' 명시 안내는 확보하지 않아 단독 한국어 전용으로 확정하지 않는다.",
+      "cardLabel": "한국어 지원",
+      "cardLine": "한국어 지원 · 외국어 상담 1577-1366"
+    },
+    {
+      "name": "위기임산부 상담전화",
+      "phone": "1308",
+      "status": "unconfirmed",
+      "languages": [],
+      "languageListComplete": false,
+      "delivery": "unconfirmed",
+      "cardQualifier": null,
+      "sources": [
+        "https://www.ncrc.or.kr/ncrc1308.do",
+        "https://www.ncrc.or.kr/ncrc/cm/cntnts/cntntsView.do?cntntsId=1473&mi=1524"
+      ],
+      "limits": "외국인의 상담 대상 포함 여부가 영어 상담 가능 여부를 뜻하지는 않는다.",
+      "cardLabel": "확인되지 않음",
+      "cardLine": "확인되지 않음"
+    },
+    {
+      "name": "중앙디지털성범죄피해자지원센터",
+      "phone": "02-735-8994",
+      "status": "unconfirmed",
+      "languages": [],
+      "languageListComplete": false,
+      "delivery": "unconfirmed",
+      "cardQualifier": null,
+      "sources": [
+        "https://d4u.stop.or.kr/ko/support/content/guide"
+      ],
+      "limits": "번역된 피해지원 자료나 외국인 피해자 지원 대상 포함만으로 영어 상담을 확정하지 않았다. 페이지의 이미지·동적 본문 확인에는 한계가 있었다.",
+      "cardLabel": "확인되지 않음",
+      "cardLine": "확인되지 않음"
+    },
+    {
+      "name": "한국여성의전화(민간)",
+      "phone": "02-2263-6464",
+      "status": "unconfirmed",
+      "languages": [],
+      "languageListComplete": false,
+      "delivery": "unconfirmed",
+      "cardQualifier": null,
+      "sources": [
+        "https://hotline.or.kr/information"
+      ],
+      "limits": "외국인 피해자 지원이나 영문 기관 소개와 실제 영어 상담은 구분한다.",
+      "cardLabel": "확인되지 않음",
+      "cardLine": "확인되지 않음"
+    },
+    {
+      "name": "청소년 위기상담 1388",
+      "phone": "1388",
+      "status": "listed_languages",
+      "languages": [
+        "한국어",
+        "영어",
+        "일본어"
+      ],
+      "languageListComplete": false,
+      "delivery": "related_program",
+      "cardQualifier": "영어·일본어는 별도 상담",
+      "sources": [
+        "https://www.1388.go.kr/occ/YTOSP_SC_OCC_01",
+        "https://www.kyci.or.kr/userSite/sub02_10_international.asp"
+      ],
+      "classificationBasis": "2026-10-13 사용자가 1388을 영어·일본어 지원으로 분류하도록 명시적으로 요청했다.",
+      "limits": "운영기관의 외국어 상담 근거에 따라 기관 카드의 분류에 포함한다. 1388 전화에서 24시간 영어·일본어가 제공된다고 확정한 것은 아니다.",
+      "cardLabel": "한국어, 영어, 일본어 지원",
+      "cardLine": "한국어, 영어, 일본어 지원 · 영어·일본어는 별도 상담"
+    },
+    {
+      "name": "학교폭력 신고 117",
+      "phone": "117",
+      "status": "unconfirmed",
+      "languages": [],
+      "languageListComplete": false,
+      "delivery": "unconfirmed",
+      "cardQualifier": null,
+      "sources": [
+        "https://www.gwpolice.go.kr/gw/sub05/sub05_02_06.jsp",
+        "https://www.cbe.go.kr/upload/dept-21/na/bbs_1661/2026/03/9CA0E6C1-EBB5-5E10-9586-5F16C1E16D8A.pdf"
+      ],
+      "limits": "이주배경 학생 사건조사 과정의 통역 지원과 117 전화의 영어 상담을 구분했다.",
+      "cardLabel": "확인되지 않음",
+      "cardLine": "확인되지 않음"
+    },
+    {
+      "name": "청소년 성소수자 지원센터 띵동",
+      "phone": "02-924-1224",
+      "status": "unconfirmed",
+      "languages": [],
+      "languageListComplete": false,
+      "delivery": "unconfirmed",
+      "cardQualifier": null,
+      "sources": [
+        "https://ddingdong.kr/counsel"
+      ],
+      "limits": "공식 검색 색인으로 상담 안내를 확인했다. 직접 페이지 접속에는 오류가 있었다. 영문 연차보고서만으로 영어 상담을 확정하지 않는다.",
+      "cardLabel": "확인되지 않음",
+      "cardLine": "확인되지 않음"
+    },
+    {
+      "name": "청소년·청년근로권익센터",
+      "phone": "1644-3119",
+      "status": "unconfirmed",
+      "languages": [],
+      "languageListComplete": false,
+      "delivery": "unconfirmed",
+      "cardQualifier": null,
+      "sources": [
+        "https://www.youthlabor.co.kr/company/aboutus"
+      ],
+      "limits": "청년·외국인 대상 여부와 영어 상담 여부는 별개이다.",
+      "cardLabel": "확인되지 않음",
+      "cardLine": "확인되지 않음"
+    },
+    {
+      "name": "푸른나무 학교폭력상담(민간)",
+      "phone": "1588-9128",
+      "status": "unconfirmed",
+      "languages": [],
+      "languageListComplete": false,
+      "delivery": "unconfirmed",
+      "cardQualifier": null,
+      "sources": [
+        "https://www.btf.or.kr/business/bus01.asp?pageNum=3&scrID=0000000108&ssubNum=1&subNum=1",
+        "https://www.btf.or.kr/business/bus01_02.asp?pageNum=3&scrID=0000000108&ssubNum=1&subNum=1"
+      ],
+      "limits": "영문 기관 홈페이지는 영어 상담 제공의 근거로 사용하지 않았다.",
+      "cardLabel": "확인되지 않음",
+      "cardLine": "확인되지 않음"
+    },
+    {
+      "name": "Wee 센터(교육청)",
+      "phone": null,
+      "status": "unconfirmed",
+      "languages": [],
+      "languageListComplete": false,
+      "delivery": "unconfirmed",
+      "cardQualifier": null,
+      "sources": [
+        "https://www.wee.go.kr/mps"
+      ],
+      "limits": "특정 지역의 통역·다문화 사업을 전국 Wee 센터의 공통 서비스로 확대할 수 없다.",
+      "cardLabel": "확인되지 않음",
+      "cardLine": "확인되지 않음"
+    },
+    {
+      "name": "퀴어건강 정보 모음",
+      "phone": null,
+      "status": "unconfirmed",
+      "languages": [],
+      "languageListComplete": false,
+      "delivery": "unconfirmed",
+      "cardQualifier": null,
+      "sources": [
+        "https://queerhealth.kr/"
+      ],
+      "limits": "직접 상담전화가 아니다. 이번 조사 도구에서는 동적 본문이 충분히 추출되지 않았다.",
+      "cardLabel": "확인되지 않음",
+      "cardLine": "확인되지 않음"
+    },
+    {
+      "name": "한국게이인권운동단체 친구사이",
+      "phone": "02-745-7942",
+      "status": "unconfirmed",
+      "languages": [],
+      "languageListComplete": false,
+      "delivery": "unconfirmed",
+      "cardQualifier": null,
+      "sources": [
+        "https://chingusai.net/xe/counseling",
+        "https://chingusai.net/xe/counseling/170292",
+        "https://chingusai.net/xe/online"
+      ],
+      "limits": "영문 기관 소개만으로 영어 상담을 확정하지 않는다.",
+      "cardLabel": "확인되지 않음",
+      "cardLine": "확인되지 않음"
+    },
+    {
+      "name": "한국레즈비언상담소",
+      "phone": null,
+      "status": "unconfirmed",
+      "languages": [],
+      "languageListComplete": false,
+      "delivery": "unconfirmed",
+      "cardQualifier": null,
+      "sources": [
+        "https://lsangdam.org/info/"
+      ],
+      "limits": "온라인·대면·영상 상담 방식과 제공 언어는 별개이다.",
+      "cardLabel": "확인되지 않음",
+      "cardLine": "확인되지 않음"
+    },
+    {
+      "name": "행성인 인권상담",
+      "phone": "02-715-9984",
+      "status": "unconfirmed",
+      "languages": [],
+      "languageListComplete": false,
+      "delivery": "unconfirmed",
+      "cardQualifier": null,
+      "sources": [
+        "https://lgbtpride.or.kr/xe/sub43"
+      ],
+      "limits": "공식 페이지가 403을 반환했다. 본문에 영어 안내가 없다고 결론 내린 것이 아니다.",
+      "cardLabel": "확인되지 않음",
+      "cardLine": "확인되지 않음"
+    },
+    {
+      "name": "다누리콜센터 - 이주여성 긴급상담",
+      "phone": "1577-1366",
+      "status": "multilingual",
+      "languages": [
+        "한국어",
+        "영어",
+        "중국어",
+        "베트남어",
+        "타갈로그어",
+        "크메르어",
+        "몽골어",
+        "러시아어",
+        "일본어",
+        "태국어",
+        "라오어",
+        "우즈베크어",
+        "네팔어",
+        "아랍어",
+        "인도네시아어"
+      ],
+      "languageListComplete": true,
+      "officialLanguageCount": 15,
+      "countIncludesKorean": true,
+      "delivery": "direct_counseling",
+      "cardQualifier": null,
+      "sources": [
+        "https://liveinkorea.kr/web/lay1/S1T40C44/contents.do",
+        "https://www.kihf.or.kr/web/lay1/bbs/S1T838C97/A/3/view.do?article_seq=1115936"
+      ],
+      "limits": "2026년 4월 아랍어·인도네시아어 추가 후 15개 언어. 과거 13개 언어 목록과 구분한다.",
+      "cardLabel": "다개국어 지원",
+      "cardLine": "다개국어 지원"
+    },
+    {
+      "name": "외국인력상담센터",
+      "phone": "1577-0071",
+      "status": "multilingual",
+      "languages": [
+        "한국어",
+        "중국어",
+        "베트남어",
+        "타갈로그어",
+        "영어",
+        "태국어",
+        "인도네시아어",
+        "싱할라어",
+        "몽골어",
+        "우즈베크어",
+        "크메르어",
+        "벵골어",
+        "우르두어",
+        "네팔어",
+        "미얀마어",
+        "키르기스어",
+        "동티모르어",
+        "라오어"
+      ],
+      "languageListComplete": false,
+      "officialLanguageCount": 18,
+      "countIncludesKorean": true,
+      "delivery": "direct_counseling",
+      "cardQualifier": null,
+      "sources": [
+        "https://eps.hrdkorea.or.kr/e9/user/intro/intro.do?method=workerCounseling",
+        "https://www.hrdkorea.or.kr/1/3/3/4"
+      ],
+      "limits": "언어목록은 EPS의 ARS 안내 기준이다. 공단 본부 소개는 영어 대신 타지키스탄을 포함한 18개 항목을 열거한다. 상충 목록을 합쳐 19개로 단정하지 않는다. 두 자료 모두 5개 초과라는 카드 분류에는 일치한다.",
+      "conflictingSourceLanguages": "공단 본부: 한국, 베트남, 태국, 필리핀, 인도네시아, 스리랑카, 몽골, 우즈베키스탄, 캄보디아, 중국, 방글라데시, 파키스탄, 동티모르, 네팔, 키르기스스탄, 미얀마, 라오스, 타지키스탄",
+      "cardLabel": "다개국어 지원",
+      "cardLine": "다개국어 지원"
+    },
+    {
+      "name": "외국인종합안내센터",
+      "phone": "1345",
+      "status": "multilingual",
+      "languages": [
+        "한국어",
+        "중국어",
+        "영어",
+        "베트남어",
+        "태국어",
+        "일본어",
+        "몽골어",
+        "인도네시아어/말레이어",
+        "프랑스어",
+        "벵골어",
+        "우르두어",
+        "러시아어",
+        "네팔어",
+        "크메르어",
+        "미얀마어",
+        "독일어",
+        "스페인어",
+        "타갈로그어",
+        "아랍어",
+        "싱할라어"
+      ],
+      "languageListComplete": true,
+      "officialLanguageCount": 20,
+      "countIncludesKorean": true,
+      "delivery": "direct_counseling",
+      "cardQualifier": "18시 이후 한국어·영어·중국어",
+      "sources": [
+        "https://www.moj.go.kr/moj/196/subview.do",
+        "https://www.kdca.go.kr/KDCAtemp/5289/subview.do",
+        "https://www.immigration.go.kr/immigration_eng/1862/subview.do"
+      ],
+      "hours": {
+        "allLanguages": "평일 09:00–18:00",
+        "evening": "평일 18:00–22:00",
+        "eveningLanguages": [
+          "한국어",
+          "영어",
+          "중국어"
+        ]
+      },
+      "normalization": "질병관리청의 1345 언어표에서 인도네시아어/말레이어를 하나의 항목으로 집계한다. 국가명 표기인 방글라데시어·파키스탄어·캄보디아어·필리핀어는 각각 벵골어·우르두어·크메르어·타갈로그어로 정리했다.",
+      "limits": "20은 공식 상담 언어 구분의 수이다. 인도네시아어와 말레이어를 나누어 21개로 재계산하지 않는다.",
+      "cardLabel": "다개국어 지원",
+      "cardLine": "다개국어 지원 · 18시 이후 한국어·영어·중국어"
+    },
+    {
+      "name": "마약 상담 용기한걸음센터",
+      "phone": "1342",
+      "status": "unconfirmed",
+      "languages": [],
+      "languageListComplete": false,
+      "delivery": "unconfirmed",
+      "cardQualifier": null,
+      "sources": [
+        "https://nodrugzone.mfds.go.kr/home/kor/M928548033/consultation/index.do"
+      ],
+      "limits": "2009년 인천 지역 영어 상담 자료는 현재 전국 1342의 근거에서 제외했다.",
+      "cardLabel": "확인되지 않음",
+      "cardLine": "확인되지 않음"
+    },
+    {
+      "name": "도박 중독 헬프라인",
+      "phone": "1336",
+      "status": "unconfirmed",
+      "languages": [],
+      "languageListComplete": false,
+      "delivery": "unconfirmed",
+      "cardQualifier": null,
+      "sources": [
+        "https://www.kcgp.or.kr/portal/main/contents.do?menuNo=200062",
+        "https://www.kcgp.or.kr/portal/onlnCnslt/phoneCnslt/info.do?menuNo=200063"
+      ],
+      "limits": "영문 자료나 외국어 관련 채용 조건을 실제 상담 제공의 근거로 사용하지 않았다.",
+      "cardLabel": "확인되지 않음",
+      "cardLine": "확인되지 않음"
+    },
+    {
+      "name": "중독관리통합지원센터",
+      "phone": null,
+      "status": "unconfirmed",
+      "languages": [],
+      "languageListComplete": false,
+      "delivery": "unconfirmed",
+      "cardQualifier": null,
+      "sources": [
+        "https://www.mohw.go.kr/menu.es?mid=a10706040400"
+      ],
+      "limits": "국가 사업 안내만으로 모든 센터의 영어 상담을 보장할 수 없다.",
+      "cardLabel": "확인되지 않음",
+      "cardLine": "확인되지 않음"
+    },
+    {
+      "name": "노인학대 신고 1577-1389",
+      "phone": "1577-1389",
+      "status": "unconfirmed",
+      "languages": [],
+      "languageListComplete": false,
+      "delivery": "unconfirmed",
+      "cardQualifier": null,
+      "sources": [
+        "https://www.seoul1389.or.kr/sub02/sub04.php",
+        "https://www.noinboho.or.kr"
+      ],
+      "limits": "중앙기관 페이지 열람에는 오류가 있었다. 같은 안내에 기재된 112의 통역을 1577-1389에도 적용하지 않는다.",
+      "cardLabel": "확인되지 않음",
+      "cardLine": "확인되지 않음"
+    },
+    {
+      "name": "독거노인종합지원센터",
+      "phone": null,
+      "status": "unconfirmed",
+      "languages": [],
+      "languageListComplete": false,
+      "delivery": "unconfirmed",
+      "cardQualifier": null,
+      "sources": [
+        "https://www.1661-2129.or.kr/"
+      ],
+      "limits": "생활지원 사업과 개별 수행기관의 지원 언어는 별도로 확인해야 한다.",
+      "cardLabel": "확인되지 않음",
+      "cardLine": "확인되지 않음"
+    },
+    {
+      "name": "치매상담콜센터",
+      "phone": "1899-9988",
+      "status": "unconfirmed",
+      "languages": [],
+      "languageListComplete": false,
+      "delivery": "unconfirmed",
+      "cardQualifier": null,
+      "sources": [
+        "https://www.nid.or.kr/support/callcenter_use.aspx"
+      ],
+      "limits": "공식 사이트 방화벽이 접근을 거부했다. 본문에 영어 안내가 없다고 결론 내린 것이 아니다.",
+      "cardLabel": "확인되지 않음",
+      "cardLine": "확인되지 않음"
+    },
+    {
+      "name": "스마일센터",
+      "phone": "1551-1275",
+      "status": "unconfirmed",
+      "languages": [],
+      "languageListComplete": false,
+      "delivery": "unconfirmed",
+      "cardQualifier": null,
+      "sources": [
+        "https://resmile.or.kr/pages/?p=9"
+      ],
+      "limits": "외국인 범죄피해자 지원이나 다른 기관의 통역 연계가 스마일센터 자체 영어 전화상담을 뜻하지는 않는다.",
+      "cardLabel": "확인되지 않음",
+      "cardLine": "확인되지 않음"
+    },
+    {
+      "name": "국가인권위원회 인권상담",
+      "phone": "1331",
+      "status": "listed_languages",
+      "languages": [
+        "한국어",
+        "영어"
+      ],
+      "languageListComplete": false,
+      "delivery": "mixed_phone_and_written",
+      "cardQualifier": "영어는 이메일·우편",
+      "sources": [
+        "https://www.humanrights.go.kr/eng/contents/view?contentsNo=143&menuLevel=3&menuNo=140"
+      ],
+      "excludedFromCounselingCount": {
+        "type": "translated_complaint_guides_and_forms",
+        "languages": [
+          "영어",
+          "중국어",
+          "태국어",
+          "인도네시아어",
+          "몽골어",
+          "베트남어",
+          "네팔어",
+          "러시아어"
+        ]
+      },
+      "limits": "8개 외국어 진정서·안내문은 확인되지만 상담 제공 언어 8개를 의미하지 않는다. 영어 외 추가 상담 언어는 이번 조사에서 확인하지 못했다.",
+      "cardLabel": "한국어, 영어 지원",
+      "cardLine": "한국어, 영어 지원 · 영어는 이메일·우편"
+    },
+    {
+      "name": "대한법률구조공단",
+      "phone": "132",
+      "status": "unconfirmed",
+      "languages": [],
+      "languageListComplete": false,
+      "delivery": "unconfirmed",
+      "cardQualifier": null,
+      "sources": [
+        "https://www.klac.or.kr/legalstruct/telephoneConsultation.do"
+      ],
+      "limits": "영문 홈페이지·영문 서식·외국인 지원 대상 포함 및 별도 1345 통역 서비스를 132 자체 영어 상담 근거로 사용하지 않는다.",
+      "cardLabel": "확인되지 않음",
+      "cardLine": "확인되지 않음"
+    }
+  ]
+}

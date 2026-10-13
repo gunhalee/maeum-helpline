@@ -42,3 +42,22 @@ const ENGLISH_LABELS: Record<string, string> = {
 export function translateInformationLabel(label: string, lang: 'ko' | 'en'): string {
   return lang === 'en' ? ENGLISH_LABELS[label] ?? label : label
 }
+
+const ENGLISH_INFORMATION_LABELS = new Set(Object.values(ENGLISH_LABELS))
+
+// Notion's description_en uses one editable "Label: Text" item per line.
+// Parse only complete, recognized rows; ordinary prose or an unfamiliar edit
+// stays visible in full rather than silently losing part of the description.
+export function parseEnglishDescription(description: string): InformationItem[] | null {
+  const lines = description.split(/\r?\n/).map((line) => line.trim()).filter(Boolean)
+  if (lines.length === 0) return null
+  const items: InformationItem[] = []
+  for (const line of lines) {
+    const separator = line.indexOf(':')
+    const label = line.slice(0, separator).trim()
+    const text = line.slice(separator + 1).trim()
+    if (separator < 0 || !ENGLISH_INFORMATION_LABELS.has(label) || !text) return null
+    items.push({ label, text })
+  }
+  return items
+}
